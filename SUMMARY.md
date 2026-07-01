@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Hello World](README.md)
+* [Welcome](README.md)
