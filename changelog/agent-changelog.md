@@ -6,6 +6,8 @@ description: >-
 
 # Agent Changelog
 
+**Current versions:** ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fautopilotmonitor.blob.core.windows.net%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fautopilotmonitor.blob.core.windows.net%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb)
+
 User-facing changes to the Autopilot Monitor agent, newest first. Only includes changes that affect agent behavior on the device.
 
 ## June 2026
