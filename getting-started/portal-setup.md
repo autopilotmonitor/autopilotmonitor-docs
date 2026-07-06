@@ -34,6 +34,6 @@ After the basic setup, consider enabling these features to get the most out of A
 
 1. **Agent Settings → Geo Location Detection + Set Timezone Automatically** — sets the device timezone correctly during enrollment. Without a location sensor, Windows defaults to Pacific Standard Time; this fixes the "every English device thinks it's in Redmond" effect and feeds the Geographic Performance view.
 2. **Agent Analyzers** — enable the **Local Admin Analyzer** (configure your expected admin accounts to detect unauthorized local admins), **Software Inventory**, and the **Vulnerability Analyzer** for security insights during enrollment.
-3. **Diagnostics Package** — automatically gathers log files from devices for troubleshooting. Packages are uploaded to the built-in hosted storage by default; optionally, point the upload at your own Azure Blob Storage (Container SAS URL) if you want the collected data to stay entirely under your control.
+3. **Diagnostics Package** — automatically gathers log files from devices for troubleshooting. You choose the upload destination: your own Azure Blob Storage (Container SAS URL — data never leaves your tenant) or the built-in hosted storage (no storage account needed).
 
 All settings are described in detail in the [Settings Reference](../reference/settings.md).
