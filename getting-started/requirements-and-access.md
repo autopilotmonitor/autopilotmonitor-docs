@@ -30,5 +30,5 @@ Autopilot Monitor is currently in **Private Preview**. The service is available 
 4. Once approved, sign in again — you will be taken straight to the portal. Continue with [Portal Setup](portal-setup.md).
 
 {% hint style="warning" %}
-**Expect instability during Private Preview.** The backend, portal, and agent are under active development and receive frequent updates. Availability is not guaranteed, features and data structures may change, and session data may be cleared between major updates. The preview is intended for testing and feedback — not for critical production use.
+**Expect instability during Private Preview.** The backend, portal, and agent are under active development and receive frequent updates. Availability is not guaranteed, features and data structures may change, and session data may be cleared between major updates. Plan for these realities when relying on it during the preview.
 {% endhint %}
