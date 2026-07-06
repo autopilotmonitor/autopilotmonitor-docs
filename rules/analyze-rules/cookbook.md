@@ -201,7 +201,7 @@ That's it: a custom copy `ANALYZE-ID-001-CUSTOM` now checks every enrollment and
 * Add `suppressByEvent` to discard pairs that a third, resolving event fixed.
 * Correlation conditions require **JSON mode** in the editor.
 
-## Recipe 7: End-to-end — collect your own data and grade it
+## Recipe 7: Collect your own data and grade it (end-to-end)
 
 **Goal:** the most powerful pattern in the product: gather evidence the agent doesn't collect by default, then let an analyze rule turn it into an automatic verdict. Example: verify the TPM is ready at the end of every enrollment.
 

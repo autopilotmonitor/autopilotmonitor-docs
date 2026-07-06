@@ -20,23 +20,23 @@ Some detections only make sense with knowledge of *your* environment: which cert
 
 ## Available templates
 
-### ANALYZE-ID-001 — Expected Machine Certificate Not Found
+### ANALYZE-ID-001: Expected Machine Certificate Not Found
 
 **You provide:** the certificate subject you expect on every device (e.g. `CN=Contoso Root CA` — case-insensitive substring match).
 
 The rule checks the machine certificate store inventory (collected by the community gather rule **GATHER-ID-002** at the *FinalizingSetup* phase) and warns when no certificate with your subject is present — catching failed SCEP/PKCS profile deployments before the user notices Wi-Fi or VPN doesn't work.
 
 {% hint style="info" %}
-This template depends on the **GATHER-ID-002** gather rule being enabled — that's what produces the `gather_machine_cert_store` event the analyze rule inspects. It's a working example of the [gather + analyze pattern](cookbook.md#recipe-7-end-to-end-collect-your-own-data-and-grade-it).
+This template depends on the **GATHER-ID-002** gather rule being enabled — that's what produces the `gather_machine_cert_store` event the analyze rule inspects. It's a working example of the [gather + analyze pattern](cookbook.md#recipe-7-collect-your-own-data-and-grade-it-end-to-end).
 {% endhint %}
 
-### ANALYZE-SEC-004 — AutoLogon enabled for an unexpected user
+### ANALYZE-SEC-004: AutoLogon enabled for an unexpected user
 
 **You provide:** a comma-separated list of approved kiosk / shared-device account names (case-insensitive exact match against the Winlogon `DefaultUserName`).
 
 AutoLogon is legitimate for kiosks — and a normal Autopilot enrollment even uses Windows' own temporary ESP auto-logon, which is registry-indistinguishable from a kiosk setup. That's why "AutoLogon enabled" alone is deliberately not graded by default (only a plaintext password is, via ANALYZE-SEC-003). This template lets you go further: once you declare which accounts *may* use AutoLogon, any other account raises a warning.
 
-### ANALYZE-SEC-006 — Unexpected Provisioning Package (Custom Allow-List)
+### ANALYZE-SEC-006: Unexpected Provisioning Package (Custom Allow-List)
 
 **You provide:** the allow-list regex, pre-filled with the same OS-inbox and OEM factory-preload defaults as the built-in ANALYZE-SEC-005.
 

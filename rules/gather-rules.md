@@ -50,7 +50,7 @@ Each execution emits one event with the rule's configured **output event type** 
 | Log Parser | Your regex's named capture groups as keys |
 | JSON / XML | The matched values as key-value pairs |
 
-See [Cookbook recipe 7](analyze-rules/cookbook.md#recipe-7-end-to-end-collect-your-own-data-and-grade-it) for the full gather → analyze pattern in action.
+See [Cookbook recipe 7](analyze-rules/cookbook.md#recipe-7-collect-your-own-data-and-grade-it-end-to-end) for the full gather → analyze pattern in action.
 
 ## Security guardrails
 

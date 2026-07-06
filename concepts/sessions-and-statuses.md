@@ -36,7 +36,7 @@ stateDiagram-v2
 
 There is no single "enrollment done" signal in Windows, so the agent combines several independent evidence paths — for example the IME's own completion reporting, the ESP process exiting together with the Windows Hello enrollment prompt, and the user reaching the desktop. Whichever path completes first ends the session; this redundancy keeps completion detection reliable across user-driven, pre-provisioning, and kiosk/self-deploying scenarios.
 
-## Timeouts — what happens to stuck sessions
+## Timeouts: what happens to stuck sessions
 
 Three separate mechanisms make sure a session never stays *In Progress* forever — and that no agent is ever left behind on a device:
 

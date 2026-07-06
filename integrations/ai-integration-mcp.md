@@ -69,6 +69,6 @@ Two **discovery resources** help the assistant use the right vocabulary: `event_
 
 The assistant picks the right tools and chains them — e.g. finding a session by device name first, then pulling its event timeline.
 
-## Rate limits & usage plans
+## Rate limits and usage plans
 
 Requests are rate-limited to **60 per minute per user** (sliding window). Exceeding it returns HTTP 429 with `retryAfterSeconds`; clients typically retry automatically. Overall MCP usage is additionally **tied to your tenant's usage plan** — tenant admins can track consumption under **Configuration → Reporting → MCP Usage**.

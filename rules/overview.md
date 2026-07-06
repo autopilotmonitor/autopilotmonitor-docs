@@ -41,7 +41,7 @@ flowchart LR
 
 * *"The timeline is missing information that exists somewhere on the device"* → a **Gather Rule** to collect it.
 * *"I want to be alerted automatically when condition X is true in a session"* → an **Analyze Rule**.
-* *"Both — I need custom data **and** an automatic verdict on it"* → a Gather Rule feeding an Analyze Rule. This combination is the most powerful pattern in the product; see [Cookbook recipe 7](analyze-rules/cookbook.md#recipe-7-end-to-end-collect-your-own-data-and-grade-it).
+* *"Both — I need custom data **and** an automatic verdict on it"* → a Gather Rule feeding an Analyze Rule. This combination is the most powerful pattern in the product; see [Cookbook recipe 7](analyze-rules/cookbook.md#recipe-7-collect-your-own-data-and-grade-it-end-to-end).
 * *"A known IME log line isn't being recognized anymore"* → an **IME Log Pattern** fix (these are community-maintained; see [contributing](ime-log-patterns.md#contributing-patterns)).
 
 ## Built-in, community, template, custom

@@ -51,7 +51,7 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-DEV-002** · Sustained High Memory Usage During Enrollment | warning | Memory stayed above 90 % across at least 3 performance snapshots — sustained pressure, not a transient spike. |
 | **ANALYZE-DEV-003** · Unsupported Windows Version | warning | The device enrolled with an OS build past end of support — Windows 11 22H2 or older, including every Windows 10 build (LTSC caveat documented in the rule). |
 
-## Identity & Security
+## Identity and Security
 
 | Rule | Severity | What it detects |
 | --- | --- | --- |

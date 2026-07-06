@@ -35,7 +35,7 @@ The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV
 * KPI tiles — affected devices, distinct CVEs, and known-exploited (KEV) count — plus a severity breakdown (Critical/High/Medium/Low).
 * **Top CVEs by affected devices**, each linked to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, and sample affected software.
 
-Critical findings also surface directly on the affected sessions via the built-in rule [ANALYZE-ID-003](../rules/analyze-rules/built-in-rules.md#identity--security).
+Critical findings also surface directly on the affected sessions via the built-in rule [ANALYZE-ID-003](../rules/analyze-rules/built-in-rules.md#identity-and-security).
 
 {% hint style="warning" %}
 An empty vulnerability list means **no detected CVEs** — not a verified-safe fleet. Scanning must be enabled per tenant, and results are a lower bound if a scan hit its collection cap.
