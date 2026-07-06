@@ -10,7 +10,7 @@ Autopilot Monitor will be available in two editions.
 
 ## Community Edition — *available now (Private Preview)*
 
-The Community Edition is what this documentation describes: the full product as it exists today, available **free of charge during the Private Preview**.
+The Community Edition is what this documentation describes: the full product as it exists today. It is **free — and stays free**. That's the point of a community edition: it is currently in Private Preview, and it remains the free way to use Autopilot Monitor after general availability.
 
 * **Access:** invite-only, per tenant — see [Requirements & Access](getting-started/requirements-and-access.md) for how to request activation.
 * **Features:** the complete current feature set — live session monitoring, the full [rules engine](rules/overview.md) including custom rules, fleet analytics, notifications, diagnostics, and the [AI integration (MCP)](integrations/ai-integration-mcp.md).
@@ -30,7 +30,7 @@ A commercial edition for organizations that need more than the preview can promi
 | | Community Edition | Enterprise Edition |
 | --- | --- | --- |
 | **Availability** | Now — Private Preview, invite-only | Coming soon |
-| **Price** | Free during preview | To be announced |
+| **Price** | Free — always | To be announced |
 | **Feature set** | Full current feature set | To be announced |
 | **Support** | Community (GitHub) | To be announced |
 | **Intended for** | Testing, feedback, early adopters | Production fleets, MSPs |
