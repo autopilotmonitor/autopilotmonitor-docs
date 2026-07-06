@@ -64,5 +64,5 @@ Custom collection on managed devices is a sensitive capability, so every collect
 The current allow-lists are shown inline on the Gather Rules page in the portal (expandable under each collector type).
 
 {% hint style="warning" %}
-**Unrestricted Mode** (Settings → Agent) is an opt-in that relaxes the registry/WMI/command guardrails for environments that need broader collection. Hard limits remain even then — `C:\Users` stays blocked and dangerous operations stay impossible. Leave it off unless a specific rule requires it.
+**Unrestricted Mode** relaxes the registry/WMI/command guardrails for environments that need broader collection. It is not generally available: the capability has to be **unlocked for your tenant by the platform operators on request** — only then does the toggle appear under Settings → Agent. Hard limits remain even with it enabled: `C:\Users` stays blocked and dangerous operations stay impossible. Leave it off unless a specific rule requires it.
 {% endhint %}
