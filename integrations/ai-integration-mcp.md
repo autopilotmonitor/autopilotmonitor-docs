@@ -26,7 +26,7 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 **Server URL:**
 
 ```
-https://autopilotmonitor-mcp.kindwave-58b4b547.westeurope.azurecontainerapps.io/mcp
+https://mcp.autopilotmonitor.com/mcp
 ```
 
 * **Claude Desktop:** Settings → MCP Servers → Add, enter the URL. OAuth authentication runs automatically in the browser.
@@ -37,7 +37,7 @@ https://autopilotmonitor-mcp.kindwave-58b4b547.westeurope.azurecontainerapps.io/
   "servers": {
     "autopilot-monitor": {
       "type": "http",
-      "url": "https://autopilotmonitor-mcp.kindwave-58b4b547.westeurope.azurecontainerapps.io/mcp"
+      "url": "https://mcp.autopilotmonitor.com/mcp"
     }
   }
 }
