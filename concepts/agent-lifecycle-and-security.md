@@ -26,7 +26,7 @@ flowchart LR
 2. **Backfill — the full timeline from T=0** — the Intune Management Extension (IME) writes detailed logs from the first second of enrollment, long before the agent exists. On first launch the agent reads those logs **from byte position zero** — including archived (rotated) files, processed in chronological order. Every app state change, phase transition, and script execution that happened before the agent arrived is reconstructed, so the timeline has no blind spots.
 3. **Real-time monitoring** — after the backfill, the agent switches to incremental polling: it tracks its byte position in each log file and reads only new data, streaming events to the backend as they happen, alongside its own collectors (device info, performance snapshots, security posture, Windows Hello and ESP signals).
 4. **Completion** — when the enrollment completes (see [Sessions & Statuses](sessions-and-statuses.md#how-completion-is-detected)), the agent performs a final upload and, if configured, collects a diagnostics package. As a hard backstop the agent never runs longer than 6 hours.
-5. **Self-destruct** — the agent removes its files and scheduled task. The only artifact left is the registry marker `HKLM:\SOFTWARE\AutopilotMonitor\Deployed`, which permanently prevents re-installation on that device. Self-destruct behavior is configurable per tenant (e.g. keep the log file, reboot on completion).
+5. **Self-destruct** — the agent removes its files and scheduled task. The only artifact left is the registry marker `HKLM:\SOFTWARE\AutopilotMonitor\Deployed`, which permanently prevents re-installation on that device. Self-destruct behavior is configurable per tenant (e.g. keep the log file, reboot on completion). On top of the normal lifecycle there is an unconditional **48-hour emergency brake**: 48 hours after installation the agent removes itself no matter what state it is in — no orphaned agent ever remains on a device.
 
 {% hint style="info" %}
 **Per-enrollment by design.** The agent is not a permanent management footprint. If you re-enroll a device (after a reset the registry marker is gone too, since a reset wipes the disk), a fresh agent is installed for the new enrollment.
@@ -56,6 +56,6 @@ The agent collects **enrollment telemetry**, not user data:
 * App installations (names, IDs, states, error codes) and script executions as reported by the IME
 * Device information: hardware model, OS version/build, network configuration, security posture (e.g. Secure Boot status)
 * Performance snapshots (CPU, memory, disk) during enrollment
-* Optional, controlled by you: geo location (IP-based, for the Geographic Performance view), local admin account analysis, software inventory with vulnerability correlation, and a diagnostics package uploaded **to your own Azure Blob Storage**
+* Optional, controlled by you: geo location (IP-based, for the Geographic Performance view), local admin account analysis, software inventory with vulnerability correlation, and a diagnostics package — uploaded to the built-in hosted storage or, if you prefer full control, to **your own Azure Blob Storage**
 
 What the agent collects is itself configurable through Agent Settings, Collectors, Analyzers, and [Gather Rules](../rules/gather-rules.md) — with strict guardrails on what custom collection is allowed to touch.

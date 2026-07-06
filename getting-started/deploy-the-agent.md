@@ -52,16 +52,13 @@ In the **Microsoft Intune admin center**, go to **Devices → Scripts and remedi
 
 Assign the script to the device group that covers your Autopilot devices. The two common choices:
 
-* **All devices** — the built-in Intune group; the guards make this safe.
-* A **dynamic Entra ID device group** targeting only Autopilot-registered hardware, using the membership rule:
+* **Recommended:** a **dynamic Entra ID device group** targeting only Autopilot-registered hardware, using the membership rule:
 
 ```
 (device.devicePhysicalIds -any _ -startsWith "[ZTDId]")
 ```
 
-{% hint style="info" %}
-The dynamic Autopilot group is preferred if you want to limit telemetry strictly to Autopilot-registered hardware.
-{% endhint %}
+* **All devices** — the built-in Intune group. The guards make this safe for already-provisioned machines, but without a filter the script also reaches every other managed Windows device (Teams Rooms devices, kiosks, cloud PCs, …). Prefer the dynamic Autopilot group unless you have a reason not to.
 
 ### 4. Done
 

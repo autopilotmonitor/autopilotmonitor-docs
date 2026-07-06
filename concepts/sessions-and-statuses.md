@@ -38,10 +38,11 @@ There is no single "enrollment done" signal in Windows, so the agent combines se
 
 ## Timeouts — what happens to stuck sessions
 
-Two separate mechanisms make sure a session never stays *In Progress* forever:
+Three separate mechanisms make sure a session never stays *In Progress* forever — and that no agent is ever left behind on a device:
 
 * **Agent maximum lifetime (on the device):** the agent itself runs for at most **6 hours**. If enrollment hasn't completed by then, the agent performs a final upload and cleans itself up regardless.
 * **Session timeout (in the backend):** sessions that stop receiving events are automatically marked **Failed — Timed Out** after the configured **Session Timeout** (default **5 hours**, configurable 1–12 hours under **Configuration → Maintenance → Data Management**). This catches devices that were powered off mid-enrollment or lost connectivity for good.
+* **48-hour emergency brake (on the device):** independent of everything above, the agent unconditionally removes itself **48 hours after installation** — regardless of session status, connectivity, or whatever error state it might be in. Even in the worst failure scenario, no orphaned agent ever remains on a device.
 
 {% hint style="info" %}
 A session marked *Failed — Timed Out* means the **evidence stopped**, not necessarily that the device is broken — a user may simply have shut the laptop mid-ESP. The session timeline still contains everything up to the last received event.
