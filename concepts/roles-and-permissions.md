@@ -1,7 +1,39 @@
+---
+description: >-
+  Who can see and do what: tenant roles, the Admin Mode safety toggle, and how
+  MSP fleet access fits in.
+---
+
 # Roles & Permissions
 
-The permission model: Tenant Admin, Operator, and regular members, what each role can see and do, the Admin Mode safety toggle for destructive actions, and how MSP/fleet access works.
+Access to the portal is controlled by role-based permissions. Everyone signs in with their Microsoft Entra ID account; what they see is determined by the role assigned within Autopilot Monitor.
 
-{% hint style="warning" %}
-🚧 This page is under construction.
+## Tenant roles
+
+| Role | Permissions |
+| --- | --- |
+| **Tenant Admin** | Full access to all tenant configuration, sessions, diagnostics, and settings. Manages team members via **Settings → Access Management**, can enable **Admin Mode** for destructive operations. The **first user to sign in** for a tenant is automatically granted this role. |
+| **Operator** | Day-to-day monitoring role: views sessions and analytics, manages settings and Bootstrap Tokens (if granted), executes device actions. Cannot enable Admin Mode and cannot perform destructive operations such as deleting sessions. |
+| **Member (no role)** | Only sees the **Progress Portal** — a simplified view for tracking a specific device by serial number. No access to session details, diagnostics, or configuration. Ideal for helpdesk staff or on-site technicians who just need to answer "how far along is this device?" |
+
+Team members are added by UPN under **Settings → Access Management**, where admins can also enable/disable accounts and change roles.
+
+## Admin Mode
+
+Admin Mode is a safety toggle that gates destructive operations. It is only available to Tenant Admins and must be explicitly enabled before any destructive action — preventing accidental deletions during normal day-to-day use.
+
+**How to enable:** click the **gear icon** in the top navigation bar and toggle **Admin Mode** under *Administration*. The toggle turns amber and shows **ON** while active.
+
+| Action | Location | Description |
+| --- | --- | --- |
+| **Delete Session** | Dashboard → Actions column | Permanently deletes a session and all its event data. The Actions column only appears while Admin Mode is on. |
+| **Mark as Failed** | Session detail page | Manually fails a stuck *In Progress*/*Pending* session that will never complete on its own. |
+| **Mark as Succeeded** | Session detail page | Manually completes a session; also signals a still-running agent to finish up and clean the device. |
+
+{% hint style="info" %}
+Admin Mode is **not persistent** — it lives in the browser's local storage and resets when browser data is cleared. Keep it off unless you are actively performing administrative actions.
 {% endhint %}
+
+## MSP / fleet access
+
+For managed service providers, Autopilot Monitor supports **delegated administration**: a delegated admin manages a defined set of customer tenants and gets a **Fleet** view with the same analytics (Fleet Health, Software, Geographic Performance, SLA, Usage) scoped across exactly those tenants — never more. Delegated access is provisioned by the platform operators; if you are an MSP interested in this model, get in touch via the [usual channels](../getting-started/requirements-and-access.md#how-to-request-access).
