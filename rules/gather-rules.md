@@ -36,6 +36,12 @@ A set of maintained built-in and community gather rules ships with the product; 
 | **Phase Change** | When enrollment enters a specific ESP phase (`Start`, `DevicePreparation`, `DeviceSetup`, `AppsDevice`, `AccountSetup`, `AppsUser`, `FinalizingSetup`, `Complete`, `Failed`) | State checks at a defined point of enrollment |
 | **On Event** | When a specific event type is emitted (e.g. `enrollment_complete`, `enrollment_failed`, `app_install_failed`) | Collecting "at the end" or in reaction to a failure |
 
+{% hint style="warning" %}
+**Mind the ingestion rate limit.** Event ingestion is rate-limited **per device at 100 requests per minute** — a budget shared by *everything* the agent sends: its built-in telemetry, IME-derived events, *and* your gather rules. Noisy gather rules — several **Interval** rules firing every 60 seconds, or one rule producing many events per run (log parsers, broad registry reads) — can exhaust that budget. Uploads beyond the limit are rejected until the window clears, so telemetry arrives delayed or gaps appear in the timeline.
+
+Rules of thumb: prefer **Startup**, **Phase Change**, or **On Event** triggers over intervals; when you do poll, use the widest interval that still answers your question (an enrollment rarely needs anything sampled more often than every few minutes); and cap what each run returns (`maxEntries`, `maxLines`, `maxResults`).
+{% endhint %}
+
 ## What the data looks like
 
 Each execution emits one event with the rule's configured **output event type** and severity. The collected values live in the event's `data` field — and that's exactly what analyze rules reference via `dataField`:

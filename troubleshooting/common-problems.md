@@ -33,6 +33,12 @@ Two classic Intune patterns the built-in rules recognize:
 * **Detection rule mismatch** — the app installs, but its detection rule doesn't match, so Intune reports failure (HRESULT `0x87D1041C` when it kills the ESP). See the findings of [ANALYZE-APP-001/APP-013](../rules/analyze-rules/built-in-rules.md#apps) for concrete remediation.
 * **Unmapped exit code** — the installer returns an exit code that isn't mapped in the app's return-code table; a later detection pass often flips it to success ([ANALYZE-APP-012](../rules/analyze-rules/built-in-rules.md#apps)). Fix the return-code mapping in Intune.
 
+## Timeline gaps after adding gather rules (ingestion rate limit)
+
+Event ingestion is rate-limited **per device at 100 requests per minute**, and that budget covers everything the agent sends — built-in telemetry *plus* your [gather rules](../rules/gather-rules.md). A handful of interval-triggered gather rules polling every 60 seconds can push a busy device over the limit; the surplus uploads are rejected until the window clears, showing up as delayed events or gaps in the timeline.
+
+**Fix:** thin out the gather rules — switch interval rules to **Startup**, **Phase Change**, or **On Event** triggers where possible, widen the remaining intervals, and cap per-run output (`maxEntries`, `maxLines`, `maxResults`). The rate-limit guidance on the [Gather Rules page](../rules/gather-rules.md#triggers) has the details.
+
 ## Delivery Optimization metrics are missing
 
 For devices running **IME 1.101 or later**, Microsoft removed DO telemetry from the IME log. Autopilot Monitor compensates by collecting DO data at the OS level, so current agents show peer-caching metrics again — but sessions recorded in the gap may lack them. Background in the [Service Announcements](service-announcements.md).
