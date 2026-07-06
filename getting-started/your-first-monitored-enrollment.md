@@ -20,7 +20,7 @@ Use any Autopilot-registered test device (a fresh VM registered for Autopilot wo
 
 Open the **Dashboard** in the portal. Within seconds of the agent starting, a new session appears with status **In Progress**, showing the device serial number, model, and the current enrollment activity — while the device is still at the ESP.
 
-<!-- SCREENSHOT: dashboard-live-session — Dashboard session list with one freshly started In-Progress session (highlight the live status badge). Genuinely valuable here: this is the "it works!" moment for a new user. -->
+<figure><img src="../.gitbook/assets/dashboard-live-session.png" alt="The Autopilot Monitor dashboard with stat cards and the sessions table"><figcaption><p>The dashboard with enrollment sessions — during a live enrollment your device appears here within seconds, first with an <em>In Progress</em> badge, flipping to <em>Succeeded</em> when it completes.</p></figcaption></figure>
 
 {% hint style="info" %}
 **No session appearing?** Check in this order: (1) Is **Autopilot Device Validation** enabled in Settings? Without it, all agent uploads are rejected. (2) Is the platform script assigned to the device's group? (3) Did a bootstrap guard skip the device — e.g. was it already enrolled once (registry marker), or has it been powered on for more than 12 hours? Run the [dry-run tester](deploy-the-agent.md#try-it-first-dry-run) on the device to see the exact decision.

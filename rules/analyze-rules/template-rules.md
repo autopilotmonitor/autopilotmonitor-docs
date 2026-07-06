@@ -13,7 +13,7 @@ Some detections only make sense with knowledge of *your* environment: which cert
 1. Template rules live on the **Templates** tab of the Analyze Rules page and are **off by default** — they can't do anything useful until configured.
 2. When you enable one, a dialog asks for the template values (each with a description and an example).
 
-<!-- SCREENSHOT: template-config-modal — the Template configuration dialog for ANALYZE-ID-001 with the Certificate Subject field filled in (e.g. CN=Contoso Root CA). This is the one place a picture beats prose: it shows users the whole flow is just one small form. -->
+<figure><img src="../../.gitbook/assets/template-config-modal.png" alt="The template configuration dialog for ANALYZE-ID-001 with the Certificate Subject field filled in"><figcaption><p>Configuring a template is one small form — fill in your value, <em>Save &amp; Enable</em>, and a tailored custom copy of the rule goes live for your tenant.</p></figcaption></figure>
 
 3. Submitting creates **your own editable copy** with a `-CUSTOM` suffix (e.g. `ANALYZE-ID-001-CUSTOM`), which appears on the Rules tab like any custom rule — you can refine it further, in form or JSON mode.
 4. The original template stays on the Templates tab, disabled. Deleting your copy frees the template to be configured again.
