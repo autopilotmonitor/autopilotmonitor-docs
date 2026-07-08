@@ -104,7 +104,7 @@ Work through the checklist in [Common Problems → No sessions appear](common-pr
 
 <summary>A session shows "In Progress" but the enrollment already finished.</summary>
 
-The completion signal was missed — for example the device rebooted before the agent could detect the final state. The session resolves automatically: the backend marks stalled sessions **Failed – Timed Out** after the configured session timeout (default 5 hours). You can also mark it succeeded/failed manually via [Admin Mode](../concepts/roles-and-permissions.md#admin-mode). See [Sessions & Statuses → Timeouts](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions).
+The completion signal was missed — for example the device rebooted before the agent could detect the final state. The session resolves automatically: after the configured session timeout (default 5 hours) the backend reclassifies it from its evidence to **Awaiting User** or **Incomplete** (a timeout is no longer treated as a failure), and reconciles it to **Succeeded** if a genuine completion later arrives. You can also mark it succeeded/failed manually via [Admin Mode](../concepts/roles-and-permissions.md#admin-mode). See [Sessions & Statuses → Timeouts](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions).
 
 </details>
 

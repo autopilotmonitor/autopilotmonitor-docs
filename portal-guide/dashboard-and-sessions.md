@@ -23,7 +23,7 @@ Default columns: **Device** (name + serial), **Model**, **Status**, **Events**, 
 ### Finding sessions
 
 * **Search box** — matches device, serial, model, status, session ID, country, and even duration, including numeric expressions like `>30` for enrollments over 30 minutes. Suggestions rank exact matches first, then fuzzy matches; *Search all sessions* extends the search across the full server-side dataset.
-* **Status pills** — Succeeded, In Progress, Pending, Stalled, Failed — each with a live count; click to toggle.
+* **Status pills** — Succeeded, In Progress, Pending, Stalled, Awaiting User, Failed, Incomplete — each with a live count; click to toggle. *Awaiting User* (Device Setup done, waiting on the user phase) and *Incomplete* (went silent without a completion or failure) come from the [timeout reclassification](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions).
 * **Column filters** — most column headers sort, and many offer a filter funnel with checkbox value lists.
 * **Global search** — from anywhere in the portal, press **Ctrl+K** (⌘K) to search sessions by serial, device name, or session ID.
 

@@ -14,7 +14,7 @@ A set of maintained built-in and community gather rules ships with the product; 
 
 | Collector | Collects | Target example |
 | --- | --- | --- |
-| **Registry** | Values of a key (or subkey names with `listSubkeys`) | `HKLM\SOFTWARE\Microsoft\PolicyManager\current\device` |
+| **Registry** | Values of a key (or subkey names with `listSubkeys`) — reads the 64-bit view by default, with `emitOnlyIfExists` to only emit when the key is actually present | `HKLM\SOFTWARE\Microsoft\PolicyManager\current\device` |
 | **Event Log** | Entries from classic or operational Windows event logs, filterable by event ID, source, and message | `Microsoft-Windows-Shell-Core/Operational`, event ID `62407`, filter `*ESPProgress*` |
 | **WMI Query** | Results of a full WQL `SELECT` statement against allow-listed classes | `SELECT * FROM Win32_NetworkAdapterConfiguration` |
 | **File** | File/directory existence, size, and optionally content (last 4,000 characters, files < 50 KB) | `C:\Windows\Panther\setuperr.log` with `readContent: true` |

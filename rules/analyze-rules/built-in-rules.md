@@ -6,7 +6,7 @@ description: >-
 
 # Built-in Rules Reference
 
-Autopilot Monitor ships with 30 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
+Autopilot Monitor ships with 32 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
 
 Built-in rules are updated with the product — fixes and improvements arrive automatically while your enable/disable choices are preserved. Rules that are retired are cleanly removed from all tenants.
 
@@ -50,6 +50,8 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-DEV-001** · Windows Hello Provisioning Timeout | warning | Windows Hello for Business provisioning didn't start within the expected time after ESP — policy, TPM prerequisite, or Key Registration Service connectivity. |
 | **ANALYZE-DEV-002** · Sustained High Memory Usage During Enrollment | warning | Memory stayed above 90 % across at least 3 performance snapshots — sustained pressure, not a transient spike. |
 | **ANALYZE-DEV-003** · Unsupported Windows Version | warning | The device enrolled with an OS build past end of support — Windows 11 22H2 or older, including every Windows 10 build (LTSC caveat documented in the rule). |
+| **ANALYZE-DEV-004** · Windows Update Failed During Enrollment | high | A Windows quality/cumulative update **failed** to install during OOBE/ESP (WindowsUpdateClient EventID 20) — a known enrollment-breaker that the Intune console doesn't surface. Decodes the HRESULT and the update title; confidence rises when the enrollment also failed or a reboot is pending. |
+| **ANALYZE-DEV-005** · Windows Update Installed During Enrollment | info | Informational: a Windows quality/cumulative update **installed** mid-enrollment (WindowsUpdateClient EventID 19). Useful context when correlating enrollment duration, an extra reboot, or later device behavior with a specific KB. |
 
 ## Identity and Security
 

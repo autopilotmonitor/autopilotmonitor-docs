@@ -109,7 +109,7 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 | Setting | Default | Description |
 | --- | --- | --- |
 | Data Retention Period | 90 days (7–180) | Sessions and events are deleted automatically after this period. |
-| Session Timeout | 5 hours (1–12) | *In Progress* sessions beyond this threshold are marked **Failed – Timed Out**. Set it to match or slightly exceed your ESP timeout. |
+| Session Timeout | 5 hours (1–12) | *In Progress* sessions inactive past this threshold are reclassified from the evidence rather than blanket-failed: if Device Setup already finished they become **Awaiting User**, otherwise they eventually settle as **Incomplete** (a non-completion, **not** counted as a failure), and a session that later completes is reconciled to **Succeeded**. See [Sessions & Statuses](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions). Set it to match or slightly exceed your ESP timeout. |
 
 ### Danger Zone
 

@@ -10,6 +10,12 @@ description: >-
 
 User-facing changes to the Autopilot Monitor agent, newest first. Only includes changes that affect agent behavior on the device.
 
+## July 2026
+
+* Windows Update-during-OOBE detection — the agent watches the Windows Update client log during enrollment and reports when a quality/cumulative update **starts**, **succeeds**, or **fails** (with the update title and a decoded HRESULT). A startup backfill catches updates that ran on the "Getting updates" screen before the agent even started, and a pending-reboot registry check corroborates an update that needs a restart. Surfaces a real enrollment-breaker that no other tool shows well; graded by the new ANALYZE-DEV-004 / ANALYZE-DEV-005 rules
+* Best-effort emergency-break report — when the agent hits its 48-hour absolute self-destruct it now sends a final "agent is gone" signal (best effort — may be lost if the device is fully offline) so the backend can settle the session's outcome immediately instead of waiting out the grace window
+* Registry gather collector reads the 64-bit view by default (bitness-independent) and supports `emitOnlyIfExists`, so a rule can emit only when the target key is actually present instead of asserting absence
+
 ## June 2026
 
 * Optional keep-awake during the User-ESP (Account Setup) phase — when enabled per tenant (off by default), the agent keeps the device awake so it can't drop into standby and stall app installs or account setup; the hold is released automatically once the phase completes, and device reboots are unaffected

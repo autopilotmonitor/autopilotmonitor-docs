@@ -10,6 +10,16 @@ This changelog tracks significant platform changes during Private Preview — ar
 
 Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
+## 2026-07-08 — Honest enrollment outcomes (timeout ≠ failure) and Windows Update-during-OOBE detection
+
+_Platform Update — 12:00 CET_
+
+* **Timeout is no longer a failure — two new session states** — The 5-hour maintenance sweep used to mark *every* silent session **Failed**, conflating "the agent stopped sending telemetry" with "the enrollment broke" and badly inflating failure rates. The backend now classifies a silent session from the evidence it already holds: a device that finished Device Setup and went quiet waiting on the user becomes **Awaiting User** (non-terminal), and a session that expires with neither a completion nor an explicit failure signal settles as **Incomplete** (terminal, but **not** a failure). Only real, explicit failures stay **Failed**. Both new states appear as status pills on the Dashboard and session detail. See [Sessions & Statuses](../concepts/sessions-and-statuses.md).
+* **Late completions are reconciled to Succeeded** — A user often finishes the account phase hours (or a day) after the sweep already ran. When a genuine completion signal later arrives, the session is upgraded to **Succeeded** — even from Failed, Incomplete, or Awaiting User. The backend waits out the agent's 48-hour absolute cap plus a small buffer (~51 h) before settling *Awaiting User* → *Incomplete*, so legitimately late completions still land. This is pure backend bookkeeping — no agent heartbeat, no extra device load.
+* **Honest Fleet Health** — The **Success Rate** denominator is now terminal-only (Succeeded + Failed); Incomplete sessions are counted on a dedicated **Incomplete** stat card and excluded from the failure rate. A fleet of laptops closed mid-ESP no longer reads as a fleet of broken enrollments.
+* **Windows Update during OOBE is now visible** — A cumulative/quality update installing during the "Getting updates" screen or the ESP *Install Windows quality updates during OOBE* option can silently break or stall an enrollment — a blind spot the Intune console doesn't surface. The agent now watches the Windows Update client log during enrollment (with startup backfill for updates that ran before it started) and emits update started / succeeded / failed events with decoded HRESULTs. Two new analyze rules grade them: **ANALYZE-DEV-004** (a WU **failed** mid-enrollment, high) and **ANALYZE-DEV-005** (a WU **installed** mid-enrollment, info), corroborated by a pending-reboot registry snapshot. See [Built-in Rules](../rules/analyze-rules/built-in-rules.md#device).
+* **Self-maintaining rule lifecycle** — Gather rules now get the same automatic sunset/cleanup that analyze rules already had (a rule removed from the product is cleanly retired from all tenants), and rule provenance now distinguishes product-shipped rules from GitHub-contributed rules so a community rule that's ahead of the deployed build is never mistaken for "removed" and hidden.
+
 ## 2026-06-16 — Software hub with self-service vulnerability exposure, faster Fleet Health, and expanded MCP tools
 
 _Platform Update — 12:00 CET_

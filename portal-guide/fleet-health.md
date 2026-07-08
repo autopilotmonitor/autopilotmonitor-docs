@@ -10,7 +10,7 @@ Fleet Health zooms out from individual sessions to the whole fleet: is enrollmen
 
 ## What you see
 
-* **Headline stats** — **Success Rate** (color-coded: green ≥ 95 %, yellow ≥ 80 %, red below), **Avg. Enrollment Time**, **Failed**, and **Active Now**.
+* **Headline stats** — **Success Rate** (color-coded: green ≥ 95 %, yellow ≥ 80 %, red below), **Avg. Enrollment Time**, **Failed**, **Incomplete**, and **Active Now**. The **Success Rate is honest**: its denominator is only sessions that reached a real verdict (Succeeded + Failed). **Incomplete** sessions — silent enrollments that never produced a completion or an explicit failure signal — are counted separately and **excluded from the failure rate**, so a fleet of laptops closed mid-ESP no longer looks like a fleet of broken enrollments. See [Sessions & Statuses](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions) for how a timeout is classified.
 * **Enrollments Timeline** — a stacked bar chart per day (successes over failures) for spotting trends and bad days at a glance.
 * **Ranked problem lists**:
   * **Top Failure Reasons** — what actually kills your enrollments, with proportional bars.
