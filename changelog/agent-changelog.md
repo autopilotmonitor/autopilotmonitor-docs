@@ -12,91 +12,97 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## July 2026
 
-* Windows Update-during-OOBE detection — the agent watches the Windows Update client log during enrollment and reports when a quality/cumulative update **starts**, **succeeds**, or **fails** (with the update title and a decoded HRESULT). A startup backfill catches updates that ran on the "Getting updates" screen before the agent even started, and a pending-reboot registry check corroborates an update that needs a restart. Surfaces a real enrollment-breaker that no other tool shows well; graded by the new ANALYZE-DEV-004 / ANALYZE-DEV-005 rules
-* Best-effort emergency-break report — when the agent hits its 48-hour absolute self-destruct it now sends a final "agent is gone" signal (best effort — may be lost if the device is fully offline) so the backend can settle the session's outcome immediately instead of waiting out the grace window
-* Registry gather collector reads the 64-bit view by default (bitness-independent) and supports `emitOnlyIfExists`, so a rule can emit only when the target key is actually present instead of asserting absence
+* Fixed false enrollment failures during Account Setup on sessions that were still installing apps
+* Passive internet-bandwidth estimate during app installs, with a LAN/WAN split — survives reboots
+* MSIX/Store app install failures during ESP now identify the specific failing package
+* Fewer false ESP failures when Windows retracts a failure after a retry; a real failure now names the app still holding up Account Setup
+* More accurate script run-time shown for Remediation and Platform Scripts
+* Fixed a rare crash-loop that could follow a self-update restart
+* Windows Update-during-OOBE detection — reports quality/cumulative updates that start, succeed, or fail during enrollment
+* Best-effort emergency-break report when the agent hits its 48-hour absolute self-destruct
+* Registry gather collector reads the 64-bit view by default and supports emitting only when the key exists
 
 ## June 2026
 
-* Optional keep-awake during the User-ESP (Account Setup) phase — when enabled per tenant (off by default), the agent keeps the device awake so it can't drop into standby and stall app installs or account setup; the hold is released automatically once the phase completes, and device reboots are unaffected
-* Fewer stuck enrollments — Classic sessions where a skipped user-ESP app or an advisory "continue anyway" ESP failure left completion waiting now resolve through a short completion deadline instead of running into the 6-hour timeout
-* Desktop-arrival detection no longer stalls on devices where the owner lookup failed — the agent resolves the signed-in user via a Windows session (WTS) query, with the previous method as fallback
-* When an app still installing blocks enrollment completion, the agent now names the specific app holding up the AccountSetup gate instead of just reporting a stall
-* Office (M365 Apps) install tracking is more accurate — pre-installed OEM / consumer Office no longer triggers a false "install failed", and Office install progress now survives agent restarts and reboots
-* Low-disk-space warning — agent emits a one-shot warning when free space drops below 2 GB during enrollment (re-arms once space recovers above 3 GB)
-* Repetitive ModernDeployment event bursts are rolled up into a single entry and excluded from the idle timer — less timeline noise, and they no longer keep the collector awake
-* Hello for Business policy is no longer reported as `not_configured` when it simply couldn't be detected, avoiding misleading Hello status
-* New liveness signals show what enrollment completion is waiting on, and flag a session that is parked without a deadline — making stuck sessions easier to spot
-* Startup events (e.g. timezone, NTP, geo-location) are de-duplicated across agent restarts, so a reboot mid-enrollment no longer repeats them in the timeline
-* RealmJoin client detection is now an opt-in per-tenant setting (off by default) and additionally reports the RealmJoin release channel alongside its version
-* Agent records the device's outbound (egress) IP for network correlation during enrollment
-* Each agent request now carries a correlation ID for end-to-end tracing across agent and backend, making request-level troubleshooting easier
-* Microsoft 365 Apps (Office) install tracking — agent surfaces the real Office Click-to-Run install that the Intune "integrated" app hides (IME reports done within a minute or two while Office keeps streaming in the background); shown as its own install row with live Delivery Optimization download progress
-* Provisioning-package detection — agent scans for Windows provisioning packages (`.ppkg`) applied to the device and reports them in a single scan event; security rules flag packages outside a built-in allow-list of Windows-inbox packages
-* AutoLogon detection — agent reports the device's automatic sign-in (AutoLogon) configuration; security rules now flag it only when a plaintext password is actually stored, so normal Autopilot enrollments no longer produce false positives
-* ESP sub-category state changes are now surfaced even when they aren't failures (e.g. retry or recovery transitions) for clearer visibility into ESP progress
-* Stall-probe file and registry scans now enforce a hard timeout so a slow or locked source can no longer hang the probe
+* Optional keep-awake during Account Setup (off by default) prevents standby from stalling app installs
+* Fewer stuck enrollments — skipped ESP apps and advisory "continue anyway" failures now resolve quickly instead of hitting the 6-hour timeout
+* Desktop-arrival detection no longer stalls when the device-owner lookup fails
+* Agent now names the specific app holding up Account Setup completion instead of just reporting a stall
+* More accurate Office (M365 Apps) install tracking — no false failures for pre-installed Office, progress survives reboots
+* Low-disk-space warning when free space drops below 2 GB during enrollment
+* Repetitive ModernDeployment event bursts are rolled up into a single entry — less timeline noise
+* Hello for Business policy is no longer reported as "not configured" when it simply couldn't be detected
+* New liveness signals show what enrollment completion is waiting on — stuck sessions easier to spot
+* Startup events are de-duplicated across agent restarts, so a mid-enrollment reboot no longer repeats them
+* RealmJoin client detection is now opt-in per-tenant (off by default) and reports its release channel
+* Agent records the device's outbound IP for network correlation
+* Each agent request now carries a correlation ID for easier troubleshooting
+* Microsoft 365 Apps (Office) install tracking surfaces the real Click-to-Run install progress that Intune hides
+* Provisioning-package (`.ppkg`) detection, with security rules flagging packages outside a built-in allow-list
+* AutoLogon detection — flags only when a plaintext password is actually stored, avoiding false positives
+* ESP sub-category state changes are now surfaced even when they aren't failures
+* Stall-probe file and registry scans now enforce a hard timeout
 
 ## May 2026
 
-* RealmJoin client detection — agent detects the RealmJoin client, reports its version, tracks deployment-phase changes, and surfaces per-package install progress
+* RealmJoin client detection — version, deployment-phase changes, and per-package install progress
 * Device hardware now reports CPU architecture (`x86` / `x64` / `ARM` / `ARM64`)
-* Startup power-state check — agent warns when the device is running on battery below 80%, a frequent driver behind power-management enrollment stalls (enrollments are more reliable on AC power)
-* ESP app-install failures are now classified by their HRESULT, surface all failure types (failed / not-installed / error), and a 30-second settle window catches results that arrive late
-* Crash mini-dumps are captured for deeper post-mortem analysis when a previous-run crash is detected
-* More accurate Health Script results — compliant detections are no longer mislabeled as failed, and detection failures now produce an actionable message for admins
-* Fewer false enrollment failures — ESP "continue anyway" with AccountSetup, and self-deploying scenarios, now get a settle window before a failure is finalized
+* Startup power-state check warns when the device is running on battery below 80%
+* ESP app-install failures are now classified by HRESULT, with a 30-second settle window for late results
+* Crash mini-dumps are captured for deeper post-mortem analysis
+* More accurate Health Script results — no more false "failed" labels, and failures show an actionable message
+* Fewer false failures — ESP "continue anyway" and self-deploying scenarios now get a settle window before failing
 * Shutdown, diagnostics, and summary events are no longer dropped after a terminal enrollment decision
-* Bootstrap reports its version so the bootstrap script version is visible in the session
-* Agent retries the remote-config fetch with wire-visible fallback when the first attempt fails
-* Security hardening for agent self-update, diagnostics URL handling, and PowerShell argument escaping
-* **Agent V2 is now the primary production line** — V2 replaces V1 as the default install. Existing V1 devices keep working; new installs ship the V2 build (bootstrap script and binary renamed from `.V2` to standard)
-* Health Scripts lifecycle monitoring — detection, remediation, and post-remediation phases are each captured as separate timeline events with a live "script running" indicator before the result lands
-* Apps still installing when ESP-Apps times out are flagged as "likely stuck" instead of disappearing from the timeline — admins now see the app name and a hedged outcome
-* ASR / EDR-blocked install handoff no longer strands devices — runtime spawn fails soft and the BootTrigger task picks the agent back up on next reboot
-* Hello-disabled enrollments now complete reliably — the Classic v1 path no longer deadlocks waiting for a Hello signal that will never arrive (previously ran into the 6h max-lifetime timer)
-* AccountSetup must truly succeed before Hello can trigger completion — prevents premature `enrollment_complete` when AccountSetup actually failed
-* Hybrid User-Driven (HAADJ) enrollment-completion gaps closed — more completion paths recognized, fewer sessions stuck in the timeout fallback
-* TPM PSS unsupported is reported as a distinct distress reason — older devices (e.g. Surface Book 1 with 2015-era Infineon TPM firmware) that can't do RSA-PSS now get a clear failure category instead of a generic Schannel error
-* Intune dual-stack certificate selection fix — on devices with both MDM and MMP-C client certs, the agent now picks the correct _Microsoft Intune MDM Device CA_ cert and avoids backend chain-validation rejection
-* Client certificate rejections surface with structured backend warnings and V2 distress cert-context (thumbprint, subject, issuer, validity) — easier to diagnose mTLS auth failures
-* Tenant ID resolution falls back to the CloudDomainJoin registry (`TenantInfo` + `JoinInfo`) when the Enrollments key is empty — covers pre-Type-6 enrollments and MS-Organization-Access cert paths
-* Event-driven Tenant ID wait via RegistryWatcher — agent reacts to registry changes during pre-enrollment instead of polling
-* Desktop Arrival Detector liveness signals (started / first-poll / no-candidate) help distinguish "agent dead post-reboot" from "user never logged in" in sessions that time out without a desktop_arrived
-* Detailed shutdown reasons — when the agent exits unexpectedly (Ctrl+C, process exit, unhandled exception, runtime host exit) the cause is recorded in the timeline
-* Prior-run crash is surfaced in the next session via a "death rattle" event, so a mid-enrollment agent crash is visible instead of silently lost
-* V2 diagnostics ZIP is size- and count-capped with streaming output — no more multi-gigabyte uploads on long or noisy sessions
-* Diagnostics ZIP now includes the `State` and `Spool` folders for richer post-mortem analysis
+* Bootstrap reports its version so it's visible in the session
+* Agent retries the remote-config fetch with a fallback when the first attempt fails
+* Security hardening for agent self-update, diagnostics URLs, and PowerShell argument handling
+* Agent V2 is now the primary production line — new installs ship V2 by default, existing V1 devices keep working
+* Health Scripts lifecycle monitoring — detection, remediation, and post-remediation shown as separate timeline events
+* Apps still installing when ESP-Apps times out are flagged "likely stuck" instead of disappearing
+* ASR / EDR-blocked install handoff no longer strands devices — agent resumes on next reboot
+* Hello-disabled enrollments now complete reliably instead of running into the 6-hour timeout
+* Fixed premature completion signals when AccountSetup actually failed
+* Hybrid User-Driven (HAADJ) enrollment-completion gaps closed — fewer sessions stuck in the timeout fallback
+* TPM PSS-unsupported devices now get a clear failure category instead of a generic Schannel error
+* Fixed certificate selection on devices with both MDM and MMP-C client certs
+* Client certificate rejections now show detailed context — easier to diagnose mTLS auth failures
+* Tenant ID resolution now falls back to the CloudDomainJoin registry when the primary key is empty
+* Event-driven Tenant ID wait — agent reacts to registry changes during pre-enrollment instead of polling
+* New liveness signals help distinguish a dead agent from a user who never logged in
+* Detailed shutdown reasons recorded when the agent exits unexpectedly
+* A prior-run crash is now surfaced in the next session instead of silently lost
+* V2 diagnostics ZIP is size- and count-capped — no more multi-gigabyte uploads on long sessions
+* Diagnostics ZIP now includes the State and Spool folders for richer post-mortem analysis
 * Agent log files rotate at a size cap — no unbounded growth on long-running devices
-* New "Submit Logs" page — admins can upload diagnostics files for analysis even when no active session exists on the device
-* Delivery Optimization breakdown adds MCC (Microsoft Connected Cache) and LinkLocal sources across `download_progress` and `do_telemetry` events
-* Software inventory now correctly enumerates Azure AD and personal MSA user profiles (these SIDs were previously skipped)
-* Hardware spec event reports VM detection — security analyze rules skip VMs to avoid false-positive vulnerability reports
-* Bootstrap `--install` mode preserves an existing `bootstrap-config.json` instead of clobbering customer settings on re-install
-* Optional "enrollment started" webhook fires at session registration — opt-in notification at the very start of an enrollment
+* New "Submit Logs" page — admins can upload diagnostics even without an active session
+* Delivery Optimization breakdown adds MCC and LinkLocal sources
+* Software inventory now correctly enumerates Azure AD and personal MSA user profiles
+* Hardware spec event reports VM detection — security rules skip VMs to avoid false positives
+* Bootstrap `--install` mode preserves existing settings instead of clobbering them on re-install
+* Optional "enrollment started" webhook fires at session registration
 
 ## April 2026
 
-* Delivery Optimization monitoring — agent tracks Windows DO download activity (OS level) during app installs and reports download performance metrics per application
-* ConfigMgr co-management detection — agent detects Configuration Manager client presence and reports co-management status with confidence scoring
-* Non-whitelisted hardware detection with optional admin alerts when devices with unapproved hardware models enroll
-* IME version change tracking — Intune Management Extension version updates are recorded
-* Hello for Business skip detection — agent now distinguishes between Hello setup being completed, timed out, or explicitly skipped
-* User-profile-aware diagnostics — gather rules and diagnostics log paths can reference the logged-on user profile directory
-* Improved vulnerability matching accuracy using fuzzy Jaro-Winkler scoring
-* Faster agent startup through optimized initialization flow
-* ESP provisioning status verification before enrollment completion — agent checks category outcomes and waits up to 30s for pending results to settle
-* Structured error codes (exit codes, HRESULT) extracted from IME log patterns and included in timeline events
-* Dual-hash integrity verification — ZIP package hash checked at download, separate EXE hash verified at runtime against backend to detect post-installation tampering
-* Vulnerability matching improvements — confidence levels, platform-aware filtering, and exclude patterns for more accurate reports
+* Delivery Optimization monitoring — download performance metrics per app during install
+* ConfigMgr co-management detection with confidence scoring
+* Non-whitelisted hardware detection with optional admin alerts
+* IME version change tracking
+* Hello for Business skip detection — distinguishes completed, timed out, or explicitly skipped
+* User-profile-aware diagnostics — gather rules can reference the logged-on user's profile directory
+* Improved vulnerability matching accuracy
+* Faster agent startup
+* ESP provisioning status verification before completion, with a 30s settle window for pending results
+* Structured error codes (exit codes, HRESULT) extracted from IME logs and included in timeline events
+* Dual-hash integrity verification detects tampering between download and install
+* Vulnerability matching improvements — confidence levels, platform-aware filtering, exclude patterns
 * Vulnerability reports now available during pre-provisioning (White Glove) sessions
-* More reliable enrollment summary dialog launch with desktop fallback strategy
-* PowerShell script output is now fully captured in the timeline (multi-line output was previously truncated)
-* More reliable bootstrap and download handling with improved timeout and rate-limit behavior
+* More reliable enrollment summary dialog launch
+* PowerShell script output is now fully captured in the timeline
+* More reliable bootstrap and download handling
 * Agent reports self-update events so updates are visible in the session timeline
 * Emergency channel — agent can send distress signals when it detects critical failures
-* ESP "resumed" event is now only emitted for Hybrid Join scenarios (avoids noise on other paths)
-* Improved crash recovery — completion state is persisted so the agent can resume correctly after an unexpected restart
+* ESP "resumed" event is now only emitted for Hybrid Join scenarios
+* Improved crash recovery — completion state is persisted so the agent can resume after an unexpected restart
 
 ## Late March 2026
 
