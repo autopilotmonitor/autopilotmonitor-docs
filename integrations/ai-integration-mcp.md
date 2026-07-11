@@ -49,33 +49,12 @@ https://mcp.autopilotmonitor.com/mcp
 
 Connecting the MCP server involves **two sign-ins**, and they are often two *different* accounts: the account of your AI subscription (e.g. your personal Claude account) and the work account you use for Autopilot Monitor (often a separate admin account). This is the most common source of confusion during setup.
 
-```
-  You click "Connect" on the Autopilot Monitor MCP in your AI client
-                          │
-                          ▼
-        ┌─────────────────────────────────────┐
-        │  1. Your browser opens and shows    │
-        │     the Microsoft sign-in           │
-        │                                     │
-        │     ➜ Sign in with the account you  │
-        │       use for Autopilot Monitor     │
-        │       (e.g. adm.luke@contoso.com)   │
-        └─────────────────────────────────────┘
-                          │
-                          ▼
-        ┌─────────────────────────────────────┐
-        │  2. The browser returns to your AI  │
-        │     vendor's site (e.g. claude.ai)  │
-        │                                     │
-        │     ➜ The browser must already be   │
-        │       signed in there with your AI  │
-        │       account — the same one as in  │
-        │       the app (e.g. luke@…)         │
-        └─────────────────────────────────────┘
-                          │
-                          ▼
-        ✅ Done — from now on the assistant queries
-           Autopilot Monitor with your work identity
+```mermaid
+flowchart TD
+    A(["You click <b>Connect</b> on the Autopilot Monitor MCP in your AI client"])
+    A --> B["<b>Step 1 — Microsoft sign-in</b> opens in your browser<br/><br/>Sign in with your <b>Autopilot Monitor account</b><br/>e.g. adm.luke@contoso.com"]
+    B --> C["<b>Step 2 — Browser returns to your AI vendor's site</b><br/>e.g. claude.ai<br/><br/>The browser must already be signed in there with your<br/><b>AI account</b> — the same one as in the app, e.g. luke@contoso.com"]
+    C --> D(["✅ Done — the assistant now queries Autopilot Monitor<br/>with your work identity"])
 ```
 
 {% hint style="info" %}
