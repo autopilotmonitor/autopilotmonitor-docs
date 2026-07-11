@@ -45,6 +45,45 @@ https://mcp.autopilotmonitor.com/mcp
 
 **Verify:** ask your assistant *"List all available tools from Autopilot Monitor"* — you should see 20+ tools. If authentication fails, your MCP access probably isn't enabled yet.
 
+## Signing in — which account goes where
+
+Connecting the MCP server involves **two sign-ins**, and they are often two *different* accounts: the account of your AI subscription (e.g. your personal Claude account) and the work account you use for Autopilot Monitor (often a separate admin account). This is the most common source of confusion during setup.
+
+```
+  You click "Connect" on the Autopilot Monitor MCP in your AI client
+                          │
+                          ▼
+        ┌─────────────────────────────────────┐
+        │  1. Your browser opens and shows    │
+        │     the Microsoft sign-in           │
+        │                                     │
+        │     ➜ Sign in with the account you  │
+        │       use for Autopilot Monitor     │
+        │       (e.g. adm.luke@contoso.com)   │
+        └─────────────────────────────────────┘
+                          │
+                          ▼
+        ┌─────────────────────────────────────┐
+        │  2. The browser returns to your AI  │
+        │     vendor's site (e.g. claude.ai)  │
+        │                                     │
+        │     ➜ The browser must already be   │
+        │       signed in there with your AI  │
+        │       account — the same one as in  │
+        │       the app (e.g. luke@…)         │
+        └─────────────────────────────────────┘
+                          │
+                          ▼
+        ✅ Done — from now on the assistant queries
+           Autopilot Monitor with your work identity
+```
+
+{% hint style="info" %}
+**The one rule to remember:** your **default browser** needs **two sign-ins** — at your AI vendor (e.g. claude.ai) with your **AI account** (the same one used in the app), and at the Microsoft sign-in with your **Autopilot Monitor account**. This only matters when those are two different accounts — if you use one and the same account for both, you won't notice any of this.
+{% endhint %}
+
+If the connect hangs or fails after the Microsoft sign-in succeeded, it is almost always the first half that's missing: the browser is not (or with the wrong account) signed in at your AI vendor's site. Typical causes are multiple browser profiles, or being signed in to the desktop app only but not in the browser. Sign in to the vendor site in your default browser first, then retry the connect.
+
 ## Available tools
 
 | Category | Tools |
