@@ -1,4 +1,6 @@
 ---
+type: How-to Guide
+tags: [enrollment, autopilot, walkthrough]
 description: >-
   A guided walkthrough — enroll a test device and watch Autopilot Monitor at
   work, from the first dashboard entry to the finished session.

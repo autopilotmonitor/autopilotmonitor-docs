@@ -1,4 +1,6 @@
 ---
+type: Reference
+tags: [bootstrap, tokens, deployment]
 description: >-
   How the bootstrap script decides to install, and how Bootstrap Tokens enable
   pre-MDM scenarios.

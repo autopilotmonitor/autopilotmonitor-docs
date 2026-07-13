@@ -1,4 +1,6 @@
 ---
+type: Integration Guide
+tags: [mcp, ai, integration]
 description: >-
   Query your enrollment data in natural language — connect Claude or any MCP
   client to the Autopilot Monitor MCP server.

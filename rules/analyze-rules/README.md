@@ -1,4 +1,6 @@
 ---
+type: Overview
+tags: [rules, analyze]
 description: >-
   Automated analysis of every enrollment session — findings with severity,
   confidence, explanation, and remediation, produced by rules you can extend.

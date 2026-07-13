@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, fleet-health, metrics]
 description: >-
   The fleet-wide health overview — success rates, failure patterns, and the
   slowest models and apps across all your enrollments.

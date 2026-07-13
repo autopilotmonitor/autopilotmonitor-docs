@@ -1,4 +1,6 @@
 ---
+type: Troubleshooting
+tags: [diagnostics, logs, collection]
 description: >-
   Collecting evidence when something goes wrong — the diagnostics package,
   additional log paths, session reports, and the agent's own logs.

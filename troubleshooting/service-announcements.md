@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [announcements, service-health]
 description: >-
   Dated announcements — breaking changes caused by external updates, incidents,
   and their resolutions.

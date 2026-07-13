@@ -1,4 +1,6 @@
 ---
+type: Reference
+tags: [agent, command-line, parameters]
 description: >-
   The agent CLI reference for testing, debugging, and advanced scenarios —
   including replaying captured enrollments.

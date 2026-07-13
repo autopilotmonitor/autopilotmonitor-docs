@@ -1,4 +1,6 @@
 ---
+type: Troubleshooting
+tags: [troubleshooting, errors, enrollment]
 description: Known failure patterns and how to resolve them, from silent agents to proxy trouble.
 ---
 

@@ -1,4 +1,6 @@
 ---
+type: FAQ
+tags: [faq, troubleshooting]
 description: Frequently asked questions about setup, the agent, the portal, and data handling.
 ---
 

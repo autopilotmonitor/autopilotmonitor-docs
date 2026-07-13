@@ -1,4 +1,6 @@
 ---
+type: Concept
+tags: [roles, permissions, rbac]
 description: >-
   Who can see and do what: tenant roles, the Admin Mode safety toggle, and how
   MSP fleet access fits in.

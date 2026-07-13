@@ -1,4 +1,6 @@
 ---
+type: Concept
+tags: [rules, analyze, conditions]
 description: >-
   The anatomy of an analyze rule — conditions, sources, operators,
   preconditions, and the confidence model that decides whether a finding is

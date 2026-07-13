@@ -1,4 +1,6 @@
 ---
+type: Concept
+tags: [architecture, agent, telemetry]
 description: >-
   The architecture of Autopilot Monitor — four components, one enrollment
   session, and how telemetry flows from the device to your dashboard.

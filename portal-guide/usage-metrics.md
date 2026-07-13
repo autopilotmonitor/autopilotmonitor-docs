@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, usage, metrics]
 description: >-
   Tenant usage at a glance — session volumes, deployment types, performance
   percentiles, and hardware distribution.

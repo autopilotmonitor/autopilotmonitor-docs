@@ -1,4 +1,6 @@
 ---
+type: How-to Guide
+tags: [requirements, permissions, onboarding]
 description: What you need before you start, and how to get access during the Private Preview.
 ---
 

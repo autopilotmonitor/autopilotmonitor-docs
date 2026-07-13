@@ -1,4 +1,6 @@
 ---
+type: Reference
+tags: [rules, gather, diagnostics]
 description: >-
   Collect custom evidence during enrollment — registry, WMI, files, event logs,
   and allow-listed commands, with strict security guardrails.

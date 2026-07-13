@@ -1,4 +1,6 @@
 ---
+type: How-to Guide
+tags: [rules, analyze, cookbook, examples]
 description: >-
   Seven worked recipes for building your own analyze rules — from a five-minute
   template to a full custom detection pipeline with your own collected data.

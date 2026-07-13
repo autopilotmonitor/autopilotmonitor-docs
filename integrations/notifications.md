@@ -1,4 +1,6 @@
 ---
+type: Integration Guide
+tags: [notifications, channels, webhooks]
 description: >-
   Enrollment notifications for Teams, Slack, or any system via generic JSON
   webhook — setup per provider, triggers, and the payload reference.

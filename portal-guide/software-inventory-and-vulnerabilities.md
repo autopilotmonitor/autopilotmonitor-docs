@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, software-inventory, vulnerabilities, cve]
 description: >-
   App install health, the software inventory across enrolled devices, and
   CVE/KEV vulnerability correlation.

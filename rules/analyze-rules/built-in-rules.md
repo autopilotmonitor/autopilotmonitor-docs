@@ -1,4 +1,6 @@
 ---
+type: Reference
+tags: [rules, analyze, built-in]
 description: >-
   The complete catalog of built-in analyze rules — what each one detects and
   when it fires.

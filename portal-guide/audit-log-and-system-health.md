@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, audit-log, system-health]
 description: >-
   The audit trail of configuration and data changes, and the live platform
   health status page.

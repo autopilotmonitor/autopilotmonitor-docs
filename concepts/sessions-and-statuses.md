@@ -1,4 +1,6 @@
 ---
+type: Concept
+tags: [sessions, statuses, completion]
 description: >-
   What an enrollment session is, the statuses it can have, and how Autopilot
   Monitor decides that an enrollment is complete.

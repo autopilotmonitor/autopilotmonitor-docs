@@ -1,4 +1,6 @@
 ---
+type: Changelog
+tags: [platform, changelog]
 description: >-
   Significant platform changes — portal, backend, and data-flow updates,
   newest first.

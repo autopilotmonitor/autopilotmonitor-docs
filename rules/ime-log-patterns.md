@@ -1,4 +1,6 @@
 ---
+type: Reference
+tags: [rules, ime, log-patterns]
 description: >-
   How regex patterns turn Intune Management Extension log lines into structured
   timeline events — and how to help maintain them.

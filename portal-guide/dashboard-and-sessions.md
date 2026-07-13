@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, dashboard, sessions]
 description: >-
   The session browser — live stats, powerful filtering and search, and the
   admin actions on sessions.

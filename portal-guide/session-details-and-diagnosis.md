@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, sessions, diagnosis, timeline]
 description: >-
   Deep-diving one enrollment — device details, live timeline, automated
   analysis, and the guided diagnosis view for failures.

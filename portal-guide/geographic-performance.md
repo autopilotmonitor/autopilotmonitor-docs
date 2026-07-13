@@ -1,4 +1,6 @@
 ---
+type: Feature Guide
+tags: [portal, geographic, performance]
 description: >-
   Enrollment performance by location — find the slow sites, understand why, and
   see how well Delivery Optimization peer caching works per location.

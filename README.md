@@ -1,4 +1,6 @@
 ---
+type: Overview
+tags: [autopilot-monitor, introduction]
 description: >-
   Real-time monitoring, diagnostics, and automated analysis for Windows
   Autopilot enrollments.

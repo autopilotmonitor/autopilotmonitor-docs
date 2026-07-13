@@ -1,4 +1,6 @@
 ---
+type: Reference
+tags: [plans, licensing, features]
 description: >-
   The available plans of Autopilot Monitor — the Community plan (Private
   Preview) today, the Enterprise plan coming soon.
