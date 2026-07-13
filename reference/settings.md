@@ -55,6 +55,10 @@ Setup walkthroughs per provider: [Notifications](../integrations/notifications.m
 
 Define your enrollment SLA thresholds (e.g. target duration and success rate); the [SLA Compliance](../portal-guide/sla-compliance.md) view reports against them.
 
+### Optional Graph capabilities
+
+Opt-in, per-tenant Microsoft Graph permission grants that unlock optional features (e.g. resolving Intune Platform Script + Remediation display names in timelines) without changing the published app manifest. Copy the ready-made grant command, run it as a tenant admin, and refresh the status here. Full walkthrough: [Optional Graph Permissions](optional-graph-permissions.md).
+
 ### Bootstrap Sessions *(optional feature — on request)*
 
 | Setting | Description |

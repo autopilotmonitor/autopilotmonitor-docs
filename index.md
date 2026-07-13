@@ -47,6 +47,7 @@ Contributor-facing technical documentation lives in the main product repository 
 # Reference
 
 * [Settings Reference](reference/settings.md) - Every tenant/portal setting explained.
+* [Optional Graph Permissions](reference/optional-graph-permissions.md) - Opt-in tenant-side Graph permission grants for optional features via appRoleAssignment, without changing the published app manifest.
 * [Agent Command-Line Parameters](reference/agent-command-line.md) - Agent CLI switches.
 * [Bootstrap Script & Tokens](reference/bootstrap-script-and-tokens.md) - Bootstrap deployment script and enrollment tokens.
 
