@@ -10,6 +10,12 @@ description: >-
 
 Documented issues caused by external changes (e.g. Microsoft updates) and platform incidents — each entry describes the impact, what still works, and whether action is needed. Newest first.
 
+## 2026-07-14 — **Scheduled:** Infrastructure Maintenance — Platform Unavailable This Weekend
+
+Autopilot Monitor undergoes planned infrastructure maintenance over the coming weekend, from **Sat 18 Jul, 00:00** until **Mon 20 Jul, 00:00 CEST (UTC+2)** (expected). During this window the platform is **not available**: the portal cannot be reached and the ingestion API is offline, so agents cannot send data.
+
+There is nothing to do on your side. Agents continue collecting locally during the maintenance and re-sync automatically once the platform is back online — no enrollment data is lost. If the work finishes ahead of schedule, the platform will come back sooner; the completion will be announced here and in the portal.
+
 ## 2026-05-19 — **Resolved:** Safe Deletion in Place — Cleanup Incident Follow-up
 
 Following the cleanup incident from 2026-04-16, the announced safeguards are now in place. Both deletion paths — admin-UI session deletion and behind-the-scenes maintenance cleanup — now always create a backup first and offer a way back:
