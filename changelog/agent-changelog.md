@@ -14,6 +14,17 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## July 2026
 
+* Devices without an assigned Autopilot profile are now flagged with a warning, backed by on-device diagnostic evidence
+* Autopilot event-log errors from before the agent started are now included in the session timeline
+* Enrollment no longer completes while the user is still in the Windows Hello setup wizard
+* Fixed premature completion during the user phase of pre-provisioned (White Glove) enrollments
+* Account Setup completion now waits until all required apps have finished installing
+* Faster completion detection once the user reaches the desktop after Account Setup
+* Fixed false failures on finished enrollments where the Hello policy state could never be read
+* Device details no longer show "Unknown" manufacturer/model/serial when hardware info is read early during OOBE
+* Session now lists which apps ESP is tracking in each setup phase
+* Fewer false "app stuck" warnings for apps that were never marked for install
+* OS build changes during enrollment are detected even when Windows Update doesn't log them
 * Fixed false enrollment failures during Account Setup on sessions that were still installing apps
 * Passive internet-bandwidth estimate during app installs, with a LAN/WAN split — survives reboots
 * MSIX/Store app install failures during ESP now identify the specific failing package
