@@ -14,6 +14,11 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## July 2026
 
+* **Missing Autopilot profile is now flagged** — Devices that go through OOBE without receiving their Autopilot deployment profile (typically the profile wasn't assigned, or the assignment hadn't propagated when the user was faster) are now highlighted with a warning in the session timeline and detail page. Our platform data shows this is a common pattern across many tenants — and these enrollments fail far more often than normal ones.
+* **Evidence for why the profile was missing** — The agent now records Windows' own deployment-service verdict (no profile assigned, assignment not propagated, device not registered), the Autopilot diagnostic registry values, and a reachability check of the Autopilot deployment service.
+* **Device Validation shown on the session** — Session Info now shows which check admitted the device to the platform: Autopilot registration, Corporate Identifier, or Bootstrap token.
+* **Pre-install errors are backfilled** — Autopilot errors logged before the agent was installed (e.g. TPM attestation retries that later succeeded) now appear in the session timeline, marked as backfilled.
+* **New built-in rules for documented Autopilot known issues** — TPM attestation error codes, the hybrid-join 0x80004005 timeout (including which Windows update fixes it), and clock-skew warnings that are known to break attestation and ESP.
 * **Two new session states — timeout is no longer a failure** — A silent session is now classified as Awaiting User (still waiting on the account phase) or Incomplete (expired, but not a failure) instead of always being marked Failed. See [Sessions & Statuses](../concepts/sessions-and-statuses.md).
 * **Late completions now reconcile to Succeeded** — If a genuine completion signal arrives later, the session is upgraded to Succeeded even from Failed, Incomplete, or Awaiting User.
 * **Honest Fleet Health** — Success Rate now excludes Incomplete sessions instead of counting them as failures; Incomplete gets its own stat card.
