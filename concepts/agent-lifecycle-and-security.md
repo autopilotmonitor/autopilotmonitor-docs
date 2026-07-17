@@ -50,6 +50,22 @@ Agent binaries are protected by SHA-256 verification at multiple stages:
 3. **Backend cross-check** — the expected hash is *also* delivered through the authenticated configuration endpoint, an independent second trust channel. Tampering would require compromising the download server and the backend API simultaneously.
 4. **Runtime self-check** — the running agent hashes its own executable and compares it against the value from the backend; a mismatch raises an emergency alert.
 
+### Build provenance (Sigstore attestation)
+
+Hashes prove a download arrived **unmodified** — they cannot prove where a binary came from. That gap is closed by **build provenance**: agent release packages are built by a public GitHub Actions pipeline that signs a provenance statement at build time (a [GitHub Artifact Attestation](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations), based on Sigstore keyless signing). The statement binds the package's SHA-256 digest to the exact source repository, commit, and workflow run that produced it, and is recorded in a public transparency log. A valid attestation cannot be created outside the official pipeline — not even by the project maintainers on a local machine.
+
+You can verify any agent package yourself with the GitHub CLI:
+
+```bash
+gh attestation verify AutopilotMonitor-Agent.zip --repo okieselbach/AutopilotMonitor
+```
+
+Because the attestation is bound to the file digest, the same verification covers every distribution copy of the package — the GitHub Release download and the package the bootstrapper fetches from the download server are the identical, attested bytes.
+
+{% hint style="info" %}
+Attestations are available for agent releases built through the GitHub Actions release pipeline (agent versions published from July 2026 onwards). For earlier versions the SHA-256 chain above still applies in full.
+{% endhint %}
+
 ## What data is collected
 
 The agent collects **enrollment telemetry**, not user data:
