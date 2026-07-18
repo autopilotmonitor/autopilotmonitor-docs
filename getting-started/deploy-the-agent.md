@@ -27,7 +27,7 @@ Before installing anything, the bootstrapper runs a series of pre-requisite guar
 Want to verify which devices would receive the agent? Run this read-only check in PowerShell on any machine — it evaluates all guards and transparently reports the install decision without changing anything:
 
 ```powershell
-irm 'https://autopilotmonitor.blob.core.windows.net/agent/Test-ShouldBootstrapAgent.ps1' | iex
+irm 'https://download.autopilotmonitor.com/agent/Test-ShouldBootstrapAgent.ps1' | iex
 ```
 
 The script source is public: [Test-ShouldBootstrapAgent.ps1 on GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Test-ShouldBootstrapAgent.ps1).
@@ -36,9 +36,9 @@ The script source is public: [Test-ShouldBootstrapAgent.ps1 on GitHub](https://g
 
 ### 1. Download the bootstrapper script
 
-Get [Install-AutopilotMonitor.ps1 from GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1) ([raw file](https://raw.githubusercontent.com/okieselbach/Autopilot-Monitor/refs/heads/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1)) — current version: ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fautopilotmonitor.blob.core.windows.net%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb)
+Get [Install-AutopilotMonitor.ps1 from GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1) ([raw file](https://raw.githubusercontent.com/okieselbach/Autopilot-Monitor/refs/heads/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1)) — current version: ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb)
 
-The agent itself (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fautopilotmonitor.blob.core.windows.net%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified by the script; you never handle the agent binary yourself.
+The agent itself (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified by the script; you never handle the agent binary yourself.
 
 ### 2. Create a platform script in Intune
 
