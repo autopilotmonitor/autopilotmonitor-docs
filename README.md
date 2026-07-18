@@ -8,11 +8,6 @@ description: >-
 
 # Welcome
 
-<!-- Scheduled maintenance notice — TEMPORARY, remove after 2026-07-20 -->
-{% hint style="warning" %}
-**Scheduled infrastructure maintenance — platform not available this weekend.** From **Sat 18 Jul, 00:00** until **Mon 20 Jul, 00:00 CEST (UTC+2)** (expected) the portal cannot be reached and the ingestion API is offline. Agents keep collecting locally and re-sync afterwards — no enrollment data is lost. If the work finishes early, the platform will come back sooner. See [Service Announcements](troubleshooting/service-announcements.md) for details and the completion notice.
-{% endhint %}
-
 **Autopilot Monitor** gives IT admins and MSPs real-time visibility into Windows Autopilot enrollments — device provisioning sessions, the Enrollment Status Page (ESP), app and script installations, and completion, all streamed live to a central portal. Automated analyze rules flag problems as they happen and tell you how to fix them, before your users ever notice.
 
 {% hint style="info" %}
