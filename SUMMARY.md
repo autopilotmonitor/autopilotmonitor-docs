@@ -48,6 +48,7 @@
 ## Reference
 
 * [Settings Reference](reference/settings.md)
+* [Network Endpoints](reference/network-endpoints.md)
 * [Optional Graph Permissions](reference/optional-graph-permissions.md)
 * [Agent Command-Line Parameters](reference/agent-command-line.md)
 * [Bootstrap Script & Tokens](reference/bootstrap-script-and-tokens.md)

@@ -13,7 +13,7 @@ Autopilot Monitor plugs into an existing Windows Autopilot environment. You need
 * **Microsoft Intune** with **Windows Autopilot** configured — devices are registered as Autopilot devices and enroll via OOBE.
 * **Microsoft Entra ID accounts** for portal sign-in. The portal uses your existing Entra ID identity; there are no separate credentials.
 * **Windows 10 or Windows 11 (x64)** client devices enrolling through Autopilot. Both user-driven and pre-provisioning (White Glove) scenarios are supported.
-* **Outbound HTTPS (TLS 1.2+)** from enrolling devices to the Autopilot Monitor backend and the agent download endpoint. No inbound connectivity is required — the agent uses standard HTTPS on port 443.
+* **Outbound HTTPS (TLS 1.2+)** from enrolling devices to the Autopilot Monitor backend and the agent download endpoint. No inbound connectivity is required — the agent uses standard HTTPS on port 443. For the exact hosts to allow on a firewall, proxy, or gateway, see [Network Endpoints](../reference/network-endpoints.md).
 * Permission to create a **platform script** in the Microsoft Intune admin center (for agent deployment).
 
 {% hint style="info" %}
