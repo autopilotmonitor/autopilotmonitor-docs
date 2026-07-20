@@ -41,8 +41,43 @@ A set of maintained built-in and community gather rules ships with the product; 
 {% hint style="warning" %}
 **Mind the ingestion rate limit.** Event ingestion is rate-limited **per device at 100 requests per minute** — a budget shared by *everything* the agent sends: its built-in telemetry, IME-derived events, *and* your gather rules. Noisy gather rules — several **Interval** rules firing every 60 seconds, or one rule producing many events per run (log parsers, broad registry reads) — can exhaust that budget. Uploads beyond the limit are rejected until the window clears, so telemetry arrives delayed or gaps appear in the timeline.
 
-Rules of thumb: prefer **Startup**, **Phase Change**, or **On Event** triggers over intervals; when you do poll, use the widest interval that still answers your question (an enrollment rarely needs anything sampled more often than every few minutes); and cap what each run returns (`maxEntries`, `maxLines`, `maxResults`).
+Rules of thumb: prefer **Startup**, **Phase Change**, or **On Event** triggers over intervals; when you do poll, use the widest interval that still answers your question (an enrollment rarely needs anything sampled more often than every few minutes); and cap what each run returns (`maxEntries`, `maxLines`, `maxResults`). For interval rules, combine [phase scoping](#phase-scoping) and [emit mode](#emit-mode) below — together they eliminate most polling noise.
 {% endhint %}
+
+## Phase scoping
+
+By default a rule is active during the **entire** enrollment. **Active During** restricts that — useful when the data only exists (or only matters) from a certain point, e.g. a registry key that software writes during Account Setup:
+
+| Mode | Behavior |
+| --- | --- |
+| **All phases** (default) | The rule runs whenever its trigger fires — today's behavior. |
+| **Only during specific phases** | The rule runs only while enrollment is in one of the selected phases. Outside them, interval timers idle, and phase/event triggers are ignored. |
+| **From a phase onwards** | The rule activates when enrollment first reaches the selected phase and **stays active for the rest of the session** — even if a later failure occurs. |
+
+Details worth knowing:
+
+* Scoping applies to **all trigger types**. A scoped **Startup** rule doesn't run at agent start — it runs **once** when its scope first activates.
+* Selectable phases are `Start` through `Complete`. Scoping never activates *via* the `Failed` state — but a "from" rule that already activated stays active through it.
+* Before the first phase signal of a session, scoped rules are inactive.
+* The `--run-gather-rules` diagnostic mode ignores phase scoping (it has no enrollment phase context) and executes scoped rules unconditionally.
+* Older agent versions ignore these fields and run the rule in all phases — the benefit arrives with the agent rollout.
+
+## Emit mode
+
+**Emit mode** controls what happens *after* a collection:
+
+| Mode | Behavior |
+| --- | --- |
+| **Always** | Every collection emits an event — today's behavior, and the mode of all pre-existing rules. |
+| **On change** | The rule still collects on its trigger cadence, but only emits an event **when the collected result differs from the last emitted one**. New rules default to this. |
+
+With **On change**, the first collection always emits (on an absent registry key, that first `exists: false` event is your confirmation the rule is polling). Afterwards the timeline stays silent until the value actually changes — the next emitted event carries `suppressedPolls` and `suppressedSinceUtc` in its data, so you can see how many identical polls were skipped and since when.
+
+{% hint style="info" %}
+**The zero-noise pattern for "wait until a key appears":** an interval registry rule with `emitOnlyIfExists: true`, phase scoping, and emit mode **On change** produces *no* events while the key is absent, exactly **one** event the moment it appears, and further events only when its values change.
+{% endhint %}
+
+Collectors whose output is inherently volatile (event-log entries with timestamps, log parsers with position tracking) change on every poll — for those, **On change** effectively behaves like **Always**.
 
 ## What the data looks like
 

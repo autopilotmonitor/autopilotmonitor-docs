@@ -14,6 +14,9 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## July 2026
 
+* **Gather rules: phase scoping** — A gather rule can now be restricted to specific enrollment phases, or activate from a phase onwards and stay active for the rest of the session. Outside its scope the rule is idle — interval rules stop polling, triggers are ignored. See [Gather Rules](../rules/gather-rules.md#phase-scoping).
+* **Gather rules: emit on change** — Interval rules no longer need to flood the timeline: with the new **On change** emit mode a rule keeps polling but only emits an event when the collected result actually changes, and reports how many identical polls were skipped. New rules default to this mode. See [Gather Rules](../rules/gather-rules.md#emit-mode).
+* **Fixed: toggling a custom gather rule no longer clears its definition** — Disabling/enabling a custom rule via the portal toggle previously wiped its title, target, and parameters on the server. Toggles now only change the enabled state.
 * **Missing Autopilot profile is now flagged** — Devices that go through OOBE without receiving their Autopilot deployment profile (typically the profile wasn't assigned, or the assignment hadn't propagated when the user was faster) are now highlighted with a warning in the session timeline and detail page. Our platform data shows this is a common pattern across many tenants — and these enrollments fail far more often than normal ones.
 * **Evidence for why the profile was missing** — The agent now records Windows' own deployment-service verdict (no profile assigned, assignment not propagated, device not registered), the Autopilot diagnostic registry values, and a reachability check of the Autopilot deployment service.
 * **Device Validation shown on the session** — Session Info now shows which check admitted the device to the platform: Autopilot registration, Corporate Identifier, or Bootstrap token.
