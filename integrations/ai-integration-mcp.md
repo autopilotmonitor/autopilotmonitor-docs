@@ -69,13 +69,15 @@ If the connect hangs or fails after the Microsoft sign-in succeeded, it is almos
 
 | Category | Tools |
 | --- | --- |
-| **Search & Discovery** | `search_sessions` (by status, device properties, serial, model, OS, location…) · `search_sessions_by_event` · `search_sessions_by_cve` · `search_events` (hybrid keyword + semantic — finds "machine restarted unexpectedly" without literal word overlap) · `search_knowledge` (semantic search over your rules and IME patterns) |
+| **Search & Discovery** | `search_sessions` (by status, device properties, serial, model, OS, location…) · `search_sessions_by_event` · `search_sessions_by_cve` · `search_events` (hybrid keyword + semantic — finds "machine restarted unexpectedly" without literal word overlap) · `search_knowledge` (semantic search over your rules and IME patterns) · `search_docs` (semantic search over this documentation) |
 | **Session Analysis** | `get_session_summary` (the best starting point: overview, key events, rule analysis, stats) · `get_session` · `get_session_events` |
 | **Metrics & Observability** | `get_metrics` · `get_app_install_metrics` (incl. Delivery Optimization rollup) · `get_geographic_metrics` / `get_geographic_sessions` · `get_vulnerability_summary` · `get_rule_stats` · `get_ime_version_history` · `get_usage_metrics` |
 | **Inventory & Audit** | `get_software_inventory` · `get_audit_logs` |
 | **Raw Data** | `query_raw_events` · `query_raw_sessions` · `get_resource` (discovery catalogs) |
 
 Two **discovery resources** help the assistant use the right vocabulary: `event_types` (every event type string, by category) and `device_properties` (dot-notation property keys like `tpm_status.specVersion` or `hardware_spec.ramTotalGB`).
+
+`search_docs` searches this documentation site, so the assistant can answer product questions — setup, roles, settings, notifications, security and privacy — and cite the page it used. It is a separate corpus from `search_knowledge`: ask *"how does X work?"* and it answers from the docs; ask *"why did this enrollment fail?"* and it reaches for your rules and session data instead.
 
 ## Example prompts
 
@@ -86,6 +88,7 @@ Two **discovery resources** help the assistant use the right vocabulary: `event_
 * *"Find enrollments with BitLocker issues"*
 * *"Which devices are affected by CVE-2024-30078?"*
 * *"How has the failure rate changed this week?"*
+* *"How do I roll the agent out with Intune?"* (answered from this documentation)
 
 The assistant picks the right tools and chains them — e.g. finding a session by device name first, then pulling its event timeline.
 
