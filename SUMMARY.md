@@ -56,7 +56,7 @@
 ## Trust & Security
 
 * [Security & Privacy FAQ](trust/security-faq.md)
-* [Sub-processors](trust/subprocessors.md)
+* [Data Flows & External Services](trust/data-flows.md)
 
 ## Troubleshooting & Support
 

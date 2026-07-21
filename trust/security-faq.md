@@ -5,7 +5,7 @@ timestamp: 2026-07-21
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
-  (MSP) access, sub-processors, and what we deliberately do not do.
+  (MSP) access, external services, and what we deliberately do not do.
 ---
 
 # Security & Privacy FAQ
@@ -14,7 +14,7 @@ description: >-
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
-It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://autopilotmonitor.com/terms), the [Privacy Policy](https://autopilotmonitor.com/privacy), and, on the Enterprise plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, sub-processors, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
+It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://autopilotmonitor.com/terms), the [Privacy Policy](https://autopilotmonitor.com/privacy), and, on the Enterprise plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
 
 Two principles run through every answer below:
 
@@ -160,7 +160,7 @@ Yes, and specifically in Germany.
 | Application Insights, Log Analytics | **Germany West Central** |
 | Portal front-end (Azure Static Web App) | **West Europe** — static assets only, no customer data |
 
-All customer data — sessions, events, configuration, audit logs, diagnostics, backups — resides in **Germany West Central**. Your data is not replicated to another region, and the platform does not move it outside the EU. Should an additional regional deployment ever be offered (see [Can I run Autopilot Monitor in my own Azure subscription?](#can-i-run-autopilot-monitor-in-my-own-azure-subscription)), it would be a separate deployment a customer opts into — not a relocation of this one. See also the [sub-processor list](subprocessors.md) for the flows a customer can deliberately configure outward.
+All customer data — sessions, events, configuration, audit logs, diagnostics, backups — resides in **Germany West Central**. Your data is not replicated to another region, and the platform does not move it outside the EU. Should an additional regional deployment ever be offered (see [Can I run Autopilot Monitor in my own Azure subscription?](#can-i-run-autopilot-monitor-in-my-own-azure-subscription)), it would be a separate deployment a customer opts into — not a relocation of this one. See [Data Flows & External Services](data-flows.md) for the connections a customer can deliberately configure outward.
 
 {% hint style="warning" %}
 Some Azure resource names still carry an `…eu` suffix from before the July 2026 migration. Do not infer a region from a resource name — the deployed region is Germany West Central.
@@ -272,17 +272,19 @@ What differs between the plans is commercial, not technical:
 
 ### Can I get a data processing agreement (DPA / AVV)?
 
-**Yes — available on request**, concluded with glueckkanja AG. On the Enterprise plan it forms part of the written agreement. Get in touch through the [Imprint](https://www.glueckkanja.com/en/imprint) contact details, or via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) for the project side.
+**Yes — available on request**, concluded with glueckkanja AG; a published version is planned. On the Enterprise plan it forms part of the written agreement. Get in touch through the [Imprint](https://www.glueckkanja.com/en/imprint) contact details, or via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) for the project side.
 
-The technical data protection measures are identical on both plans — same region, same isolation, same retention and deletion controls, all described on this page.
+The agreement is where the engaged parties and the terms of their engagement are set out. This documentation deliberately does not restate that contractually — it explains the architecture, so you can see what happens technically without waiting for a document. The technical data protection measures are identical on both plans: same region, same isolation, same retention and deletion controls, all described on this page.
 
 ### Is glueckkanja AG certified?
 
 **glueckkanja AG is certified to ISO/IEC 27001.** That certification covers the company's information security management system. It is not a certification of this application: Autopilot Monitor itself is not separately certified, and the Azure platform it runs on carries Microsoft's own certifications. Stated this way so nobody mistakes the scope.
 
-### Who are the sub-processors?
+### Which external services are involved?
 
-See the dedicated [Sub-processors](subprocessors.md) page. In short: Microsoft Azure (Germany West Central) is the only sub-processor that stores your data. Everything else in that list is either a reference-data source we pull *from* (no customer data flows to it), or a destination **you** configure — notification channels, your own diagnostics storage, your own AI assistant.
+The **data processing agreement** is the authoritative document here — it names the parties engaged and the terms they are engaged on. It is available on request.
+
+For the technical picture, [Data Flows & External Services](data-flows.md) maps every outbound connection. In short: Microsoft Azure (Germany West Central) is the only place your data is stored. Everything else is either a public reference-data source the service reads *from* — nothing about your environment goes out — or a destination **you** configure: notification channels, your own diagnostics storage, your own AI assistant.
 
 ### How do I exercise data subject rights?
 
@@ -327,7 +329,7 @@ Several of these are on the path to Enterprise general availability. If one of t
 # Citations
 
 * [Terms of Use](https://autopilotmonitor.com/terms) and [Privacy Policy](https://autopilotmonitor.com/privacy) — the binding documents; this page is the technical explanation behind them.
-* [Sub-processors](subprocessors.md) — the full third-party list.
+* [Data Flows & External Services](data-flows.md) — every outbound connection and what it carries.
 * [Plans](../plans.md) — Community versus Enterprise.
 * [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md) — how the agent installs, authenticates, and removes itself.
 * [Roles & Permissions](../concepts/roles-and-permissions.md) — the portal permission model.
