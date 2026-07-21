@@ -59,6 +59,12 @@ Rules of thumb: prefer the one-shot triggers — **Startup**, **Phase Start**, *
 
 ## Phase scoping
 
+{% hint style="info" %}
+**Phase scoping and emit mode are for rules that can run more than once** — Interval, On Event, and the "any phase" variants of Phase Start/End. If your trigger already names a phase (e.g. Phase Start on Finalizing Setup), the rule fires exactly once at that moment and the portal hides both controls: a scope could only ever suppress that single collection, and there is no second result to compare against.
+
+The one exception is **Startup**: a scope there doesn't suppress the collection, it *delays* it — the rule waits and collects once the scope is first reached instead of at agent start.
+{% endhint %}
+
 By default a rule is active during the **entire** enrollment. **Active During** restricts that — useful when the data only exists (or only matters) from a certain point, e.g. a registry key that software writes during Account Setup:
 
 | Mode | Behavior |
