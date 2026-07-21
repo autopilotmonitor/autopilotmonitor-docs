@@ -1,7 +1,7 @@
 ---
 type: Concept
 tags: [security, privacy, gdpr, compliance, data-residency, trust]
-timestamp: 2026-07-21
+timestamp: 2026-07-22
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 21 July 2026 · Next review: 21 January 2027.**
+**Last reviewed: 22 July 2026 · Next review: 22 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -47,7 +47,19 @@ Two honest caveats:
 
 ### Can administrators make the agent collect more?
 
-Yes, through [gather rules](../rules/gather-rules.md) — and that capability is fenced in. `C:\Users` is always blocked for privacy reasons, even in the relaxed guardrail mode. Downloading files, creating users, manipulating boot configuration, and establishing persistence are hard-blocked and cannot be enabled by configuration. Gather rules are authored by your own administrators, visible in the portal, and audited.
+Yes, through [gather rules](../rules/gather-rules.md) — and that capability is fenced in by design, not by policy.
+
+A gather rule is a **declarative collector definition, not a script.** There is no field in which to put code. A rule names a collector type (registry, file, event log, WMI, or command) and a target, and **the agent decides whether that target is permitted** — against allow-lists compiled into the agent binary itself. The portal validates as a convenience; calling the API directly bypasses nothing.
+
+* **Registry, file, event log, and WMI targets** must fall under approved enrollment-relevant prefixes — segment-bounded, with paths normalized first so `..\` traversal cannot escape them.
+* **Commands must match the allow-list exactly** — not by prefix, not by pattern. The list holds roughly fifteen read-only diagnostic commands (`Get-Tpm`, `dsregcmd /status`, `ipconfig /all` and their kin). **Arbitrary command execution is not a supported operation**; there is no code path that runs a command a customer typed. Allowed commands are passed to PowerShell base64-encoded, so nothing can be appended to one.
+* **Hard blocks hold under every configuration** and cannot be lifted by any setting: `C:\Users`, the SAM/SECURITY/SYSTEM registry hives, the Security event log and PowerShell script-block logs, file downloads, user and group creation, boot configuration changes, scheduled-task persistence, and destructive operations.
+* **Every collector is bounded** in output size, result count, and execution time, so no rule can turn into a bulk exfiltration channel or hang the agent.
+* **Blocking is visible, never silent.** A rule that oversteps produces a `security_warning` event in the session timeline naming the rule and the target — so overreach and misconfiguration both surface to you rather than failing quietly.
+
+The allow-lists are not a secret you have to take on trust: they live in [`rules/guardrails.json`](https://github.com/okieselbach/Autopilot-Monitor/blob/main/rules/guardrails.json) in the public repository, and their enforcement is covered by tests that assert the hard blocks hold even in the relaxed mode.
+
+A relaxed **Unrestricted Mode** exists for environments that need broader collection. **A tenant administrator cannot enable it alone** — the capability must first be unlocked for the tenant by platform operators on request, and even then the hard blocks above remain in force. Enabling it is written to your audit log. Gather rules are authored by your own administrators, visible in the portal, and audited.
 
 ### Is the device's IP address stored?
 
@@ -129,6 +141,18 @@ Isolation is enforced in the storage keys themselves, not by a filter that a que
 The tenant ID used for scoping comes from the **validated JWT**, not from a request header or body — it is not client-supplied and not forgeable.
 
 Real-time channels are equally scoped. SignalR groups are per tenant, and joining one is authorized against **the group's tenant**, not the caller's home tenant — the distinction that keeps a cross-tenant caller from ever streaming a managed tenant's notifications on the strength of a role they hold somewhere else. Even a same-tenant user without member standing cannot subscribe to organization-wide activity; Progress Portal users see their own enrollment and nothing more.
+
+### How do you know the isolation actually holds?
+
+Because it is asserted mechanically, on every change, rather than reviewed by eye.
+
+The boundary is enforced in one place — the authorization middleware — and **the test suite proves the boundary cannot be routed around:**
+
+* One test enumerates **every HTTP endpoint in the service by reflection** and fails the build if any of them is missing from the policy catalog. A new endpoint cannot ship unclassified; if someone forgets, the build stops rather than the endpoint quietly defaulting to reachable.
+* A second test requires every route carrying a tenant ID to declare cross-tenant scoping — closing the "new endpoint silently skips the cross-tenant check" failure mode structurally, not by convention.
+* Further tests assert the fail-closed behaviour directly: an unregistered route is refused, a tenant admin reaching across tenants is refused, a delegated principal attempting any write is refused, and a delegated principal reaching a tenant outside its grants is refused.
+
+Roughly a hundred assertions across two dozen test files are dedicated specifically to tenant isolation and cross-tenant access, within a suite of several thousand tests overall. **They run in CI on every pull request and every merge to the main branch** — backend, agent, portal, and MCP server — so a change that weakens the boundary fails before it can be merged, not at the next audit.
 
 ### Delegated (MSP) access
 
@@ -263,9 +287,17 @@ Yes. There is a **kill switch** delivered over the configuration channel that st
 
 ### How is the code tested and reviewed?
 
-Automated tests run in CI across the backend, agent, and MCP server — several hundred test files, including suites written specifically against the security boundaries: authentication middleware, policy enforcement, configuration redaction, revocation enforcement, SSRF protection, audit-log deletion exclusion, and adversarial tests against the MCP raw-data tools. Rule definitions are schema-validated on every push. Every change passes a structured code review before merge.
+Four layers, running continuously rather than at audit time.
 
-**Dependency vulnerability scanning is enabled** on the source repository, so vulnerable transitive dependencies are surfaced as they are published rather than discovered at audit time. Deployment pipelines authenticate to Azure with OIDC federation and hold no long-lived cloud credentials.
+**Tests gate every change.** The full suite — several thousand tests across backend, agent, portal, and MCP server — runs in CI on every pull request and every merge to the main branch. It includes suites written specifically against the security boundaries: authentication middleware, policy enforcement, tenant isolation and cross-tenant access, gather-rule guardrails, configuration redaction, revocation enforcement, SSRF protection, audit-log deletion exclusion, and adversarial tests against the MCP raw-data tools. Several of these are *structural* rather than exemplary — they enumerate the service's own endpoints and fail the build on an unclassified route, so the guarantee cannot decay as the surface grows. Rule definitions are schema-validated, and generated security allow-lists are checked against their source on every run.
+
+**Static analysis runs on the same trigger.** CodeQL analyzes both the C# and the TypeScript/JavaScript on every pull request, every merge, and on a weekly schedule — so a vulnerability class published after a merge still surfaces against existing code.
+
+**Dependencies are watched automatically.** Vulnerability scanning and automated dependency updates are enabled for the .NET, npm, and GitHub Actions ecosystems, so vulnerable transitive dependencies are surfaced as they are published. Advisories are patched as they appear rather than batched.
+
+**Changes are reviewed before merge, and components are reviewed periodically.** Every change is reviewed rather than merged unseen. Beyond that, each major component — backend, agent, MCP server — goes through a recurring, documented architecture and security review that examines it as a whole rather than change by change; findings are written up with severity and file-level references, and tracked to resolution. This is where issues that no diff makes visible get caught.
+
+Deployment pipelines authenticate to Azure with OIDC federation and hold no long-lived cloud credentials, and release artifacts carry build provenance attestation (see [Is the agent binary verifiable?](#is-the-agent-binary-verifiable)).
 
 ### How do I report a security vulnerability?
 

@@ -1,5 +1,13 @@
 # Log
 
+## 2026-07-22
+
+* **Update**: Rewrote **Security guardrails** in `rules/gather-rules.md`. A gather rule is stated as a declarative collector definition rather than a script, with a per-collector table of what is enforced, the standing output/count/time limits, and a `danger` hint listing the hard blocks that hold under every configuration — `C:\Users`, the SAM/SECURITY/SYSTEM hives, the Security and PowerShell event logs, downloads, user creation, boot configuration, persistence, and destructive operations. Event Log targets are now allow-listed and documented as such. Points at `rules/guardrails.json` in the public repository as the definitive list. Removed the claim that the allow-lists are displayed inline in the portal; the duplicate Unrestricted Mode hint is gone, and the remaining one states that a tenant administrator cannot enable the mode alone.
+
+* **Update**: `trust/security-faq.md` — expanded *Can administrators make the agent collect more?* along the same lines, added *How do you know the isolation actually holds?* under Tenant Isolation (the endpoint-enumerating catalog test, the tenant-scoping test, and the fail-closed assertions), and rewrote *How is the code tested and reviewed?* into four layers: the suite gating every pull request and merge, CodeQL on both languages, automated dependency updates, and the recurring per-component architecture and security reviews. Review date advanced to 22 July 2026.
+
+* **Update**: `troubleshooting/faq.md` — the data-location answer now leads with Germany West Central as the answer and explains the West Europe front-end as a static-asset host that stores no customer data, rather than presenting the two regions side by side.
+
 ## 2026-07-21
 
 * **Update**: This bundle is now the corpus behind the MCP server's `search_docs` tool, which answers product questions from the documentation and cites the page it used. Documented the tool in `integrations/ai-integration-mcp.md` (tool table, how it differs from `search_knowledge`, example prompt). Added a convention to `index.md`: the corpus is built into the MCP container image, so changes here reach AI clients only after an MCP redeploy, and `/health` on the MCP server reports the bundle commit it was built from.

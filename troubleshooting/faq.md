@@ -36,7 +36,9 @@ Yes — the **Community plan is free and stays free**. It is currently in Privat
 
 <summary>Where is my data stored?</summary>
 
-All customer data and compute run in Azure **Germany West Central** — Azure Functions, Table Storage, Blob Storage, queues, SignalR, the MCP container app, and Application Insights / Log Analytics. The only component outside that region is the Static Web App in **West Europe** that serves the portal front-end; it hosts static assets only and stores no customer data.
+**In Germany.** All customer data and all compute that touches it run in Azure **Germany West Central**: Azure Functions, Table Storage, Blob Storage, queues, SignalR, the MCP container app, and Application Insights / Log Analytics. Your data is not replicated to another region.
+
+One component sits outside that region — the Static Web App in West Europe that serves the portal front-end. It delivers the HTML, JavaScript, and images that make up the portal and **stores no customer data**; every request for actual data goes from your browser to the API in Germany West Central.
 
 Data retention is [configurable per tenant](../reference/settings.md#data-management) (default 90 days), and a tenant can [offboard](../reference/settings.md#danger-zone) — irreversibly deleting all its data — at any time. Diagnostics packages can be kept entirely in **your own** Azure Blob Storage. For the full data-residency answer, see [Trust & Security](../trust/security-faq.md).
 

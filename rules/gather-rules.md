@@ -116,15 +116,31 @@ See [Cookbook recipe 7](analyze-rules/cookbook.md#recipe-7-collect-your-own-data
 
 ## Security guardrails
 
-Custom collection on managed devices is a sensitive capability, so every collector enforces **allow-lists on the agent itself** — not just in the portal:
+A gather rule is a **declarative collector definition, not a script**. There is no field in which to put code: a rule names a collector type and a target, and the agent decides whether that target is permitted. Custom collection on managed devices is a sensitive capability, so **every collector enforces its allow-list on the agent itself** — the portal's validation is a convenience, not the control. Editing a rule through the API directly changes nothing about what the agent will accept.
 
-* **Registry** paths must fall under approved `HKLM\`/`HKCU\` prefixes (segment-bounded: subkeys of an allowed prefix are fine, sibling keys are not).
-* **File / JSON / XML / Log Parser** paths must be within approved directories.
-* **WMI** queries must target approved classes; **commands** must match the allow-list *exactly* — arbitrary commands are impossible.
-* A rule targeting anything outside the allow-lists doesn't fail silently: the agent emits a **`security_warning` event** into the timeline instead, so misconfigurations are visible.
+| Collector | What is enforced |
+| --- | --- |
+| **Registry** | Path must fall under an approved prefix — segment-bounded, so subkeys of an allowed prefix are fine and sibling keys are not (`SOFTWARE\Microsoft\Enrollments` admits `…\Enrollments\ABC`, never `…\EnrollmentsOther`) |
+| **File / JSON / XML / Log Parser** | Path must resolve within an approved directory. Paths are normalized before the check, so `..\` traversal cannot escape it |
+| **Event Log** | Channel must be on the approved list, matched on a `/` boundary |
+| **WMI** | Query must begin with an approved `SELECT … FROM <class>` |
+| **Command** | Must match an entry on the allow-list **exactly** — not by prefix. Arbitrary commands are impossible, and the command is passed to PowerShell base64-encoded so nothing can be appended to it |
 
-The current allow-lists are shown inline on the Gather Rules page in the portal (expandable under each collector type).
+The approved prefixes are the enrollment-relevant ones: MDM and Entra join state, Windows Update, BitLocker, TPM, Secure Boot, proxy configuration, the Intune Management Extension, and the setup and servicing logs under `C:\Windows` and `C:\ProgramData`. The command allow-list holds roughly fifteen read-only diagnostic commands — `Get-Tpm`, `dsregcmd /status`, `ipconfig /all`, `netsh winhttp show proxy` and their kin. The definitive lists live in [`rules/guardrails.json`](https://github.com/okieselbach/Autopilot-Monitor/blob/main/rules/guardrails.json) in the public repository, so you can read them without taking our word for it.
+
+**Limits that always apply, regardless of the rule:** command output is capped at 32 KB and the process is killed after 30 seconds; file reads are limited to the last 4,000 characters of files under 50 KB; registry reads return at most 100 subkeys or 50 values; WMI returns at most 20 objects; event logs at most 50 entries.
+
+**Nothing fails silently.** A rule targeting anything outside the allow-lists is blocked and the agent emits a **`security_warning` event** into the session timeline, naming the rule and the target it tried to reach. A misconfiguration and an attempt to overreach look the same from the outside — and both are visible to you.
+
+{% hint style="danger" %}
+**Hard blocks — these hold even in Unrestricted Mode and cannot be enabled by any configuration:**
+
+* `C:\Users` (only the signed-in user's `AppData\Local` and `AppData\Roaming` are reachable, and only via the `%LOGGED_ON_USER_PROFILE%` token)
+* `C:\Windows\System32\config` — the SAM, SECURITY, and SYSTEM registry hives
+* The **Security** event log and the **PowerShell** operational logs — the audit trail of user behaviour, and script-block logging, which routinely contains secrets in clear text
+* Downloading files (`Invoke-WebRequest`, `curl`, `certutil -urlcache`, …), creating users or group memberships, altering boot configuration, establishing persistence via scheduled tasks, and destructive operations such as `Format-Volume`
+{% endhint %}
 
 {% hint style="warning" %}
-**Unrestricted Mode** relaxes the registry/WMI/command guardrails for environments that need broader collection. It is not generally available: the capability has to be **unlocked for your tenant by the platform operators on request** — only then does the toggle appear under Settings → Agent. Hard limits remain even with it enabled: `C:\Users` stays blocked and dangerous operations stay impossible. Leave it off unless a specific rule requires it.
+**Unrestricted Mode** relaxes the registry, WMI, event log, and command allow-lists for environments that need broader collection. **A tenant administrator cannot turn it on alone:** the capability must first be unlocked for your tenant by the platform operators on request, and only then does the toggle appear under Settings → Agent. The hard blocks above remain in force either way, and switching it is written to your audit log. Leave it off unless a specific rule requires it.
 {% endhint %}
