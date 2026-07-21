@@ -35,13 +35,26 @@ A set of maintained built-in and community gather rules ships with the product; 
 | --- | --- | --- |
 | **Startup** | Once, when the agent starts monitoring | Initial device state (BIOS, TPM, OS info) |
 | **Interval** | Every 5–3600 seconds | Continuous monitoring (network status, policy changes) |
-| **Phase Change** | When enrollment enters a specific ESP phase (`Start`, `DevicePreparation`, `DeviceSetup`, `AppsDevice`, `AccountSetup`, `AppsUser`, `FinalizingSetup`, `Complete`, `Failed`) | State checks at a defined point of enrollment |
+| **Phase Start** | Once, when enrollment **enters** the selected phase (`Start`, `DevicePreparation`, `DeviceSetup`, `AppsDevice`, `AccountSetup`, `AppsUser`, `FinalizingSetup`, `Complete`) | State check at a defined point — "what did things look like when Account Setup began?" |
+| **Phase End** | Once, when enrollment **leaves** the selected phase | Snapshot of a phase's end state — "what did Device Setup leave behind?" |
 | **On Event** | When a specific event type is emitted (e.g. `enrollment_complete`, `enrollment_failed`, `app_install_failed`) | Collecting "at the end" or in reaction to a failure |
+
+**Phase Start** and **Phase End** are the two bookends of a phase and both fire **exactly once** per phase — they are the way to build one-shot collections. Leave the phase empty to fire on *every* phase transition.
+
+{% hint style="info" %}
+**Picking the right one-shot trigger**
+
+* *Beginning of enrollment* → **Startup**, or **Phase Start** on `Start`.
+* *Beginning / end of a specific phase* (e.g. Account Setup) → **Phase Start** / **Phase End** on that phase.
+* *End of the enrollment* → **On Event** with `enrollment_complete`, or **Phase Start** on `Complete`. A **Phase End** rule on `Complete` would need enrollment to move *past* Complete, which normally never happens.
+
+**Phase End** also fires when a phase is left because the enrollment **failed** — so a rule that snapshots the end of Device Setup still captures the state at the failure point.
+{% endhint %}
 
 {% hint style="warning" %}
 **Mind the ingestion rate limit.** Event ingestion is rate-limited **per device at 100 requests per minute** — a budget shared by *everything* the agent sends: its built-in telemetry, IME-derived events, *and* your gather rules. Noisy gather rules — several **Interval** rules firing every 60 seconds, or one rule producing many events per run (log parsers, broad registry reads) — can exhaust that budget. Uploads beyond the limit are rejected until the window clears, so telemetry arrives delayed or gaps appear in the timeline.
 
-Rules of thumb: prefer **Startup**, **Phase Change**, or **On Event** triggers over intervals; when you do poll, use the widest interval that still answers your question (an enrollment rarely needs anything sampled more often than every few minutes); and cap what each run returns (`maxEntries`, `maxLines`, `maxResults`). For interval rules, combine [phase scoping](#phase-scoping) and [emit mode](#emit-mode) below — together they eliminate most polling noise.
+Rules of thumb: prefer the one-shot triggers — **Startup**, **Phase Start**, **Phase End**, or **On Event** — over intervals; when you do poll, use the widest interval that still answers your question (an enrollment rarely needs anything sampled more often than every few minutes); and cap what each run returns (`maxEntries`, `maxLines`, `maxResults`). For interval rules, combine [phase scoping](#phase-scoping) and [emit mode](#emit-mode) below — together they eliminate most polling noise.
 {% endhint %}
 
 ## Phase scoping

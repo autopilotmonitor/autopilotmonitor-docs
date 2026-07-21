@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## July 2026
 
+* **Gather rules: one-shot collection at a phase's start or end** — The **Phase Change** trigger is now **Phase Start**, and a new **Phase End** trigger collects once when a phase is *left* — e.g. a snapshot of what Device Setup left behind. Phase End also fires when a phase is left because the enrollment failed. See [Gather Rules](../rules/gather-rules.md#triggers).
 * **Gather rules: phase scoping** — A gather rule can now be restricted to specific enrollment phases, or activate from a phase onwards and stay active for the rest of the session. Outside its scope the rule is idle — interval rules stop polling, triggers are ignored. See [Gather Rules](../rules/gather-rules.md#phase-scoping).
 * **Gather rules: emit on change** — Interval rules no longer need to flood the timeline: with the new **On change** emit mode a rule keeps polling but only emits an event when the collected result actually changes, and reports how many identical polls were skipped. New rules default to this mode. See [Gather Rules](../rules/gather-rules.md#emit-mode).
 * **Fixed: toggling a custom gather rule no longer clears its definition** — Disabling/enabling a custom rule via the portal toggle previously wiped its title, target, and parameters on the server. Toggles now only change the enabled state.
