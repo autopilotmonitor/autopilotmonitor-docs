@@ -8,7 +8,7 @@ description: >-
 
 # Notifications
 
-Autopilot Monitor pushes enrollment events to your team the moment they happen — no one has to watch the portal. One webhook is configured per tenant under **Settings → Tenant → Notifications**, with a choice of provider.
+Autopilot Monitor pushes enrollment events to your team the moment they happen — no one has to watch the portal. Notification channels are configured under **Settings → Tenant → Notifications**; you can define several named channels per tenant, each with its own provider.
 
 ## Providers
 
