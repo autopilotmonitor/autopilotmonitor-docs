@@ -38,4 +38,20 @@ Admin Mode is **not persistent** — it lives in the browser's local storage and
 
 ## MSP / fleet access
 
-For managed service providers, Autopilot Monitor supports **delegated administration**: a delegated admin manages a defined set of customer tenants and gets a **Fleet** view with the same analytics (Fleet Health, Software, Geographic Performance, SLA, Usage) scoped across exactly those tenants — never more. Delegated access is provisioned by the platform operators; if you are an MSP interested in this model, get in touch via the [usual channels](../getting-started/requirements-and-access.md#how-to-request-access).
+For managed service providers, Autopilot Monitor supports **delegated administration**: a delegated admin manages a defined set of customer tenants and gets a **Fleet** view with the same analytics (Fleet Health, Software, Geographic Performance, SLA, Usage) scoped across exactly those tenants — never more.
+
+Delegated administration is an **Enterprise-only** capability: the managing (MSP) tenant must be on the [Enterprise plan](../plans.md). The managed customer tenants can be on any plan, including Community — if the managing tenant is not on Enterprise, the delegated scope is empty and no customer data is accessible.
+
+How the model protects the customer:
+
+| Guarantee | What it means |
+| --- | --- |
+| **Read-only access** | Delegated principals can view sessions, events, and analytics across their assigned tenants. Write and destructive operations are structurally unavailable — there is no path for a delegated principal to change configuration, delete sessions, or run device actions in a customer tenant. |
+| **Secrets redacted** | Configuration is visible in redacted form: secrets such as SAS URLs, tokens, and webhook credentials are never exposed to a delegated reader. |
+| **Customer-visible audit trail** | Every grant and revoke of delegated access is written to the audit log of the **managed customer tenant**, not the MSP's own tenant — so the customer can always see who was given access to their data, and when. |
+
+Delegated access is provisioned by the platform operators; if you are an MSP interested in this model, get in touch via the [usual channels](../getting-started/requirements-and-access.md#how-to-request-access).
+
+{% hint style="info" %}
+For the deeper explanation of tenant isolation and how delegated scopes are enforced, see [Trust & Security](../trust/security-faq.md).
+{% endhint %}

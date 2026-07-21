@@ -19,11 +19,14 @@ The Community plan is what this documentation describes: the full product as it 
 * **Data retention:** session and telemetry data is retained for up to **90 days**.
 * **Production use is fine** — the Community plan is meant for real fleets, not just labs. What you accept in return: community-based support, and later on, certain capabilities will be Enterprise-only.
 * **Support:** community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues); rules and IME patterns are community-maintained.
+* **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
 * **Preview caveats apply:** frequent updates, no availability guarantees, and data structures may change — see the [Private Preview notes](getting-started/requirements-and-access.md#private-preview-access).
 
 ## Enterprise — *coming soon*
 
 A commercial plan for organizations that need more than the preview can promise — reliability commitments and support, plus higher operating limits. Planned Enterprise capabilities include extended **data retention** (from 90 up to **365 days**), raised **portal and agent API rate limits**, a larger **AI (MCP) usage quota**, and **delegated (MSP) administration** for managing multiple tenants from one place — aimed at larger fleets and managed service providers.
+
+Enterprise is contracted with **glueckkanja AG**, a German company certified to ISO/IEC 27001 — which operates Autopilot Monitor for both plans, and is the counterparty for the agreement, the data processing agreement, and the support commitments. Local data residency in an additional region (for example a US deployment) is something we can accommodate in an Enterprise context; ask if you need it.
 
 {% hint style="info" %}
 🚧 **Coming soon.** Scope, pricing, and timeline will be announced here. If the Enterprise plan is interesting for your organization — or you have requirements it must cover — reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues); early feedback directly shapes what it becomes.
@@ -37,4 +40,10 @@ A commercial plan for organizations that need more than the preview can promise 
 | **Price** | Free — always | To be announced |
 | **Feature set** | Full current feature set — AI (MCP) within usage-plan limits | To be announced |
 | **Support** | Community (GitHub) | To be announced |
+| **Delegated (MSP) administration** | — | Included |
+| **Operator & counterparty** | glueckkanja AG — no commitments | glueckkanja AG under written agreement |
+| **Maintainer** | Oliver Kieselbach (open community contribution) | Oliver Kieselbach |
+| **Data processing agreement** | On request | Part of the agreement |
 | **Intended for** | Labs **and** production fleets — with community support | Organizations needing support commitments and enterprise-only capabilities, MSPs |
+
+Both plans run on the same infrastructure, in the same region, with the same security model — see the [Security & Privacy FAQ](trust/security-faq.md). The plan changes limits, support, and the contractual counterparty, not how your data is protected.

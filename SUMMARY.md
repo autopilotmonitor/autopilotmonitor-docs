@@ -53,6 +53,11 @@
 * [Agent Command-Line Parameters](reference/agent-command-line.md)
 * [Bootstrap Script & Tokens](reference/bootstrap-script-and-tokens.md)
 
+## Trust & Security
+
+* [Security & Privacy FAQ](trust/security-faq.md)
+* [Sub-processors](trust/subprocessors.md)
+
 ## Troubleshooting & Support
 
 * [FAQ](troubleshooting/faq.md)

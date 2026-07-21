@@ -52,6 +52,11 @@ Contributor-facing technical documentation lives in the main product repository 
 * [Agent Command-Line Parameters](reference/agent-command-line.md) - Agent CLI switches.
 * [Bootstrap Script & Tokens](reference/bootstrap-script-and-tokens.md) - Bootstrap deployment script and enrollment tokens.
 
+# Trust & Security
+
+* [Security & Privacy FAQ](trust/security-faq.md) - Data residency, tenant isolation, encryption, retention and deletion, delegated (MSP) access, GDPR and contracts, and what the service deliberately does not do.
+* [Sub-processors](trust/subprocessors.md) - Every third party involved, what data reaches it, and which flows exist only because a customer configured them.
+
 # Troubleshooting & Support
 
 * [FAQ](troubleshooting/faq.md) - Frequently asked questions.
@@ -69,3 +74,4 @@ Contributor-facing technical documentation lives in the main product repository 
 * Use standard **relative** markdown links between documents. Do NOT use the spec's `/`-prefixed bundle-absolute form — GitBook and GitHub resolve those differently and navigation breaks.
 * `README.md` + `SUMMARY.md` are GitBook structure files (site entry point and table of contents); `index.md` (this file) and `log.md` are OKF reserved files and are intentionally NOT listed in `SUMMARY.md`, so GitBook does not publish them as pages.
 * Record notable additions and changes in [log.md](log.md).
+* The Trust & Security pages state what the service commits to. Changes to hosting region or topology, storage redundancy, encryption, retention caps, the authorization or delegation model, sub-processors, notification providers, agent build and signing, backup scope, or a default that governs what is collected (geolocation, diagnostics upload destination, trace events) update [trust/security-faq.md](trust/security-faq.md) and [trust/subprocessors.md](trust/subprocessors.md) in the same change, including the `timestamp` frontmatter and the visible "Last reviewed" line. Customer-visible changes there are also announced in [troubleshooting/service-announcements.md](troubleshooting/service-announcements.md). Phrase these pages durably rather than exactly — "short-lived, measured in minutes" instead of a specific TTL — so routine tuning does not invalidate a published statement.
