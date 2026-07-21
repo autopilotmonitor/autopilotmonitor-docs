@@ -271,11 +271,7 @@ Automated tests run in CI across the backend, agent, and MCP server — several 
 
 Through **[GitHub Security Advisories](https://github.com/okieselbach/Autopilot-Monitor/security/advisories/new)** — private vulnerability reporting is enabled on the repository, so a report reaches the maintainer without ever being public. Please use that rather than a public issue, LinkedIn, or email.
 
-What to expect:
-
-* **Acknowledgement within 3 working days**, with an initial assessment of severity and whether we can reproduce it.
-* A fix or a mitigation plan, and a shared view of timing before anything is disclosed.
-* Credit in the advisory if you want it — and none if you would rather stay anonymous.
+What to expect: an acknowledgement and an initial assessment of severity, then a fix or a mitigation plan, with a shared view of timing before anything is disclosed. Credit in the advisory if you want it — and none if you would rather stay anonymous. Reports are read by the maintainer directly; no response time is guaranteed.
 
 Security research is welcome and is not a violation of the [Terms of Use](https://autopilotmonitor.com/terms). While testing, please do not access other tenants' data, degrade the service for others, or run automated scanners against production. There is no bug bounty — see [What we do not do](#what-we-do-not-do-yet).
 
