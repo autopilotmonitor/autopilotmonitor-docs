@@ -2,6 +2,8 @@
 
 ## 2026-07-21
 
+* **Update**: Documented the new **Tenant → Contact** setting — the address used to reach a tenant about the service itself (technical problem, security matter, change needing attention), purpose-limited to service communication and never used for marketing or shared. Added to `reference/settings.md` under Tenant, and to the recommended-configuration list in `getting-started/portal-setup.md`.
+
 * **Creation**: Added a **Trust & Security** section — `trust/security-faq.md` and `trust/data-flows.md` — written to be forwarded as-is to a customer's security or data protection reviewer. The FAQ covers what the agent collects, identity and access, tenant isolation including the delegated (MSP) boundary, data residency and encryption, retention and deletion, contracting, and an explicit "What we do not do (yet)" section. The data-flows page maps every outbound connection by what actually happens to customer data; the contractual side stays with the data processing agreement, which these pages point to rather than restate. Both pages carry a `timestamp` and a visible "Last reviewed" date, and state that they describe the service as of that date rather than forming a contractual commitment. Records that glueckkanja AG operates the service and is the counterparty on both plans, with Oliver Kieselbach as the named creator and maintainer of the open-source project and the Community edition. Wired into `SUMMARY.md` and `index.md`.
 
 ## 2026-07-20

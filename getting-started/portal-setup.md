@@ -34,8 +34,9 @@ That's it — the portal can now receive data. [Deploy the agent](deploy-the-age
 
 After the basic setup, consider enabling these features to get the most out of Autopilot Monitor:
 
-1. **Agent Settings → Geo Location Detection + Set Timezone Automatically** — sets the device timezone correctly during enrollment. Without a location sensor, Windows defaults to Pacific Standard Time; this fixes the "every English device thinks it's in Redmond" effect and feeds the Geographic Performance view.
-2. **Agent Analyzers** — enable the **Local Admin Analyzer** (configure your expected admin accounts to detect unauthorized local admins), **Software Inventory**, and the **Vulnerability Analyzer** for security insights during enrollment.
-3. **Diagnostics Package** — automatically gathers log files from devices for troubleshooting. You choose the upload destination: your own Azure Blob Storage (Container SAS URL — data never leaves your tenant) or the built-in hosted storage (no storage account needed).
+1. **Tenant → Contact** — set an address we can reach you on if something about your tenant needs attention. A shared team mailbox works better than a personal one. It is used for service matters only, never for marketing.
+2. **Agent Settings → Geo Location Detection + Set Timezone Automatically** — sets the device timezone correctly during enrollment. Without a location sensor, Windows defaults to Pacific Standard Time; this fixes the "every English device thinks it's in Redmond" effect and feeds the Geographic Performance view.
+3. **Agent Analyzers** — enable the **Local Admin Analyzer** (configure your expected admin accounts to detect unauthorized local admins), **Software Inventory**, and the **Vulnerability Analyzer** for security insights during enrollment.
+4. **Diagnostics Package** — automatically gathers log files from devices for troubleshooting. You choose the upload destination: your own Azure Blob Storage (Container SAS URL — data never leaves your tenant) or the built-in hosted storage (no storage account needed).
 
 All settings are described in detail in the [Settings Reference](../reference/settings.md).

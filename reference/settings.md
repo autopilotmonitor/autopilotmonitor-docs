@@ -55,6 +55,14 @@ Setup walkthroughs per provider: [Notifications](../integrations/notifications.m
 
 Define your enrollment SLA thresholds (e.g. target duration and success rate); the [SLA Compliance](../portal-guide/sla-compliance.md) view reports against them.
 
+### Contact
+
+| Setting | Description |
+| --- | --- |
+| Contact email address | Where we reach your organization about the service itself — a technical problem affecting your tenant, a security matter, or a change that needs an administrator's attention. Used for nothing else: never for marketing, and never shared. A shared team mailbox is a better choice than a personal address. |
+
+Leaving it empty is allowed; it only means there is no way to reach you before acting on a problem affecting your tenant. If your organization gave a notification address when signing up for the Private Preview, that address is copied here once as the initial value and is yours to change from then on — it is not kept in sync afterwards.
+
 ### Optional Graph capabilities
 
 Opt-in, per-tenant Microsoft Graph permission grants that unlock optional features (e.g. resolving Intune Platform Script + Remediation display names in timelines) without changing the published app manifest. Copy the ready-made grant command, run it as a tenant admin, and refresh the status here. Full walkthrough: [Optional Graph Permissions](optional-graph-permissions.md).
