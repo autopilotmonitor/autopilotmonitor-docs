@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 21 July 2026.**
+**Last reviewed: 21 July 2026 · Next review: 21 January 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 

@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 21 July 2026.**
+**Last reviewed: 21 July 2026 · Next review: 21 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -184,11 +184,31 @@ You additionally control:
 * **Delete session** — remove an individual monitoring session on demand.
 * **Offboard tenant** — remove your tenant's data and configuration from the service entirely.
 
+### How long is each kind of record kept?
+
+Your retention setting governs enrollment data. The operational records around it have their own fixed lifetimes:
+
+| Record | Kept for |
+| --- | --- |
+| Enrollment sessions and all their events, findings, and hosted diagnostics | **Your retention setting** — 90 days by default |
+| Deletion manifests (what makes a deletion reversible) | **30 days** |
+| Audit log of administrative actions | **180 days** |
+| Operational events (platform health, security signals) | **90 days** |
+| Portal sign-in activity and usage counters | **90 days** |
+| Aggregated usage statistics | **180 days** |
+| Distress reports (agent emergency channel) | **14 days** |
+| Presence (who is currently online) | **1 day** |
+| Configuration and authorization backups | Under a storage lifecycle policy, currently **90 days** |
+
+Everything scoped to your tenant is removed when you offboard, regardless of these periods.
+
+Two categories currently have **no time-based expiry** and are removed only on offboarding: product feedback you submitted, and reports an administrator explicitly submitted to us for support. Bringing enrollment bootstrap records under the same expiry as the sessions they belong to is in progress.
+
 ### What actually happens when data is deleted?
 
 Deletion is **manifest-first**: before anything is removed, a manifest of exactly what will be deleted is built read-only, and that manifest is itself a faithful copy of the removed rows. Only then does the cascade run, and a verification pass confirms it completed.
 
-That design exists so an accidental deletion is recoverable rather than final — recovery is an operator-assisted action within the period the manifest is retained, not a self-service undo button in the portal, and it is not a substitute for your own records.
+That design exists so an accidental deletion is recoverable rather than final — recovery is an operator-assisted action **within 30 days**, while the manifest is retained. It is not a self-service undo button in the portal, and not a substitute for your own records.
 
 Tenant offboarding is a staged cascade: enumeration of every session, a per-session cascade with a drain step that waits for completion, a safe wipe across every tenant-scoped table, blob cleanup, a second audit-log wipe as defence in depth, removal of the tenant configuration row, and a final completion record. Every stage is idempotent, so an interrupted offboarding resumes correctly rather than leaving residue.
 
@@ -203,7 +223,7 @@ Neither contains enrollment telemetry or personal data — a rule is a detection
 
 Honestly and specifically:
 
-* **Configuration, authorization, and rules tables are backed up daily** — exported to a private blob container with a manifest written last as a durability anchor. Restore is guarded: full-table restore is forbidden on authorization tables and replace-all is forbidden on audit tables, so a restore cannot be used to escalate privilege or erase an audit trail.
+* **Configuration, authorization, and rules tables are backed up daily** — exported to a private blob container with a manifest written last as a durability anchor, and aged out by a storage lifecycle policy. Restore is guarded: full-table restore is forbidden on authorization tables and replace-all is forbidden on audit tables, so a restore cannot be used to escalate privilege or erase an audit trail.
 * **Session and event telemetry is not backed up.** It is time-bounded operational telemetry with a retention window measured in weeks, reproducible by the next enrollment. Treat Autopilot Monitor as a monitoring system, not a system of record.
 * **Storage is locally redundant (LRS)** within Germany West Central. There is no cross-region disaster-recovery failover today — see [What we do not do](#what-we-do-not-do-yet).
 
@@ -246,6 +266,33 @@ Yes. There is a **kill switch** delivered over the configuration channel that st
 Automated tests run in CI across the backend, agent, and MCP server — several hundred test files, including suites written specifically against the security boundaries: authentication middleware, policy enforcement, configuration redaction, revocation enforcement, SSRF protection, audit-log deletion exclusion, and adversarial tests against the MCP raw-data tools. Rule definitions are schema-validated on every push. Every change passes a structured code review before merge.
 
 **Dependency vulnerability scanning is enabled** on the source repository, so vulnerable transitive dependencies are surfaced as they are published rather than discovered at audit time. Deployment pipelines authenticate to Azure with OIDC federation and hold no long-lived cloud credentials.
+
+### How do I report a security vulnerability?
+
+Through **[GitHub Security Advisories](https://github.com/okieselbach/Autopilot-Monitor/security/advisories/new)** — private vulnerability reporting is enabled on the repository, so a report reaches the maintainer without ever being public. Please use that rather than a public issue, LinkedIn, or email.
+
+What to expect:
+
+* **Acknowledgement within 3 working days**, with an initial assessment of severity and whether we can reproduce it.
+* A fix or a mitigation plan, and a shared view of timing before anything is disclosed.
+* Credit in the advisory if you want it — and none if you would rather stay anonymous.
+
+Security research is welcome and is not a violation of the [Terms of Use](https://autopilotmonitor.com/terms). While testing, please do not access other tenants' data, degrade the service for others, or run automated scanners against production. There is no bug bounty — see [What we do not do](#what-we-do-not-do-yet).
+
+### What happens when there is an incident?
+
+The service raises operational events for the conditions that matter — devices blocked, kill signals delivered, certificate expiry approaching, capacity thresholds, backup and deletion failures — and those alert the operators directly, so problems surface without waiting for a customer to notice.
+
+From there the sequence is: **contain** (kill switch, device block, or disabling the affected path), **investigate** using the audit log and operational telemetry, **remediate and deploy**, then **communicate**. Customer-visible incidents are published in [Service Announcements](../troubleshooting/service-announcements.md) — including what went wrong and what was done about it, not just that something happened. Where an incident affects personal data, notification follows the terms of your data processing agreement and the statutory obligations that apply.
+
+### Does the service make automated decisions about people?
+
+It makes automated decisions about **devices and requests**, not about people, and none of them produce legal or similarly significant effects on an individual:
+
+* **Rate limiting** throttles a device, portal user, or MCP client that exceeds its window.
+* **Device blocking** rejects telemetry from a device an administrator has blocked, or one that fails Autopilot validation.
+* **The kill switch** stops agents by version or device when a release turns out to be faulty.
+* **Analyze rules** classify an enrollment as failed, stalled, or successful — a diagnosis of a machine, which an administrator can always overrule by reading the underlying timeline.
 
 ### Are outbound webhooks protected against SSRF?
 
