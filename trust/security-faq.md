@@ -221,7 +221,6 @@ Your retention setting governs enrollment data. The operational records around i
 | Portal sign-in activity and usage counters | **90 days** |
 | Aggregated usage statistics | **180 days** |
 | Distress reports (agent emergency channel) | **14 days** |
-| Presence (who is currently online) | **1 day** |
 | Configuration and authorization backups | Under a storage lifecycle policy, currently **90 days** |
 
 Everything scoped to your tenant is removed when you offboard, regardless of these periods.
