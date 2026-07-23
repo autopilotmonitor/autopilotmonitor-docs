@@ -1,5 +1,9 @@
 # Log
 
+## 2026-07-23
+
+* **Update**: `reference/settings.md` — **Allowed Local Accounts** (Local Admin Analyzer) entries support wildcards: `*` matches any sequence of characters, `?` exactly one (e.g. `adm-*` for generated admin accounts). Matching is case-insensitive and covers account names and profile folders.
+
 ## 2026-07-22
 
 * **Update**: Rewrote **Security guardrails** in `rules/gather-rules.md`. A gather rule is stated as a declarative collector definition rather than a script, with a per-collector table of what is enforced, the standing output/count/time limits, and a `danger` hint listing the hard blocks that hold under every configuration — `C:\Users`, the SAM/SECURITY/SYSTEM hives, the Security and PowerShell event logs, downloads, user creation, boot configuration, persistence, and destructive operations. Event Log targets are now allow-listed and documented as such. Points at `rules/guardrails.json` in the public repository as the definitive list. Removed the claim that the allow-lists are displayed inline in the portal; the duplicate Unrestricted Mode hint is gone, and the remaining one states that a tenant administrator cannot enable the mode alone.

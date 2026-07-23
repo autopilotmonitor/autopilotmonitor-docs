@@ -100,7 +100,7 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| Local Admin Analyzer | Enabled | Detects pre-enrollment local admin accounts (a known Autopilot bypass) at enrollment start and completion. **Allowed Local Accounts** defines your expected accounts; built-in Windows accounts are always allowed. Feeds the ANALYZE-ID-002 rule. |
+| Local Admin Analyzer | Enabled | Detects pre-enrollment local admin accounts (a known Autopilot bypass) at enrollment start and completion. **Allowed Local Accounts** defines your expected accounts; built-in Windows accounts are always allowed. Entries support wildcards — `*` matches any sequence of characters, `?` exactly one (e.g. `adm-*` for generated admin accounts); matching is case-insensitive and covers account names and profile folders. Feeds the ANALYZE-ID-002 rule. |
 | Software Inventory & Vulnerability Analyzer | Disabled · *Experimental* | Collects installed software at start and completion, detects during-enrollment deltas, and correlates against NVD CVEs, CISA KEV, and MSRC. Feeds the [Software Inventory](../portal-guide/software-inventory-and-vulnerabilities.md) view and ANALYZE-ID-003. |
 
 ### Diagnostics Package
