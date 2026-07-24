@@ -1,5 +1,9 @@
 # Log
 
+## 2026-07-24
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — documented **On-demand log collection**: the **Collect Logs** header action on a running session asks the agent to build and upload a diagnostics package immediately (delivered with the agent's next check-in, tracked live on the button, `-server-requested` file-name suffix). Available to Admins and Operators once diagnostics upload is configured; for unconfigured tenants the button is visible but disabled, and a Tenant Admin gets a one-step dialog that enables hosted storage with mode *On Failure Only* and collects right away. `reference/settings.md` (Diagnostics Package → Upload Mode) cross-references the feature and states that on-demand collection works in every enabled mode, including *On Failure Only*.
+
 ## 2026-07-23
 
 * **Update**: `rules/gather-rules.md` — the approved registry prefixes now include the Autopilot/OOBE enrollment tracking state (`SOFTWARE\Microsoft\Windows\Autopilot`, covering the ESP's `EnrollmentStatusTracking` policy-provider registrations), so custom rules can target e.g. the presence or absence of a specific ESP policy provider. Enforcement is on the agent; the addition takes effect with the next agent release.
