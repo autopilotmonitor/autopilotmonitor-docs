@@ -15,7 +15,7 @@ Access to the portal is controlled by role-based permissions. Everyone signs in 
 | Role | Permissions |
 | --- | --- |
 | **Tenant Admin** | Full access to all tenant configuration, sessions, diagnostics, and settings. Manages team members via **Settings → Access Management**, can enable **Admin Mode** for destructive operations. The **first user to sign in** for a tenant is automatically granted this role. |
-| **Operator** | Day-to-day monitoring role: views sessions and analytics, manages settings and Bootstrap Tokens (if granted), executes device actions. Cannot enable Admin Mode and cannot perform destructive operations such as deleting sessions. |
+| **Operator** | Day-to-day monitoring role: views sessions and analytics, sees the tenant's settings read-only (secrets are redacted, and there are no save controls), manages Bootstrap Tokens (if granted), executes device actions such as on-demand log collection, and can submit diagnostic files to support. Configuration changes, member management, validation gates, and offboarding remain with Tenant Admins. Cannot enable Admin Mode and cannot perform destructive operations such as deleting sessions. |
 | **Member (no role)** | Only sees the **Progress Portal** — a simplified view for tracking a specific device by serial number. No access to session details, diagnostics, or configuration. Ideal for helpdesk staff or on-site technicians who just need to answer "how far along is this device?" |
 
 Team members are added by UPN under **Settings → Access Management**, where admins can also enable/disable accounts and change roles.

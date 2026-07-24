@@ -8,7 +8,7 @@ description: >-
 
 # Settings Reference
 
-The **Settings / Configuration** area (Tenant Admins; Operators can view and manage most settings) controls how Autopilot Monitor behaves for your tenant. Settings are grouped into **Tenant**, **Agent**, **Maintenance**, and **Reporting**.
+The **Settings / Configuration** area (managed by Tenant Admins; Operators see it read-only with secrets redacted, except Bootstrap Sessions if granted) controls how Autopilot Monitor behaves for your tenant. Settings are grouped into **Tenant**, **Agent**, **Maintenance**, and **Reporting**.
 
 {% hint style="info" %}
 Two groups are **optional features unlocked per tenant on request** (open a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues)): **Bootstrap Sessions** and **Unrestricted Mode**. They only appear in your settings after the platform operators have activated them for your tenant.
