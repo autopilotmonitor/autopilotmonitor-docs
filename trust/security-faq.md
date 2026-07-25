@@ -1,7 +1,7 @@
 ---
 type: Concept
 tags: [security, privacy, gdpr, compliance, data-residency, trust]
-timestamp: 2026-07-22
+timestamp: 2026-07-25
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 22 July 2026 · Next review: 22 January 2027.**
+**Last reviewed: 25 July 2026 · Next review: 25 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -254,11 +254,13 @@ Honestly and specifically:
 
 By default, **no.** Diagnostics upload is **off by default**, and when enabled, the default destination is **your own Azure storage account** via a SAS URL you provide — the package never touches our infrastructure.
 
-Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action in the settings UI behind a clearly marked *"data leaves your tenant"* disclosure. It is never enabled silently.
+Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action — in the settings UI, or in the one-step dialog a tenant administrator is offered on a session — always behind a clearly marked *"data leaves your tenant"* disclosure. It is never enabled silently, and no other role can turn it on.
 
 When hosted upload is used, the SAS we issue is **blob-scoped, write-and-create only, pinned to your tenant's exact path** — it cannot be redirected at another tenant's data — and is short-lived, measured in minutes rather than hours. On the device the SAS is fetched immediately before upload and never written to disk or configuration; log records keep only a truncated prefix, never the signature.
 
 A diagnostics package contains agent logs, Intune Management Extension logs, and session information, with size caps and an explicit truncation record so you know if anything was omitted.
+
+Once upload is configured, an **administrator or operator of your own tenant** can also request a package from an enrollment that is still running, rather than waiting for it to finish. It collects exactly what the automatic package collects — the configured paths, nothing wider. The request is delivered with the agent's next check-in, so the device is never contacted directly, and both the request and its outcome are recorded as events on that session's timeline. Viewers cannot trigger it, the request is always scoped to the caller's own tenant, and on a tenant with no upload destination configured there is nothing to trigger.
 
 ## Security by Design
 

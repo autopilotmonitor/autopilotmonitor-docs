@@ -1,5 +1,9 @@
 # Log
 
+## 2026-07-25
+
+* **Update**: `trust/security-faq.md` — *How do diagnostics uploads work?* covers both opt-in paths into hosted upload (the settings UI and the one-step dialog offered on a session), each behind the *"data leaves your tenant"* disclosure, and describes **on-demand collection**: an administrator or operator of the tenant can request a package from a running enrollment, it collects the configured paths and nothing wider, it is delivered with the agent's next check-in, and request and outcome appear as events on the session timeline. Review date advanced to 25 July 2026.
+
 ## 2026-07-24
 
 * **Update**: `concepts/roles-and-permissions.md` — the **Operator** role now sees the tenant's settings read-only: all values are visible with secrets redacted, and the pages carry no save controls. Bootstrap Token management (if granted) is unchanged, and Operators can submit diagnostic files to support. Configuration changes, member management, validation gates, and offboarding remain with Tenant Admins. The `reference/settings.md` introduction states the same split.
