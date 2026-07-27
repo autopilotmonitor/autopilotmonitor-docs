@@ -40,6 +40,8 @@ Two groups are **optional features unlocked per tenant on request** (open a [Git
 | Allowed Manufacturers | `Dell*, HP*, Lenovo*, Microsoft Corporation` | Comma-separated manufacturer names permitted to register sessions; wildcards supported. `*` allows all. |
 | Allowed Models | `*` | Same mechanics for device models, e.g. `Latitude*,EliteBook*`. |
 
+**Devices with Incompatible TPM** — this section additionally shows devices from the last 14 days whose TPM cannot produce the RSA-PSS signature that Windows 11 25H2 and later prefer for TLS client authentication. On such a device Windows withholds the Intune certificate, the agent can never authenticate, and the enrollment is therefore never monitored. Remediation is a TPM firmware update from the vendor, or replacing the device. The panel only appears when a device is affected, and the reported serial, manufacturer, and model are self-reported by the device before authentication — hence the *Unverified* label.
+
 ### Notifications
 
 | Setting | Description |

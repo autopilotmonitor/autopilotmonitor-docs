@@ -1,5 +1,23 @@
 # Log
 
+## 2026-07-27
+
+* **Update**: `portal-guide/fleet-health.md` — two new sections. **Time attribution**: the six-segment split (device preparation, apps/ESP, identity & Hello, user ESP, desktop handoff, unattributed) as stacked medians per enrollment class, never mixed across classes, fixed to the last 30 days independent of the range selector, shown only from 20 clean sessions per class with flagged/missing sessions disclosed; plus the top ESP-blocking apps whose *"Removing it saves"* column is stated as an *"up to"* upper bound. **First-time-right**: the rate over completed device journeys with its 20-journey gate and placeholder-serial exclusion, weekly trend, attempts-until-success histogram, and the repeat-devices list (empty in the aggregated cross-tenant view). The page intro now names the time-attribution exception to the 7/30/90 selector, *Slowest Apps* states that durations and the ranking cover measured installs only (skipped installs excluded, counted separately), and *How to use it* answers "enrollment takes too long" and "how much rework is my fleet causing".
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — **Device history**: the *"Attempt N for this device"* banner, the expandable list of the device's last 20 finished enrollments with status, duration and pre-provisioning/Device Preparation/admin-marked badges, matched by serial number. **Time attribution**: the breakdown below the phase timeline for enrollments with a final verdict — the bar always sums to the recorded enrollment duration with an explicit unattributed remainder, reboot time reported beside the bar rather than as a slice, ESP-blocking apps with the critical-path total and an *unknown, not zero* state, and the data-quality chips. Install Progress rows now describe the Click-to-Run / RealmJoin source pills.
+
+* **Update**: `concepts/sessions-and-statuses.md` — new **Device journeys & attempts** section as the shared definition behind the banner and the first-time-right rate: matching by serial number with placeholder serials excluded, only finished sessions count as attempts, a pre-provisioning enrollment is one attempt, the journey ends at the first success (open journeys never count), and a gap of more than 30 days starts a new journey.
+
+* **Update**: `rules/analyze-rules/README.md` — the rule card lists the 30-day fire sparkline and the **↑ Regression** badge, and a new **Regression detection** section states the conditions (7-day rate at least twice the preceding 28-day baseline, statistically separated, at least 5 hit sessions and 20 evaluated sessions), the skipped cases (rules younger than about a month, edited inside the window, without a baseline), the bell notification with its numbers and dimension correlation, one alert per episode, and that gather rules are not covered.
+
+* **Update**: `integrations/notifications.md` — new **In-portal alerts** table for the bell notifications that deliberately do not use the webhook: rule-frequency regression, devices with an incompatible TPM, hardware rejection (which also goes to the webhook), and the SLA alerts, each with its audience.
+
+* **Update**: `integrations/ai-integration-mcp.md` — `get_time_attribution` and `get_device_history` added to the tool table, `get_rule_stats` noted as carrying active rule regressions, and two matching example prompts.
+
+* **Update**: `reference/settings.md` — Hardware Whitelist documents the **Devices with Incompatible TPM** panel: the last 14 days of devices whose TPM cannot sign with RSA-PSS, why the agent can never authenticate from them, the firmware-update-or-replace remediation, and why the reported values are labelled unverified.
+
+* **Update**: `changelog/platform-changelog.md` — July 2026 entries for time attribution, first-time-right, device history, rule regression detection, measured-installs-only app durations, install-row source pills, and the incompatible-TPM surface.
+
 ## 2026-07-25
 
 * **Update**: `trust/security-faq.md` — *How do diagnostics uploads work?* covers both opt-in paths into hosted upload (the settings UI and the one-step dialog offered on a session), each behind the *"data leaves your tenant"* disclosure, and describes **on-demand collection**: an administrator or operator of the tenant can request a package from a running enrollment, it collects the configured paths and nothing wider, it is delivered with the agent's next check-in, and request and outcome appear as events on the session timeline. Review date advanced to 25 July 2026.

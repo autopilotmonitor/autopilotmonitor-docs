@@ -71,7 +71,7 @@ If the connect hangs or fails after the Microsoft sign-in succeeded, it is almos
 | --- | --- |
 | **Search & Discovery** | `search_sessions` (by status, device properties, serial, model, OS, location…) · `search_sessions_by_event` · `search_sessions_by_cve` · `search_events` (hybrid keyword + semantic — finds "machine restarted unexpectedly" without literal word overlap) · `search_knowledge` (semantic search over your rules and IME patterns) · `search_docs` (semantic search over this documentation) |
 | **Session Analysis** | `get_session_summary` (the best starting point: overview, key events, rule analysis, stats) · `get_session` · `get_session_events` |
-| **Metrics & Observability** | `get_metrics` · `get_app_install_metrics` (incl. Delivery Optimization rollup) · `get_geographic_metrics` / `get_geographic_sessions` · `get_vulnerability_summary` · `get_rule_stats` · `get_ime_version_history` · `get_usage_metrics` |
+| **Metrics & Observability** | `get_metrics` · `get_app_install_metrics` (incl. Delivery Optimization rollup) · `get_time_attribution` (where enrollment time goes — one session or the fleet) · `get_device_history` (a device's enrollment attempts, or the fleet's first-time-right rate) · `get_geographic_metrics` / `get_geographic_sessions` · `get_vulnerability_summary` · `get_rule_stats` (incl. active rule regressions) · `get_ime_version_history` · `get_usage_metrics` |
 | **Inventory & Audit** | `get_software_inventory` · `get_audit_logs` |
 | **Raw Data** | `query_raw_events` · `query_raw_sessions` · `get_resource` (discovery catalogs) |
 
@@ -88,6 +88,8 @@ Two **discovery resources** help the assistant use the right vocabulary: `event_
 * *"Find enrollments with BitLocker issues"*
 * *"Which devices are affected by CVE-2024-30078?"*
 * *"How has the failure rate changed this week?"*
+* *"Where does enrollment time go in our user-driven enrollments, and which blocking app costs the most?"*
+* *"Which devices needed more than one attempt this month, and what failed the first time?"*
 * *"How do I roll the agent out with Intune?"* (answered from this documentation)
 
 The assistant picks the right tools and chains them — e.g. finding a session by device name first, then pulling its event timeline.

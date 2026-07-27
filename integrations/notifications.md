@@ -44,6 +44,17 @@ Any HTTPS endpoint that accepts a JSON POST — a ticketing system, an automatio
 
 Beyond the session triggers, the same webhook also carries **SLA breach/resolution alerts** (when [SLA targets](../portal-guide/sla-compliance.md) are configured), **consecutive-failure alerts**, and **hardware-rejection notices**.
 
+## In-portal alerts
+
+Some alerts are delivered as **bell notifications** in the portal header rather than through the webhook — they are about your configuration or your hardware, not about a single enrollment, and they are raised once per subject instead of per event:
+
+| Alert | Raised when | Seen by |
+| --- | --- | --- |
+| **Rule fires more often than usual** | An analyze rule's [regression detection](../rules/analyze-rules/README.md#regression-detection) flags a sustained, statistically separated increase in its hit rate. Links straight to the rule card. | Tenant Admins |
+| **Device with an incompatible TPM** | A device's TPM cannot perform the signature Windows requires for the agent's certificate authentication, so the agent can never authenticate from it. The fix is on your side — a TPM firmware update or device replacement. | Tenant Admins |
+| **Hardware rejection** | A device was refused because it is outside the tenant's [Hardware Whitelist](../reference/settings.md#hardware-whitelist). Also sent to the webhook, if one is configured. | Tenant Admins |
+| **SLA breach / resolution, consecutive failures** | Same events as the webhook alerts above. | All tenant members |
+
 ## Generic JSON payload reference
 
 The generic provider sends a stable, versioned payload — `schemaVersion` is only bumped on breaking changes:

@@ -29,5 +29,22 @@ The **Analyze Rules** page (requires the Admin or Operator role; editing require
 
 * **Enable/disable** per tenant — your choice is preserved across product updates.
 * **Mark session as failed** — a per-rule toggle that makes a firing rule fail the whole session (a "knock-out criterion"). A few built-ins ship with this on by default; you can override it.
-* **Fire statistics** — how often the rule fired and its hit rate over the last 30 days, so you can see which rules actually earn their keep in your environment.
+* **Fire statistics** — how often the rule fired and its hit rate over the last 30 days, plus a 30-day sparkline of daily fires, so you can see which rules actually earn their keep in your environment.
+* **Regression badge** — a red **↑ Regression** badge appears while a rule is firing markedly more often than it used to (see below).
 * **Edit / Export** — custom rules are fully editable in a form or as raw JSON (the **Form ⇄ JSON** toggle); built-ins are read-only but can be exported as JSON to use as a starting point for your own.
+
+## Regression detection
+
+A rule that suddenly starts firing far more often than it used to is a signal in itself: something changed in your environment — a Windows build, a driver, an app version, a policy — and it changed for the worse. Autopilot Monitor watches for that automatically, once a day, per rule and per tenant.
+
+A rule is flagged when **all** of the following hold:
+
+* its hit rate over the **last 7 days** is at least **twice** its rate over the **preceding 28 days**,
+* the increase is **statistically separated** — the confidence intervals of the two rates do not overlap, so a quiet week followed by a busy one is not enough, and
+* the window carries real volume: at least **5 sessions with a hit** and **20 evaluated sessions**.
+
+Rules younger than about a month, rules you edited inside the window, and rules without a baseline are deliberately skipped — a new or changed rule has no "usual" to compare against.
+
+When a rule is flagged you get a **bell notification** that links to the rule card, and the card shows the **↑ Regression** badge for as long as the episode lasts. Both carry the actual numbers (*"18 % of evaluated sessions in the last 7 days vs 4 % baseline"*), and where the affected sessions concentrate on one **OS build, device model, agent version, or IME version**, that share is reported too — as a correlation to investigate, not a cause. The episode ends when the rate falls back to normal, and only then can the same rule alert again, so an ongoing problem never turns into a stream of notifications.
+
+Regression detection covers **analyze rules**; [gather rules](../gather-rules.md) collect rather than judge and are not part of it.

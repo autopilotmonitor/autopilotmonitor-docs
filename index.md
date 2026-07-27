@@ -19,14 +19,14 @@ Contributor-facing technical documentation lives in the main product repository 
 
 # Concepts
 
-* [Sessions & Statuses](concepts/sessions-and-statuses.md) - What a session is, every status it can take, and how completion is decided.
+* [Sessions & Statuses](concepts/sessions-and-statuses.md) - What a session is, every status it can take, how attempts group into a device journey, and how completion is decided.
 * [Roles & Permissions](concepts/roles-and-permissions.md) - Portal roles, tenant scoping, and the permission model.
 * [Agent Lifecycle & Security](concepts/agent-lifecycle-and-security.md) - How the agent installs, authenticates, runs, and removes itself.
 
 # Portal Guide
 
 * [Dashboard & Sessions](portal-guide/dashboard-and-sessions.md) - The main dashboard and session list.
-* [Session Details & Diagnosis](portal-guide/session-details-and-diagnosis.md) - Timeline, events, rule findings, and diagnosing a single enrollment.
+* [Session Details & Diagnosis](portal-guide/session-details-and-diagnosis.md) - Timeline, events, rule findings, time attribution, device history, and diagnosing a single enrollment.
 * [Progress Portal](portal-guide/progress-portal.md) - Real-time enrollment progress view for helpdesk and end users.
 * [Fleet Health](portal-guide/fleet-health.md), [Geographic Performance](portal-guide/geographic-performance.md), [SLA Compliance](portal-guide/sla-compliance.md), [Usage Metrics](portal-guide/usage-metrics.md) - Fleet-wide analytics surfaces.
 * [Software Inventory & Vulnerabilities](portal-guide/software-inventory-and-vulnerabilities.md) - Installed software and CVE exposure per enrollment.

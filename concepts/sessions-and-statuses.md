@@ -2,8 +2,8 @@
 type: Concept
 tags: [sessions, statuses, completion]
 description: >-
-  What an enrollment session is, the statuses it can have, and how Autopilot
-  Monitor decides that an enrollment is complete.
+  What an enrollment session is, the statuses it can have, how attempts group
+  into a device journey, and how completion is decided.
 ---
 
 # Sessions & Statuses
@@ -12,7 +12,7 @@ description: >-
 
 A **session** represents one Windows Autopilot enrollment attempt on one device. It starts when the agent registers with the backend during OOBE and collects everything that happens on the device until the enrollment finishes: ESP phase transitions, app installations, script executions, policies, performance snapshots, security posture, and any rule findings.
 
-Each session is identified by the device (serial number, hardware info) and holds a chronological **timeline** of events. If the same device is reset and enrolled again later, that is a new session.
+Each session is identified by the device (serial number, hardware info) and holds a chronological **timeline** of events. If the same device is reset and enrolled again later, that is a new session — and the two sessions are linked as attempts of the same [device journey](#device-journeys--attempts).
 
 ## Session statuses
 
@@ -40,6 +40,20 @@ stateDiagram-v2
 | **Succeeded** | The enrollment finished successfully — the device passed through all expected phases (or an admin manually marked it succeeded via Admin Mode). A session that went silent and later produces a genuine completion signal is **reconciled** to Succeeded, even from Failed, Incomplete, or Awaiting User. |
 | **Failed** | The enrollment ended in an **explicit** failure — a failure event from the agent/backend, a firing analyze rule with "mark session as failed" enabled, or a manual Admin Mode mark. A silent session that never sent a failure signal is **no longer** counted here (see [Timeouts](#timeouts-what-happens-to-stuck-sessions) below). |
 | **Incomplete** | Terminal, but **not a failure**. The session went silent without ever producing either a completion or an explicit failure signal, and the grace window expired. It is excluded from the failure rate — it means "we lost the evidence trail", not "the enrollment broke". |
+
+## Device journeys & attempts
+
+A session is one enrollment. A **journey** is what it took to get *one device* enrolled: the chain of finished enrollment attempts on that device, up to and including the first success.
+
+The rules are deliberately narrow, because everything built on top of them — the *"Attempt 3 for this device"* banner on [session detail](../portal-guide/session-details-and-diagnosis.md#device-history) and the [first-time-right rate](../portal-guide/fleet-health.md#first-time-right) on Fleet Health — is only useful if it counts what an administrator would count:
+
+* **Devices are matched by serial number.** Placeholder or unusable serials (a device that reports no serial, or a generic firmware default) are excluded entirely and disclosed as excluded rather than merged into one phantom device.
+* **Only finished sessions are attempts** — *Succeeded*, *Failed*, or *Incomplete*. A session that is still *In Progress*, or a pre-provisioned device sitting at *Pending* waiting for its user, is not an attempt.
+* **A pre-provisioning enrollment is one attempt**, not two. The technician phase and the later user phase are the same session, and so the same attempt.
+* **The journey ends at the first success.** A journey with a success is *completed* and can be counted; a device that has only failed so far has an *open* journey, which never enters the first-time-right rate in either direction.
+* **More than 30 days** between the end of one attempt and the start of the next starts a **new journey**. A device redeployed half a year later is a fresh deployment, not a retry of the old one — its attempt counter starts at 1 again.
+
+**First-time-right** is then simply the share of completed journeys that needed exactly one attempt. It is the metric that makes wipe-and-retry visible: the success rate counts enrollments, first-time-right counts devices.
 
 ## How completion is detected
 
