@@ -1,5 +1,9 @@
 # Log
 
+## 2026-07-27 (2)
+
+* **Update**: `changelog/platform-changelog.md` — the July 2026 section is split into **Late July** and **Early July**; entry descriptions were shortened to match the June style. New Late-July entries: on-demand log collection, finished-only success/app-failure rates, the portal navigation-freeze fix, automatic recovery from portal deployments, and mobile & dark-mode polish.
+
 ## 2026-07-27
 
 * **Update**: `portal-guide/fleet-health.md` — two new sections. **Time attribution**: the six-segment split (device preparation, apps/ESP, identity & Hello, user ESP, desktop handoff, unattributed) as stacked medians per enrollment class, never mixed across classes, fixed to the last 30 days independent of the range selector, shown only from 20 clean sessions per class with flagged/missing sessions disclosed; plus the top ESP-blocking apps whose *"Removing it saves"* column is stated as an *"up to"* upper bound. **First-time-right**: the rate over completed device journeys with its 20-journey gate and placeholder-serial exclusion, weekly trend, attempts-until-success histogram, and the repeat-devices list (empty in the aggregated cross-tenant view). The page intro now names the time-attribution exception to the 7/30/90 selector, *Slowest Apps* states that durations and the ranking cover measured installs only (skipped installs excluded, counted separately), and *How to use it* answers "enrollment takes too long" and "how much rework is my fleet causing".
