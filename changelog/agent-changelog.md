@@ -14,6 +14,19 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## July 2026
 
+* An ESP app failure the user later resolves with "Try again" no longer fails the enrollment
+* Old IME log entries are no longer replayed as fresh script and app activity after an agent restart
+* New warning when Account Setup hangs because an ESP policy provider never finished
+* Mid-enrollment reboots are now attributed to the MDM policy that requested them
+* An aborted RealmJoin setup no longer holds up enrollment completion
+* Secure Boot 2023 certificate status is now verified against firmware, not just the Windows registry
+* Gather rules can be scoped to enrollment phases and can fire once when a phase ends
+* Diagnostics path allow-list is now enforced in every gather collector
+* Local admin monitoring allow-list now supports wildcard patterns
+* Agent records the Windows OOBE state at startup and when OOBE completes during the session
+* Trace-event upload now honors the `SendTraceEvents` setting
+* Agent downloads now use `download.autopilotmonitor.com` — update firewall allow-lists if needed
+* Agent release packages now include build provenance attestation
 * Devices without an assigned Autopilot profile are now flagged with a warning, backed by on-device diagnostic evidence
 * Autopilot event-log errors from before the agent started are now included in the session timeline
 * Enrollment no longer completes while the user is still in the Windows Hello setup wizard
