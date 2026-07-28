@@ -10,7 +10,7 @@ description: >-
 
 ## The diagnostics package
 
-When enabled, the agent bundles the relevant device logs into a ZIP at the end of enrollment and uploads it — so the evidence is already waiting when you open a failed session (**Download Diagnostics** button on the session detail page).
+When enabled, the agent bundles the relevant device logs into a ZIP at the end of enrollment and uploads it — so the evidence is already waiting when you open a failed session (**Download Diagnostics** button on the session detail page). In pre-provisioning (White Glove) scenarios with upload mode `Always`, an intermediate package is additionally uploaded when the technician phase completes, so the provisioning evidence is available while the device is still in the depot — without waiting for the user phase weeks later.
 
 Configuration lives under **Settings → Agent → Diagnostics Package** ([full reference](../reference/settings.md#diagnostics-package)):
 
