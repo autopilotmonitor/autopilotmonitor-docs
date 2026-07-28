@@ -12,11 +12,12 @@ Autopilot Monitor communicates exclusively over **outbound HTTPS on port 443 (TL
 
 ## Autopilot Monitor endpoints
 
-These four hosts are operated by Autopilot Monitor and are the ones you may need to add explicitly to an allow-list.
+These hosts are operated by Autopilot Monitor and are the ones you may need to add explicitly to an allow-list.
 
 | Host | Purpose | Who connects |
 | --- | --- | --- |
 | `download.autopilotmonitor.com` | Agent package + integrity manifest download (bootstrap) | Enrolling devices |
+| `go.autopilotmonitor.com` | OOBE bootstrap script (`irm https://go.autopilotmonitor.com/CODE \| iex`) | Enrolling devices — only if you use **Bootstrap Sessions** |
 | `autopilotmonitor-api-eu.azurewebsites.net` | Telemetry ingest and portal API | Enrolling devices **and** admin browsers |
 | `www.autopilotmonitor.com` | Portal web app (sign-in and UI) | Admin browsers |
 | `mcp.autopilotmonitor.com` | Read-only MCP telemetry server (optional AI integration) | AI/MCP clients |
@@ -25,7 +26,7 @@ These four hosts are operated by Autopilot Monitor and are the ones you may need
 `autopilotmonitor.com` redirects to `www.autopilotmonitor.com`, and this documentation is served from `docs.autopilotmonitor.com` — allowing the `autopilotmonitor.com` parent domain and its subdomains covers all of them.
 {% endhint %}
 
-Note the two audiences usually live on different network segments: **enrolling devices** (agent) need `download.` and the API host; **administrators** (portal, AI clients) need `www.`, the API host, and — for AI integration — `mcp.`.
+Note the two audiences usually live on different network segments: **enrolling devices** (agent) need `download.`, the API host, and — if you use Bootstrap Sessions — `go.`; **administrators** (portal, AI clients) need `www.`, the API host, and — for AI integration — `mcp.`.
 
 ## Feature-dependent endpoint
 
