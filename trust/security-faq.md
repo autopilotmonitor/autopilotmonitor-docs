@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 25 July 2026 · Next review: 25 January 2027.**
+**Last reviewed: 29 July 2026 · Next review: 29 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -225,7 +225,7 @@ Your retention setting governs enrollment data. The operational records around i
 
 Everything scoped to your tenant is removed when you offboard, regardless of these periods.
 
-Two categories currently have **no time-based expiry** and are removed only on offboarding: product feedback you submitted, and reports an administrator explicitly submitted to us for support. Bringing enrollment bootstrap records under the same expiry as the sessions they belong to is in progress.
+Two categories currently have **no time-based expiry** and are removed only on offboarding: product feedback you submitted, and reports an administrator explicitly submitted to us for support. A support report contains what the submitter chose to include — comment, exports, attached logs and screenshots, and, if the submitter ticked that option, a copy of the session's diagnostics package — and that content follows the report's lifetime, not the session's. Bringing enrollment bootstrap records under the same expiry as the sessions they belong to is in progress.
 
 ### What actually happens when data is deleted?
 
@@ -252,7 +252,7 @@ Honestly and specifically:
 
 ### How do diagnostics uploads work? Do my logs leave my tenant?
 
-By default, **no.** Diagnostics upload is **off by default**, and when enabled, the default destination is **your own Azure storage account** via a SAS URL you provide — the package never touches our infrastructure.
+By default, **no.** Diagnostics upload is **off by default**, and when enabled, the default destination is **your own Azure storage account** via a SAS URL you provide — the package never touches our infrastructure. The one exception is explicit: if an administrator submits a session report to us and ticks the option to include the uploaded diagnostics archive, a copy of that package is stored with the report so it remains available for the investigation.
 
 Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action — in the settings UI, or in the one-step dialog a tenant administrator is offered on a session — always behind a clearly marked *"data leaves your tenant"* disclosure. It is never enabled silently, and no other role can turn it on.
 

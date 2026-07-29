@@ -31,4 +31,4 @@ For suspected IME-pattern issues there is a dedicated **IME Pattern Match Log** 
 
 ## Reporting a session
 
-The **Report Session** action on any session detail page sends a report including your comment and contact address, with optional screenshot and agent-log attachments — the session's timeline exports are attached automatically. Use it when you believe the *product* got something wrong (misclassified session, missing events, a rule misfiring); use the diagnostics package when you're troubleshooting *your* enrollment.
+The **Report Session** action on any session detail page sends a report including your comment and contact address, with optional screenshot and agent-log attachments — the session's timeline exports are attached automatically. If the session has an uploaded diagnostics package, a checkbox lets you include a copy of it with the report; the copy stays with the report even after the session itself is deleted or expires. Use Report Session when you believe the *product* got something wrong (misclassified session, missing events, a rule misfiring); use the diagnostics package when you're troubleshooting *your* enrollment.
