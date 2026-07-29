@@ -26,6 +26,10 @@ A set of maintained built-in and community gather rules ships with the product; 
 | **XML (XPath)** | Elements/attributes extracted from an XML file via XPath, with namespace support | `//ns:setting[@name='ComputerName']/@value` |
 
 {% hint style="info" %}
+**Log Parser patterns are .NET regular expressions.** The agent compiles your pattern with the .NET `Regex` engine and applies it **per line**, case-sensitively. Test it against real log lines with a .NET-flavor tester before deploying — PowerShell's `-match` operator uses the same engine, and regex101.com has a ".NET (C#)" flavor. Common reasons a pattern silently matches nothing: literal brackets or parentheses in the log line that aren't escaped in the pattern (`\[`, `\(`), and a `$` anchor that doesn't allow for trailing dots or whitespace — many installers end lines with `... `, so close with `[.\s]*$` instead. A pattern that doesn't compile at all is not applied and the rule emits nothing; either way, **zero events from a Log Parser rule almost always means the pattern doesn't fit the log format**, not that collection failed.
+{% endhint %}
+
+{% hint style="info" %}
 **Targeting the user profile:** the agent runs as SYSTEM, so `%USERPROFILE%` resolves to the SYSTEM profile. Use the special token `%LOGGED_ON_USER_PROFILE%` to reach the signed-in user's profile (only `AppData\Local` and `AppData\Roaming` are allowed). Rules using the token are skipped automatically until a user session exists.
 {% endhint %}
 
