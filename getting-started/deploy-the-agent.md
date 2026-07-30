@@ -22,6 +22,8 @@ Before installing anything, the bootstrapper runs a series of pre-requisite guar
 | **Within bootstrap window** | Device uptime must be under 12 hours. Prevents installation on devices that have been powered on for a long time without enrolling. Sleep/standby does not reset this timer. |
 | **Agent not already installed** | If the agent binary is already present, installation is skipped. |
 
+One deliberate exemption: **Windows Backup for Organizations** restores a user's settings during OOBE, which creates a single user profile while the enrollment is still running. When the device positively reports OOBE as in progress and exactly one freshly created profile exists, the profile and logon guards do not block the install — that device is mid-enrollment, not in productive use. Any other combination keeps the original skip behavior.
+
 ### Try it first: dry run
 
 Want to verify which devices would receive the agent? Run this read-only check in PowerShell on any machine — it evaluates all guards and transparently reports the install decision without changing anything:
