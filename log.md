@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-01
+
+* **Update**: `troubleshooting/service-announcements.md` — the three cleanup-incident entries (2026-04-16 Breaking, 2026-04-16 Transparency Note, 2026-05-19 Resolution) are consolidated into a single **Resolved** entry dated 2026-05-19: safe deletion procedures in place — both deletion paths create a backup first and offer a way back, with a brief note on the preview-phase cleanup that prompted them.
+
 ## 2026-07-31
 
 * **Update**: Public availability — the Private Preview framing is removed across the bundle. `getting-started/requirements-and-access.md`: the access section is now **Getting access — tenant activation**: sign-in queues the tenant for activation automatically (usually done within a couple of minutes, screen advances on its own, optional email notification); the instability warning is reworded to continuous active development on the Community plan. `plans.md`: Community is *available now*, access is self-service with an activation step, the invite-only and preview-caveat wording is gone. `README.md` hint, `troubleshooting/faq.md` (free question), and `reference/settings.md` (contact-seed sentence) updated to match. `changelog/platform-changelog.md`: intro no longer scoped to a preview phase; new Late-July entry for public availability with tenant activation. `trust/security-faq.md`: SLA answer describes Community as free and publicly available without availability guarantee (frontmatter timestamp synced to the visible review date). `trust/data-flows.md`: Resend row now says "welcome message sent when a tenant is activated"; review date advanced to 31 July 2026.

@@ -22,24 +22,14 @@ Autopilot Monitor undergoes planned infrastructure maintenance over the coming w
 
 There is nothing to do on your side. Agents continue collecting locally during the maintenance and re-sync automatically once the platform is back online — no enrollment data is lost. If the work finishes ahead of schedule, the platform will come back sooner; the completion will be announced here and in the portal.
 
-## 2026-05-19 — **Resolved:** Safe Deletion in Place — Cleanup Incident Follow-up
+## 2026-05-19 — **Resolved:** Safe Deletion Procedures in Place
 
-Following the cleanup incident from 2026-04-16, the announced safeguards are now in place. Both deletion paths — admin-UI session deletion and behind-the-scenes maintenance cleanup — now always create a backup first and offer a way back:
+During the early preview phase, a maintenance cleanup went wrong and removed a number of historical events from older session timelines. As a consequence, both deletion paths — admin-UI session deletion and behind-the-scenes maintenance cleanup — were rebuilt around one guarantee: every deletion creates a backup first and offers a way back.
 
 * **Admin-UI deletions** collect a full manifest of everything belonging to the session before removing anything, run in resumable steps, and can be **reversed afterwards** (completely or partially), with counts corrected automatically.
-* **Maintenance cleanups** run through a guided procedure with several stop points: a verified sample first, a full on-disk backup before any delete, an automatic stop if the volume is much larger than expected, and two verified test rounds before bulk deletion. The backup allows one-by-one or full restore.
+* **Maintenance cleanups** run through a guided procedure with several stop points: a verified sample first, a full backup before any delete, an automatic stop if the volume is much larger than expected, and verified test rounds before bulk deletion. The backup allows one-by-one or full restore.
 
-The events lost on 2026-04-16 cannot be recovered. What these procedures guarantee is that any future deletion has a backup and a way back. No action needed.
-
-## 2026-04-16 — **Breaking:** Event Data Loss Due to Faulty Cleanup Operation
-
-A faulty cleanup operation deleted a significant number of events. Affected sessions may show missing events, incomplete phases, or incorrect completion states; the deleted data cannot be restored. Operational safeguards to block and verify cleanup operations before execution were announced (and delivered — see the 2026-05-19 entry).
-
-## 2026-04-16 — **Info:** Transparency Note — Root Cause of the Event Data Loss
-
-In full transparency: during a storage migration to a new, more performant layout, an attempt to remove orphaned event entries from the platform's early days went wrong — part of the filter logic was not applied as expected, and a larger number of historical event entries were deleted before the issue was caught.
-
-The impact is mainly limited to older session timelines: events are most valuable during and shortly after the enrollment, and the default retention already removes sessions after 90 days. Even so, the impact is real. At the time there was no separate staging environment, so larger refactorings had to run on the live system; additional operational safeguards and procedures were put in place as a consequence (see 2026-05-19). Thank you for the understanding, patience, and trust while building the platform together with early adopters.
+No action needed.
 
 ## 2026-04-16 — **Known Issue:** Agent Changes in Progress — Possible Detection Issues
 
