@@ -11,7 +11,7 @@ description: >-
 **Autopilot Monitor** gives IT admins and MSPs real-time visibility into Windows Autopilot enrollments — device provisioning sessions, the Enrollment Status Page (ESP), app and script installations, and completion, all streamed live to a central portal. Automated analyze rules flag problems as they happen and tell you how to fix them, before your users ever notice.
 
 {% hint style="info" %}
-Autopilot Monitor is currently available as the **Community plan (Private Preview)** — see [Plans](plans.md) for what's available today and what's coming.
+Autopilot Monitor is **publicly available** — the **Community plan** is free; sign in with your work account and your tenant is activated after a short activation step. See [Plans](plans.md) for what's available today and what's coming.
 {% endhint %}
 
 ## Where to go next

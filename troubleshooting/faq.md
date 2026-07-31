@@ -28,7 +28,7 @@ Autopilot Monitor gives IT admins real-time visibility into Windows Autopilot en
 
 <summary>Is Autopilot Monitor free?</summary>
 
-Yes — the **Community plan is free and stays free**. It is currently in Private Preview (access after approval, see [Requirements & Access](../getting-started/requirements-and-access.md)). A commercial **Pro plan** is coming later for organizations that need more — see [Plans](../plans.md).
+Yes — the **Community plan is free and stays free**, and it is publicly available: sign in with your work account and your tenant is activated after a short activation step (see [Requirements & Access](../getting-started/requirements-and-access.md)). A commercial **Pro plan** is coming later for organizations that need more — see [Plans](../plans.md).
 
 </details>
 

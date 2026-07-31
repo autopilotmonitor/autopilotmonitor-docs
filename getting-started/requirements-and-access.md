@@ -1,7 +1,7 @@
 ---
 type: How-to Guide
 tags: [requirements, permissions, onboarding]
-description: What you need before you start, and how to get access during the Private Preview.
+description: What you need before you start, and how tenant activation works.
 ---
 
 # Requirements & Access
@@ -20,17 +20,17 @@ Autopilot Monitor plugs into an existing Windows Autopilot environment. You need
 The agent authenticates with the device's **MDM client certificate** (issued by Intune during enrollment). If your network uses TLS inspection, exclude the Autopilot Monitor backend endpoints from break-and-inspect — client-certificate authentication does not survive TLS interception.
 {% endhint %}
 
-## Private Preview access
+## Getting access — tenant activation
 
-Autopilot Monitor is currently in **Private Preview**. The service is available to a limited number of organizations while the core functionality is refined. Access is invite-only and managed per tenant.
+Autopilot Monitor is **publicly available** — the Community plan is free, and there is no signup form. Every new organization goes through a short activation step after its first sign-in.
 
-### How to request access
+### How it works
 
 1. Open the [Autopilot Monitor portal](https://www.autopilotmonitor.com) and sign in with your Microsoft Entra ID account.
-2. If your organization has not been granted access yet, you will see a **Private Preview** waitlist screen — signing in automatically places your tenant on the waitlist.
-3. Request activation via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or by opening a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues). Tenants are enabled manually; requests are reviewed regularly.
-4. Once approved, sign in again — you will be taken straight to the portal. Continue with [Portal Setup](portal-setup.md).
+2. On the first sign-in from a new organization you will see an **activation** screen — your tenant is queued for activation automatically; there is nothing to fill in.
+3. Activation usually completes within a couple of minutes. The activation screen checks automatically and takes you straight into the portal; you can also leave an email address to be notified.
+4. Once activated, continue with [Portal Setup](portal-setup.md). If activation takes longer than expected, reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues).
 
 {% hint style="warning" %}
-**Expect instability during Private Preview.** The backend, portal, and agent are under active development and receive frequent updates. Availability is not guaranteed, features and data structures may change, and session data may be cleared between major updates. Plan for these realities when relying on it during the preview.
+**Expect frequent change.** The backend, portal, and agent are under continuous, active development and receive frequent updates. On the Community plan, availability is not guaranteed, features and data structures may change, and session data may be cleared between major updates. Plan for these realities — production use is fine with that trade-off understood.
 {% endhint %}

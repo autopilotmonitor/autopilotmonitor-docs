@@ -8,12 +8,13 @@ description: >-
 
 # Platform Changelog
 
-This changelog tracks significant platform changes during Private Preview — architecture updates, data flow changes, and anything else that might briefly affect the UI or monitoring data. If something looks off, check here first. A recent entry might explain it.
+This changelog tracks significant platform changes — architecture updates, data flow changes, and anything else that might briefly affect the UI or monitoring data. If something looks off, check here first. A recent entry might explain it.
 
 Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
 ## Late July 2026
 
+* **Publicly available — sign-in with tenant activation** — Autopilot Monitor left the invite-only phase: any organization can sign in with a work account; new tenants are activated automatically after a short activation step — no access request needed. See [Requirements & Access](../getting-started/requirements-and-access.md).
 * **Updated bootstrapper script (action recommended)** — The bootstrapper script (`Install-AutopilotMonitor.ps1`) now downloads the agent from the dedicated distribution endpoint `download.autopilotmonitor.com` and supports enrollments that restore settings via **Windows Backup for Organizations** (previously such devices were skipped as "already in use"). If you deployed it via Intune, replace it with the latest version from the repository — see [Deploy the Agent](../getting-started/deploy-the-agent.md). Existing deployments keep working; the previous download endpoint remains available during the transition.
 * **Time attribution — where enrollment time goes** — Finished enrollments now show a breakdown of where the time went — device preparation, apps, identity & Hello, user ESP, desktop handoff — including reboot time and the ESP-blocking apps on the critical path. Fleet Health shows the same split as fleet-wide medians. See [Fleet Health](../portal-guide/fleet-health.md#time-attribution) and [Session Details](../portal-guide/session-details-and-diagnosis.md#time-attribution).
 * **First-time-right — wipe-and-retry is now visible** — Enrollment attempts of the same device are grouped into a [device journey](../concepts/sessions-and-statuses.md#device-journeys--attempts): Fleet Health shows how many devices needed a second run, the weekly trend, and the repeat devices with their last failure reason. See [Fleet Health](../portal-guide/fleet-health.md#first-time-right).

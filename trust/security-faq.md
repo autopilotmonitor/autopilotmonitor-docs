@@ -1,7 +1,7 @@
 ---
 type: Concept
 tags: [security, privacy, gdpr, compliance, data-residency, trust]
-timestamp: 2026-07-25
+timestamp: 2026-07-31
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -368,7 +368,7 @@ Contact us and we will act on requests for access, correction, deletion, restric
 
 ### Is there a service level agreement?
 
-* **Community** is a Private Preview with **no availability guarantee** and **community support via GitHub issues**. It is fine for production fleets — with that trade-off understood.
+* **Community** is free, publicly available, and carries **no availability guarantee**; support is **community-based via GitHub issues**. It is fine for production fleets — with that trade-off understood.
 * **Pro** is the plan that carries reliability and support commitments. Concrete figures are being finalized alongside pricing; ask and you will get the current draft rather than a placeholder.
 
 Note that "SLA" elsewhere in this documentation ([SLA Compliance](../portal-guide/sla-compliance.md)) means *your* enrollment targets — how fast your Autopilot enrollments should complete — not a commitment about this service's uptime.

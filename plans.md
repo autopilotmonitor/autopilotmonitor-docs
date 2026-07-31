@@ -2,29 +2,29 @@
 type: Reference
 tags: [plans, licensing, features]
 description: >-
-  The available plans of Autopilot Monitor — the Community plan (Private
-  Preview) today, the Pro plan coming soon.
+  The available plans of Autopilot Monitor — the free Community plan today,
+  the Pro plan coming soon.
 ---
 
 # Plans
 
 Autopilot Monitor will be available in two plans.
 
-## Community — *available now (Private Preview)*
+## Community — *available now*
 
-The Community plan is what this documentation describes: the full product as it exists today. It is **free — and stays free**. That's the point of a community plan: it is currently in Private Preview, and it remains the free way to use Autopilot Monitor after general availability.
+The Community plan is what this documentation describes: the full product as it exists today. It is **free — and stays free**. That's the point of a community plan: it is the free way to use Autopilot Monitor, publicly available to every organization.
 
-* **Access:** invite-only, per tenant — see [Requirements & Access](getting-started/requirements-and-access.md) for how to request activation.
+* **Access:** self-service — sign in with your work account; new tenants are activated after a short activation step. See [Requirements & Access](getting-started/requirements-and-access.md).
 * **Features:** the complete current feature set — live session monitoring, the full [rules engine](rules/overview.md) including custom rules, fleet analytics, notifications, and diagnostics. The [AI integration (MCP)](integrations/ai-integration-mcp.md) is included with **limits tied to your tenant's usage plan**.
 * **Data retention:** session and telemetry data is retained for up to **90 days**.
 * **Production use is fine** — the Community plan is meant for real fleets, not just labs. What you accept in return: community-based support, and later on, certain capabilities will be Pro-only.
 * **Support:** community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues); rules and IME patterns are community-maintained.
 * **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
-* **Preview caveats apply:** frequent updates, no availability guarantees, and data structures may change — see the [Private Preview notes](getting-started/requirements-and-access.md#private-preview-access).
+* **Active development:** frequent updates, no availability guarantees, and data structures may change — see [Requirements & Access](getting-started/requirements-and-access.md#getting-access-tenant-activation).
 
 ## Pro — *coming soon*
 
-A commercial plan for organizations that need more than the preview can promise — reliability commitments and support, plus higher operating limits. Planned Pro capabilities include extended **data retention** (from 90 up to **365 days**), raised **portal and agent API rate limits**, a larger **AI (MCP) usage quota**, and **delegated (MSP) administration** for managing multiple tenants from one place — aimed at larger fleets and managed service providers. The Pro plan also includes **OOBE bootstrap sessions** (run the agent already before MDM enrollment) by default, and **Unrestricted Mode** for advanced data collection — available on request.
+A commercial plan for organizations that need more than the Community plan can promise — reliability commitments and support, plus higher operating limits. Planned Pro capabilities include extended **data retention** (from 90 up to **365 days**), raised **portal and agent API rate limits**, a larger **AI (MCP) usage quota**, and **delegated (MSP) administration** for managing multiple tenants from one place — aimed at larger fleets and managed service providers. The Pro plan also includes **OOBE bootstrap sessions** (run the agent already before MDM enrollment) by default, and **Unrestricted Mode** for advanced data collection — available on request.
 
 Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC 27001 — which operates Autopilot Monitor for both plans, and is the counterparty for the agreement, the data processing agreement, and the support commitments. Local data residency in an additional region (for example a US deployment) is something we can accommodate in a Pro context; ask if you need it.
 
@@ -36,7 +36,7 @@ Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC
 
 | | Community | Pro |
 | --- | --- | --- |
-| **Availability** | Now — Private Preview, invite-only | Coming soon |
+| **Availability** | Now — publicly available, free | Coming soon |
 | **Price** | Free — always | To be announced |
 | **Feature set** | Full current feature set — AI (MCP) within usage-plan limits | To be announced |
 | **Support** | Community (GitHub) | To be announced |
