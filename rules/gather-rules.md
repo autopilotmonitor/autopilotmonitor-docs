@@ -146,5 +146,5 @@ The approved prefixes are the enrollment-relevant ones: MDM and Entra join state
 {% endhint %}
 
 {% hint style="warning" %}
-**Unrestricted Mode** relaxes the registry, WMI, event log, and command allow-lists for environments that need broader collection. **A tenant administrator cannot turn it on alone:** the capability must first be unlocked for your tenant by the platform operators on request, and only then does the toggle appear under Settings → Agent. The hard blocks above remain in force either way, and switching it is written to your audit log. Leave it off unless a specific rule requires it.
+**Unrestricted Mode** relaxes the registry, WMI, event log, and command allow-lists for environments that need broader collection. **A tenant administrator cannot turn it on alone:** it is a [Pro-plan](../plans.md) capability, and it must additionally be unlocked for your tenant by the platform operators on request — only then does the toggle appear under Settings → Agent. If the tenant leaves the Pro plan, the guardrails re-arm automatically. The hard blocks above remain in force either way, and switching it is written to your audit log. Leave it off unless a specific rule requires it.
 {% endhint %}

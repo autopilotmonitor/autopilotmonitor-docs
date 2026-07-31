@@ -26,7 +26,7 @@ Both scripts are public: [`scripts/Bootstrap/` on GitHub](https://github.com/oki
 
 ## Bootstrap Tokens
 
-*(Part of the **Bootstrap Sessions** optional feature — unlocked per tenant on request; the section then appears under Settings → Tenant.)*
+*(Part of the **Bootstrap Sessions** feature — included in the [Pro plan](../plans.md); for Community tenants it can be unlocked on request. The section appears under Settings → Tenant.)*
 
 Normally the agent authenticates with the device's **MDM client certificate**, and the backend validates the device against your Autopilot registration. Two situations don't fit that model:
 

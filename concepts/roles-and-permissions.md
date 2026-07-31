@@ -40,7 +40,7 @@ Admin Mode is **not persistent** — it lives in the browser's local storage and
 
 For managed service providers, Autopilot Monitor supports **delegated administration**: a delegated admin manages a defined set of customer tenants and gets a **Fleet** view with the same analytics (Fleet Health, Software, Geographic Performance, SLA, Usage) scoped across exactly those tenants — never more.
 
-Delegated administration is an **Enterprise-only** capability: the managing (MSP) tenant must be on the [Enterprise plan](../plans.md). The managed customer tenants can be on any plan, including Community — if the managing tenant is not on Enterprise, the delegated scope is empty and no customer data is accessible.
+Delegated administration is a **Pro-only** capability: the managing (MSP) tenant must be on the [Pro plan](../plans.md). The managed customer tenants can be on any plan, including Community — if the managing tenant is not on Pro, the delegated scope is empty and no customer data is accessible.
 
 How the model protects the customer:
 

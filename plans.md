@@ -3,7 +3,7 @@ type: Reference
 tags: [plans, licensing, features]
 description: >-
   The available plans of Autopilot Monitor — the Community plan (Private
-  Preview) today, the Enterprise plan coming soon.
+  Preview) today, the Pro plan coming soon.
 ---
 
 # Plans
@@ -17,24 +17,24 @@ The Community plan is what this documentation describes: the full product as it 
 * **Access:** invite-only, per tenant — see [Requirements & Access](getting-started/requirements-and-access.md) for how to request activation.
 * **Features:** the complete current feature set — live session monitoring, the full [rules engine](rules/overview.md) including custom rules, fleet analytics, notifications, and diagnostics. The [AI integration (MCP)](integrations/ai-integration-mcp.md) is included with **limits tied to your tenant's usage plan**.
 * **Data retention:** session and telemetry data is retained for up to **90 days**.
-* **Production use is fine** — the Community plan is meant for real fleets, not just labs. What you accept in return: community-based support, and later on, certain capabilities will be Enterprise-only.
+* **Production use is fine** — the Community plan is meant for real fleets, not just labs. What you accept in return: community-based support, and later on, certain capabilities will be Pro-only.
 * **Support:** community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues); rules and IME patterns are community-maintained.
 * **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
 * **Preview caveats apply:** frequent updates, no availability guarantees, and data structures may change — see the [Private Preview notes](getting-started/requirements-and-access.md#private-preview-access).
 
-## Enterprise — *coming soon*
+## Pro — *coming soon*
 
-A commercial plan for organizations that need more than the preview can promise — reliability commitments and support, plus higher operating limits. Planned Enterprise capabilities include extended **data retention** (from 90 up to **365 days**), raised **portal and agent API rate limits**, a larger **AI (MCP) usage quota**, and **delegated (MSP) administration** for managing multiple tenants from one place — aimed at larger fleets and managed service providers.
+A commercial plan for organizations that need more than the preview can promise — reliability commitments and support, plus higher operating limits. Planned Pro capabilities include extended **data retention** (from 90 up to **365 days**), raised **portal and agent API rate limits**, a larger **AI (MCP) usage quota**, and **delegated (MSP) administration** for managing multiple tenants from one place — aimed at larger fleets and managed service providers. The Pro plan also includes **OOBE bootstrap sessions** (test the agent on a device without an Intune deployment) by default, and **Unrestricted Mode** for advanced data collection — available on request.
 
-Enterprise is contracted with **glueckkanja AG**, a German company certified to ISO/IEC 27001 — which operates Autopilot Monitor for both plans, and is the counterparty for the agreement, the data processing agreement, and the support commitments. Local data residency in an additional region (for example a US deployment) is something we can accommodate in an Enterprise context; ask if you need it.
+Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC 27001 — which operates Autopilot Monitor for both plans, and is the counterparty for the agreement, the data processing agreement, and the support commitments. Local data residency in an additional region (for example a US deployment) is something we can accommodate in a Pro context; ask if you need it.
 
 {% hint style="info" %}
-🚧 **Coming soon.** Scope, pricing, and timeline will be announced here. If the Enterprise plan is interesting for your organization — or you have requirements it must cover — reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues); early feedback directly shapes what it becomes.
+🚧 **Coming soon.** Scope, pricing, and timeline will be announced here. If the Pro plan is interesting for your organization — or you have requirements it must cover — reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues); early feedback directly shapes what it becomes.
 {% endhint %}
 
 ## At a glance
 
-| | Community | Enterprise |
+| | Community | Pro |
 | --- | --- | --- |
 | **Availability** | Now — Private Preview, invite-only | Coming soon |
 | **Price** | Free — always | To be announced |
@@ -44,6 +44,6 @@ Enterprise is contracted with **glueckkanja AG**, a German company certified to 
 | **Operator & counterparty** | glueckkanja AG — no commitments | glueckkanja AG under written agreement |
 | **Maintainer** | Oliver Kieselbach (open community contribution) | Oliver Kieselbach |
 | **Data processing agreement** | On request | Part of the agreement |
-| **Intended for** | Labs **and** production fleets — with community support | Organizations needing support commitments and enterprise-only capabilities, MSPs |
+| **Intended for** | Labs **and** production fleets — with community support | Organizations needing support commitments and Pro-only capabilities, MSPs |
 
 Both plans run on the same infrastructure, in the same region, with the same security model — see the [Security & Privacy FAQ](trust/security-faq.md). The plan changes limits, support, and the contractual counterparty, not how your data is protected.

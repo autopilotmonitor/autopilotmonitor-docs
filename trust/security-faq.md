@@ -10,11 +10,11 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 29 July 2026 · Next review: 29 January 2027.**
+**Last reviewed: 31 July 2026 · Next review: 31 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
-It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://autopilotmonitor.com/terms), the [Privacy Policy](https://autopilotmonitor.com/privacy), and, on the Enterprise plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
+It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://autopilotmonitor.com/terms), the [Privacy Policy](https://autopilotmonitor.com/privacy), and, on the Pro plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
 
 Two principles run through every answer below:
 
@@ -59,7 +59,7 @@ A gather rule is a **declarative collector definition, not a script.** There is 
 
 The allow-lists are not a secret you have to take on trust: they live in [`rules/guardrails.json`](https://github.com/okieselbach/Autopilot-Monitor/blob/main/rules/guardrails.json) in the public repository, and their enforcement is covered by tests that assert the hard blocks hold even in the relaxed mode.
 
-A relaxed **Unrestricted Mode** exists for environments that need broader collection. **A tenant administrator cannot enable it alone** — the capability must first be unlocked for the tenant by platform operators on request, and even then the hard blocks above remain in force. Enabling it is written to your audit log. Gather rules are authored by your own administrators, visible in the portal, and audited.
+A relaxed **Unrestricted Mode** exists for environments that need broader collection. **A tenant administrator cannot enable it alone** — it is a Pro-plan capability that must additionally be unlocked for the tenant by platform operators on request, and even then the hard blocks above remain in force. If the tenant leaves the Pro plan, the relaxation ends automatically. Enabling it is written to your audit log. Gather rules are authored by your own administrators, visible in the portal, and audited.
 
 ### Is the device's IP address stored?
 
@@ -156,7 +156,7 @@ Roughly a hundred assertions across two dozen test files are dedicated specifica
 
 ### Delegated (MSP) access
 
-Delegated administration is the one place where a tenant boundary is crossed — **deliberately, narrowly, and visibly to the customer.** It is an **Enterprise** capability: the managing partner's own tenant must be on the Enterprise plan, verified against the unforgeable tenant claim in their token. Managed customer tenants may be on any plan.
+Delegated administration is the one place where a tenant boundary is crossed — **deliberately, narrowly, and visibly to the customer.** It is a **Pro** capability: the managing partner's own tenant must be on the Pro plan, verified against the unforgeable tenant claim in their token. Managed customer tenants may be on any plan.
 
 The guarantees:
 
@@ -201,7 +201,7 @@ With **managed identity**, not storage account keys. Container registry admin ac
 
 ### How long is data kept, and can I control it?
 
-Retention is **per tenant and configurable by you**, default **90 days**. The permitted range is 7 to 90 days on Community and 7 to 365 days on Enterprise; the plan cap is applied when data is actually deleted, so an out-of-range stored value can never extend retention beyond your plan. Expired sessions are purged automatically.
+Retention is **per tenant and configurable by you**, default **90 days**. The permitted range is 7 to 90 days on Community and 7 to 365 days on Pro; the plan cap is applied when data is actually deleted, so an out-of-range stored value can never extend retention beyond your plan. Expired sessions are purged automatically.
 
 You additionally control:
 
@@ -344,11 +344,11 @@ For the operation of the service itself — account administration, the audit tr
 What differs between the plans is commercial, not technical:
 
 * **Community** is free, maintained as an open community contribution, and provided **without commitments by glueckkanja AG** as to availability or support. Support is community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues).
-* **Enterprise** is a written agreement with glueckkanja AG carrying support and reliability commitments, higher operating limits, extended retention, and delegated (MSP) administration.
+* **Pro** is a written agreement with glueckkanja AG carrying support and reliability commitments, higher operating limits, extended retention, and delegated (MSP) administration.
 
 ### Can I get a data processing agreement (DPA / AVV)?
 
-**Yes — available on request**, concluded with glueckkanja AG; a published version is planned. On the Enterprise plan it forms part of the written agreement. Get in touch through the [Imprint](https://www.glueckkanja.com/en/imprint) contact details, or via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) for the project side.
+**Yes — available on request**, concluded with glueckkanja AG; a published version is planned. On the Pro plan it forms part of the written agreement. Get in touch through the [Imprint](https://www.glueckkanja.com/en/imprint) contact details, or via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) for the project side.
 
 The agreement is where the engaged parties and the terms of their engagement are set out. This documentation deliberately does not restate that contractually — it explains the architecture, so you can see what happens technically without waiting for a document. The technical data protection measures are identical on both plans: same region, same isolation, same retention and deletion controls, all described on this page.
 
@@ -369,7 +369,7 @@ Contact us and we will act on requests for access, correction, deletion, restric
 ### Is there a service level agreement?
 
 * **Community** is a Private Preview with **no availability guarantee** and **community support via GitHub issues**. It is fine for production fleets — with that trade-off understood.
-* **Enterprise** is the plan that carries reliability and support commitments. Concrete figures are being finalized alongside pricing; ask and you will get the current draft rather than a placeholder.
+* **Pro** is the plan that carries reliability and support commitments. Concrete figures are being finalized alongside pricing; ask and you will get the current draft rather than a placeholder.
 
 Note that "SLA" elsewhere in this documentation ([SLA Compliance](../portal-guide/sla-compliance.md)) means *your* enrollment targets — how fast your Autopilot enrollments should complete — not a commitment about this service's uptime.
 
@@ -384,7 +384,7 @@ What we do instead, so that self-hosting is not the only path to data control:
 * **Retention, session deletion, and full tenant offboarding are your controls**, not a support ticket.
 * **Delegated access is opt-in, read-only, and audited in your own trail.**
 
-**Local data residency is a different question, and the answer there is yes in principle.** Running the service in an additional region — a US deployment, for example — is something we can envisage, particularly in an Enterprise context where it is contracted. That is a deployment topology question rather than a change to the trust model, so it is realistic in a way that self-hosting is not.
+**Local data residency is a different question, and the answer there is yes in principle.** Running the service in an additional region — a US deployment, for example — is something we can envisage, particularly in a Pro context where it is contracted. That is a deployment topology question rather than a change to the trust model, so it is realistic in a way that self-hosting is not.
 
 If a self-hosted deployment or a specific residency region is a hard requirement for your organization, tell us — the requirement is tracked, and residency in particular is the kind of request that gets built when enough organizations ask.
 
@@ -400,13 +400,13 @@ Stated explicitly, because a reviewer will find out anyway and the answer is bet
 * **Session and event telemetry is not backed up** — only configuration, authorization, and rules tables are.
 * **No self-hosted deployment option** — see above for the reasoning and the compensating controls.
 
-Several of these are on the path to Enterprise general availability. If one of them blocks an evaluation for you, say which one — that is the most useful signal we can get.
+Several of these are on the path to Pro general availability. If one of them blocks an evaluation for you, say which one — that is the most useful signal we can get.
 
 # Citations
 
 * [Terms of Use](https://autopilotmonitor.com/terms) and [Privacy Policy](https://autopilotmonitor.com/privacy) — the binding documents; this page is the technical explanation behind them.
 * [Data Flows & External Services](data-flows.md) — every outbound connection and what it carries.
-* [Plans](../plans.md) — Community versus Enterprise.
+* [Plans](../plans.md) — Community versus Pro.
 * [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md) — how the agent installs, authenticates, and removes itself.
 * [Roles & Permissions](../concepts/roles-and-permissions.md) — the portal permission model.
 * [Network Endpoints](../reference/network-endpoints.md) — outbound hosts to allow.

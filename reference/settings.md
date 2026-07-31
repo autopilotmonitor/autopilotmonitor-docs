@@ -11,7 +11,7 @@ description: >-
 The **Settings / Configuration** area (managed by Tenant Admins; Operators see it read-only with secrets redacted, except Bootstrap Sessions if granted) controls how Autopilot Monitor behaves for your tenant. Settings are grouped into **Tenant**, **Agent**, **Maintenance**, and **Reporting**.
 
 {% hint style="info" %}
-Two groups are **optional features unlocked per tenant on request** (open a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues)): **Bootstrap Sessions** and **Unrestricted Mode**. They only appear in your settings after the platform operators have activated them for your tenant.
+Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** is included in the Pro plan and appears automatically; for Community tenants it can be unlocked on request (open a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues)). **Unrestricted Mode** is a Pro-plan capability that is additionally activated on request — it only appears after the platform operators have enabled it for your tenant.
 {% endhint %}
 
 ## Tenant
@@ -69,7 +69,7 @@ Leaving it empty is allowed; it only means there is no way to reach you before a
 
 Opt-in, per-tenant Microsoft Graph permission grants that unlock optional features (e.g. resolving Intune Platform Script + Remediation display names in timelines) without changing the published app manifest. Copy the ready-made grant command, run it as a tenant admin, and refresh the status here. Full walkthrough: [Optional Graph Permissions](optional-graph-permissions.md).
 
-### Bootstrap Sessions *(optional feature — on request)*
+### Bootstrap Sessions *(Pro plan — included; Community on request)*
 
 | Setting | Description |
 | --- | --- |
@@ -114,9 +114,9 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | Upload Mode | Off | **Off** · **Always** · **On Failure Only** (recommended when storage cost matters). Any mode other than *Off* also enables [on-demand log collection](../portal-guide/session-details-and-diagnosis.md#on-demand-log-collection) from a running session's detail page; on-demand collection works in every enabled mode, including *On Failure Only*. In pre-provisioning (White Glove) scenarios, *Always* additionally uploads an intermediate package when the technician phase completes. |
 | Additional Log Paths | — | Extra files/wildcard patterns for the diagnostics ZIP, on top of the platform-wide global paths. Environment variables are expanded; wildcards only in the last path segment; `%LOGGED_ON_USER_PROFILE%` targets the signed-in user's `AppData\Local`/`Roaming`; **Include Subfolders** collects recursively. Paths are validated against an agent-side allow-list of known log locations. |
 
-### Unrestricted Mode *(optional feature — on request)*
+### Unrestricted Mode *(Pro plan — on request)*
 
-Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrails): any registry path, WMI query, and PowerShell/system command becomes available; file and diagnostics paths open up except `C:\Users` (always blocked for privacy). Dangerous operations (downloads, user creation, boot manipulation, persistence mechanisms) remain hard-blocked. Requires platform-side activation before the toggle is visible.
+Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrails): any registry path, WMI query, and PowerShell/system command becomes available; file and diagnostics paths open up except `C:\Users` (always blocked for privacy). Dangerous operations (downloads, user creation, boot manipulation, persistence mechanisms) remain hard-blocked. Requires the Pro plan and platform-side activation before the toggle is visible; if the tenant leaves the Pro plan, the guardrails re-arm automatically.
 
 ## Maintenance
 
@@ -124,7 +124,7 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| Data Retention Period | 90 days (7–90 Community, 7–365 Enterprise) | Sessions and events are deleted automatically after this period. The minimum is 7 days; the maximum depends on your [plan](../plans.md) — 90 days on Community, 365 days on Enterprise. Values outside that range are rejected. |
+| Data Retention Period | 90 days (7–90 Community, 7–365 Pro) | Sessions and events are deleted automatically after this period. The minimum is 7 days; the maximum depends on your [plan](../plans.md) — 90 days on Community, 365 days on Pro. Values outside that range are rejected. |
 | Session Timeout | 5 hours (1–12) | *In Progress* sessions inactive past this threshold are reclassified from the evidence rather than blanket-failed: if Device Setup already finished they become **Awaiting User**, otherwise they eventually settle as **Incomplete** (a non-completion, **not** counted as a failure), and a session that later completes is reconciled to **Succeeded**. See [Sessions & Statuses](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions). Set it to match or slightly exceed your ESP timeout. |
 
 ### Danger Zone
