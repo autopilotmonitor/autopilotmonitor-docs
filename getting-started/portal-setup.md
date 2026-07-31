@@ -24,6 +24,8 @@ Navigate to **Settings → Configuration** and enable **Autopilot Device Validat
 
 {% hint style="warning" %}
 **Why is this required?** The Autopilot device check ensures that only devices registered in your Intune tenant can register sessions, preventing unintended data from reaching your tenant. Enabling it requires admin consent for the Microsoft Graph permission `DeviceManagementServiceConfig.Read.All` (read-only), and it is your explicit confirmation that the agent may collect and transmit enrollment telemetry on behalf of your organization.
+
+Granting this consent requires an Entra ID role that can consent tenant-wide to Microsoft Graph application permissions — **Global Administrator** or **Privileged Role Administrator**. If your account lacks these rights, ask someone who has them to run the consent, then use **Detect existing access** in the portal to activate the feature without repeating the consent redirect.
 {% endhint %}
 
 ## 3. Ready
