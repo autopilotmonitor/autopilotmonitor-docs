@@ -42,6 +42,10 @@ Get [Install-AutopilotMonitor.ps1 from GitHub](https://github.com/okieselbach/Au
 
 The agent itself (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified by the script; you never handle the agent binary yourself.
 
+{% hint style="info" %}
+The script does not update itself: devices always get the current agent, but the copy in Intune stays at whatever version you uploaded. Check back occasionally and re-upload when a newer version is published — script updates worth acting on are flagged in the [Platform Changelog](../changelog/platform-changelog.md). See [the FAQ](../troubleshooting/faq.md) for why an outdated copy can silently skip enrollments.
+{% endhint %}
+
 ### 2. Create a platform script in Intune
 
 In the **Microsoft Intune admin center**, go to **Devices → Scripts and remediations → Platform scripts** and click **+ Add → Windows 10 and later**.

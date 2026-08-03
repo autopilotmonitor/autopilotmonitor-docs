@@ -56,6 +56,18 @@ Via an Intune platform script — the [Deploy the Agent](../getting-started/depl
 
 <details>
 
+<summary>Do I need to update the bootstrap script in Intune?</summary>
+
+Yes — check it from time to time. The agent itself always stays current (the script downloads the latest release fresh on every device), but the bootstrap script is a static copy frozen at the moment you uploaded it to Intune — and the script keeps evolving: new install guards, exemptions for new Windows capabilities, and endpoint changes ship regularly.
+
+An outdated copy still fails soft and never breaks an enrollment, but it can **silently skip devices that a current version would monitor**. Example: **Windows Backup for Organizations** restores a user profile during OOBE — older script versions read that profile as "device already in productive use" and skip the install, so the enrollment never shows up in the portal.
+
+To check: compare the current version badge on [Deploy the Agent](../getting-started/deploy-the-agent.md#1-download-the-bootstrapper-script) with your Intune copy (the version is in the script header, and every run logs `Bootstrap script version`). Updates worth acting on are flagged **action recommended** in the [Platform Changelog](../changelog/platform-changelog.md). Updating takes under a minute: upload the new `.ps1` over your existing platform script in Intune.
+
+</details>
+
+<details>
+
 <summary>Does the agent run permanently on the device?</summary>
 
 No. The agent only exists during the enrollment window: it self-destructs after completion, stops at its 6-hour maximum lifetime, and — as an unconditional backstop — removes itself 48 hours after installation no matter what. It never runs as a persistent background service. See [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md).

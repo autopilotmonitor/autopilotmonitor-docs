@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-03
+
+* **Update**: `troubleshooting/faq.md` — new Setup & Agent question **"Do I need to update the bootstrap script in Intune?"**: the Intune copy is static while the script evolves, an outdated copy can silently skip enrollments (Windows Backup for Organizations restore as the example), how to compare versions, and that actionable updates are flagged in the Platform Changelog. `getting-started/deploy-the-agent.md`: matching hint under step 1 that the script does not update itself, linking to the changelog and the FAQ.
+
 ## 2026-08-01
 
 * **Update**: `troubleshooting/service-announcements.md` — the three cleanup-incident entries (2026-04-16 Breaking, 2026-04-16 Transparency Note, 2026-05-19 Resolution) are consolidated into a single **Resolved** entry dated 2026-05-19: safe deletion procedures in place — both deletion paths create a backup first and offer a way back, with a brief note on the preview-phase cleanup that prompted them.
