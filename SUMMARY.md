@@ -38,6 +38,7 @@
   * [Template Rules](rules/analyze-rules/template-rules.md)
   * [Cookbook: Build Your Own Rules](rules/analyze-rules/cookbook.md)
 * [Gather Rules](rules/gather-rules.md)
+* [AI-Assisted Rule Authoring](rules/ai-assisted-rule-authoring.md)
 * [IME Log Patterns](rules/ime-log-patterns.md)
 
 ## Integrations

@@ -102,6 +102,14 @@ With the device's **MDM client certificate** issued by Intune, over TLS. The bac
 
 <details>
 
+<summary>Can an AI build custom rules for me?</summary>
+
+Yes — with [AI Integration (MCP)](../integrations/ai-integration-mcp.md) connected, your assistant has the complete rule schemas and allowlists, can validate a draft, and can **dry-run an analyze rule against a real session from your tenant** before anything goes live. See [AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md).
+
+</details>
+
+<details>
+
 <summary>Can I export or download diagnostics data?</summary>
 
 Yes — when the [Diagnostics Package](diagnostics-and-log-collection.md) feature is enabled, each session detail view offers a download of the collected log bundle. Session reports and timeline exports are available from the session's **Report** action.
