@@ -63,6 +63,7 @@
 
 * [FAQ](troubleshooting/faq.md)
 * [Common Problems](troubleshooting/common-problems.md)
+* [Hybrid Join: Late Device Registration](troubleshooting/hybrid-join-late-device-registration.md)
 * [Diagnostics & Log Collection](troubleshooting/diagnostics-and-log-collection.md)
 * [Service Announcements](troubleshooting/service-announcements.md)
 

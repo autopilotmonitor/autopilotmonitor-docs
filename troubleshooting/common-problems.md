@@ -14,7 +14,8 @@ The agent is deployed but the dashboard stays empty. Check in this order:
 2. **Is the device eligible?** It must be registered in Intune as an Autopilot device (or match your Corporate Identifiers), and its manufacturer/model must pass the [Hardware Whitelist](../reference/settings.md#hardware-whitelist).
 3. **Did a bootstrap guard skip the device?** Already deployed once (registry marker), existing user profiles, prior interactive logon, or more than 12 hours of uptime all cause a silent skip. Run the [dry-run tester](../getting-started/deploy-the-agent.md#try-it-first-dry-run) on the device to see the exact decision.
 4. **Network path clear?** The device needs outbound HTTPS to the backend. Watch for proxies requiring authentication during OOBE and for **TLS inspection** (next section).
-5. **Agent log:** `%ProgramData%\AutopilotMonitor\Logs` on the device shows registration and upload errors in detail.
+5. **Hybrid Join deployment?** If the agent log shows `TenantIdAwaiter: timeout after 600s`, the device's Entra registration arrived late — the agent retries at every boot, but the delay itself is worth fixing. Full diagnosis walkthrough: [Hybrid Join: sessions start late — or never](hybrid-join-late-device-registration.md).
+6. **Agent log:** `%ProgramData%\AutopilotMonitor\Logs` on the device shows registration and upload errors in detail.
 
 ## TLS inspection breaks agent authentication
 

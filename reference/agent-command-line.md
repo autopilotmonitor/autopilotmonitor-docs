@@ -27,6 +27,8 @@ In production the agent needs no parameters — the bootstrap script installs an
 | `--bootstrap-token <token>` | Authenticate with a [Bootstrap Token](bootstrap-script-and-tokens.md#bootstrap-tokens) during OOBE, before an MDM client certificate exists. |
 | `--await-enrollment` | Wait for the MDM client certificate to become available before monitoring starts. |
 | `--await-enrollment-timeout <minutes>` | Maximum wait for the MDM certificate. Default: `480` (8 hours). |
+| `--tenant-id <id>` | Pre-seed the tenant identity at install time (persisted to the agent's bootstrap config), removing the dependency on the device's registry-based tenant resolution. Typically used together with `--bootstrap-token`. |
+| `--tenant-id-wait <seconds>` | How long the agent waits at startup for the device's tenant identity to appear in the registry — relevant on [Hybrid Join devices whose Entra registration lands late](../troubleshooting/hybrid-join-late-device-registration.md). Default: `600`; `0` disables the wait. Set at install time on the `--install` line of the bootstrap script. |
 
 ## Testing & replay
 
