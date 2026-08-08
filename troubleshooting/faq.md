@@ -20,7 +20,15 @@ Autopilot Monitor gives IT admins real-time visibility into Windows Autopilot en
 
 <summary>Which Autopilot scenarios are supported?</summary>
 
-**User-Driven** and **Pre-Provisioned** (White Glove) Windows Autopilot flows are fully supported, as are self-deploying/kiosk profiles. **Autopilot Device Preparation** is supported in early testing.
+**User-Driven** and **Pre-Provisioned** (White Glove) Windows Autopilot flows are fully supported, as are self-deploying/kiosk profiles. **Autopilot Device Preparation** is supported in early testing. **Windows 365 Cloud PCs** are supported as an opt-in per tenant — see the next question.
+
+</details>
+
+<details>
+
+<summary>Does Autopilot Monitor support Windows 365 Cloud PCs?</summary>
+
+Yes, as an opt-in per tenant. Cloud PCs are provisioned headless and are never Autopilot-registered, so they need their own validation method and a small deployment addition: enable **Windows 365 Cloud PC Validation** in Settings (requires the optional `CloudPC.Read.All` add-on permission) and assign the bootstrapper script to a group that includes your Cloud PCs. Monitoring then covers the first-connect enrollment (Account Setup) of the assigned user. The full setup is on [Windows 365 Cloud PCs](../getting-started/windows-365-cloud-pcs.md).
 
 </details>
 

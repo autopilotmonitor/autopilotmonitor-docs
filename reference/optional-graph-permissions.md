@@ -13,6 +13,7 @@ Autopilot Monitor's default Microsoft Graph permissions are intentionally minima
 | Feature | Required Graph permission |
 | --- | --- |
 | Resolve Intune Platform Script + Remediation display names in session timelines | `DeviceManagementScripts.Read.All` |
+| Validate [Windows 365 Cloud PCs](../getting-started/windows-365-cloud-pcs.md) against the tenant's Cloud PC inventory (feature `W365CloudPcValidation`) | `CloudPC.Read.All` |
 
 Rather than baking these permissions into the published app manifest (which would force every customer to consent to them at first sign-up, even the ones who'll never use the feature), Autopilot Monitor offers them as **opt-in tenant-side grants**. You decide per feature, you grant only what you need.
 

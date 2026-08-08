@@ -9,6 +9,7 @@
 * [Requirements & Access](getting-started/requirements-and-access.md)
 * [Portal Setup](getting-started/portal-setup.md)
 * [Deploy the Agent](getting-started/deploy-the-agent.md)
+* [Windows 365 Cloud PCs](getting-started/windows-365-cloud-pcs.md)
 * [Your First Monitored Enrollment](getting-started/your-first-monitored-enrollment.md)
 
 ## Concepts

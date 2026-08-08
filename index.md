@@ -15,6 +15,7 @@ Contributor-facing technical documentation lives in the main product repository 
 * [Requirements & Access](getting-started/requirements-and-access.md) - Prerequisites, licensing, and who needs which permissions before onboarding.
 * [Portal Setup](getting-started/portal-setup.md) - Tenant onboarding and admin consent in the portal.
 * [Deploy the Agent](getting-started/deploy-the-agent.md) - Rolling out the agent with Intune (platform script bootstrap).
+* [Windows 365 Cloud PCs](getting-started/windows-365-cloud-pcs.md) - Opt-in Cloud PC monitoring: dedicated validation method, deployment group, and what is covered.
 * [Your First Monitored Enrollment](getting-started/your-first-monitored-enrollment.md) - Walkthrough of a first end-to-end monitored Autopilot enrollment.
 
 # Concepts

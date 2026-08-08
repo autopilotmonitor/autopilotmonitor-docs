@@ -1,5 +1,10 @@
 # Log
 
+## 2026-08-08 (2)
+
+* **New page**: `getting-started/windows-365-cloud-pcs.md` — Windows 365 Cloud PC support as an opt-in per tenant: why Cloud PCs differ (headless provisioning, never Autopilot-registered), enabling Cloud PC validation (`W365CloudPcValidation` add-on with `CloudPC.Read.All` plus the settings toggle), the additional dynamic Cloud PC device group for the bootstrapper assignment, the Cloud PC flag in sessions and the "Not registered" badge, and the limitations (headless phase not monitored, Frontline shared-mode one-time install). Registered in `SUMMARY.md` after Deploy the Agent.
+* **Update**: `reference/settings.md` — third Enrollment Device Validation row for **Windows 365 Cloud PC Validation**; the at-least-one-method hint now covers all methods. `reference/optional-graph-permissions.md` — feature table row for `W365CloudPcValidation` / `CloudPC.Read.All`. `getting-started/deploy-the-agent.md` — the guard exemption paragraph now names both triggers (Windows Backup for Organizations, Cloud PC first connect with the waived uptime guard), and the assignment section points Windows 365 tenants at the Cloud PC group. `troubleshooting/faq.md` — new question "Does Autopilot Monitor support Windows 365 Cloud PCs?"; the supported-scenarios answer mentions Cloud PCs.
+
 ## 2026-08-08
 
 * **Update**: `changelog/platform-changelog.md` — new **August 2026** block: Windows 365 Cloud PC support (opt-in Cloud PC validation via Graph add-on, Cloud PC badge in Devices Not Registered), AI-assisted rule authoring via MCP, log-pattern testing with the agent's exact engine, the time-zone-skew duration fix, the duplicate Pre-Provisioning webhook fix with traffic-light notification titles, the device-validation toggle persistence fix, and a mobile & UX polish bullet.

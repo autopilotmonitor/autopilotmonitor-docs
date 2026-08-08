@@ -22,7 +22,7 @@ Before installing anything, the bootstrapper runs a series of pre-requisite guar
 | **Within bootstrap window** | Device uptime must be under 12 hours. Prevents installation on devices that have been powered on for a long time without enrolling. Sleep/standby does not reset this timer. |
 | **Agent not already installed** | If the agent binary is already present, installation is skipped. |
 
-One deliberate exemption: **Windows Backup for Organizations** restores a user's settings during OOBE, which creates a single user profile while the enrollment is still running. When the device positively reports OOBE as in progress and exactly one freshly created profile exists, the profile and logon guards do not block the install — that device is mid-enrollment, not in productive use. Any other combination keeps the original skip behavior.
+One deliberate exemption, with two triggers: a single freshly created user profile does not block the install when the device is verifiably mid-enrollment rather than in productive use. That is the case during a **Windows Backup for Organizations** restore (the device positively reports OOBE as in progress) and on a **Windows 365 Cloud PC** at the assigned user's first connect (the device positively identifies as a Cloud PC via local Windows 365 markers; the uptime guard is also waived there, since Cloud PCs run headless for days before the first sign-in — see [Windows 365 Cloud PCs](windows-365-cloud-pcs.md)). Any other combination keeps the original skip behavior.
 
 ### Try it first: dry run
 
@@ -68,7 +68,11 @@ Assign the script to the device group that covers your Autopilot devices. The tw
 (device.devicePhysicalIds -any _ -startsWith "[ZTDId]")
 ```
 
-* **All devices** — the built-in Intune group. The guards make this safe for already-provisioned machines, but without a filter the script also reaches every other managed Windows device (Teams Rooms devices, kiosks, cloud PCs, …). Prefer the dynamic Autopilot group unless you have a reason not to.
+* **All devices** — the built-in Intune group. The guards make this safe for already-provisioned machines, but without a filter the script also reaches every other managed Windows device (Teams Rooms devices, kiosks, …). Prefer the dynamic Autopilot group unless you have a reason not to.
+
+{% hint style="info" %}
+**Monitoring Windows 365?** Cloud PCs are not Autopilot-registered, so the dynamic Autopilot group does not include them. Assign the script to an additional Cloud PC group — membership rule and setup on [Windows 365 Cloud PCs](windows-365-cloud-pcs.md).
+{% endhint %}
 
 ### 4. Done
 
