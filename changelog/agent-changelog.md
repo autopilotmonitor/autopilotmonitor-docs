@@ -12,8 +12,24 @@ description: >-
 
 User-facing changes to the Autopilot Monitor agent, newest first. Only includes changes that affect agent behavior on the device.
 
+## August 2026
+
+* Windows 365 Cloud PC support — Cloud PC enrollments can now be validated and monitored (opt-in per tenant)
+* Cloud PCs are flagged in sessions and in the Devices Not Registered report
+* Devices with older bootstrap configurations no longer skip the pre-enrollment tenant-ID wait
+* Gather-rule phase and event triggers now fire in sync with the session timeline
+* Fixed inflated session durations on devices whose time zone changed during enrollment
+
 ## July 2026
 
+* WiFi network details are now collected via the native Windows API and no longer depend on the OS display language
+* Diagnostics are now uploaded when pre-provisioning (White Glove) completes
+* New opt-in gather-rule debug log for troubleshooting rule matching
+* Events replayed from before the agent started are now marked as backfilled in the timeline
+* ESP app-tracking lists refresh during enrollment, so user-phase apps are captured
+* App install durations now account for installs retried after a failure
+* A late agent start on a successful enrollment is now reported as informational instead of a warning
+* Sessions now record the average agent-to-backend API latency
 * An ESP app failure the user later resolves with "Try again" no longer fails the enrollment
 * Old IME log entries are no longer replayed as fresh script and app activity after an agent restart
 * New warning when Account Setup hangs because an ESP policy provider never finished
