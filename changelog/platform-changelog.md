@@ -12,6 +12,16 @@ This changelog tracks significant platform changes — architecture updates, dat
 
 Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
+## August 2026
+
+* **Enterprise plan is now Pro** — Same plan, new name; existing Enterprise tenants become Pro automatically. Pro now includes Bootstrap Sessions by default, and Unrestricted Mode is available on request. See [Plans](../plans.md).
+* **AI-assisted rule authoring** — An AI assistant connected via MCP can now draft an analyze or gather rule, validate it against the real schemas and on-device guardrails, and dry-run it against one of your actual sessions — all without creating or changing anything in your tenant. See [AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md).
+* **Test log patterns with the agent's real engine** — Log-parser patterns can now be tested against pasted sample log lines using the exact matching engine the agent runs on the device — online regex testers often disagree with it (case sensitivity, log-format handling). See the [worked example](../rules/ai-assisted-rule-authoring.md#example-from-a-log-file-to-timeline-events).
+* **Fixed: enrollment durations inflated by time-zone-skewed log timestamps** — A stray log line carrying a timestamp from a different time zone could pull a session's start time hours backwards and inflate the reported duration. Start times are now guarded against this, and affected sessions have been corrected.
+* **Fixed: Pre-Provisioning completion webhook fired twice** — Tenants could receive the *Pre-Provisioning Completed* card twice within a second; it now fires once. Notification titles also switched from emojis to neutral green/yellow/red status indicators, following customer feedback.
+* **Fixed: disabling device validation did not stick** — Turning off Autopilot or Corporate Identifier validation in Settings appeared to work but silently reverted; the change now actually saves.
+* **Mobile & UX polish** — The public site navigation now works on phones (Sign in was unreachable), the dashboard session list gained a **Load all** option, plus pagination, dialog, and dark-mode fixes.
+
 ## Late July 2026
 
 * **Publicly available — sign-in with tenant activation** — Autopilot Monitor left the invite-only phase: any organization can sign in with a work account; new tenants are activated automatically after a short activation step — no access request needed. See [Requirements & Access](../getting-started/requirements-and-access.md).

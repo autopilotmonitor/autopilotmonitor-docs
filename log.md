@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-08
+
+* **Update**: `changelog/platform-changelog.md` — new **August 2026** block: Enterprise plan renamed to Pro (Bootstrap Sessions included, Unrestricted Mode on request), AI-assisted rule authoring via MCP, log-pattern testing with the agent's exact engine, the time-zone-skew duration fix, the duplicate Pre-Provisioning webhook fix with traffic-light notification titles, the device-validation toggle persistence fix, and a mobile & UX polish bullet.
+
 ## 2026-08-03
 
 * **Update**: `troubleshooting/faq.md` — new Setup & Agent question **"Do I need to update the bootstrap script in Intune?"**: the Intune copy is static while the script evolves, an outdated copy can silently skip enrollments (Windows Backup for Organizations restore as the example), how to compare versions, and that actionable updates are flagged in the Platform Changelog. `getting-started/deploy-the-agent.md`: matching hint under step 1 that the script does not update itself, linking to the changelog and the FAQ.
