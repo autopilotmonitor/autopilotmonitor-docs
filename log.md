@@ -2,7 +2,7 @@
 
 ## 2026-08-08
 
-* **Update**: `changelog/platform-changelog.md` — new **August 2026** block: Enterprise plan renamed to Pro (Bootstrap Sessions included, Unrestricted Mode on request), AI-assisted rule authoring via MCP, log-pattern testing with the agent's exact engine, the time-zone-skew duration fix, the duplicate Pre-Provisioning webhook fix with traffic-light notification titles, the device-validation toggle persistence fix, and a mobile & UX polish bullet.
+* **Update**: `changelog/platform-changelog.md` — new **August 2026** block: Windows 365 Cloud PC support (opt-in Cloud PC validation via Graph add-on, Cloud PC badge in Devices Not Registered), AI-assisted rule authoring via MCP, log-pattern testing with the agent's exact engine, the time-zone-skew duration fix, the duplicate Pre-Provisioning webhook fix with traffic-light notification titles, the device-validation toggle persistence fix, and a mobile & UX polish bullet.
 
 ## 2026-08-03
 
