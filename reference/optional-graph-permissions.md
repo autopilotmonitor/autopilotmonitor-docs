@@ -23,7 +23,7 @@ The grant happens through a **tenant-local `appRoleAssignment`** on the Autopilo
 
 Behind the scenes:
 
-1. You run the `Grant-AutopilotMonitorAddOn.ps1` helper script (obtained from the admin UI — see below) with a tenant-admin sign-in.
+1. You download and run the `Grant-AutopilotMonitorAddOn.ps1` helper script (see [Downloading the script](#downloading-the-script) below) with a tenant-admin sign-in.
 2. The script finds the Autopilot Monitor service principal in your tenant by its application (client) ID.
 3. The script reads the requested feature(s), translates them to the underlying Graph permission(s), and creates a fresh `appRoleAssignment` for each — or skips it if already granted.
 4. The next time the Autopilot Monitor backend acquires a token for your tenant, Azure AD includes the new permissions in the `roles` claim. The backend uses that claim to enable or disable optional features per tenant — no further configuration on your side.
@@ -34,10 +34,18 @@ Behind the scenes:
 - The signed-in admin needs one of: **Global Administrator**, **Privileged Role Administrator**, or **Cloud Application Administrator** (sufficient for `AppRoleAssignment.ReadWrite.All` + `Application.Read.All`).
 - The `Microsoft.Graph.Authentication` PowerShell module. The script auto-installs it for the current user if missing.
 
+## Downloading the script
+
+The script is published on the Autopilot Monitor download host, next to the agent artifacts — download it directly ([Grant-AutopilotMonitorAddOn.ps1](https://download.autopilotmonitor.com/agent/Grant-AutopilotMonitorAddOn.ps1)) or fetch it from a PowerShell prompt:
+
+```powershell
+irm 'https://download.autopilotmonitor.com/agent/Grant-AutopilotMonitorAddOn.ps1' -OutFile .\Grant-AutopilotMonitorAddOn.ps1
+```
+
 ## Running the script
 
 {% hint style="info" %}
-The easiest path is to open the admin UI in Autopilot Monitor → **Settings → Optional Graph capabilities**, hit **Copy command**, and paste the resulting PowerShell into a PS prompt. The ClientId is pre-filled with the live value for your environment.
+The easiest path is to open the admin UI in Autopilot Monitor → **Settings → Optional Graph capabilities**, hit **Copy command**, and paste the resulting PowerShell into a PS prompt. The command downloads the script and runs it — the ClientId is pre-filled with the live value for your environment.
 {% endhint %}
 
 If you prefer the high-level feature form:

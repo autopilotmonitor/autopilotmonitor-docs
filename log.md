@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-10
+
+* **Update**: `reference/optional-graph-permissions.md` — new **Downloading the script** section: `Grant-AutopilotMonitorAddOn.ps1` is published on the download host next to the agent artifacts, with a direct link and an `irm … -OutFile` one-liner; the how-it-works step and the admin-UI hint now reflect that the copied command downloads the script before running it.
+
 ## 2026-08-08 (2)
 
 * **New page**: `getting-started/windows-365-cloud-pcs.md` — Windows 365 Cloud PC support as an opt-in per tenant: why Cloud PCs differ (headless provisioning, never Autopilot-registered), enabling Cloud PC validation (`W365CloudPcValidation` add-on with `CloudPC.Read.All` plus the settings toggle), the additional dynamic Cloud PC device group for the bootstrapper assignment, the Cloud PC flag in sessions and the "Not registered" badge, and the limitations (headless phase not monitored, Frontline shared-mode one-time install). Registered in `SUMMARY.md` after Deploy the Agent.
