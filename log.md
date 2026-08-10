@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-10 (3)
+
+* **Update**: `changelog/platform-changelog.md` — the Early March 2026 email-notifications entry is phase-neutral: the welcome email is sent "when a tenant joins the service".
+
 ## 2026-08-10 (2)
 
 * **Update**: `rules/gather-rules.md` — WMI collector documents property-list queries (`SELECT BatteryStatus FROM Win32_Battery`) alongside `SELECT *`, with a hint pairing them with emit mode On change; the guardrails section describes the class-based WMI rule (projections and `WHERE` allowed), the portal's enable-gating for not-allow-listed targets ("Blocked on devices" badge, GitHub-issue path for allow-list requests), and that a custom rule's Author is set from the creating account. `changelog/agent-changelog.md` + `changelog/platform-changelog.md` — August 2026 entries for the above.
@@ -27,7 +31,7 @@
 
 ## 2026-07-31
 
-* **Update**: Public availability — the Private Preview framing is removed across the bundle. `getting-started/requirements-and-access.md`: the access section is now **Getting access — tenant activation**: sign-in queues the tenant for activation automatically (usually done within a couple of minutes, screen advances on its own, optional email notification); the instability warning is reworded to continuous active development on the Community plan. `plans.md`: Community is *available now*, access is self-service with an activation step, the invite-only and preview-caveat wording is gone. `README.md` hint, `troubleshooting/faq.md` (free question), and `reference/settings.md` (contact-seed sentence) updated to match. `changelog/platform-changelog.md`: intro no longer scoped to a preview phase; new Late-July entry for public availability with tenant activation. `trust/security-faq.md`: SLA answer describes Community as free and publicly available without availability guarantee (frontmatter timestamp synced to the visible review date). `trust/data-flows.md`: Resend row now says "welcome message sent when a tenant is activated"; review date advanced to 31 July 2026.
+* **Update**: Public availability — the invite-only framing is removed across the bundle. `getting-started/requirements-and-access.md`: the access section is now **Getting access — tenant activation**: sign-in queues the tenant for activation automatically (usually done within a couple of minutes, screen advances on its own, optional email notification); the instability warning is reworded to continuous active development on the Community plan. `plans.md`: Community is *available now*, access is self-service with an activation step, the invite-only and preview-caveat wording is gone. `README.md` hint, `troubleshooting/faq.md` (free question), and `reference/settings.md` (contact-seed sentence) updated to match. `changelog/platform-changelog.md`: intro no longer scoped to a preview phase; new Late-July entry for public availability with tenant activation. `trust/security-faq.md`: SLA answer describes Community as free and publicly available without availability guarantee (frontmatter timestamp synced to the visible review date). `trust/data-flows.md`: Resend row now says "welcome message sent when a tenant is activated"; review date advanced to 31 July 2026.
 
 ## 2026-07-27 (2)
 

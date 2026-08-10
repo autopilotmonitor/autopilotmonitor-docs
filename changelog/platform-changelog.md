@@ -155,7 +155,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 * **Enrollment summary dialog** — Optional summary dialog shown at the end of enrollment.
 * **Original ESP tracking** — The agent tracks the original ESP provisioning status to catch non-IME errors such as certificate failures.
 * **Analyze & gather rules** — Negative compare operators for analyze rules, XML/JSON gather options, and a built-in "old OS version" warning rule.
-* **Email notifications** — Welcome and instructions email when joining the Private Preview.
+* **Email notifications** — Welcome and instructions email when a tenant joins the service.
 * **Agent version management** — Block specific agent versions from connecting, plus expanded data-retention configuration.
 * **Install progress** — The agent install progress page now shows download and install phases with elapsed time.
 * **TPM info collection** — TPM details are now collected at enrollment time.
