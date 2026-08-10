@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-10 (2)
+
+* **Update**: `rules/gather-rules.md` — WMI collector documents property-list queries (`SELECT BatteryStatus FROM Win32_Battery`) alongside `SELECT *`, with a hint pairing them with emit mode On change; the guardrails section describes the class-based WMI rule (projections and `WHERE` allowed), the portal's enable-gating for not-allow-listed targets ("Blocked on devices" badge, GitHub-issue path for allow-list requests), and that a custom rule's Author is set from the creating account. `changelog/agent-changelog.md` + `changelog/platform-changelog.md` — August 2026 entries for the above.
+
 ## 2026-08-10
 
 * **Update**: `reference/optional-graph-permissions.md` — new **Downloading the script** section: `Grant-AutopilotMonitorAddOn.ps1` is published on the download host next to the agent artifacts, with a direct link and an `irm … -OutFile` one-liner; the how-it-works step and the admin-UI hint now reflect that the copied command downloads the script before running it.

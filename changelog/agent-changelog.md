@@ -14,6 +14,7 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
+* WMI gather rules can now select specific properties (e.g. `SELECT BatteryStatus FROM Win32_Battery`) instead of only `SELECT *`
 * Windows 365 Cloud PC support — Cloud PC enrollments can now be validated and monitored (opt-in per tenant)
 * Cloud PCs are flagged in sessions and in the Devices Not Registered report
 * Devices with older bootstrap configurations no longer skip the pre-enrollment tenant-ID wait

@@ -10,7 +10,7 @@ description: >-
 
 Gather rules define **what extra data the agent collects** from the device during enrollment. Each rule specifies a **collector type** (how to collect), a **target** (what to collect), optional **parameters**, and a **trigger** (when to collect). Results arrive as events in the session timeline — where [analyze rules](analyze-rules/README.md) can grade them automatically.
 
-A set of maintained built-in and community gather rules ships with the product; your own rules are created on the **Gather Rules** page.
+A set of maintained built-in and community gather rules ships with the product; your own rules are created on the **Gather Rules** page. The **Author** of a custom rule is set automatically from the signed-in account that creates it and stays unchanged through later edits.
 
 ## Collector types
 
@@ -18,7 +18,7 @@ A set of maintained built-in and community gather rules ships with the product; 
 | --- | --- | --- |
 | **Registry** | Values of a key (or subkey names with `listSubkeys`) — reads the 64-bit view by default, with `emitOnlyIfExists` to only emit when the key is actually present | `HKLM\SOFTWARE\Microsoft\PolicyManager\current\device` |
 | **Event Log** | Entries from classic or operational Windows event logs, filterable by event ID, source, and message | `Microsoft-Windows-Shell-Core/Operational`, event ID `62407`, filter `*ESPProgress*` |
-| **WMI Query** | Results of a full WQL `SELECT` statement against allow-listed classes | `SELECT * FROM Win32_NetworkAdapterConfiguration` |
+| **WMI Query** | Results of a full WQL `SELECT` statement against allow-listed classes — `SELECT *` or a comma-separated property list | `SELECT BatteryStatus FROM Win32_Battery` |
 | **File** | File/directory existence, size, and optionally content (last 4,000 characters, files < 50 KB) | `C:\Windows\Panther\setuperr.log` with `readContent: true` |
 | **Command (Allowlisted)** | Output of a **pre-approved** PowerShell/CLI command — exact allow-list match only | `Get-Tpm` |
 | **Log Parser** | Regex matches (named capture groups) from log files — CMTrace or plain-text format, with position tracking and filename wildcards | `%ProgramData%\...\IntuneManagementExtension\Logs\AppWorkload*.log` |
@@ -102,6 +102,10 @@ With **On change**, the first collection always emits (on an absent registry key
 
 Collectors whose output is inherently volatile (event-log entries with timestamps, log parsers with position tracking) change on every poll — for those, **On change** effectively behaves like **Always**.
 
+{% hint style="info" %}
+**Pair On change with a WMI property list.** `SELECT * FROM Win32_Battery` returns *every* property — including the charge percentage, which fluctuates constantly, so an On-change rule emits on almost every poll. Selecting only what you care about — `SELECT BatteryStatus FROM Win32_Battery` — keeps the timeline silent until that property actually changes (e.g. the device is unplugged from AC power).
+{% endhint %}
+
 ## What the data looks like
 
 Each execution emits one event with the rule's configured **output event type** and severity. The collected values live in the event's `data` field — and that's exactly what analyze rules reference via `dataField`:
@@ -127,7 +131,7 @@ A gather rule is a **declarative collector definition, not a script**. There is 
 | **Registry** | Path must fall under an approved prefix — segment-bounded, so subkeys of an allowed prefix are fine and sibling keys are not (`SOFTWARE\Microsoft\Enrollments` admits `…\Enrollments\ABC`, never `…\EnrollmentsOther`) |
 | **File / JSON / XML / Log Parser** | Path must resolve within an approved directory. Paths are normalized before the check, so `..\` traversal cannot escape it |
 | **Event Log** | Channel must be on the approved list, matched on a `/` boundary |
-| **WMI** | Query must begin with an approved `SELECT … FROM <class>` |
+| **WMI** | Query must be `SELECT … FROM <class>` against an approved class — `SELECT *` or a property list. Selecting specific properties is always fine: it returns a subset of what `SELECT *` already exposes. A trailing `WHERE` clause is allowed |
 | **Command** | Must match an entry on the allow-list **exactly** — not by prefix. Arbitrary commands are impossible, and the command is passed to PowerShell base64-encoded so nothing can be appended to it |
 
 The approved prefixes are the enrollment-relevant ones: MDM and Entra join state, Windows Update, BitLocker, TPM, Secure Boot, proxy configuration, the Intune Management Extension, the Autopilot/OOBE enrollment tracking state (including the ESP's `EnrollmentStatusTracking` policy-provider registrations), and the setup and servicing logs under `C:\Windows` and `C:\ProgramData`. The command allow-list holds roughly fifteen read-only diagnostic commands — `Get-Tpm`, `dsregcmd /status`, `ipconfig /all`, `netsh winhttp show proxy` and their kin. The definitive lists live in [`rules/guardrails.json`](https://github.com/okieselbach/Autopilot-Monitor/blob/main/rules/guardrails.json) in the public repository, so you can read them without taking our word for it.
@@ -135,6 +139,8 @@ The approved prefixes are the enrollment-relevant ones: MDM and Entra join state
 **Limits that always apply, regardless of the rule:** command output is capped at 32 KB and the process is killed after 30 seconds; file reads are limited to the last 4,000 characters of files under 50 KB; registry reads return at most 100 subkeys or 50 values; WMI returns at most 20 objects; event logs at most 50 entries.
 
 **Nothing fails silently.** A rule targeting anything outside the allow-lists is blocked and the agent emits a **`security_warning` event** into the session timeline, naming the rule and the target it tried to reach. A misconfiguration and an attempt to overreach look the same from the outside — and both are visible to you.
+
+The portal keeps you out of that situation in the first place: a custom rule whose target is not on the allow-lists shows **Not allowed** next to the target and **cannot be enabled** — it can still be saved as a draft, a new one is created disabled, and an edit that makes the target invalid disables the rule. If a rule slipped into the enabled state anyway, its row shows a **Blocked on devices** badge. Think a target should be on the allow-list? Request an addition via a [GitHub issue](https://github.com/okieselbach/AutopilotMonitor/issues) — the lists are maintained in the open.
 
 {% hint style="danger" %}
 **Hard blocks — these hold even in Unrestricted Mode and cannot be enabled by any configuration:**
