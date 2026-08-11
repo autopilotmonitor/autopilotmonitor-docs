@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-11
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — new **Annotations** section bullet in the session-detail stack: per-role human verdicts on a session's analysis (Operator and Tenant Admin lanes, structured verdict + free-text note, Viewers read-only). `integrations/ai-integration-mcp.md` — `get_session_summary` now lists annotations among its returned data.
+
 ## 2026-08-10 (3)
 
 * **Update**: `changelog/platform-changelog.md` — the Early March 2026 email-notifications entry is phase-neutral: the welcome email is sent "when a tenant joins the service".
