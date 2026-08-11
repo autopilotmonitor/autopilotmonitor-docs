@@ -2,7 +2,7 @@
 
 ## 2026-08-11
 
-* **Update**: `portal-guide/session-details-and-diagnosis.md` — new **Annotations** section bullet in the session-detail stack: per-role human verdicts on a session's analysis (Operator and Tenant Admin lanes, structured verdict + free-text note, Viewers read-only). `integrations/ai-integration-mcp.md` — `get_session_summary` now lists annotations among its returned data.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — new **Annotations** section: per-role human verdicts on a session's analysis (verdict vocabulary, who can write which annotation, Viewers read-only, collapsed-by-default behavior, rule-quality feedback loop, inclusion in session-report packages) plus the stack bullet linking to it. `integrations/ai-integration-mcp.md` — `get_session_summary` now lists annotations among its returned data.
 
 ## 2026-08-10 (3)
 

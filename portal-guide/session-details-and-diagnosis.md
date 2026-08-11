@@ -3,7 +3,8 @@ type: Feature Guide
 tags: [portal, sessions, diagnosis, timeline]
 description: >-
   Deep-diving one enrollment — device details, live timeline, automated
-  analysis, time attribution, device history, and the guided diagnosis view.
+  analysis, annotations, time attribution, device history, and the guided
+  diagnosis view.
 ---
 
 # Session Details & Diagnosis
@@ -19,7 +20,7 @@ Opening a session from the dashboard shows everything Autopilot Monitor knows ab
 
 <figure><img src="../.gitbook/assets/session-analysis-finding.png" alt="An expanded analyze-rule finding card with severity, confidence, explanation, remediation steps, and evidence"><figcaption><p>An expanded finding: severity and confidence at the top, the explanation and remediation steps in the middle, and the raw evidence — with a link to the exact triggering event — at the bottom.</p></figcaption></figure>
 
-* **Annotations** — a human verdict on the session's analysis, recorded per role: Operators and Tenant Admins each get their own annotation with a structured verdict (*Root cause confirmed*, *Analysis wrong*, *Different problem*, *Inconclusive*) and a free-text note. Annotations record what actually turned out to be wrong — confirmations and corrections directly improve the quality of the analysis rules over time. Viewers see annotations read-only.
+* **Annotations** — your team's own verdict on the session, next to the automated analysis. See [Annotations](#annotations).
 * **Performance** — charts from the periodic performance snapshots.
 * **Script Executions** — platform and remediation scripts with their output (stdout visibility is a [tenant setting](../reference/settings.md#agent-parameters); stderr is always shown).
 * **Downloads / Install Progress** — per-app download progress and the full install lifecycle. Rows that do not come from the Intune Management Extension carry a small source pill — **Click-to-Run** for the Microsoft 365 Apps installation (with a live timer) and **RealmJoin** for RealmJoin packages — so a Win32 app and the underlying installer it triggers are visibly two different rows instead of looking like a duplicate.
@@ -46,6 +47,30 @@ Once an enrollment has finished with a real verdict — *Succeeded* or *Failed* 
 The breakdown is written when the enrollment finishes. Sessions from the **last 30 days** that finished before this feature shipped are filled in by the regular maintenance pass; older sessions stay without one.
 
 The fleet-wide view of the same data — medians per enrollment class and the apps that cost the most across all enrollments — is on [Fleet Health](fleet-health.md#time-attribution).
+
+## Annotations
+
+The automated analysis says what the rules *think* happened; the **Annotations** section, directly below it, records what your team *knows* happened. Once a session has been investigated, whoever worked it leaves a structured verdict plus an optional note — so the conclusion travels with the session instead of living in a ticket, a chat thread, or someone's memory.
+
+An annotation has two parts:
+
+* A **verdict** about the automated analysis: **Root cause confirmed** (the analysis was right), **Analysis wrong** (it pointed at the wrong cause), **Different problem** (the real issue was something the rules did not cover), or **Inconclusive**.
+* A free-text **note** — what actually happened, what the analysis missed, what fixed it.
+
+Either part can stand alone: a quick verdict without a note is fine, and so is a note without a verdict.
+
+Annotations are recorded **per role**, so an Operator's field observation and a Tenant Admin's conclusion coexist without overwriting each other:
+
+* The **Operator** annotation can be written by Operators and Tenant Admins.
+* The **Tenant Admin** annotation can be written by Tenant Admins only.
+* **Viewers** see all annotations read-only.
+
+Each annotation shows its author and last-edited time. Saving again overwrites that role's previous verdict and note; clearing both fields removes it. The section starts collapsed — the header shows at a glance whether a verdict has been recorded, without taking space from the diagnosis work above it.
+
+Two things make annotations worth the ten seconds they take:
+
+* **They close the loop on rule quality.** Every annotation records which analysis rules had fired at the time, so confirmations and corrections show — per rule — where the analysis is right and where it misleads. That is what drives rule improvements over time.
+* **They travel with a report.** When someone [reports a session](#session-detail), the annotations are included in the report package — the investigating team starts from your team's own conclusion instead of from zero.
 
 ## On-demand log collection
 
