@@ -54,7 +54,7 @@ The automated analysis says what the rules *think* happened; the **Annotations**
 
 An annotation has two parts:
 
-* A **verdict** about the automated analysis: **Root cause confirmed** (the analysis was right), **Analysis wrong** (it pointed at the wrong cause), **Different problem** (the real issue was something the rules did not cover), or **Inconclusive**.
+* A **verdict** about the automated analysis: **Root cause confirmed** (the analysis was right), **Analysis wrong** (it pointed at the wrong cause), **Different problem** (the real issue was something the rules did not cover), or **Inconclusive** (the investigation ended without a clear answer).
 * A free-text **note** — what actually happened, what the analysis missed, what fixed it.
 
 Either part can stand alone: a quick verdict without a note is fine, and so is a note without a verdict.
