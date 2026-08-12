@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-12
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — the Annotations section documents the new sidebar **Annotations** overview page (under *Monitoring*): every annotation in the tenant, filterable by verdict and role, each row deep-linking to its session's annotation section.
+
 ## 2026-08-11
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — new **Annotations** section: per-role human verdicts on a session's analysis (verdict vocabulary, who can write which annotation, Viewers read-only, collapsed-by-default behavior, rule-quality feedback loop, inclusion in session-report packages) plus the stack bullet linking to it. `integrations/ai-integration-mcp.md` — `get_session_summary` now lists annotations among its returned data.
