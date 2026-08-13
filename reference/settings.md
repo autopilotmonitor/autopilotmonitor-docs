@@ -8,7 +8,7 @@ description: >-
 
 # Settings Reference
 
-The **Settings / Configuration** area (managed by Tenant Admins; Operators see it read-only with secrets redacted, except Bootstrap Sessions if granted) controls how Autopilot Monitor behaves for your tenant. Settings are grouped into **Tenant**, **Agent**, **Maintenance**, and **Reporting**.
+The **Settings / Configuration** area (managed by Tenant Admins; Operators and Viewers see it read-only with secrets redacted, except Bootstrap Sessions for Operators if granted) controls how Autopilot Monitor behaves for your tenant. Settings are grouped into **Tenant**, **Agent**, **Maintenance**, and **Reporting**.
 
 {% hint style="info" %}
 Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** is included in the Pro plan and appears automatically; for Community tenants it can be unlocked on request (open a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues)). **Unrestricted Mode** is a Pro-plan capability that is additionally activated on request — it only appears after the platform operators have enabled it for your tenant.
@@ -20,7 +20,7 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** is inclu
 
 | Setting | Description |
 | --- | --- |
-| Team Members & Roles | Add members by UPN, assign **Admin** or **Operator**, enable/disable accounts, and grant bootstrap-token management. The first user to sign in becomes Admin automatically. See [Roles & Permissions](../concepts/roles-and-permissions.md). |
+| Team Members & Roles | Add members by UPN, assign **Admin**, **Operator**, or **Viewer**, enable/disable accounts, and grant bootstrap-token management. The first user to sign in becomes Admin automatically. See [Roles & Permissions](../concepts/roles-and-permissions.md). |
 
 ### Enrollment Device Validation
 
