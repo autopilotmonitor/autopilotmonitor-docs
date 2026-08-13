@@ -22,7 +22,8 @@ The app-install health view across all enrollments:
 Clicking an app opens its detail page — the place to answer *"is this app hurting our enrollments, and where?"*:
 
 * Summary cards including **Trend** and **Flakiness** (share of installs that needed retries), plus a *"detection lies"* warning when installs reported success but the detection rule couldn't find the app afterwards.
-* Charts: installs over time (stacked success/failure), install duration over time, **failure rate by app version**, and installer phase breakdown.
+* Charts: installs over time (stacked success/failure), install duration over time, **failure rate by app version**, **median install duration by app version** (measured installs only), and installer phase breakdown.
+* A **duration regression banner** when a newly rolled-out version installs markedly slower than its predecessor — *"median install duration rose from 11 to 29 min after version X"*, with the sample counts behind both medians. The comparison uses medians over measured installs only and needs enough samples on both sides, so a single outlier never raises it; tenant admins also get a one-time [notification](../integrations/notifications.md#in-portal-alerts) per (app, version). The banner clears on its own once the version's median recovers or the version is superseded.
 * **Top Failure Codes** with human-readable descriptions from a built-in error-code map, and **Device Model Correlation** with a *lift vs. baseline* multiplier that flags models failing disproportionately for this app.
 * An **Affected Sessions** panel (filter Failed/All/Succeeded, configurable columns) linking straight to each session.
 

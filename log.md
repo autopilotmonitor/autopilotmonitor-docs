@@ -1,5 +1,12 @@
 # Log
 
+## 2026-08-13
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — the Analysis stack bullet now covers both fleet-context notes on a finding card ("fires on X %" over 30 days, "fired in N enrollments in the last 14 days") and the **View sessions** link that opens the dashboard filtered to the enrollments where the rule fired.
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — per-app deep dive: **median install duration by app version** chart (measured installs only) and the **duration regression banner** (median vs. previous version, sample counts, one-time admin notification, self-clearing).
+* **Update**: `integrations/notifications.md` — In-portal alerts table: new **App version installs slower** row (Tenant Admins, once per app/version, links to the app detail page).
+* **Update**: `changelog/platform-changelog.md` — August 2026 entries for app-version duration regression alerts and fleet context on analysis findings.
+
 ## 2026-08-12
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — the Annotations section documents the new sidebar **Annotations** overview page (under *Monitoring*): every annotation in the tenant, filterable by verdict and role, each row deep-linking to its session's annotation section.
