@@ -17,9 +17,11 @@ These hosts are operated by Autopilot Monitor and are the ones you may need to a
 | Host | Purpose | Who connects |
 | --- | --- | --- |
 | `download.autopilotmonitor.com` | Agent package + integrity manifest download (bootstrap) | Enrolling devices |
+| `autopilotmonitor.blob.core.windows.net` | Legacy agent download host — still used by bootstrap scripts deployed to Intune before the `download.` host existed | Enrolling devices — only if your Intune tenant still runs an older bootstrap script |
 | `go.autopilotmonitor.com` | OOBE bootstrap script (`irm https://go.autopilotmonitor.com/CODE \| iex`) | Enrolling devices — only if you use **Bootstrap Sessions** |
 | `autopilotmonitor-api-eu.azurewebsites.net` | Telemetry ingest and portal API | Enrolling devices **and** admin browsers |
 | `www.autopilotmonitor.com` | Portal web app (sign-in and UI) | Admin browsers |
+| `portal.autopilotmonitor.com` | Portal deep links used in notifications and e-mails | Admin browsers |
 | `mcp.autopilotmonitor.com` | Read-only MCP telemetry server (optional AI integration) | AI/MCP clients |
 
 {% hint style="info" %}
