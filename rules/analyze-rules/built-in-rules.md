@@ -10,6 +10,8 @@ description: >-
 
 Autopilot Monitor ships with 43 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
 
+Most device-phase rules are additionally evaluated **when WhiteGlove pre-provisioning completes** — findings from the technician phase (app failures, low disk, tampering indicators, firmware and clock problems, critical vulnerabilities) appear at the seal, while the technician is still at the device, instead of days later when the user finishes the enrollment. A handful of rules also evaluate the moment their triggering event arrives (e.g. a failed app install, a failed Windows Update, a TPM attestation error). Early findings behave as described in [Concepts → Evaluation triggers](concepts.md#evaluation-triggers-when-a-rule-runs): they are preliminary, notify at most once, and are confirmed or resolved by the final analysis. Rules whose evidence only exists at the end of a session (explicit failure, timeout, user-phase rules) stay enrollment-end only.
+
 Built-in rules are updated with the product — fixes and improvements arrive automatically while your enable/disable choices are preserved. Rules that are retired are cleanly removed from all tenants.
 
 ## Apps
