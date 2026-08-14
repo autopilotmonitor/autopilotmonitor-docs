@@ -1,5 +1,12 @@
 # Log
 
+## 2026-08-14
+
+* **Update**: `rules/analyze-rules/concepts.md` — new section **Evaluation triggers — when a rule runs**: the enrollment-end default, the `whiteglove_sealed` and `on_event:<eventType>` interim triggers, how Preliminary/Resolved findings behave (single notification, no mid-run session failure, enrollment-end-only statistics), interim-safe rule guidance, and the blocked high-frequency trigger types.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — catalog caught up to the shipped set (32 → 43 rules): added ANALYZE-APP-014/015, ESP-005/006, ENRL-003/004/005, DEV-006/007, ID-004, SEC-008; ENRL-002 entry now points at the user-phase reading and ID-004.
+* **Update**: `rules/analyze-rules/README.md` — portal section: **Evaluation triggers** bullet (editor section, Preliminary findings).
+* **Update**: `changelog/platform-changelog.md` — August 2026 entry for interim rule evaluation (evaluation triggers, Preliminary/Resolved findings, ANALYZE-ID-004 and ANALYZE-APP-015).
+
 ## 2026-08-13
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — the Analysis stack bullet now covers both fleet-context notes on a finding card ("fires on X %" over 30 days, "fired in N enrollments in the last 14 days") and the **View sessions** link that opens the dashboard filtered to the enrollments where the rule fired.

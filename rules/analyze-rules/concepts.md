@@ -74,6 +74,38 @@ flowchart LR
 2. **Conditions** — all conditions marked `"required": true` must match. Optional conditions (`"required": false`) don't block the rule; they collect additional evidence and can feed confidence factors. At least one condition must match overall — a rule with only optional conditions never fires vacuously.
 3. **Confidence** — the score starts at `baseConfidence`, each matched confidence factor adds its `weight`, the total is capped at 100. The finding is only shown if the score reaches `confidenceThreshold`.
 
+## Evaluation triggers — when a rule runs
+
+By default, every rule is evaluated once, **at enrollment end** — when the session completes, fails, or times out. That is the right moment for almost every rule: the full evidence is in, and suppressions like "don't fire when the enrollment completed" work as intended.
+
+Some problems deserve attention *before* the session is over — a device looping in Account Setup for hours, or a finding a technician should see while still standing at the WhiteGlove bench. For those, a rule can declare additional **evaluation triggers** (`evaluateOn` in the JSON, the **Evaluation Triggers** section in the rule editor):
+
+| Trigger | The rule is evaluated… |
+| --- | --- |
+| `enrollment_end` | at session end (complete / failed / timed out) — the default, recommended for almost every rule |
+| `whiteglove_sealed` | when WhiteGlove pre-provisioning completes and the session is sealed for the user phase — the technician is still at the device |
+| `on_event:<eventType>` | whenever the agent reports an event of that type while the enrollment is running (e.g. `hybrid_login_pending`) |
+
+### How interim findings behave
+
+A finding produced before enrollment end is **preliminary**: it appears live on the session page with a *Preliminary* badge and is re-checked by the final analysis at enrollment end. If the condition still holds, the finding is confirmed; if the session healed in the meantime, it is marked *Resolved* — kept for reference, but no longer counted as an open issue.
+
+Interim evaluation is deliberately conservative:
+
+* **Notifications fire once.** Each finding notifies its channels at most once per session, no matter how often it is re-evaluated — an interim alert followed by the final analysis never produces a duplicate.
+* **"Mark session as failed" never applies mid-run.** A knock-out rule only fails a session at enrollment end; an interim pass can never terminate a running enrollment.
+* **Statistics stay clean.** Fire statistics, hit rates, and regression detection count each finding once, at enrollment end.
+
+### Writing interim-safe rules
+
+A rule that runs mid-enrollment sees an *incomplete* session, so its logic must not depend on the session being over:
+
+* A precondition like `enrollment_complete` *not\_exists* passes trivially while the enrollment is still running — it only suppresses at enrollment end. Don't rely on it as the only guard.
+* Prefer conditions that stay true once they became true, and gate on **repetition**: require a signal to occur more than once (confidence factors with `count >= N` and a threshold above the base confidence) so a single transient event doesn't raise a preliminary finding on a healthy session.
+* High-frequency telemetry event types (performance snapshots, download progress, network state changes, …) are **blocked** as `on_event` triggers — the editor and the API reject them, because they would re-run analysis on effectively every data batch.
+
+The built-in rule **ANALYZE-ID-004** (hybrid sign-in never establishes Entra user affinity) is a worked example: it triggers on `hybrid_login_pending` events, but its confidence threshold requires the overdue-login signal to repeat across reboots before a preliminary finding appears.
+
 ## Condition sources
 
 The `source` field selects *how* a condition looks at the event stream:

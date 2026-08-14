@@ -28,6 +28,7 @@ Findings appear as cards on the session detail page and feed the analysis summar
 The **Analyze Rules** page (requires the Admin or Operator role; editing requires Admin) shows all rules with search, severity/category filters, and type filters (Built-in / Community / Custom). Each rule card offers:
 
 * **Enable/disable** per tenant — your choice is preserved across product updates.
+* **Evaluation triggers** — by default a rule runs at enrollment end; custom rules can additionally run while the enrollment is still in progress (at the WhiteGlove seal or when specific events arrive). Such findings appear live as *Preliminary* and are confirmed or resolved by the final analysis — see [Concepts → Evaluation triggers](concepts.md#evaluation-triggers-when-a-rule-runs).
 * **Mark session as failed** — a per-rule toggle that makes a firing rule fail the whole session (a "knock-out criterion"). A few built-ins ship with this on by default; you can override it.
 * **Fire statistics** — how often the rule fired and its hit rate over the last 30 days, plus a 30-day sparkline of daily fires, so you can see which rules actually earn their keep in your environment.
 * **Regression badge** — a red **↑ Regression** badge appears while a rule is firing markedly more often than it used to (see below).
