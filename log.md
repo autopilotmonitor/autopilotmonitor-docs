@@ -1,5 +1,10 @@
 # Log
 
+## 2026-08-15
+
+* **Update**: `portal-guide/progress-portal.md` — the serial number is the access key for roleless users: the full, exact serial (or exact device name) is required and ties every view of a device, including live updates, to it; users with a portal role keep partial search. Rollout tip notes the serial doubles as the access key.
+* **Update**: `trust/security-faq.md` — Tenant Isolation: roleless Progress Portal users present the device serial for every session view (search, reads, live stream); no device list reaches the browser and a session identifier alone grants nothing. Last-reviewed date bumped.
+
 ## 2026-08-14
 
 * **Update**: `rules/analyze-rules/concepts.md` — new section **Evaluation triggers — when a rule runs**: the enrollment-end default, the `whiteglove_sealed` and `on_event:<eventType>` interim triggers, how Preliminary/Resolved findings behave (single notification, no mid-run session failure, enrollment-end-only statistics), interim-safe rule guidance, and the blocked high-frequency trigger types.
