@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-17
+
+* **New**: `troubleshooting/hybrid-join-stuck-in-account-setup.md` — the second hybrid failure mode: device hybrid join succeeds but the signed-in user never establishes Entra user affinity (no PRT), so Account Setup re-runs on every logon and the Windows Hello wizard never appears. Recognition (AzureAdPrt : NO, overdue sign-in warnings across reboots, ESP 0/x), causes (no DC line of sight at the logon screen / user-context-only VPN, sync scope, UPN suffix, blocked endpoints), ordered checks, Hello-on-hybrid guidance (cloud Kerberos trust, explicit disable), and structural mitigations (pre-provisioning, wired first sign-in, update deferral). Cross-linked with the late-device-registration article.
+
 ## 2026-08-15
 
 * **Update**: `portal-guide/progress-portal.md` — the serial number is the access key for roleless users: the full, exact serial (or exact device name) is required and ties every view of a device, including live updates, to it; users with a portal role keep partial search. Rollout tip notes the serial doubles as the access key.
