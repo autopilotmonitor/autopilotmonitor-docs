@@ -10,6 +10,7 @@
 * [Portal Setup](getting-started/portal-setup.md)
 * [Deploy the Agent](getting-started/deploy-the-agent.md)
 * [Windows 365 Cloud PCs](getting-started/windows-365-cloud-pcs.md)
+* [Autopilot Device Preparation](getting-started/autopilot-device-preparation.md)
 * [Your First Monitored Enrollment](getting-started/your-first-monitored-enrollment.md)
 
 ## Concepts

@@ -16,6 +16,7 @@ Contributor-facing technical documentation lives in the main product repository 
 * [Portal Setup](getting-started/portal-setup.md) - Tenant onboarding and admin consent in the portal.
 * [Deploy the Agent](getting-started/deploy-the-agent.md) - Rolling out the agent with Intune (platform script bootstrap).
 * [Windows 365 Cloud PCs](getting-started/windows-365-cloud-pcs.md) - Opt-in Cloud PC monitoring: dedicated validation method, deployment group, and what is covered.
+* [Autopilot Device Preparation](getting-started/autopilot-device-preparation.md) - Device Preparation monitoring: MSI line-of-business delivery ahead of the app phase, enrollment-time group scoping, Corporate Identifier validation.
 * [Your First Monitored Enrollment](getting-started/your-first-monitored-enrollment.md) - Walkthrough of a first end-to-end monitored Autopilot enrollment.
 
 # Concepts

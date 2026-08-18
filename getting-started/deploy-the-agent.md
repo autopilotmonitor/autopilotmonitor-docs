@@ -74,6 +74,10 @@ Assign the script to the device group that covers your Autopilot devices. The tw
 **Monitoring Windows 365?** Cloud PCs are not Autopilot-registered, so the dynamic Autopilot group does not include them. Assign the script to an additional Cloud PC group — membership rule and setup on [Windows 365 Cloud PCs](windows-365-cloud-pcs.md).
 {% endhint %}
 
+{% hint style="info" %}
+**Using Autopilot Device Preparation?** There the platform script runs only *after* the app phase — too late for full monitoring. Deploy the agent via the MSI line-of-business app instead; setup on [Autopilot Device Preparation](autopilot-device-preparation.md).
+{% endhint %}
+
 ### 4. Done
 
 Once the script runs on an enrolling device, the agent installs itself, creates a scheduled task under SYSTEM, and begins monitoring immediately. The session appears on your dashboard within seconds of the agent starting.

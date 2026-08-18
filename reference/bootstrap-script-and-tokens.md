@@ -10,7 +10,7 @@ description: >-
 
 ## The bootstrap script
 
-`Install-AutopilotMonitor.ps1` is the only thing you deploy (as an Intune platform script — see [Deploy the Agent](../getting-started/deploy-the-agent.md)). On each device it:
+`Install-AutopilotMonitor.ps1` is the only thing you deploy (as an Intune platform script — see [Deploy the Agent](../getting-started/deploy-the-agent.md)). The one exception is [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md), where a thin MSI line-of-business app delivers this same script over the MDM channel. On each device it:
 
 1. Evaluates the **pre-requisite guards** — registry deployment marker, no real user profiles, no previous interactive logon, device uptime under 12 hours, agent not already present. All must pass, otherwise the script exits silently without changing anything.
 2. **Downloads the agent package** from the distribution endpoint and verifies its **SHA-256 hash** against the published value — a mismatch aborts the installation.

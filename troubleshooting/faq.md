@@ -20,7 +20,7 @@ Autopilot Monitor gives IT admins real-time visibility into Windows Autopilot en
 
 <summary>Which Autopilot scenarios are supported?</summary>
 
-**User-Driven** and **Pre-Provisioned** (White Glove) Windows Autopilot flows are fully supported, as are self-deploying/kiosk profiles. **Autopilot Device Preparation** is supported in early testing. **Windows 365 Cloud PCs** are supported as an opt-in per tenant — see the next question.
+**User-Driven** and **Pre-Provisioned** (White Glove) Windows Autopilot flows are fully supported — for **Entra joined** and **Hybrid joined** devices alike — as are self-deploying/kiosk profiles. **Autopilot Device Preparation** is supported (early, actively evolving) and uses its own agent delivery channel — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md). **Windows 365 Cloud PCs** are supported as an opt-in per tenant — see the next question. The full overview: [supported enrollment scenarios](../getting-started/how-it-works.md#supported-enrollment-scenarios).
 
 </details>
 
@@ -58,7 +58,7 @@ Data retention is [configurable per tenant](../reference/settings.md#data-manage
 
 <summary>How do I deploy the agent?</summary>
 
-Via an Intune platform script — the [Deploy the Agent](../getting-started/deploy-the-agent.md) guide covers it step by step, including the safety guards and a dry-run tester.
+Via an Intune platform script — the [Deploy the Agent](../getting-started/deploy-the-agent.md) guide covers it step by step, including the safety guards and a dry-run tester. For **Autopilot Device Preparation** enrollments the agent is instead delivered as a small MSI line-of-business app, because the platform script would arrive after the app phase there — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md).
 
 </details>
 

@@ -1,5 +1,12 @@
 # Log
 
+## 2026-08-18
+
+* **New**: `getting-started/autopilot-device-preparation.md` — Device Preparation (Autopilot v2) monitoring guide: why the flow differs (apps before scripts, no ESP, never Autopilot-registered), agent delivery as an MSI line-of-business app assigned to the Device Preparation policy's enrollment-time device group, Corporate Identifier validation via manufacturer/model/serial CSV, portal behavior, limitations, and the early-support feedback channel (GitHub issues).
+* **Update**: `getting-started/how-it-works.md` — new **Supported enrollment scenarios** section: the canonical scenario table (user-driven, pre-provisioning, self-deploying, Device Preparation, Windows 365; Entra join and Hybrid join).
+* **Update**: `troubleshooting/faq.md` — scenario answer now covers Entra/Hybrid join and links the Device Preparation page; deploy answer mentions the MSI line-of-business channel for Device Preparation.
+* **Update**: `getting-started/requirements-and-access.md`, `getting-started/deploy-the-agent.md`, `reference/bootstrap-script-and-tokens.md`, `index.md`, `SUMMARY.md` — aligned to the scenario overview and the new Device Preparation page.
+
 ## 2026-08-17
 
 * **New**: `troubleshooting/hybrid-join-stuck-in-account-setup.md` — the second hybrid failure mode: device hybrid join succeeds but the signed-in user never establishes Entra user affinity (no PRT), so Account Setup re-runs on every logon and the Windows Hello wizard never appears. Recognition (AzureAdPrt : NO, overdue sign-in warnings across reboots, ESP 0/x), causes (no DC line of sight at the logon screen / user-context-only VPN, sync scope, UPN suffix, blocked endpoints), ordered checks, Hello-on-hybrid guidance (cloud Kerberos trust, explicit disable), and structural mitigations (pre-provisioning, wired first sign-in, update deferral). Cross-linked with the late-device-registration article.

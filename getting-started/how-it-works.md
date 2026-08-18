@@ -47,6 +47,18 @@ sequenceDiagram
 4. **You watch it live in the portal.** The session appears on the dashboard seconds after the agent starts. The timeline shows ESP phases, every app install with its outcome, scripts, policies, and any rule findings — while the device is still sitting at the Enrollment Status Page.
 5. **The agent removes itself.** Once enrollment completes, the agent performs a final upload, optionally collects a diagnostics package, and self-destructs. Only a small registry marker remains, which prevents the agent from ever being installed on that device again.
 
+## Supported enrollment scenarios
+
+Autopilot Monitor covers the full breadth of Intune Windows enrollment — for **Microsoft Entra joined** and **Hybrid joined** devices alike:
+
+| Scenario | Notes |
+| --- | --- |
+| **Autopilot user-driven** | Fully supported, Entra join and Hybrid join. Hybrid specifics (late device registration, Account Setup waits) have dedicated detection rules and [troubleshooting guides](../troubleshooting/hybrid-join-late-device-registration.md). |
+| **Autopilot pre-provisioning** (White Glove) | Fully supported, including the technician flow before resealing. |
+| **Autopilot self-deploying / kiosk** | Fully supported. |
+| **Autopilot Device Preparation** | Supported — early, actively evolving. Uses its own agent delivery channel (MSI line-of-business app); see [Autopilot Device Preparation](autopilot-device-preparation.md). |
+| **Windows 365 Cloud PCs** | Supported as an opt-in per tenant; see [Windows 365 Cloud PCs](windows-365-cloud-pcs.md). |
+
 ## Design principles
 
 * **Temporary by design.** The agent exists only for the duration of the enrollment. It is not a permanent management agent, does not persist across the device's life, and leaves the device the way Autopilot intended it.
