@@ -38,7 +38,15 @@ The script source is public: [Test-ShouldBootstrapAgent.ps1 on GitHub](https://g
 
 ### 1. Download the bootstrapper script
 
-Get [Install-AutopilotMonitor.ps1 from GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1) ([raw file](https://raw.githubusercontent.com/okieselbach/Autopilot-Monitor/refs/heads/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1)) — current version: ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb)
+Download [`Install-AutopilotMonitor.ps1`](https://download.autopilotmonitor.com/agent/Install-AutopilotMonitor.ps1) from the Autopilot Monitor download host — current version: ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb). The host always serves the current script, and the badge above always matches it.
+
+Or fetch it from a PowerShell prompt:
+
+```powershell
+irm 'https://download.autopilotmonitor.com/agent/Install-AutopilotMonitor.ps1' -OutFile .\Install-AutopilotMonitor.ps1
+```
+
+The script source is public: [Install-AutopilotMonitor.ps1 on GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1).
 
 The agent itself (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified by the script; you never handle the agent binary yourself.
 
