@@ -65,6 +65,7 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-DEV-005** · Windows Update Installed During Enrollment | info | Informational: a Windows quality/cumulative update **installed** mid-enrollment (WindowsUpdateClient EventID 19). Useful context when correlating enrollment duration, an extra reboot, or later device behavior with a specific KB. |
 | **ANALYZE-DEV-006** · OS Build Changed During Enrollment | info | Informational: the OS build changed across a reboot during enrollment — deterministic proof that an update was installed, even when the Windows Update event channel shows nothing. |
 | **ANALYZE-DEV-007** · System Clock Skew — TPM Attestation and ESP Timeout Risk | warning | The device clock deviates from NTP by more than two minutes — a documented cause of TPM attestation errors (self-deploying/pre-provisioning) and ESP timeouts. |
+| **ANALYZE-DEV-008** · Device Clock Wrong During Enrollment — Jump or Sustained Offset | warning | The device clock jumped five or more minutes mid-session, or ran five or more minutes off server time for the whole session — the during-enrollment complement of ANALYZE-DEV-007, catching devices where the NTP check could not run or the clock changed after startup. Clocks off by that much break Kerberos, Entra ID token validation and fresh certificate validity. |
 
 ## Identity and Security
 

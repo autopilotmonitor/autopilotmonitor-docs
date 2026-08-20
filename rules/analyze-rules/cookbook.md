@@ -203,6 +203,29 @@ That's it: a custom copy `ANALYZE-ID-001-CUSTOM` now checks every enrollment and
 * Add `suppressByEvent` to discard pairs that a third, resolving event fixed.
 * Correlation conditions require **JSON mode** in the editor.
 
+## Recipe 6b: Device clock problems — jump or sustained offset
+
+**Goal:** catch a device whose clock changed mid-enrollment or ran wrong the whole session — the failure mode behind Kerberos rejections, Entra ID token errors and "certificate not yet valid" during enrollment. (The built-in ANALYZE-DEV-008 ships exactly this; build your own only if you want different thresholds.)
+
+```json
+{
+  "signal": "clock_jump",
+  "source": "clock_skew",
+  "skewMetric": "clock_jump",
+  "operator": "gte",
+  "value": "300",
+  "required": true
+}
+```
+
+**How it reads:** measure every event's timestamp against the server's receive time, grouped by upload; the condition matches when the device's clock frame takes a persistent step of 300+ seconds mid-session. `skewMetric: "sustained_offset"` instead matches when the whole session ran 300+ seconds off.
+
+**Notes:**
+
+* No `eventType`/`dataField` — the metric spans the whole session. Operator is limited to `gt`/`gte` on the magnitude.
+* Thresholds below 60 seconds sit inside normal upload-latency noise; 300 seconds matches the point where Kerberos and token validation actually start failing.
+* Spooled/offline uploads and IME-log-derived events are excluded from the measurement, so delivery delays don't fake a clock problem.
+
 ## Recipe 7: Collect your own data and grade it (end-to-end)
 
 **Goal:** the most powerful pattern in the product: gather evidence the agent doesn't collect by default, then let an analyze rule turn it into an automatic verdict. Example: verify the TPM is ready at the end of every enrollment.

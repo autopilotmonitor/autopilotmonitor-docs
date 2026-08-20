@@ -119,6 +119,7 @@ The `source` field selects *how* a condition looks at the event stream:
 | `phase_duration` | The duration of an ESP phase in seconds (phase selected via `dataField`/`value` on `esp_phase_changed`) | "DeviceSetup took too long" |
 | `app_install_duration` | Seconds between `app_install_started` and its completion for the same app | "an app took more than 10 minutes to install" |
 | `event_correlation` | Joins two event types (A then B) on a shared field, optionally within a time window | "install completed, then later reported failed — for the *same* app" |
+| `clock_skew` | Measures the device clock against the server receive time across the whole session. `skewMetric` selects the metric: `clock_jump` (persistent mid-session step) or `sustained_offset` (whole session off by at least the threshold). `value` is the threshold in seconds; operator is limited to `gt`/`gte` on the magnitude. No `eventType`/`dataField`; IME-log-derived events are excluded from the measurement | "the clock jumped 30 minutes mid-enrollment", "the clock ran 30 minutes behind the whole session" |
 
 ## Operators
 
