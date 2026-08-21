@@ -56,6 +56,14 @@ Data retention is [configurable per tenant](../reference/settings.md#data-manage
 
 <details>
 
+<summary>Why are there two "Autopilot Monitor" applications in my Entra tenant?</summary>
+
+Autopilot Monitor is moving to a new multi-tenant app registration. The application with ID `886ab5e2-6144-442c-80cc-9b28e0667731` is the new one; `1a400946-62c1-4ab4-aa37-f730ac89704d` is the previous registration your tenant consented to at onboarding. Migrating is a one-time admin consent under **Settings → Autopilot Validation**, and after migrating the previous application can be deleted from your tenant. See [App Registration Migration](app-registration-migration.md).
+
+</details>
+
+<details>
+
 <summary>How do I deploy the agent?</summary>
 
 Via an Intune platform script — the [Deploy the Agent](../getting-started/deploy-the-agent.md) guide covers it step by step, including the safety guards and a dry-run tester. For **Autopilot Device Preparation** enrollments the agent is instead delivered as a small MSI line-of-business app, because the platform script would arrive after the app phase there — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md).

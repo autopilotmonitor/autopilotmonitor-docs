@@ -65,6 +65,7 @@
 
 * [FAQ](troubleshooting/faq.md)
 * [Common Problems](troubleshooting/common-problems.md)
+* [App Registration Migration](troubleshooting/app-registration-migration.md)
 * [Hybrid Join: Late Device Registration](troubleshooting/hybrid-join-late-device-registration.md)
 * [Hybrid Join: Stuck in Account Setup](troubleshooting/hybrid-join-stuck-in-account-setup.md)
 * [Diagnostics & Log Collection](troubleshooting/diagnostics-and-log-collection.md)

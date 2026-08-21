@@ -63,6 +63,7 @@ Contributor-facing technical documentation lives in the main product repository 
 
 * [FAQ](troubleshooting/faq.md) - Frequently asked questions.
 * [Common Problems](troubleshooting/common-problems.md) - Known issues and how to resolve them.
+* [App Registration Migration](troubleshooting/app-registration-migration.md) - Moving a tenant from the previous Entra app registration to the new one, and when the previous app can be deleted.
 * [Diagnostics & Log Collection](troubleshooting/diagnostics-and-log-collection.md) - Collecting agent/device diagnostics for support.
 * [Service Announcements](troubleshooting/service-announcements.md) - How service announcements reach the portal.
 
