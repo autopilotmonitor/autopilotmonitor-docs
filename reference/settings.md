@@ -87,6 +87,7 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | Reboot on Complete | Disabled | Reboot when enrollment completes; **Reboot Delay** 0–3600 s (default 10 s). |
 | Geo-Location Detection | Enabled | IP-based public IP / approximate location / ISP lookup at enrollment time. Disable if outbound third-party requests are prohibited. |
 | Set Timezone Automatically | Disabled | Sets the device timezone from the geolocation result (`tzutil /s`). Requires Geo-Location Detection. |
+| Set Delivery Optimization Group ID | Disabled | Sets the `DOGroupId` policy to a GUID fingerprinted from the local network (default gateway IP + MAC), so devices behind the same gateway form one Delivery Optimization peering group. Only takes effect when your Intune configuration sets DO Download Mode to Group (2). An existing `DOGroupId` or `DOGroupIdSource` policy is never overwritten. |
 | IME Pattern Match Log | Disabled | Writes matched IME log lines to `%ProgramData%\AutopilotMonitor\Logs\ime_pattern_matches.log` — the debugging tool for [IME Log Patterns](../rules/ime-log-patterns.md). |
 | Show Script Output (stdout) | Enabled | Shows PowerShell script stdout in the timeline. Disable if scripts may print sensitive data; stderr is always shown. |
 | Log Level | Info | Agent's own log verbosity: Info · Debug · Verbose · Trace. Raise only while diagnosing an agent issue. |
