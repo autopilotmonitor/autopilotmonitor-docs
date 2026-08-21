@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-21 (2)
+
+* **Update**: `changelog/platform-changelog.md`, `changelog/agent-changelog.md` — recent entries (June–August 2026) condensed to the short reference style: one bold title plus 1–2 sentences (platform) / one short sentence per bullet (agent); no content added or removed, links unchanged.
+
 ## 2026-08-21
 
 * **Update**: `reference/settings.md` — new Agent Parameter "Set Delivery Optimization Group ID" (default Disabled): sets the `DOGroupId` policy to a GUID fingerprinted from the local network (default gateway IP + MAC) so devices behind the same gateway form one DO peering group; requires DO Download Mode Group (2) via Intune, never overwrites an existing `DOGroupId`/`DOGroupIdSource` policy.
