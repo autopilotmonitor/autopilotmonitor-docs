@@ -2,7 +2,7 @@
 
 ## 2026-08-21 (3)
 
-* **Update**: `reference/settings.md`, `reference/bootstrap-script-and-tokens.md` — Bootstrap Sessions is now labeled a Pro-plan feature; the Community "unlock on request" option is removed.
+* **Update**: `reference/settings.md`, `reference/bootstrap-script-and-tokens.md`, `plans.md` — Bootstrap Sessions is now a Pro-plan capability activated on request (like Unrestricted Mode); the Community "unlock on request" option is removed.
 
 ## 2026-08-21 (2)
 
