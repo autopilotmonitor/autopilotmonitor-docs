@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-21 (3)
+
+* **Update**: `reference/settings.md`, `reference/bootstrap-script-and-tokens.md` — Bootstrap Sessions is now labeled a Pro-plan feature; the Community "unlock on request" option is removed.
+
 ## 2026-08-21 (2)
 
 * **Update**: `changelog/platform-changelog.md`, `changelog/agent-changelog.md` — recent entries (June–August 2026) condensed to the short reference style: one bold title plus 1–2 sentences (platform) / one short sentence per bullet (agent); no content added or removed, links unchanged.

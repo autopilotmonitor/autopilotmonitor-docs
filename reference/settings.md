@@ -11,7 +11,7 @@ description: >-
 The **Settings / Configuration** area (managed by Tenant Admins; Operators and Viewers see it read-only with secrets redacted, except Bootstrap Sessions for Operators if granted) controls how Autopilot Monitor behaves for your tenant. Settings are grouped into **Tenant**, **Agent**, **Maintenance**, and **Reporting**.
 
 {% hint style="info" %}
-Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** is included in the Pro plan and appears automatically; for Community tenants it can be unlocked on request (open a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues)). **Unrestricted Mode** is a Pro-plan capability that is additionally activated on request — it only appears after the platform operators have enabled it for your tenant.
+Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** is a Pro-plan feature and appears automatically on Pro tenants. **Unrestricted Mode** is a Pro-plan capability that is additionally activated on request — it only appears after the platform operators have enabled it for your tenant.
 {% endhint %}
 
 ## Tenant
@@ -70,7 +70,7 @@ Leaving it empty is allowed; it only means there is no way to reach you before a
 
 Opt-in, per-tenant Microsoft Graph permission grants that unlock optional features (e.g. resolving Intune Platform Script + Remediation display names in timelines) without changing the published app manifest. Copy the ready-made grant command, run it as a tenant admin, and refresh the status here. Full walkthrough: [Optional Graph Permissions](optional-graph-permissions.md).
 
-### Bootstrap Sessions *(Pro plan — included; Community on request)*
+### Bootstrap Sessions *(Pro plan)*
 
 | Setting | Description |
 | --- | --- |
