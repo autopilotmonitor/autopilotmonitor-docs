@@ -48,6 +48,10 @@ irm 'https://download.autopilotmonitor.com/agent/Grant-AutopilotMonitorAddOn.ps1
 The easiest path is to open the admin UI in Autopilot Monitor → **Settings → Optional Graph capabilities**, hit **Copy command**, and paste the resulting PowerShell into a PS prompt. The command downloads the script and runs it — the ClientId is pre-filled with the live value for your environment.
 {% endhint %}
 
+{% hint style="success" %}
+**Azure Cloud Shell** is the smoothest place to run the script. There it signs in through the ambient Cloud Shell identity — a delegated token for the admin already signed in to the portal — so no separate sign-in prompt appears and no device-code flow is involved (device-code sign-ins are blocked by Conditional Access in many tenants). Outside Cloud Shell the script automatically falls back to a normal interactive Microsoft Graph sign-in.
+{% endhint %}
+
 If you prefer the high-level feature form:
 
 ```powershell
@@ -87,6 +91,7 @@ Use the script's `-Revoke` flag, or remove the assignment manually in the Entra 
 | Symptom | Likely cause |
 | --- | --- |
 | Script errors with `Service principal not found` | The Autopilot Monitor app has never been admin-consented in your tenant. Run the consent flow first. |
-| `AppRoleAssignment.ReadWrite.All` was NOT granted in the sign-in scopes line | Signed-in user lacks one of the required admin roles. PIM/JIT users: activate the eligible role before running the script. |
+| `AppRoleAssignment.ReadWrite.All` was NOT granted in the sign-in scopes line (interactive sign-in) | Signed-in user lacks one of the required admin roles. PIM/JIT users: activate the eligible role before running the script. |
+| Interactive sign-in is blocked by Conditional Access (device-code flow) | Run the script in Azure Cloud Shell — it uses the ambient Cloud Shell identity and needs no device-code sign-in. |
 | Permission shows as granted in the UI but the backend still sees it as not granted | The backend's per-tenant token cache hasn't refreshed yet. Click **Refresh permission status** in the admin UI. |
 | Permission grant succeeds but the optional feature still doesn't activate | Verify the granted permission via `Get-MgServicePrincipalAppRoleAssignment` and recheck the admin UI status panel. If still inconsistent, send the correlation IDs from the relevant calls to support. |
