@@ -15,15 +15,15 @@ The **Software** area is a three-tab hub with a shared 7/30/90-day time range.
 The app-install health view across all enrollments:
 
 * Stat cards (total apps, total installs, average failure rate) and a **Delivery Optimization rollup** — peer offload percentage, bytes saved via peers and Connected Cache, and a sourcing breakdown.
-* A sortable **apps table**: app (with type badge — Win32, MSI, WinGet, …), installs, succeeded/failed, failure rate (red at ≥ 20 %), average duration, and a **trend** arrow (improving/worsening in percentage points).
+* A sortable **apps table**: app (with type badge — Win32, MSI, WinGet, …), installs, succeeded/failed, failure rate (red at ≥ 20 %), average install time (the final install attempt — see [Fleet Health](fleet-health.md) for what counts), and a **trend** arrow (improving/worsening in percentage points).
 
 ### Per-app deep dive
 
 Clicking an app opens its detail page — the place to answer *"is this app hurting our enrollments, and where?"*:
 
 * Summary cards including **Trend** and **Flakiness** (share of installs that needed retries), plus a *"detection lies"* warning when installs reported success but the detection rule couldn't find the app afterwards.
-* Charts: installs over time (stacked success/failure), install duration over time, **failure rate by app version**, **median install duration by app version** (measured installs only), and installer phase breakdown.
-* A **duration regression banner** when a newly rolled-out version installs markedly slower than its predecessor — *"median install duration rose from 11 to 29 min after version X"*, with the sample counts behind both medians. The comparison uses medians over measured installs only and needs enough samples on both sides, so a single outlier never raises it; tenant admins also get a one-time [notification](../integrations/notifications.md#in-portal-alerts) per (app, version). The banner clears on its own once the version's median recovers or the version is superseded.
+* Charts: installs over time (stacked success/failure), install time over time, **failure rate by app version**, **median install time by app version** (measured installs only), and installer phase breakdown. Install times measure the final install attempt; in the Affected Sessions panel, an app the Intune Management Extension processed in multiple passes carries a small ×2 marker explaining why it finished long after it was first seen.
+* A **duration regression banner** when a newly rolled-out version installs markedly slower than its predecessor — *"median install duration rose from 2.0 to 7.0 min after version X"*, with the sample counts behind both medians. The comparison uses medians over measured installs only and needs enough samples on both sides, so a single outlier never raises it; tenant admins also get a one-time [notification](../integrations/notifications.md#in-portal-alerts) per (app, version). The banner clears on its own once the version's median recovers or the version is superseded.
 * **Top Failure Codes** with human-readable descriptions from a built-in error-code map, and **Device Model Correlation** with a *lift vs. baseline* multiplier that flags models failing disproportionately for this app.
 * An **Affected Sessions** panel (filter Failed/All/Succeeded, configurable columns) linking straight to each session.
 

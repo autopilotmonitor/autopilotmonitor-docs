@@ -1,5 +1,12 @@
 # Log
 
+## 2026-08-21
+
+* **Update**: `portal-guide/fleet-health.md` — app install times measure the final install attempt (multi-pass IME processing; no queue wait or inter-pass idle time); Slowest Apps wording aligned.
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — apps table and per-app charts renamed to install time (final attempt), ×N multi-pass marker in Affected Sessions, regression-banner example numbers updated.
+* **Update**: `integrations/notifications.md` — "App version installs slower" row: median install time is the final install attempt.
+* **Update**: `changelog/platform-changelog.md`, `changelog/agent-changelog.md` — August 2026 entries for the attempt-based install-time measurement (platform metrics + time attribution; agent event payloads).
+
 ## 2026-08-18
 
 * **New**: `getting-started/autopilot-device-preparation.md` — Device Preparation (Autopilot v2) monitoring guide: why the flow differs (apps before scripts, no ESP, never Autopilot-registered), agent delivery as an MSI line-of-business app assigned to the Device Preparation policy's enrollment-time device group, Corporate Identifier validation via manufacturer/model/serial CSV, portal behavior, limitations, and the early-support feedback channel (GitHub issues).

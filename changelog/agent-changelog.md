@@ -14,6 +14,7 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
+* App install timings on events now describe the final install attempt instead of the span from the first observation (supersedes July's retry-spanning behavior)
 * WMI gather rules can now select specific properties (e.g. `SELECT BatteryStatus FROM Win32_Battery`) instead of only `SELECT *`
 * Windows 365 Cloud PC support — Cloud PC enrollments can now be validated and monitored (opt-in per tenant)
 * Cloud PCs are flagged in sessions and in the Devices Not Registered report
