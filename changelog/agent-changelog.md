@@ -14,9 +14,21 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
-* App install timings on events now describe the final install attempt instead of the span from the first observation (supersedes July's retry-spanning behavior)
-* WMI gather rules can now select specific properties (e.g. `SELECT BatteryStatus FROM Win32_Battery`) instead of only `SELECT *`
-* Windows 365 Cloud PC support — Cloud PC enrollments can now be validated and monitored (opt-in per tenant)
+* Live power-state tracking during enrollment, with warnings when the device is unplugged or the battery runs low
+* System clock changes and standby periods during enrollment are now detected and shown in the timeline
+* Enrollment completion now recovers after a forced reboot during ESP
+* More reliable detection and completion for Autopilot Device Preparation enrollments
+* Enrollment summary dialog now includes Microsoft 365 Apps and CSP-installed packages
+* New Bootstrap MSI to deploy the agent as an MDM line-of-business app
+* App install tracking now cross-checks the Windows registry in addition to IME logs
+* RealmJoin setup timeout extends automatically while a deployment is still active
+* Opt-in Delivery Optimization group ID derived from the local network, so devices peer with each other
+* Opt-in observation mode lets ESP "continue anyway" failures recover before failing the enrollment
+* Download sizes are now reported correctly for compressed transfers
+* Missing Autopilot profile is informational instead of a warning on Cloud PCs
+* App install timings now reflect the final install attempt
+* WMI gather rules can now select specific properties instead of only `SELECT *`
+* Windows 365 Cloud PC enrollments can now be monitored (opt-in per tenant)
 * Cloud PCs are flagged in sessions and in the Devices Not Registered report
 * Devices with older bootstrap configurations no longer skip the pre-enrollment tenant-ID wait
 * Gather-rule phase and event triggers now fire in sync with the session timeline
@@ -24,20 +36,20 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## July 2026
 
-* WiFi network details are now collected via the native Windows API and no longer depend on the OS display language
+* WiFi network details no longer depend on the OS display language
 * Diagnostics are now uploaded when pre-provisioning (White Glove) completes
 * New opt-in gather-rule debug log for troubleshooting rule matching
 * Events replayed from before the agent started are now marked as backfilled in the timeline
-* ESP app-tracking lists refresh during enrollment, so user-phase apps are captured
+* ESP app tracking now captures user-phase apps
 * App install durations now account for installs retried after a failure
 * A late agent start on a successful enrollment is now reported as informational instead of a warning
 * Sessions now record the average agent-to-backend API latency
 * An ESP app failure the user later resolves with "Try again" no longer fails the enrollment
-* Old IME log entries are no longer replayed as fresh script and app activity after an agent restart
+* Old IME log entries are no longer replayed as fresh activity after an agent restart
 * New warning when Account Setup hangs because an ESP policy provider never finished
 * Mid-enrollment reboots are now attributed to the MDM policy that requested them
 * An aborted RealmJoin setup no longer holds up enrollment completion
-* Secure Boot 2023 certificate status is now verified against firmware, not just the Windows registry
+* Secure Boot 2023 certificate status is now verified against firmware
 * Gather rules can be scoped to enrollment phases and can fire once when a phase ends
 * Diagnostics path allow-list is now enforced in every gather collector
 * Local admin monitoring allow-list now supports wildcard patterns
@@ -45,45 +57,45 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 * Trace-event upload now honors the `SendTraceEvents` setting
 * Agent downloads now use `download.autopilotmonitor.com` — update firewall allow-lists if needed
 * Agent release packages now include build provenance attestation
-* Devices without an assigned Autopilot profile are now flagged with a warning, backed by on-device diagnostic evidence
+* Devices without an assigned Autopilot profile are now flagged with a warning
 * Autopilot event-log errors from before the agent started are now included in the session timeline
 * Enrollment no longer completes while the user is still in the Windows Hello setup wizard
 * Fixed premature completion during the user phase of pre-provisioned (White Glove) enrollments
 * Account Setup completion now waits until all required apps have finished installing
 * Faster completion detection once the user reaches the desktop after Account Setup
 * Fixed false failures on finished enrollments where the Hello policy state could never be read
-* Device details no longer show "Unknown" manufacturer/model/serial when hardware info is read early during OOBE
+* Device details no longer show "Unknown" manufacturer/model/serial early in OOBE
 * Session now lists which apps ESP is tracking in each setup phase
 * Fewer false "app stuck" warnings for apps that were never marked for install
 * OS build changes during enrollment are detected even when Windows Update doesn't log them
 * Fixed false enrollment failures during Account Setup on sessions that were still installing apps
-* Passive internet-bandwidth estimate during app installs, with a LAN/WAN split — survives reboots
+* Passive internet-bandwidth estimate during app installs, with a LAN/WAN split
 * MSIX/Store app install failures during ESP now identify the specific failing package
-* Fewer false ESP failures when Windows retracts a failure after a retry; a real failure now names the app still holding up Account Setup
+* Fewer false ESP failures when Windows retracts a failure after a retry
 * More accurate script run-time shown for Remediation and Platform Scripts
 * Fixed a rare crash-loop that could follow a self-update restart
-* Windows Update-during-OOBE detection — reports quality/cumulative updates that start, succeed, or fail during enrollment
-* Best-effort emergency-break report when the agent hits its 48-hour absolute self-destruct
+* Windows Updates running during enrollment are now detected and reported
+* Emergency-break report when the agent hits its 48-hour lifetime limit
 * Registry gather collector reads the 64-bit view by default and supports emitting only when the key exists
 
 ## June 2026
 
-* Optional keep-awake during Account Setup (off by default) prevents standby from stalling app installs
-* Fewer stuck enrollments — skipped ESP apps and advisory "continue anyway" failures now resolve quickly instead of hitting the 6-hour timeout
+* Optional keep-awake during Account Setup prevents standby from stalling app installs (off by default)
+* Skipped ESP apps and advisory "continue anyway" failures no longer run into the 6-hour timeout
 * Desktop-arrival detection no longer stalls when the device-owner lookup fails
-* Agent now names the specific app holding up Account Setup completion instead of just reporting a stall
-* More accurate Office (M365 Apps) install tracking — no false failures for pre-installed Office, progress survives reboots
+* Agent now names the specific app holding up Account Setup completion
+* More accurate Office (M365 Apps) install tracking — no false failures for pre-installed Office
 * Low-disk-space warning when free space drops below 2 GB during enrollment
-* Repetitive ModernDeployment event bursts are rolled up into a single entry — less timeline noise
+* Repetitive ModernDeployment event bursts are rolled up into a single timeline entry
 * Hello for Business policy is no longer reported as "not configured" when it simply couldn't be detected
-* New liveness signals show what enrollment completion is waiting on — stuck sessions easier to spot
-* Startup events are de-duplicated across agent restarts, so a mid-enrollment reboot no longer repeats them
+* New liveness signals show what enrollment completion is waiting on
+* Startup events are no longer repeated after a mid-enrollment reboot
 * RealmJoin client detection is now opt-in per-tenant (off by default) and reports its release channel
 * Agent records the device's outbound IP for network correlation
 * Each agent request now carries a correlation ID for easier troubleshooting
-* Microsoft 365 Apps (Office) install tracking surfaces the real Click-to-Run install progress that Intune hides
+* Microsoft 365 Apps (Office) install tracking surfaces the real Click-to-Run install progress
 * Provisioning-package (`.ppkg`) detection, with security rules flagging packages outside a built-in allow-list
-* AutoLogon detection — flags only when a plaintext password is actually stored, avoiding false positives
+* AutoLogon detection flags only when a plaintext password is actually stored
 * ESP sub-category state changes are now surfaced even when they aren't failures
 * Stall-probe file and registry scans now enforce a hard timeout
 
