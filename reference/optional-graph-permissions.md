@@ -60,6 +60,12 @@ If you prefer the high-level feature form:
     -Features ScriptDisplayNames
 ```
 
+To grant **every** optional capability in one run, use the `All` meta-feature — it expands to all features in the table above:
+
+```powershell
+.\Grant-AutopilotMonitorAddOn.ps1 -ClientId "<...>" -Features All
+```
+
 Other modes:
 
 ```powershell
@@ -68,6 +74,9 @@ Other modes:
 
 # Revoke a previously granted feature:
 .\Grant-AutopilotMonitorAddOn.ps1 -ClientId "<...>" -Features ScriptDisplayNames -Revoke
+
+# Revoke all optional grants at once:
+.\Grant-AutopilotMonitorAddOn.ps1 -ClientId "<...>" -Features All -Revoke
 ```
 
 After granting, return to the admin UI and click **Refresh permission status**. The backend caches its token (and the `roles` claim parsed from it) for up to ~1 hour; the refresh button clears that cache so the new permission takes effect immediately.
