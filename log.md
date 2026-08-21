@@ -2,6 +2,7 @@
 
 ## 2026-08-21
 
+* **Update**: `rules/analyze-rules/built-in-rules.md` — new device rules ANALYZE-DEV-009 (Battery Critically Low During Enrollment, high) and ANALYZE-DEV-010 (Enrollment Switched From AC to Battery Power, warning), fed by the agent's live power watcher (`power_state_change` events with 50/30/15 % battery thresholds).
 * **Update**: `portal-guide/fleet-health.md` — app install times measure the final install attempt (multi-pass IME processing; no queue wait or inter-pass idle time); Slowest Apps wording aligned.
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — apps table and per-app charts renamed to install time (final attempt), ×N multi-pass marker in Affected Sessions, regression-banner example numbers updated.
 * **Update**: `integrations/notifications.md` — "App version installs slower" row: median install time is the final install attempt.

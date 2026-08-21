@@ -66,6 +66,8 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-DEV-006** · OS Build Changed During Enrollment | info | Informational: the OS build changed across a reboot during enrollment — deterministic proof that an update was installed, even when the Windows Update event channel shows nothing. |
 | **ANALYZE-DEV-007** · System Clock Skew — TPM Attestation and ESP Timeout Risk | warning | The device clock deviates from NTP by more than two minutes — a documented cause of TPM attestation errors (self-deploying/pre-provisioning) and ESP timeouts. |
 | **ANALYZE-DEV-008** · Device Clock Wrong During Enrollment — Jump or Sustained Offset | warning | The device clock jumped five or more minutes mid-session, or ran five or more minutes off server time for the whole session — the during-enrollment complement of ANALYZE-DEV-007, catching devices where the NTP check could not run or the clock changed after startup. Clocks off by that much break Kerberos, Entra ID token validation and fresh certificate validity. |
+| **ANALYZE-DEV-009** · Battery Critically Low During Enrollment | high | The battery dropped to 15 % or less while the device was enrolling on battery power (detected live by the agent's power watcher). A device dying mid-enrollment is left half-provisioned and usually needs a reset — this fires while there is still time to plug it in. |
+| **ANALYZE-DEV-010** · Enrollment Switched From AC to Battery Power | warning | The device lost AC power mid-enrollment and switched to battery. Enrollments drain batteries quickly and Windows may throttle on battery; the timeline shows whether power was restored or the battery kept draining (50/30/15 % threshold events). |
 
 ## Identity and Security
 
