@@ -98,13 +98,23 @@ If you configure a **Signing Secret** on a generic JSON channel, every request c
 
 To verify: concatenate the timestamp header, a `.`, and the **raw request body** (before any JSON parsing), compute HMAC-SHA256 with your secret, and compare against the signature header using a constant-time comparison. Reject requests whose timestamp is older than a few minutes to prevent replay.
 
-```python
-import hmac, hashlib
-
-def verify(secret: str, timestamp: str, raw_body: bytes, signature_header: str) -> bool:
-    message = timestamp.encode() + b"." + raw_body
-    expected = "sha256=" + hmac.new(secret.encode(), message, hashlib.sha256).hexdigest()
-    return hmac.compare_digest(expected, signature_header)
+```powershell
+function Test-AutopilotMonitorSignature {
+    param(
+        [string]$Secret,           # the channel's signing secret
+        [string]$Timestamp,        # X-AutopilotMonitor-Timestamp header value
+        [byte[]]$RawBody,          # raw request body bytes, before any JSON parsing
+        [string]$SignatureHeader   # X-AutopilotMonitor-Signature header value
+    )
+    $hmac = [System.Security.Cryptography.HMACSHA256]::new([Text.Encoding]::UTF8.GetBytes($Secret))
+    $message = [Text.Encoding]::UTF8.GetBytes("$Timestamp.") + $RawBody
+    $expected = 'sha256=' + (($hmac.ComputeHash($message) | ForEach-Object { $_.ToString('x2') }) -join '')
+    [System.Security.Cryptography.CryptographicOperations]::FixedTimeEquals(
+        [Text.Encoding]::UTF8.GetBytes($expected),
+        [Text.Encoding]::UTF8.GetBytes($SignatureHeader))
+}
 ```
+
+The snippet targets PowerShell 7; on Windows PowerShell 5.1, replace the `FixedTimeEquals` call with `$expected -ceq $SignatureHeader` (a plain case-sensitive comparison, without the timing-attack hardening).
 
 The signature covers the exact bytes of the body — verify before re-serializing the JSON, since any reformatting changes the digest.
