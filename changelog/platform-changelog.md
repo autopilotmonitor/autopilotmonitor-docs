@@ -14,6 +14,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## August 2026
 
+* **Discord notifications** — Discord is now available as a notification provider; enrollment alerts arrive as embeds in your Discord channel. See [Notifications](../integrations/notifications.md#discord).
+* **Signed webhook requests** — Generic JSON webhooks can now carry an HMAC signature so your endpoint can verify each request really came from Autopilot Monitor. See [Verifying signed requests](../integrations/notifications.md#verifying-signed-requests).
 * **App install times now measure the actual install attempt** — App durations now measure the final install attempt instead of the span since the app was first observed; multi-pass apps carry a ×2 marker, and download time is reported separately. Values recorded before the change keep the old measurement, so averages step down visibly around the changeover.
 * **Analyze rules can now run during the enrollment** — Rules can declare additional **evaluation triggers** — at the WhiteGlove seal or when specific events arrive — instead of only running at enrollment end. Early findings appear live as **Preliminary** and are confirmed or resolved by the final analysis. See [Concepts → Evaluation triggers](../rules/analyze-rules/concepts.md#evaluation-triggers-when-a-rule-runs).
 * **App version duration regression alerts** — When a newly rolled-out app version installs markedly slower than its predecessor, the app's detail page shows a regression banner and tenant admins get a one-time notification. Version charts now include median install duration by version. See [Software](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive).

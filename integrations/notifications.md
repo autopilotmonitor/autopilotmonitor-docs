@@ -28,9 +28,13 @@ The legacy Office 365 Connector (MessageCard) format. Microsoft has deprecated t
 
 Create an **Incoming Webhook** in your Slack workspace (*Apps → Incoming Webhooks → Add*, pick the channel), copy the URL, select the *Slack* provider.
 
+### Discord
+
+Create a webhook in your Discord channel (*Channel settings → Integrations → Webhooks → New Webhook*), copy the URL, select the *Discord* provider. Notifications render as an embed; because Discord webhooks cannot post buttons, links (e.g. to the session) appear as markdown links inside the message.
+
 ### Generic JSON webhook
 
-Any HTTPS endpoint that accepts a JSON POST — a ticketing system, an automation platform, or an SMTP gateway (e.g. Postal) if you want notifications as email. This provider additionally supports **custom HTTP headers** (e.g. an `Authorization` header for your endpoint).
+Any HTTPS endpoint that accepts a JSON POST — a ticketing system, an automation platform, or an SMTP gateway (e.g. Postal) if you want notifications as email. This provider additionally supports **custom HTTP headers** (e.g. an `Authorization` header for your endpoint) and an optional **signing secret** for [HMAC request verification](#verifying-signed-requests).
 
 ## Triggers
 
@@ -82,3 +86,25 @@ The generic provider sends a stable, versioned payload — `schemaVersion` is on
 {% hint style="info" %}
 **Routing tip:** key your automation on `eventType`, not on `title` — titles are human-facing and may be refined over time; `eventType` and the schema are the contract.
 {% endhint %}
+
+### Verifying signed requests
+
+If you configure a **Signing Secret** on a generic JSON channel, every request carries two extra headers so your endpoint can verify it really came from Autopilot Monitor and was not tampered with:
+
+| Header | Content |
+| --- | --- |
+| `X-AutopilotMonitor-Timestamp` | Unix timestamp (seconds) the request was signed at |
+| `X-AutopilotMonitor-Signature` | `sha256=` followed by the lowercase hex HMAC-SHA256 of `"{timestamp}.{rawBody}"`, keyed with your signing secret |
+
+To verify: concatenate the timestamp header, a `.`, and the **raw request body** (before any JSON parsing), compute HMAC-SHA256 with your secret, and compare against the signature header using a constant-time comparison. Reject requests whose timestamp is older than a few minutes to prevent replay.
+
+```python
+import hmac, hashlib
+
+def verify(secret: str, timestamp: str, raw_body: bytes, signature_header: str) -> bool:
+    message = timestamp.encode() + b"." + raw_body
+    expected = "sha256=" + hmac.new(secret.encode(), message, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, signature_header)
+```
+
+The signature covers the exact bytes of the body — verify before re-serializing the JSON, since any reformatting changes the digest.
