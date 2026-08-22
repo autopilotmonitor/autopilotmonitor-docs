@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-07-31
+timestamp: 2026-08-22
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 31 July 2026 · Next review: 31 January 2027.**
+**Last reviewed: 22 August 2026 · Next review: 22 February 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -32,7 +32,7 @@ Used to deliver messages *about* the service. **Neither carries enrollment telem
 
 | Service | When it is used | What it receives |
 | --- | --- | --- |
-| **Resend** | Onboarding only — the welcome message sent when a tenant is activated | The recipient administrator's email address and the tenant's domain name |
+| **Mailchimp Transactional (Mandrill)** | Onboarding and offboarding only — the welcome message sent when a tenant is activated, and the farewell message sent after a tenant is offboarded | The recipient administrator's email address and the tenant's domain name. Open and click tracking is disabled |
 | **Telegram** | Operator alerting, so incidents get noticed and acted on quickly | Platform health signals: event type, severity, a short message, and the tenant ID an event relates to. No device data, no enrollment telemetry, no personal data |
 
 Telegram is **operator-only infrastructure**, not a tenant feature — it cannot be configured or used by customers. It is listed here because it exists in the open-source code and you would find it anyway; it is how the people running the service learn that something is wrong.

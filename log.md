@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-22
+
+* **Update**: `trust/data-flows.md` — transactional email provider is Mailchimp Transactional (Mandrill), used for the activation welcome message and the post-offboarding farewell message; it receives only the administrator's email address and the tenant domain, open/click tracking disabled. Review date advanced.
+
 ## 2026-08-21 (3)
 
 * **Update**: `reference/settings.md`, `reference/bootstrap-script-and-tokens.md`, `plans.md` — Bootstrap Sessions is now a Pro-plan capability activated on request (like Unrestricted Mode); the Community "unlock on request" option is removed.
