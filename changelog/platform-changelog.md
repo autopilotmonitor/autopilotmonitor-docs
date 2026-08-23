@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## August 2026
 
+* **RealmJoin Watcher and Keep Awake moved to Agent Settings** — Both toggles now live under Settings → Agent → Agent Settings instead of Agent Analyzers. See [Settings Reference](../reference/settings.md#agent).
 * **Discord notifications** — Discord is now available as a notification provider; enrollment alerts arrive as embeds in your Discord channel. See [Notifications](../integrations/notifications.md#discord).
 * **Signed webhook requests** — Generic JSON webhooks can now carry an HMAC signature so your endpoint can verify each request really came from Autopilot Monitor. See [Verifying signed requests](../integrations/notifications.md#verifying-signed-requests).
 * **App install times now measure the actual install attempt** — App durations now measure the final install attempt instead of the span since the app was first observed; multi-pass apps carry a ×2 marker, and download time is reported separately. Values recorded before the change keep the old measurement, so averages step down visibly around the changeover.

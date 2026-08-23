@@ -89,6 +89,7 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | Geo-Location Detection | Enabled | IP-based public IP / approximate location / ISP lookup at enrollment time. Disable if outbound third-party requests are prohibited. |
 | Set Timezone Automatically | Disabled | Sets the device timezone from the geolocation result (`tzutil /s`). Requires Geo-Location Detection. |
 | Set Delivery Optimization Group ID | Disabled | Sets the `DOGroupId` policy to a GUID fingerprinted from the local network (default gateway IP + MAC), so devices behind the same gateway form one Delivery Optimization peering group. Only takes effect when your Intune configuration sets DO Download Mode to Group (2). An existing `DOGroupId` or `DOGroupIdSource` policy is never overwritten. |
+| Keep Awake During User-ESP | Disabled | Holds the device awake (system and display) during the User-ESP / Account Setup phase so idle standby or sleep cannot stall app installs and account provisioning. Reboots are unaffected; the hold is released once the phase completes. |
 | IME Pattern Match Log | Disabled | Writes matched IME log lines to `%ProgramData%\AutopilotMonitor\Logs\ime_pattern_matches.log` — the debugging tool for [IME Log Patterns](../rules/ime-log-patterns.md). |
 | Show Script Output (stdout) | Enabled | Shows PowerShell script stdout in the timeline. Disable if scripts may print sensitive data; stderr is always shown. |
 | Log Level | Info | Agent's own log verbosity: Info · Debug · Verbose · Trace. Raise only while diagnosing an agent issue. |
@@ -99,6 +100,7 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | Setting | Default | Description |
 | --- | --- | --- |
 | Performance Collector | Enabled, 30 s | Periodic CPU/memory/disk/network snapshots (interval 30–300 s). Core collectors (enrollment tracking, Windows Hello detector) are always active. |
+| RealmJoin Watcher | Disabled | Tracks the RealmJoin client during provisioning — client version and release channel, deployment-phase changes, and per-package start and completion — so RealmJoin packages appear as their own rows in [Install Progress](../portal-guide/session-details-and-diagnosis.md) and the enrollment is not reported complete while a RealmJoin deployment is still running (bounded by a safety timeout that extends while packages are still installing). Enable only for tenants that provision devices with RealmJoin; elsewhere it produces no signal. |
 | Hello Wait Timeout | 30 s | How long to wait for the Windows Hello wizard after ESP exit (30–300 s) before proceeding with completion. |
 
 ### Agent Analyzers
@@ -107,6 +109,8 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | --- | --- | --- |
 | Local Admin Analyzer | Enabled | Detects pre-enrollment local admin accounts (a known Autopilot bypass) at enrollment start and completion. **Allowed Local Accounts** defines your expected accounts; built-in Windows accounts are always allowed. Entries support wildcards — `*` matches any sequence of characters, `?` exactly one (e.g. `adm-*` for generated admin accounts); matching is case-insensitive and covers account names and profile folders. Feeds the ANALYZE-ID-002 rule. |
 | Software Inventory & Vulnerability Analyzer | Disabled · *Experimental* | Collects installed software at start and completion, detects during-enrollment deltas, and correlates against NVD CVEs, CISA KEV, and MSRC. Feeds the [Software Inventory](../portal-guide/software-inventory-and-vulnerabilities.md) view and ANALYZE-ID-003. |
+| Integrity Bypass Analyzer | Enabled | Detects Windows 11 installations whose hardware gates were bypassed — LabConfig TPM / Secure Boot / CPU / RAM / disk bypass keys, the MoSetup upgrade flag, and the PC Health Check eligibility override — and flags suspicious post-OOBE `SetupComplete.cmd` / `ErrorHandler.cmd` scripts. Findings are correlated with the device's current TPM and Secure Boot state. |
+| Detect OOBE Console Access (Shift+F10) | Enabled | Flags an interactive command prompt opened during enrollment — the classic Shift+F10 OOBE bypass — as a Warning event with the process signature; a startup scan of the `cmd.exe` prefetch artifact also covers a console opened before the agent was installed. Detection stops once the user's desktop arrives and is best-effort: it reports the console, it cannot block it. Disable only if your support staff knowingly use Shift+F10 during enrollment. |
 
 ### Diagnostics Package
 

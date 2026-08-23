@@ -1,5 +1,10 @@
 # Log
 
+## 2026-08-23
+
+* **Update**: `reference/settings.md` — **RealmJoin Watcher** is listed under Agent Collectors and **Keep Awake During User-ESP** under Agent Parameters (both live under Settings → Agent → Agent Settings in the portal); **Integrity Bypass Analyzer** and **Detect OOBE Console Access (Shift+F10)** are documented under Agent Analyzers.
+* **Update**: `changelog/platform-changelog.md` — August 2026 entry for the relocated RealmJoin Watcher and Keep Awake settings.
+
 ## 2026-08-22
 
 * **Update**: `trust/data-flows.md` — transactional email provider is Mailchimp Transactional (Mandrill), used for the activation welcome message and the post-offboarding farewell message; it receives only the administrator's email address and the tenant domain, open/click tracking disabled. Review date advanced.
