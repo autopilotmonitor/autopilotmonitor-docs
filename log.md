@@ -1,5 +1,10 @@
 # Log
 
+## 2026-08-23 (2)
+
+* **Update**: `concepts/sessions-and-statuses.md` — verdict table: a self-deploying (kiosk / shared device) profile with Device Setup finished reconciles to Succeeded (no user phase to await); the agent's max-lifetime shutdown is classified from the evidence table, not listed as an explicit failure.
+* **Update**: `changelog/platform-changelog.md` (self-deploying enrollments no longer parked as Awaiting User / Incomplete), `changelog/agent-changelog.md` (session registration after a reboot waits for the network link and retries longer).
+
 ## 2026-08-23
 
 * **Update**: `plans.md` — Pro section and "At a glance" table now list the concrete Pro capabilities shown in the portal (everything in Community plus extended retention, higher rate limits, larger MCP quota, delegated MSP administration, bootstrap sessions, Unrestricted Mode, priority support); notes where the plan is shown in the portal (Settings → Tenant → Plan), the planned purchase channels and the one-time 30-day Pro trial (all "coming soon").

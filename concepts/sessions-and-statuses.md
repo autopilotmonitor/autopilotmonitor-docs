@@ -75,11 +75,14 @@ The backend now decides the outcome from the last evidence in the timeline inste
 
 | What the evidence shows | Result |
 | --- | --- |
-| An explicit failure event (`enrollment_failed`, ESP failure, agent max-lifetime) | **Failed** |
+| An explicit failure event (`enrollment_failed`, ESP failure) | **Failed** |
+| Self-deploying profile (kiosk / shared device) and Device Setup finished | **Succeeded** (reconciled) — this profile has no user phase, so nothing is awaited |
 | Account Setup fully succeeded, or a completion signal arrived | **Succeeded** (reconciled) |
 | Device Setup finished, user phase not yet done, still within the grace window | **Awaiting User** |
 | Grace window expired with no completion and no failure | **Incomplete** |
 | Silence before Device Setup even finished, with no failure event | **Incomplete** |
+
+The agent's own max-lifetime shutdown is not a failure verdict either — the session is classified from the same evidence table.
 
 **The grace window** is anchored to the agent, not a magic number. Because the agent self-destructs at its 48-hour emergency brake and sends nothing afterwards, a completion can only ever arrive *before* that cap. The backend therefore waits out the cap plus a small buffer (~**51 hours** by default) before settling *Awaiting User* → *Incomplete* — long enough that a legitimately late user completion still lands and **reconciles to _Succeeded_**. This costs nothing on the device: a waiting session is just a table row compared against a timestamp — no process, no heartbeat, no extra agent load.
 
