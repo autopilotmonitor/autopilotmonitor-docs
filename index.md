@@ -43,7 +43,7 @@ Contributor-facing technical documentation lives in the main product repository 
 
 # Integrations
 
-* [Notifications](integrations/notifications.md) - Notification channels (Teams, Slack, email, generic webhooks) and rule-driven notifications.
+* [Notifications](integrations/notifications.md) - Notification channels (Teams, Slack, Discord, generic webhooks) and rule-driven notifications.
 * [AI Integration (MCP)](integrations/ai-integration-mcp.md) - Connecting AI clients to the read-only MCP telemetry server.
 
 # Reference

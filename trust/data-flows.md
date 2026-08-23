@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-08-22
+timestamp: 2026-08-23
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 22 August 2026 · Next review: 22 February 2027.**
+**Last reviewed: 23 August 2026 · Next review: 23 February 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -24,7 +24,7 @@ This page describes the architecture. The **data processing agreement** is the a
 | --- | --- | --- | --- |
 | **Microsoft Azure** | The platform itself — compute, storage, real-time messaging, container hosting, operational telemetry | All customer data: sessions, events, configuration, audit logs, backups, and any hosted diagnostics | **Germany West Central** (portal front-end static assets: West Europe) |
 
-That is the whole of it. Your telemetry is not copied to an analytics platform, a CRM, a third-party error tracker, or an AI provider, and no external support desk holds a copy.
+That is the whole of it as far as the product is concerned: nothing in the platform is wired to copy telemetry to an analytics platform, a CRM, an error tracker, or an AI provider. Every other connection on this page is a message about the service, public reference data read inbound, a lookup in your own tenant, or a destination you configure. Access by the people operating the service — for support, incident handling, and platform analysis — takes place under the platform roles described in the [Security & Privacy FAQ](security-faq.md#identity-and-access) and the terms of the data processing agreement.
 
 ## 2. Messages the service sends
 
@@ -60,7 +60,7 @@ These connections exist **only because someone configured them**. They point at 
 | Destination | When it applies | What is sent |
 | --- | --- | --- |
 | **Your own Azure storage account** | Diagnostics upload with the default `CustomerSas` destination | The diagnostics package — agent logs, IME logs, session info. This is the default: the payload never reaches our infrastructure. |
-| **Microsoft Teams, Slack, or a generic webhook endpoint** | Notification channels you configure | Alert payloads — session, device, and finding details. Webhook targets pass an SSRF guard before any request is made. |
+| **Microsoft Teams, Slack, Discord, or a generic webhook endpoint** | Notification channels you configure | Alert payloads — session, device, and finding details. Webhook targets pass an SSRF guard before any request is made. |
 | **Your AI assistant** | If a user connects an AI client through the [MCP integration](../integrations/ai-integration-mcp.md) | Whatever that assistant queries. The platform itself makes no AI calls; this transfer is initiated by your user, to your vendor, under your agreement with them. MCP access is per-user and must be enabled by an administrator. |
 | **IP geolocation service** (`ipinfo.io`, fallback `ifconfig.co`) | Geolocation, a tenant setting that is **on by default** | The device's outbound connection reaches the service, which returns approximate location. The session stores country, region, city, and approximate coordinates; the outbound IP is stored separately as a diagnostic event. Disable geolocation to stop this entirely — see the [Security & Privacy FAQ](security-faq.md#is-the-devices-ip-address-stored). |
 
