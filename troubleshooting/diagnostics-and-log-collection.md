@@ -18,7 +18,7 @@ Configuration lives under **Settings → Agent → Diagnostics Package** ([full 
 * **Upload Mode** — `Always`, `On Failure Only` (recommended), or `Off`.
 * **Additional Log Paths** — extend the default collection with your own files: wildcards in the last path segment, environment variables, and the `%LOGGED_ON_USER_PROFILE%` token for user-profile logs (limited to `AppData\Local`/`Roaming`), optionally with subfolders. Paths are validated against an agent-side allow-list of known log locations.
 
-The default package already covers the essentials: agent logs, IME logs, Panther setup logs, SetupDiag, event logs, and related locations.
+The built-in collection covers the agent's own logs, state, pending uploads and completion markers, the Intune Management Extension logs, the Device Preparation bootstrapper event log on Autopilot Device Preparation enrollments, and — when the RealmJoin Watcher is enabled — the RealmJoin client, package, Chocolatey and per-user logs. The exact list is shown read-only under **Settings → Agent → Diagnostics Package → Built-in**, together with any platform-wide paths. Everything else (Windows Setup/Panther logs, SetupDiag, other event logs, vendor logs) is added through Additional Log Paths.
 
 ## The agent's own log
 

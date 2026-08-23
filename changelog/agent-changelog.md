@@ -14,6 +14,8 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
+* Diagnostics packages now include the RealmJoin logs when the RealmJoin Watcher is enabled
+* Diagnostics packages now include the Device Preparation bootstrapper event log on Autopilot Device Preparation enrollments
 * Live power-state tracking during enrollment, with warnings when the device is unplugged or the battery runs low
 * System clock changes and standby periods during enrollment are now detected and shown in the timeline
 * Enrollment completion now recovers after a forced reboot during ESP

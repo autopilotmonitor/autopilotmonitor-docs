@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## August 2026
 
+* **Diagnostics package contents are now visible** — Settings → Agent → Diagnostics Package lists the built-in collection and the platform-wide paths read-only above your own entries, one line per path. See [Diagnostics & Log Collection](../troubleshooting/diagnostics-and-log-collection.md#the-diagnostics-package).
 * **RealmJoin Watcher and Keep Awake moved to Agent Settings** — Both toggles now live under Settings → Agent → Agent Settings instead of Agent Analyzers. See [Settings Reference](../reference/settings.md#agent).
 * **Discord notifications** — Discord is now available as a notification provider; enrollment alerts arrive as embeds in your Discord channel. See [Notifications](../integrations/notifications.md#discord).
 * **Signed webhook requests** — Generic JSON webhooks can now carry an HMAC signature so your endpoint can verify each request really came from Autopilot Monitor. See [Verifying signed requests](../integrations/notifications.md#verifying-signed-requests).

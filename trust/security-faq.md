@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 15 August 2026 · Next review: 31 January 2027.**
+**Last reviewed: 23 August 2026 · Next review: 31 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -258,7 +258,7 @@ Hosted upload exists as an alternative but is **opt-in only** and requires an ex
 
 When hosted upload is used, the SAS we issue is **blob-scoped, write-and-create only, pinned to your tenant's exact path** — it cannot be redirected at another tenant's data — and is short-lived, measured in minutes rather than hours. On the device the SAS is fetched immediately before upload and never written to disk or configuration; log records keep only a truncated prefix, never the signature.
 
-A diagnostics package contains agent logs, Intune Management Extension logs, and session information, with size caps and an explicit truncation record so you know if anything was omitted.
+A diagnostics package contains the agent's own logs and state, Intune Management Extension logs, session information, RealmJoin logs when you have enabled that watcher, and any additional log paths your administrators configure — with size caps and an explicit packaging manifest and truncation record so you know exactly what was collected and whether anything was omitted. The built-in collection is listed read-only in the portal next to your own entries.
 
 Once upload is configured, an **administrator or operator of your own tenant** can also request a package from an enrollment that is still running, rather than waiting for it to finish. It collects exactly what the automatic package collects — the configured paths, nothing wider. The request is delivered with the agent's next check-in, so the device is never contacted directly, and both the request and its outcome are recorded as events on that session's timeline. Viewers cannot trigger it, the request is always scoped to the caller's own tenant, and on a tenant with no upload destination configured there is nothing to trigger.
 

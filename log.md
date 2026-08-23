@@ -4,6 +4,10 @@
 
 * **Update**: `reference/settings.md` — **RealmJoin Watcher** is listed under Agent Collectors and **Keep Awake During User-ESP** under Agent Parameters (both live under Settings → Agent → Agent Settings in the portal); **Integrity Bypass Analyzer** and **Detect OOBE Console Access (Shift+F10)** are documented under Agent Analyzers.
 * **Update**: `changelog/platform-changelog.md` — August 2026 entry for the relocated RealmJoin Watcher and Keep Awake settings.
+* **Update**: `troubleshooting/diagnostics-and-log-collection.md` — the default package description now matches what the agent collects: agent logs/state/spool/markers, IME logs, the Device Preparation bootstrapper event log on Device Preparation enrollments, RealmJoin logs when the RealmJoin Watcher is enabled; Windows Setup/Panther, SetupDiag and other event logs are Additional Log Paths. The built-in list and the platform-wide paths are shown read-only under Settings → Agent → Diagnostics Package.
+* **Update**: `reference/settings.md` — Additional Log Paths row describes the read-only built-in and platform-wide lists and their collection conditions.
+* **Update**: `changelog/agent-changelog.md` (RealmJoin logs and Device Preparation event log in diagnostics packages), `changelog/platform-changelog.md` (diagnostics package contents visible in the portal).
+* **Update**: `trust/security-faq.md`, `trust/data-flows.md` — diagnostics package contents: agent logs and state, IME logs, session information, RealmJoin logs when enabled, and administrator-configured additional paths; packaging manifest mentioned. Review date advanced.
 
 ## 2026-08-22
 
