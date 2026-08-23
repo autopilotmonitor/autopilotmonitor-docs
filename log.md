@@ -2,6 +2,7 @@
 
 ## 2026-08-23
 
+* **Update**: `plans.md` — Pro section and "At a glance" table now list the concrete Pro capabilities shown in the portal (everything in Community plus extended retention, higher rate limits, larger MCP quota, delegated MSP administration, bootstrap sessions, Unrestricted Mode, priority support); notes where the plan is shown in the portal (Settings → Tenant → Plan), the planned purchase channels and the one-time 30-day Pro trial (all "coming soon").
 * **Update**: `reference/settings.md` — **RealmJoin Watcher** is listed under Agent Collectors and **Keep Awake During User-ESP** under Agent Parameters (both live under Settings → Agent → Agent Settings in the portal); **Integrity Bypass Analyzer** and **Detect OOBE Console Access (Shift+F10)** are documented under Agent Analyzers.
 * **Update**: `changelog/platform-changelog.md` — August 2026 entry for the relocated RealmJoin Watcher and Keep Awake settings.
 * **Update**: `troubleshooting/diagnostics-and-log-collection.md` — the default package description now matches what the agent collects: agent logs/state/spool/markers, IME logs, the Device Preparation bootstrapper event log on Device Preparation enrollments, RealmJoin logs when the RealmJoin Watcher is enabled; Windows Setup/Panther, SetupDiag and other event logs are Additional Log Paths. The built-in list and the platform-wide paths are shown read-only under Settings → Agent → Diagnostics Package.

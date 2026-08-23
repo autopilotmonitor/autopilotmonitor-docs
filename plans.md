@@ -8,7 +8,7 @@ description: >-
 
 # Plans
 
-Autopilot Monitor will be available in two plans.
+Autopilot Monitor will be available in two plans. Your tenant's current plan, and the side-by-side comparison below, are shown in the portal under **Settings → Tenant → Plan**; the same comparison is public at [autopilotmonitor.com/plans](https://autopilotmonitor.com/plans).
 
 ## Community — *available now*
 
@@ -24,12 +24,22 @@ The Community plan is what this documentation describes: the full product as it 
 
 ## Pro — *coming soon*
 
-A commercial plan for organizations that need more than the Community plan can promise — reliability commitments and support, plus higher operating limits. Planned Pro capabilities include extended **data retention** (from 90 up to **365 days**), raised **portal and agent API rate limits**, a larger **AI (MCP) usage quota**, and **delegated (MSP) administration** for managing multiple tenants from one place — aimed at larger fleets and managed service providers. The Pro plan also includes **OOBE bootstrap sessions** (run the agent already before MDM enrollment) and **Unrestricted Mode** for advanced data collection — both activated on request.
+A commercial plan for organizations that need more than the Community plan can promise — reliability commitments and priority support, plus higher operating limits. Pro includes **everything in Community**, plus:
+
+* **Extended data retention** — 365 days (vs 90)
+* **Higher portal & agent API rate limits**
+* **Larger AI (MCP) usage quota**
+* **Delegated (MSP) administration** across tenants — manage multiple customer tenants from one place; see [Roles & Permissions](concepts/roles-and-permissions.md)
+* **OOBE bootstrap sessions** — run the agent already before MDM enrollment (activated on request); see [Bootstrap Script & Tokens](reference/bootstrap-script-and-tokens.md)
+* **Unrestricted Mode** for advanced data collection (activated on request); see [Settings](reference/settings.md)
+* **Reliability commitments & priority support**
+
+It is aimed at larger fleets and managed service providers.
 
 Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC 27001 — which operates Autopilot Monitor for both plans, and is the counterparty for the agreement, the data processing agreement, and the support commitments. Local data residency in an additional region (for example a US deployment) is something we can accommodate in a Pro context; ask if you need it.
 
 {% hint style="info" %}
-🚧 **Coming soon.** Scope, pricing, and timeline will be announced here. If the Pro plan is interesting for your organization — or you have requirements it must cover — reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues); early feedback directly shapes what it becomes.
+🚧 **Coming soon.** Pricing and timeline will be announced here. Pro is planned to be sold through two channels — **direct purchase** (online, credit card or invoice) and the **Microsoft commercial marketplace** — and a one-time **30-day Pro trial** will be startable by tenant administrators from Settings → Tenant → Plan. None of these are open yet; the portal shows them as "coming soon". If the Pro plan is interesting for your organization — or you have requirements it must cover — reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues); early feedback directly shapes what it becomes.
 {% endhint %}
 
 ## At a glance
@@ -38,9 +48,13 @@ Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC
 | --- | --- | --- |
 | **Availability** | Now — publicly available, free | Coming soon |
 | **Price** | Free — always | To be announced |
-| **Feature set** | Full current feature set — AI (MCP) within usage-plan limits | To be announced |
-| **Support** | Community (GitHub) | To be announced |
+| **Feature set** | Full current feature set — AI (MCP) within usage limits | Everything in Community, plus the Pro capabilities above |
+| **Data retention** | Up to 90 days | Up to 365 days |
+| **Portal & agent API rate limits** | Standard | Higher |
+| **AI (MCP) usage quota** | Standard | Larger |
 | **Delegated (MSP) administration** | — | Included |
+| **OOBE bootstrap sessions / Unrestricted Mode** | — | Included, activated on request |
+| **Support** | Community (GitHub) | Priority support with reliability commitments |
 | **Operator & counterparty** | glueckkanja AG — no commitments | glueckkanja AG under written agreement |
 | **Maintainer** | Oliver Kieselbach (open community contribution) | Oliver Kieselbach |
 | **Data processing agreement** | On request | Part of the agreement |
