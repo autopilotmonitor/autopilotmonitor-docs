@@ -14,6 +14,7 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
+* Enrollments on devices with no user-assigned apps are no longer reported as failed, and an enrollment is no longer failed while RealmJoin is still installing
 * Session registration after a mid-enrollment reboot now waits for the network link and retries longer, so Wi-Fi devices no longer lose their session when the agent restarts before the connection is back
 * Diagnostics packages now include the RealmJoin logs when the RealmJoin Watcher is enabled
 * Diagnostics packages now include the Device Preparation bootstrapper event log on Autopilot Device Preparation enrollments
