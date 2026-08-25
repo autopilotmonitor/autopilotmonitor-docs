@@ -37,6 +37,7 @@ flowchart LR
 ## Authentication
 
 * The agent authenticates every backend call with the device's **MDM client certificate** — the certificate Intune issues to the device during enrollment (mutual TLS). Only genuinely Intune-enrolled devices can talk to the backend.
+* The certificate is **bound to your tenant**. Intune stamps your Microsoft Entra tenant ID into the certificate it issues, and the backend verifies that stamp against the tenant the request is made for. If the certificate was issued to a different Microsoft Entra tenant, the request is refused — even though the certificate itself is genuine and Microsoft-issued.
 * On the backend side, **Autopilot Device Validation** additionally verifies the device is registered as an Autopilot device in *your* tenant before any session data is accepted.
 * For the short window at the very start of OOBE where no MDM certificate exists yet, optional **Bootstrap Tokens** provide pre-MDM authentication (see [Bootstrap Script & Tokens](../reference/bootstrap-script-and-tokens.md)).
 * All communication uses HTTPS with TLS 1.2+.

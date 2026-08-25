@@ -1,5 +1,11 @@
 # Log
 
+## 2026-08-25
+
+* **Update**: `concepts/agent-lifecycle-and-security.md` — Authentication: the device certificate is bound to your Microsoft Entra tenant; a certificate issued to a different tenant is refused.
+* **Update**: `trust/security-faq.md` — "How does a device prove it is allowed to send data?": tenant binding added to the strict-validation list (the pinned Intune root CAs are shared by every Intune tenant, so chain validation alone only proves the certificate came from Intune). Last reviewed bumped to 25 August 2026.
+* **Update**: `changelog/platform-changelog.md` — August 2026 entry for tenant-bound device certificates.
+
 ## 2026-08-23 (2)
 
 * **Update**: `concepts/sessions-and-statuses.md` — verdict table: a self-deploying (kiosk / shared device) profile with Device Setup finished reconciles to Succeeded (no user phase to await); the agent's max-lifetime shutdown is classified from the evidence table, not listed as an explicit failure.

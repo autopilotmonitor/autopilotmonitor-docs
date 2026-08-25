@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 23 August 2026 · Next review: 31 January 2027.**
+**Last reviewed: 25 August 2026 · Next review: 31 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -98,6 +98,7 @@ With **mutual TLS using the Intune MDM client certificate** the device already h
 The Function App runs with `clientCertMode = Required`. Validation is intentionally strict:
 
 * Trust is **pinned to embedded Intune root CAs** using custom root trust — the operating system trust store is deliberately ignored, so a compromised or overly permissive public CA cannot mint an accepted client certificate.
+* The certificate must belong to **your** Microsoft Entra tenant. Those Intune root CAs are shared by every Intune tenant, so chain validation alone only proves "issued by Intune to someone". The tenant identifier the Intune CA stamps into the certificate is therefore compared against the tenant the request targets, and a genuine Intune certificate issued to a different organisation is refused.
 * The **Client Authentication EKU** is required; validity is checked in UTC.
 * If no trust anchors load, validation **fails closed** — the service rejects everything rather than accepting anything.
 * Rejections are recorded with structured reasons, so an enrollment that fails authentication is diagnosable without guesswork.
