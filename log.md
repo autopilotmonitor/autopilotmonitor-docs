@@ -1,5 +1,10 @@
 # Log
 
+## 2026-08-25 (2)
+
+* **New**: `portal-guide/session-details-and-diagnosis.md` — "Filtering the event timeline": the search box matches event type, message and source, combines several terms with AND, and hides matches of a term written with a leading minus; quoting takes a term literally.
+* **Update**: `changelog/platform-changelog.md` — August 2026 entry for excluding events from the session timeline.
+
 ## 2026-08-25
 
 * **Update**: `concepts/agent-lifecycle-and-security.md` — Authentication: the device certificate is bound to your Microsoft Entra tenant; a certificate issued to a different tenant is refused.

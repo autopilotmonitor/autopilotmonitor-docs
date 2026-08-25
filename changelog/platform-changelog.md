@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## August 2026
 
+* **Exclude events from the session timeline** — The timeline search box now combines several terms and hides everything matching a term written with a leading minus, e.g. `-app_install_progress`. See [Session Details](../portal-guide/session-details-and-diagnosis.md#filtering-the-event-timeline).
 * **Device certificates are now bound to your tenant** — The backend verifies that the Microsoft Entra tenant stamped into a device's Intune certificate matches the tenant the data is sent for. See [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md#authentication).
 * **Diagnostics package contents are now visible** — Settings → Agent → Diagnostics Package lists the built-in collection and the platform-wide paths read-only above your own entries, one line per path. See [Diagnostics & Log Collection](../troubleshooting/diagnostics-and-log-collection.md#the-diagnostics-package).
 * **RealmJoin Watcher and Keep Awake moved to Agent Settings** — Both toggles now live under Settings → Agent → Agent Settings instead of Agent Analyzers. See [Settings Reference](../reference/settings.md#agent).

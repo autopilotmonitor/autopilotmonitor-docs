@@ -24,9 +24,25 @@ Opening a session from the dashboard shows everything Autopilot Monitor knows ab
 * **Performance** — charts from the periodic performance snapshots.
 * **Script Executions** — platform and remediation scripts with their output (stdout visibility is a [tenant setting](../reference/settings.md#agent-parameters); stderr is always shown).
 * **Downloads / Install Progress** — per-app download progress and the full install lifecycle. Rows that do not come from the Intune Management Extension carry a small source pill — **Click-to-Run** for the Microsoft 365 Apps installation (with a live timer) and **RealmJoin** for RealmJoin packages — so a Win32 app and the underlying installer it triggers are visibly two different rows instead of looking like a duplicate.
-* **Event Timeline** — the raw, phase-grouped event stream with severity filters (Info/Warning/Error/Critical), expand/collapse controls, and auto-scroll for live sessions.
+* **Event Timeline** — the raw, phase-grouped event stream with severity filters (Info/Warning/Error/Critical), expand/collapse controls, and auto-scroll for live sessions. The search box filters the timeline as you type — see [Filtering the event timeline](#filtering-the-event-timeline).
 
 **Header actions:** **Collect Logs** (see below), **Download Diagnostics** (when a diagnostics package was uploaded), **Diagnosis** (failed sessions), **Report Session** (send a report with comment and optional attachments), and — with [Admin Mode](../concepts/roles-and-permissions.md#admin-mode) on an *In Progress*/*Pending* session — **Succeed** / **Fail** overrides.
+
+## Filtering the event timeline
+
+The search box above the timeline filters the events as you type, matching the event type, the message and the source. It follows the conventions you know from other search boxes:
+
+| You type | You get |
+| --- | --- |
+| `certificate` | Events whose type, message or source contains *certificate* |
+| `esp apps` | Events matching **both** terms — several terms are combined with AND |
+| `-app_install_progress` | Everything **except** the matching events |
+| `esp -progress` | A search term and an exclusion combined |
+| `"exit code -1"` | A quoted term is taken literally, leading minus included |
+
+Matching is case-insensitive and by substring, so `-app_install` hides the whole `app_install_*` family in one go, and `-perf -heartbeat` strips out several kinds of noise at once. While an exclusion is active, a **hiding …** pill next to the severity filters names the excluded terms and the counter reports how many events are left.
+
+Filtering is a view on the session you already have open: it changes nothing in the data, works alongside the severity filters, applies to both parts of a pre-provisioning session as well as the raw view, and clearing the box brings every event back.
 
 ## Device history
 
