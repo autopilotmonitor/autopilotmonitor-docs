@@ -36,7 +36,7 @@ stateDiagram-v2
 | --- | --- |
 | **In Progress** | Enrollment events are actively being received. The agent is monitoring the enrollment on the device. |
 | **Pending** | The session is registered but waiting for the user enrollment phase. Typical after a **pre-provisioning (White Glove)** enrollment: the device phase is complete and the device waits for a user to sign in and continue. |
-| **Awaiting User** | Non-terminal. Device Setup finished, but the user / Account Setup phase hasn't completed and the agent has gone silent — most often the user simply hasn't signed in yet (the device is provisioned and legitimately waiting at the login screen). The session parks here and **heals to _Succeeded_** if the enrollment completes later, or settles to _Incomplete_ once the grace window expires. |
+| **Awaiting User** | Non-terminal. Device Setup finished, but the user / Account Setup phase hasn't completed and the agent has gone silent — most often the user simply hasn't signed in yet (the device is provisioned and legitimately waiting at the login screen). The session parks here and **heals to _Succeeded_** if the enrollment completes later; once the grace window expires it settles to **Succeeded** ("completed (assumed)") when the user provably reached the desktop and no app failed, otherwise to _Incomplete_. |
 | **Succeeded** | The enrollment finished successfully — the device passed through all expected phases (or an admin manually marked it succeeded via Admin Mode). A session that went silent and later produces a genuine completion signal is **reconciled** to Succeeded, even from Failed, Incomplete, or Awaiting User. |
 | **Failed** | The enrollment ended in an **explicit** failure — a failure event from the agent/backend, a firing analyze rule with "mark session as failed" enabled, or a manual Admin Mode mark. A silent session that never sent a failure signal is **no longer** counted here (see [Timeouts](#timeouts-what-happens-to-stuck-sessions) below). |
 | **Incomplete** | Terminal, but **not a failure**. The session went silent without ever producing either a completion or an explicit failure signal, and the grace window expired. It is excluded from the failure rate — it means "we lost the evidence trail", not "the enrollment broke". |
@@ -79,10 +79,11 @@ The backend now decides the outcome from the last evidence in the timeline inste
 | Self-deploying profile (kiosk / shared device) and Device Setup finished | **Succeeded** (reconciled) — this profile has no user phase, so nothing is awaited |
 | Account Setup fully succeeded, or a completion signal arrived | **Succeeded** (reconciled) |
 | Device Setup finished, user phase not yet done, still within the grace window | **Awaiting User** |
+| Grace window expired — but a real user desktop was observed and no app install failed | **Succeeded** (reconciled, "completed (assumed)") — nothing but the final report is missing, and these devices measurably stay in service like successful ones |
 | Grace window expired with no completion and no failure | **Incomplete** |
 | Silence before Device Setup even finished, with no failure event | **Incomplete** |
 
-The agent's own max-lifetime shutdown is not a failure verdict either — the session is classified from the same evidence table.
+The agent's own max-lifetime shutdown is not a failure verdict either — the session is classified from the same evidence table. Because that shutdown proves the agent is gone for good, such a session skips the *Awaiting User* wait entirely and is decided immediately; a late completion signal (e.g. from Intune logs after the next boot) still corrects the verdict.
 
 **The grace window** is anchored to the agent, not a magic number. Because the agent self-destructs at its 48-hour emergency brake and sends nothing afterwards, a completion can only ever arrive *before* that cap. The backend therefore waits out the cap plus a small buffer (~**51 hours** by default) before settling *Awaiting User* → *Incomplete* — long enough that a legitimately late user completion still lands and **reconciles to _Succeeded_**. This costs nothing on the device: a waiting session is just a table row compared against a timestamp — no process, no heartbeat, no extra agent load.
 

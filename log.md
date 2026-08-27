@@ -1,5 +1,10 @@
 # Log
 
+## 2026-08-27
+
+* **Update**: `concepts/sessions-and-statuses.md` — Timeouts: an expired grace window with a real user desktop observed and no failed app installs reconciles to Succeeded ("completed (assumed)"); a session whose agent hit its max lifetime is decided immediately instead of parking in Awaiting User. Awaiting User row in the status table updated to match.
+* **Update**: `changelog/platform-changelog.md` — August 2026 entries for the new failure insights (blocked installers, blocked diagnostics uploads) and the completed-(assumed) reconcile.
+
 ## 2026-08-25 (2)
 
 * **New**: `portal-guide/session-details-and-diagnosis.md` — "Filtering the event timeline": the search box matches event type, message and source, combines several terms with AND, and hides matches of a term written with a leading minus; quoting takes a term literally.
