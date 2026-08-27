@@ -28,6 +28,7 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 | --- | --- | --- |
 | Autopilot Device Validation | Disabled | Only devices registered as Windows Autopilot devices in your Intune tenant may register sessions. Requires admin consent for the Graph permission `DeviceManagementServiceConfig.Read.All` (read-only). |
 | Corporate Identifier Validation | Disabled | Validates devices against Intune Corporate Device Identifiers (manufacturer, model, serial). Same Graph permission. |
+| Device Association Validation | Disabled | Validates devices against your tenant's [Windows Autopilot device association](https://learn.microsoft.com/autopilot/device-preparation/device-association/overview) list (Intune: Devices → Enrollment → Device association), matched by serial number. Same Graph permission. Details: [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#device-association). |
 | Windows 365 Cloud PC Validation | Disabled | Fallback for Cloud PCs, which are never Autopilot-registered: validates the device against your tenant's Cloud PC inventory, matched by the Intune device id from the device's MDM certificate. Requires the optional add-on permission `CloudPC.Read.All` (feature `W365CloudPcValidation`, see [Optional Graph Permissions](optional-graph-permissions.md)). Details: [Windows 365 Cloud PCs](../getting-started/windows-365-cloud-pcs.md). |
 
 {% hint style="warning" %}

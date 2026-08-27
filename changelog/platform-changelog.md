@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## August 2026
 
+* **Windows Autopilot device association support** — Devices associated with your tenant through Microsoft's newly released device association can now be validated directly: enable **Device Association Validation** in Settings; no corporate identifier upload needed. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#device-association).
 * **New failure insights: blocked installers and blocked diagnostics uploads** — Enrollment analysis now pinpoints app installs that failed because another installation was already running on the device (a classic install-order race that fails deterministically around the same minute on every retry), and warns when a web security gateway answers the diagnostics upload with a block page — the case where failure evidence silently never arrives. See [Analyze Rules](../rules/analyze-rules/README.md).
 * **Exclude events from the session timeline** — The timeline search box now combines several terms and hides everything matching a term written with a leading minus, e.g. `-app_install_progress`. See [Session Details](../portal-guide/session-details-and-diagnosis.md#filtering-the-event-timeline).
 * **Device certificates are now bound to your tenant** — The backend verifies that the Microsoft Entra tenant stamped into a device's Intune certificate matches the tenant the data is sent for. See [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md#authentication).

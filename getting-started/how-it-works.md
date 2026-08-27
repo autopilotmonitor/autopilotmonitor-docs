@@ -56,7 +56,7 @@ Autopilot Monitor covers the full breadth of Intune Windows enrollment — for *
 | **Autopilot user-driven** | Fully supported, Entra join and Hybrid join. Hybrid specifics (late device registration, Account Setup waits) have dedicated detection rules and [troubleshooting guides](../troubleshooting/hybrid-join-late-device-registration.md). |
 | **Autopilot pre-provisioning** (White Glove) | Fully supported, including the technician flow before resealing. |
 | **Autopilot self-deploying / kiosk** | Fully supported. |
-| **Autopilot Device Preparation** | Supported — early, actively evolving. Uses its own agent delivery channel (MSI line-of-business app); see [Autopilot Device Preparation](autopilot-device-preparation.md). |
+| **Autopilot Device Preparation** | Supported, including [device association](autopilot-device-preparation.md#device-association) as a validation method. Uses its own agent delivery channel (MSI line-of-business app); see [Autopilot Device Preparation](autopilot-device-preparation.md). |
 | **Windows 365 Cloud PCs** | Supported as an opt-in per tenant; see [Windows 365 Cloud PCs](windows-365-cloud-pcs.md). |
 
 ## Design principles

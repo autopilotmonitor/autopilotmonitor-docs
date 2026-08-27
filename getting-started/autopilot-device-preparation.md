@@ -4,7 +4,7 @@ tags: [device-preparation, autopilot, deployment, device-validation, msi]
 description: >-
   Monitor Windows Autopilot Device Preparation enrollments — why the flow is
   different, how to deliver the agent early via the MSI line-of-business app,
-  and how to validate devices with Corporate Identifiers.
+  and how to validate devices with device association or Corporate Identifiers.
 ---
 
 # Autopilot Device Preparation
@@ -20,7 +20,7 @@ Device Preparation support is **young and actively evolving**. If you monitor De
 Two structural differences matter for monitoring:
 
 1. **The processing order is reversed.** There is no classic Enrollment Status Page. The Device Preparation page works through the resources selected in the Device Preparation policy in a fixed order: **apps first, then PowerShell scripts**. A PowerShell script therefore runs only *after* the app phase — delivered that way, the agent would arrive too late to watch the apps install, and if the app phase fails hard, the script channel may never run at all.
-2. **Devices are never Autopilot-registered.** Device Preparation does not use Windows Autopilot device identities, so [Autopilot Device Validation](../reference/settings.md#enrollment-device-validation) can never match these devices. **Corporate Identifiers** are the intended validation path — see below.
+2. **Devices are never Autopilot-registered.** Device Preparation does not use Windows Autopilot device identities, so [Autopilot Device Validation](../reference/settings.md#enrollment-device-validation) can never match these devices. Validate them through **device association** or **Corporate Identifiers** instead — see below.
 
 ## Deploy the agent as an MSI line-of-business app
 
@@ -38,9 +38,18 @@ The group assignment is the part that goes wrong most often: assigning the MSI t
 
 You can keep the platform script from [Deploy the Agent](deploy-the-agent.md) assigned as well — the deployment marker guarantees that only one channel ever installs the agent, so the two coexist safely.
 
-## Enable Corporate Identifier validation
+## Device association
 
-Because Device Preparation devices are never Autopilot-registered, register them as **corporate device identifiers** and let Autopilot Monitor validate against those:
+[Windows Autopilot device association](https://learn.microsoft.com/autopilot/device-preparation/device-association/overview) binds a device to your tenant *before* it enrolls: you pre-associate the device in Intune, a TPM-backed marker is written to the device's UEFI, and Intune marks the device corporate-owned on its own — no corporate identifier upload needed. Autopilot Monitor supports it since Microsoft's release of the feature:
+
+1. **Associate your devices** in Intune under **Devices → Enrollment → Device association**, as described in Microsoft's guide. The **Devices** tab there lists every pre-associated and associated device with its state and assigned Device Preparation policy.
+2. **Turn on the validation:** in **Settings → Enrollment Device Validation**, enable **Device Association Validation**. Devices are matched against that list by serial number. It uses the same read-only Graph permission as Autopilot Device Validation — no additional consent.
+
+Sessions accepted this way show **Device Association** as the validation method in the session details.
+
+## Corporate Identifiers
+
+If you do not use device association, register the devices as **corporate device identifiers** and let Autopilot Monitor validate against those:
 
 1. **Upload identifiers to Intune** under **Devices → Enrollment → Corporate device identifiers**, as a CSV of type **manufacturer, model and serial number**. Use this CSV type — the manually enterable serial-number-only identifier is not the supported path for Windows devices.
 2. **Turn on the validation:** in **Settings → Enrollment Device Validation**, enable **Corporate Identifier Validation**. It uses the same read-only Graph permission as Autopilot Device Validation — no additional consent.

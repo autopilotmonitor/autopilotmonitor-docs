@@ -20,7 +20,7 @@ Autopilot Monitor gives IT admins real-time visibility into Windows Autopilot en
 
 <summary>Which Autopilot scenarios are supported?</summary>
 
-**User-Driven** and **Pre-Provisioned** (White Glove) Windows Autopilot flows are fully supported — for **Entra joined** and **Hybrid joined** devices alike — as are self-deploying/kiosk profiles. **Autopilot Device Preparation** is supported (early, actively evolving) and uses its own agent delivery channel — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md). **Windows 365 Cloud PCs** are supported as an opt-in per tenant — see the next question. The full overview: [supported enrollment scenarios](../getting-started/how-it-works.md#supported-enrollment-scenarios).
+**User-Driven** and **Pre-Provisioned** (White Glove) Windows Autopilot flows are fully supported — for **Entra joined** and **Hybrid joined** devices alike — as are self-deploying/kiosk profiles. **Autopilot Device Preparation** is supported — including [device association](../getting-started/autopilot-device-preparation.md#device-association) as a validation method — and uses its own agent delivery channel — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md). **Windows 365 Cloud PCs** are supported as an opt-in per tenant — see the next question. The full overview: [supported enrollment scenarios](../getting-started/how-it-works.md#supported-enrollment-scenarios).
 
 </details>
 
@@ -102,7 +102,7 @@ Enrollment telemetry only: ESP phases, app and script installations, IME log ent
 
 <summary>How does the agent authenticate?</summary>
 
-With the device's **MDM client certificate** issued by Intune, over TLS. The backend additionally validates each device against your Intune tenant (Autopilot registration or corporate identifiers) before accepting any data — only devices under your management can send telemetry. See [Authentication](../concepts/agent-lifecycle-and-security.md#authentication).
+With the device's **MDM client certificate** issued by Intune, over TLS. The backend additionally validates each device against your Intune tenant (Autopilot registration, device association, corporate identifiers, or Cloud PC inventory) before accepting any data — only devices under your management can send telemetry. See [Authentication](../concepts/agent-lifecycle-and-security.md#authentication).
 
 </details>
 

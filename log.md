@@ -1,5 +1,12 @@
 # Log
 
+## 2026-08-27 (2)
+
+* **Update**: `getting-started/autopilot-device-preparation.md` — new "Device association" section (Microsoft's device association is GA; Device Association Validation matches by serial number, same Graph permission); Corporate Identifiers demoted to the alternative path.
+* **Update**: `reference/settings.md` — Device Association Validation row under Enrollment Device Validation.
+* **Update**: `getting-started/how-it-works.md`, `troubleshooting/faq.md` — Device Preparation scenario row and FAQ answers mention device association; the authentication FAQ lists all four validation methods.
+* **Update**: `changelog/platform-changelog.md` — August 2026 entry for device association support.
+
 ## 2026-08-27
 
 * **Update**: `concepts/sessions-and-statuses.md` — Timeouts: an expired grace window with a real user desktop observed and no failed app installs reconciles to Succeeded ("completed (assumed)"); a session whose agent hit its max lifetime is decided immediately instead of parking in Awaiting User. Awaiting User row in the status table updated to match.
