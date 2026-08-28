@@ -45,6 +45,7 @@ On the device, the bootstrapper positively identifies a Cloud PC via two local W
 
 * Sessions from Cloud PCs carry a **Cloud PC** flag, and session search can filter on it.
 * The **"Not registered" devices** view badges Cloud PCs. If your Cloud PCs appear there, the validation method is not enabled (or the Graph permission is missing) — the badge hint points to both.
+* The [Progress Portal](../portal-guide/progress-portal.md) follows a Cloud PC by the device name shown in the Windows App and lists only the first-connect steps its user can watch (sign-in, account setup, app installation, finalizing).
 
 ## Limitations
 

@@ -60,6 +60,7 @@ Formatting differences between your CSV and what the device reports (upper/lower
 
 * Sessions carry a **Device Preparation** label and can be filtered by enrollment type in session search.
 * The timeline follows the Device Preparation flow rather than ESP phases.
+* The [Progress Portal](../portal-guide/progress-portal.md) shows Device Preparation devices with the same shorter flow, including live app progress — end users and helpdesk staff can follow a device by serial number without a portal role.
 * The end-of-enrollment summary includes the apps delivered during Device Preparation — including **Microsoft 365 Apps**, which installs through its own MDM channel rather than the Intune Management Extension.
 
 ## Limitations
