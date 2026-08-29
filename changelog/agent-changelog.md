@@ -14,6 +14,7 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
+* Local admin analysis no longer flags localized built-in accounts (e.g. `Gast`, `Administrateur`), and a local account that is signed in when enrollment completes is no longer exempted from the check
 * Local admin analysis now includes disabled accounts and reports each account's membership in the local Administrators group, so a dormant admin backdoor no longer goes unnoticed
 * When the backend reports that the persisted session id belongs to a different device identity (an Intune re-enrollment without a wipe), the agent now starts a fresh session instead of shutting down after repeated authorization failures
 * On-demand log collection from the portal now works right after enabling diagnostics upload, and a skipped collection reports why (upload mode off, no destination configured)
