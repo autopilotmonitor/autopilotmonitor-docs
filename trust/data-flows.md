@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 23 August 2026 · Next review: 23 February 2027.**
+**Last reviewed: 29 August 2026 · Next review: 28 February 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -48,6 +48,7 @@ Public reference data is pulled *from* these sources to enrich your view. **Noth
 | **National Vulnerability Database (NVD)**, NIST | CVE and CPE records for vulnerability correlation. This product uses the NVD API but is not endorsed or certified by the NVD. |
 | **CISA Known Exploited Vulnerabilities (KEV) Catalog** | Which vulnerabilities are actively exploited in the wild. |
 | **Microsoft Security Response Center (MSRC)** | Microsoft-specific vulnerability details. |
+| **Exploit Prediction Scoring System (EPSS)**, FIRST.org | The likelihood that a known vulnerability is exploited in the wild. This lookup is the one that carries a query: the public CVE identifiers held in the shared, tenant-agnostic reference cache — never a device, a tenant, or an inventory. |
 
 ## 4. Lookups inside your own tenant
 

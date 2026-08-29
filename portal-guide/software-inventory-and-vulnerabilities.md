@@ -33,10 +33,17 @@ The normalized software inventory collected by the **Software Inventory & Vulner
 
 ## Vulnerabilities
 
-The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, and **MSRC**:
+The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**:
 
 * KPI tiles — affected devices, distinct CVEs, and known-exploited (KEV) count — plus a severity breakdown (Critical/High/Medium/Low).
-* **Top CVEs by affected devices**, each linked to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, and sample affected software.
+* **Top CVEs by affected devices**, each linked to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, its EPSS score, a priority label, and sample affected software.
+
+Two signals answer different questions, and the portal shows both:
+
+* **CVSS** (severity) says how bad a successful exploit would be. The session report also shows the CVSS vector, so you can tell a network-reachable flaw (`AV:N`) from one that needs local access.
+* **EPSS** (likelihood) is FIRST.org's estimated probability that the CVE is exploited in the wild within the next 30 days — `EPSS 12.3%` means 12.3 %. Scores are refreshed daily. A CVE without an EPSS pill has not been scored yet; that is unknown, not safe.
+
+The **priority** label combines them into a remediation order: **Act** — listed in CISA KEV, exploitation is confirmed; **Attend** — EPSS of 10 % or more, or CVSS 9.0 and above; **Track** — everything else. A low-CVSS vulnerability with a high EPSS is still an *Attend*.
 
 Critical findings also surface directly on the affected sessions via the built-in rule [ANALYZE-ID-003](../rules/analyze-rules/built-in-rules.md#identity-and-security).
 

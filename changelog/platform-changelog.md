@@ -14,6 +14,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## August 2026
 
+* **EPSS exploitation scores and a remediation priority on every CVE** — Vulnerability findings now show FIRST.org's EPSS score (how likely a CVE is exploited within 30 days), the CVSS vector, and an Act / Attend / Track priority that combines KEV, EPSS, and CVSS. See [Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#vulnerabilities).
+* **Fixed: vulnerability lookups no longer go blank after NVD rate limiting** — A throttled NVD answer was cached as "no vulnerabilities" for a week; it is now retried later and existing data keeps being served.
 * **MCP server on the current MCP specification** — The AI integration now implements the 2026-07-28 MCP revision (stateless transport, Client ID Metadata Document registration) while older clients keep working unchanged. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#protocol-support).
 * **Progress Portal for every enrollment scenario** — The self-service status page now follows Device Preparation, self-deploying, pre-provisioned, and Windows 365 Cloud PC enrollments with the right steps and live app progress instead of the Autopilot ESP phases only. See [Progress Portal](../portal-guide/progress-portal.md).
 * **Windows Autopilot device association support** — Devices associated with your tenant through Microsoft's newly released device association can now be validated directly: enable **Device Association Validation** in Settings; no corporate identifier upload needed. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#device-association).
