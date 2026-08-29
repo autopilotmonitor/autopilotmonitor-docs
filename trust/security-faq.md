@@ -123,6 +123,8 @@ Tenant roles are **Admin**, **Operator**, and **Viewer**, plus a role-less **Mem
 
 Role resolution is **table-first with claim fallback**, and a disabled assignment row is an explicit deny that overrides an Entra app-role claim. Revocation therefore wins.
 
+Tenant roles are bound to the tenant the token was issued by. Platform and delegated roles — the ones that cross tenant boundaries — are additionally bound to the **immutable Entra identity** of the person they were granted to (home tenant id and object id), not just to the user principal name: a sign-in that presents the same name from a different tenant, or from a different account in the same tenant, holds no platform or delegated role.
+
 See [Roles & Permissions](../concepts/roles-and-permissions.md) for what each role can do in the portal.
 
 ### How is authorization enforced across the API?
@@ -134,7 +136,7 @@ Through a single **endpoint access policy catalog**: every HTTP route must be re
 Yes, all sliding-window:
 
 * **Per device**, keyed on the client certificate thumbprint. Misconfigured or zero limits are clamped upward so a bad configuration cannot fail open.
-* **Per portal user**, keyed on UPN.
+* **Per portal user**, keyed on the user's Entra object id.
 * **Per MCP user**, plus a daily and monthly quota tied to the tenant's plan.
 
 ## Tenant Isolation
