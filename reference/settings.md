@@ -94,7 +94,7 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | IME Pattern Match Log | Disabled | Writes matched IME log lines to `%ProgramData%\AutopilotMonitor\Logs\ime_pattern_matches.log` — the debugging tool for [IME Log Patterns](../rules/ime-log-patterns.md). |
 | Show Script Output (stdout) | Enabled | Shows PowerShell script stdout in the timeline. Disable if scripts may print sensitive data; stderr is always shown. |
 | Log Level | Info | Agent's own log verbosity: Info · Debug · Verbose · Trace. Raise only while diagnosing an agent issue. |
-| Show Enrollment Summary | Disabled | Shows the end user a visual summary dialog after enrollment (success and failure). Requires the SummaryDialog companion. Sub-settings: **Auto-Close Timeout** (default 60 s; 0 = manual close), **Launch Retry Timeout** (default 120 s — retries while credential UI like Windows Hello locks the desktop), **Branding Image URL** (540 × 80 px banner). |
+| Show Enrollment Summary | Disabled | Shows the end user a visual summary dialog after enrollment (success and failure). Requires the SummaryDialog companion. Sub-settings: **Auto-Close Timeout** (default 60 s; 0 = manual close), **Launch Retry Timeout** (default 120 s — retries while credential UI like Windows Hello locks the desktop), **Branding Image URL** (HTTPS URL to a 540 × 80 px banner). |
 
 ### Agent Collectors
 
