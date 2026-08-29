@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-30
+
+* **Update**: `reference/settings.md` — Local Admin Analyzer row: disabled accounts are checked as well, and Administrators-group membership is reported per account (unexpected admin members raise the finding's confidence).
+
 ## 2026-08-29
 
 * **Update**: `rules/gather-rules.md` — On Event trigger: events produced by gather rules never act as a trigger; a rule cannot use its own output event type as its trigger.

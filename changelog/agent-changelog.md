@@ -14,6 +14,7 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 ## August 2026
 
+* Local admin analysis now includes disabled accounts and reports each account's membership in the local Administrators group, so a dormant admin backdoor no longer goes unnoticed
 * When the backend reports that the persisted session id belongs to a different device identity (an Intune re-enrollment without a wipe), the agent now starts a fresh session instead of shutting down after repeated authorization failures
 * On-demand log collection from the portal now works right after enabling diagnostics upload, and a skipped collection reports why (upload mode off, no destination configured)
 * Enrollments on devices with no user-assigned apps are no longer reported as failed, and an enrollment is no longer failed while RealmJoin is still installing
