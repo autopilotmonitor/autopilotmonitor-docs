@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 25 August 2026 · Next review: 31 January 2027.**
+**Last reviewed: 29 August 2026 · Next review: 31 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -112,6 +112,10 @@ Through **Microsoft Entra ID**, with multi-tenant JWT validation performed by th
 * The signing algorithm is restricted to an allow-list, which structurally blocks `alg:none` and HMAC-confusion attacks.
 * Identity-library PII logging is switched off.
 * Metadata retrieval is HTTPS-only, and the per-tenant metadata cache is bounded so an attacker cannot exhaust memory by presenting a stream of invented tenant IDs.
+
+### How does an AI assistant authenticate to the MCP server?
+
+The [MCP integration](../integrations/ai-integration-mcp.md) implements the current MCP specification's OAuth 2.1 profile: the assistant signs the user in through Microsoft Entra ID via the server's own authorization endpoints, PKCE is mandatory, and the authorization response carries the issuer identifier so a client can detect a mixed-up authorization server. The access token that results is the user's own; the MCP server stores no credentials and forwards the token to the API, where the normal role and tenant checks apply. Clients identify themselves through a Client ID Metadata Document (an HTTPS URL the server fetches and validates; addresses inside private or internal networks are refused before any request is made, redirects are not followed, and the document is size- and time-capped) or, for older clients, through dynamic client registration — in both cases the callback address must be on a fixed allowlist of AI-vendor callback URLs or a loopback address, so a self-registered client cannot redirect an authorization code elsewhere. MCP access itself is per-user and must be enabled by an administrator.
 
 ### What roles exist?
 

@@ -47,6 +47,12 @@ https://mcp.autopilotmonitor.com/mcp
 
 **Verify:** ask your assistant *"List all available tools from Autopilot Monitor"* — you should see 20+ tools. If authentication fails, your MCP access probably isn't enabled yet.
 
+## Protocol support
+
+The server implements the **current MCP specification (revision 2026-07-28)** — the stateless Streamable HTTP transport with `server/discover`, cache hints on tool and resource listings, and header-based request routing — and stays compatible with clients that still use the previous (2025) handshake. You do not have to configure anything: a client picks the newest revision it understands, and the tools, resources and instructions it sees are identical on either path.
+
+Authentication follows the specification's OAuth 2.1 profile: PKCE (S256) is mandatory, the authorization response carries the RFC 9207 issuer so clients can detect mix-up attacks, and clients register either through a **Client ID Metadata Document** (the client identifies itself with an HTTPS URL that serves its metadata — the mechanism the current specification recommends) or, for older clients, through Dynamic Client Registration. Redirect targets are always checked against a fixed allowlist of AI-vendor callback URLs plus loopback, whichever registration mechanism a client uses.
+
 ## Signing in — which account goes where
 
 Connecting the MCP server involves **two sign-ins**, and they are often two *different* accounts: the account of your AI subscription (e.g. your personal Claude account) and the work account you use for Autopilot Monitor (often a separate admin account). This is the most common source of confusion during setup.
