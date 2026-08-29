@@ -1,5 +1,9 @@
 # Log
 
+## 2026-08-29
+
+* **Update**: `rules/gather-rules.md` — On Event trigger: events produced by gather rules never act as a trigger; a rule cannot use its own output event type as its trigger.
+
 ## 2026-08-27 (2)
 
 * **Update**: `getting-started/autopilot-device-preparation.md` — new "Device association" section (Microsoft's device association is GA; Device Association Validation matches by serial number, same Graph permission); Corporate Identifiers demoted to the alternative path.

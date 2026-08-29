@@ -41,7 +41,7 @@ A set of maintained built-in and community gather rules ships with the product; 
 | **Interval** | Every 5–3600 seconds | Continuous monitoring (network status, policy changes) |
 | **Phase Start** | Once, when enrollment **enters** the selected phase (`Start`, `DevicePreparation`, `DeviceSetup`, `AppsDevice`, `AccountSetup`, `AppsUser`, `FinalizingSetup`, `Complete`) | State check at a defined point — "what did things look like when Account Setup began?" |
 | **Phase End** | Once, when enrollment **leaves** the selected phase | Snapshot of a phase's end state — "what did Device Setup leave behind?" |
-| **On Event** | When a specific event type is emitted (e.g. `enrollment_complete`, `enrollment_failed`, `app_install_failed`) | Collecting "at the end" or in reaction to a failure |
+| **On Event** | When a specific event type is emitted (e.g. `enrollment_complete`, `enrollment_failed`, `app_install_failed`). Events produced by gather rules themselves never act as a trigger, and a rule cannot use its own output event type as its trigger. | Collecting "at the end" or in reaction to a failure |
 
 **Phase Start** and **Phase End** are the two bookends of a phase and both fire **exactly once** per phase — they are the way to build one-shot collections. Leave the phase empty to fire on *every* phase transition.
 
