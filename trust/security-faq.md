@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 29 August 2026 · Next review: 31 January 2027.**
+**Last reviewed: 31 August 2026 · Next review: 31 January 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -263,7 +263,7 @@ By default, **no.** Diagnostics upload is **off by default**, and when enabled, 
 
 Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action — in the settings UI, or in the one-step dialog a tenant administrator is offered on a session — always behind a clearly marked *"data leaves your tenant"* disclosure. It is never enabled silently, and no other role can turn it on.
 
-When hosted upload is used, the SAS we issue is **blob-scoped, write-and-create only, pinned to your tenant's exact path** — it cannot be redirected at another tenant's data — and is short-lived, measured in minutes rather than hours. On the device the SAS is fetched immediately before upload and never written to disk or configuration; log records keep only a truncated prefix, never the signature.
+When hosted upload is used, the SAS we issue is **blob-scoped, create-only, pinned to the requesting session's exact path within your tenant's area** — it cannot be redirected at another tenant's data, and it cannot overwrite a package that already exists — and is short-lived, measured in minutes rather than hours. On the device the SAS is fetched immediately before upload and never written to disk or configuration; log records keep only a truncated prefix, never the signature.
 
 A diagnostics package contains the agent's own logs and state, Intune Management Extension logs, session information, RealmJoin logs when you have enabled that watcher, and any additional log paths your administrators configure — with size caps and an explicit packaging manifest and truncation record so you know exactly what was collected and whether anything was omitted. The built-in collection is listed read-only in the portal next to your own entries.
 
@@ -399,9 +399,8 @@ If a self-hosted deployment or a specific residency region is a hard requirement
 
 Stated explicitly, because a reviewer will find out anyway and the answer is better coming from us:
 
-* **No external penetration test has been commissioned yet**, and there is no bug bounty program. Security work to date is design review, adversarial test suites against the authorization boundaries, dependency vulnerability scanning, and structured code review on every change.
+* **No external penetration test has been commissioned yet**, and there is no bug bounty program. Security work to date is design review, adversarial test suites against the authorization boundaries, static code analysis (CodeQL) on every change, dependency vulnerability scanning, and structured code review on every change.
 * **No application-level certification.** glueckkanja AG, which operates the service, is ISO/IEC 27001 certified, and Azure carries Microsoft's certifications — but Autopilot Monitor as an application is not separately certified against SOC 2, ISO 27001, or a comparable scheme.
-* **No static application security testing (SAST) in CI.** Dependency scanning is enabled; automated code analysis is not.
 * **No customer-managed encryption keys (CMK/BYOK).** Encryption at rest uses platform-managed keys.
 * **No cross-region disaster recovery.** Storage is locally redundant within Germany West Central; a regional outage means an outage.
 * **Session and event telemetry is not backed up** — only configuration, authorization, and rules tables are.
