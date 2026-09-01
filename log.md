@@ -1,5 +1,11 @@
 # Log
 
+## 2026-09-02
+
+* **Update**: `changelog/platform-changelog.md` — September 2026 block: multi-select on the dashboard (Select button) for bulk delete / block.
+* **Update**: `concepts/roles-and-permissions.md` — Delete Session row mentions the Select button for bulk delete / block.
+* **Update**: `trust/security-faq.md` — Delete session wording covers deleting several sessions at once.
+
 ## 2026-08-30
 
 * **Update**: `reference/settings.md` — Local Admin Analyzer row: disabled accounts are checked as well, and Administrators-group membership is reported per account (unexpected admin members raise the finding's confidence).

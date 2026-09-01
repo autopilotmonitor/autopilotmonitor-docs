@@ -12,6 +12,10 @@ This changelog tracks significant platform changes — architecture updates, dat
 
 Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
+## September 2026
+
+* **Select several sessions and delete or block them at once** — A new **Select** button on the dashboard (Admin Mode) adds checkboxes to the session list; pick rows, a page, or a Shift+click range, then delete them or block their devices in one confirmation. See [Roles and Permissions](../concepts/roles-and-permissions.md#admin-mode).
+
 ## August 2026
 
 * **EPSS exploitation scores and a remediation priority on every CVE** — Vulnerability findings now show FIRST.org's EPSS score (how likely a CVE is exploited within 30 days), the CVSS vector, and an Act / Attend / Track priority that combines KEV, EPSS, and CVSS. See [Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#vulnerabilities).

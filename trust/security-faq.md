@@ -10,7 +10,7 @@ description: >-
 
 # Security & Privacy FAQ
 
-**Last reviewed: 31 August 2026 · Next review: 31 January 2027.**
+**Last reviewed: 2 September 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -212,7 +212,7 @@ Retention is **per tenant and configurable by you**, default **90 days**. The pe
 
 You additionally control:
 
-* **Delete session** — remove an individual monitoring session on demand.
+* **Delete session** — remove monitoring sessions on demand, individually or several at once.
 * **Offboard tenant** — remove your tenant's data and configuration from the service entirely.
 
 ### How long is each kind of record kept?
