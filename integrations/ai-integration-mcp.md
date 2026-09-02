@@ -45,7 +45,33 @@ https://mcp.autopilotmonitor.com/mcp
 }
 ```
 
-**Optional, for humans reading raw results:** tool results are compact JSON by default because indentation costs your assistant tokens on every call. If you read results yourself (for example in an IDE), add the request header `X-MCP-Pretty: 1` to the client configuration (the `headers` object of the server entry) to receive indented JSON.
+### Optional: readable (indented) results
+
+Tool results are compact JSON by default because indentation costs your assistant tokens on every call. If you read raw results yourself (for example in an IDE), send the request header `X-MCP-Pretty: 1` and the server returns indented JSON for that client only.
+
+* **VS Code (Claude extension):** add a `headers` object to the server entry:
+
+```json
+{
+  "servers": {
+    "autopilot-monitor": {
+      "type": "http",
+      "url": "https://mcp.autopilotmonitor.com/mcp",
+      "headers": {
+        "X-MCP-Pretty": "1"
+      }
+    }
+  }
+}
+```
+
+* **Claude Code (CLI):** pass the header when adding the server:
+
+```
+claude mcp add --transport http autopilot-monitor https://mcp.autopilotmonitor.com/mcp --header "X-MCP-Pretty: 1"
+```
+
+Remove the header again when you no longer read raw results — every indented response costs roughly 15–45 % more tokens.
 
 **Verify:** ask your assistant *"List all available tools from Autopilot Monitor"* — you should see 20+ tools. If authentication fails, your MCP access probably isn't enabled yet.
 
