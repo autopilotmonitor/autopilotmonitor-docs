@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **The new app registration is the default sign-in app** — New browsers and devices now sign in with the new Autopilot Monitor app; tenants still on the previous app keep working, see a one-time consent prompt on a new browser, and get a dashboard banner for the one-time switch. See [App Registration Migration](../troubleshooting/app-registration-migration.md).
 * **Company name in the Contact settings** — Next to the contact email address you can now store your organization's name; both are optional on Community and required before starting a Pro trial. See [Settings Reference](../reference/settings.md#contact).
 * **Documentation links in Settings** — Every settings section now has a "Read the docs" link in its header that opens the matching documentation page in a new tab. See [Settings Reference](../reference/settings.md).
 * **Organization-wide MCP quota** — Next to the per-account daily and monthly MCP limits, every tenant now has a shared daily and monthly budget that all members' requests count against; the MCP Usage page shows both. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#rate-limits-and-usage-plans).
