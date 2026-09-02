@@ -137,7 +137,7 @@ Yes, all sliding-window:
 
 * **Per device**, keyed on the client certificate thumbprint. Misconfigured or zero limits are clamped upward so a bad configuration cannot fail open.
 * **Per portal user**, keyed on the user's Entra object id.
-* **Per MCP user**, plus a daily and monthly quota tied to the tenant's plan.
+* **Per MCP user**, plus daily and monthly quotas tied to the tenant's plan — one per account and one shared by the whole tenant, so adding accounts does not add budget.
 
 ## Tenant Isolation
 

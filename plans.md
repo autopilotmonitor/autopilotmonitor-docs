@@ -15,7 +15,7 @@ Autopilot Monitor will be available in two plans. Your tenant's current plan, an
 The Community plan is what this documentation describes: the full product as it exists today. It is **free — and stays free**. That's the point of a community plan: it is the free way to use Autopilot Monitor, publicly available to every organization.
 
 * **Access:** self-service — sign in with your work account; new tenants are activated after a short activation step. See [Requirements & Access](getting-started/requirements-and-access.md).
-* **Features:** the complete current feature set — live session monitoring, the full [rules engine](rules/overview.md) including custom rules, fleet analytics, notifications, and diagnostics. The [AI integration (MCP)](integrations/ai-integration-mcp.md) is included with **limits tied to your tenant's usage plan**.
+* **Features:** the complete current feature set — live session monitoring, the full [rules engine](rules/overview.md) including custom rules, fleet analytics, notifications, and diagnostics. The [AI integration (MCP)](integrations/ai-integration-mcp.md) is included with **per-account and organization-wide usage limits tied to your tenant's usage plan**.
 * **Data retention:** session and telemetry data is retained for up to **90 days**.
 * **Production use is fine** — the Community plan is meant for real fleets, not just labs. What you accept in return: community-based support, and later on, certain capabilities will be Pro-only.
 * **Support:** community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues); rules and IME patterns are community-maintained.

@@ -130,4 +130,4 @@ The assistant picks the right tools and chains them — e.g. finding a session b
 
 ## Rate limits and usage plans
 
-Requests are rate-limited to **60 per minute per user** (sliding window). Exceeding it returns HTTP 429 with `retryAfterSeconds`; clients typically retry automatically. Overall MCP usage is additionally **tied to your tenant's usage plan** — tenant admins can track consumption under **Configuration → Reporting → MCP Usage**.
+Requests are rate-limited to **60 per minute per user** (sliding window). Exceeding it returns HTTP 429 with `retryAfterSeconds`; clients typically retry automatically. Overall MCP usage is additionally **tied to your tenant's usage plan**, with two budgets: a daily and monthly quota **per account**, and a daily and monthly quota **for your whole organization** that every member's requests count against — adding accounts does not add budget. When either is exhausted, the assistant receives a message naming which budget it was and when it resets. Tenant admins can track consumption against both budgets under **Configuration → Reporting → MCP Usage**.
