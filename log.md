@@ -2,6 +2,15 @@
 
 ## 2026-09-02
 
+* **Update**: `concepts/roles-and-permissions.md` — MSP section: 2 managed tenants included, self-service setup (invite, accept, assign, remove with 24-hour slot hold), every tenant sees and can end its delegations.
+* **Update**: `trust/security-faq.md` — Consent-aware bullet rewritten to the invitation-accept model; new "Bounded and paced" bullet (slots, 24-hour hold, customer revoke).
+* **Update**: `plans.md` — Delegated administration row: 2 managed tenants, larger packages on request.
+* **Update**: `reference/settings.md` — new "Delegated Access" section.
+* **Update**: `changelog/platform-changelog.md` — September 2026 block: self-service delegated administration.
+* **Update**: `integrations/ai-integration-mcp.md` — Rate limits: organization budget by account on the MCP Usage page; delegated (MSP) reads are charged to the managed tenant's own budget; `get_fleet_overview`.
+* **Update**: `concepts/roles-and-permissions.md` — MSP guarantee row: AI usage follows the customer's plan and is visible to the customer.
+* **Update**: `reference/settings.md` — MCP Usage row: organization budget by account incl. delegated administrators.
+* **Update**: `changelog/platform-changelog.md` — September 2026 block: MCP quota for delegated reads follows the managed tenant.
 * **Update**: `reference/settings.md` — Contact section: Company field, both fields optional on Community and required before a Pro trial.
 * **Update**: `plans.md` — Pro trial hint names the contact-profile prerequisite.
 * **Update**: `changelog/platform-changelog.md` — September 2026 block: Company field in Contact settings.

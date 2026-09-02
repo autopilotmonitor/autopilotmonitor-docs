@@ -52,7 +52,7 @@ Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC
 | **Data retention** | Up to 90 days | Up to 365 days |
 | **Portal & agent API rate limits** | Standard | Higher |
 | **AI (MCP) usage quota** | Standard | Larger |
-| **Delegated (MSP) administration** | — | Included |
+| **Delegated (MSP) administration** | — | Included (2 managed tenants; larger packages on request) |
 | **OOBE bootstrap sessions / Unrestricted Mode** | — | Included, activated on request |
 | **Support** | Community (GitHub) | Priority support with reliability commitments |
 | **Operator & counterparty** | glueckkanja AG — no commitments | glueckkanja AG under written agreement |

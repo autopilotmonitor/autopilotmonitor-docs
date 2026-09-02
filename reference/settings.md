@@ -142,8 +142,15 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 | --- | --- |
 | Offboard Tenant | **Irreversibly deletes all tenant data** — sessions, events, rules, audit logs, configuration, and all member accounts — and signs you out. Requires typing `OFFBOARD` to confirm. |
 
+### Delegated Access
+
+| Setting | Description |
+| --- | --- |
+| Who can read this tenant | Every organization with delegated (MSP) read access to your tenant, with the people behind it. Self-service delegations can be ended here at once; operator-provisioned ones via support. |
+| Tenants you manage (Pro) | Slot usage, the tenants you manage with their AI (MCP) budget, single-use invitation links (valid 7 days), and which of your own members hold the read-only access. Removing a tenant keeps its slot occupied for 24 hours. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access). |
+
 ## Reporting
 
 | Page | Description |
 | --- | --- |
-| MCP Usage | Per-tenant usage reporting for the [AI integration (MCP)](../integrations/ai-integration-mcp.md) — request volumes per user and tool. Visible when MCP access is enabled. |
+| MCP Usage | Usage reporting for the [AI integration (MCP)](../integrations/ai-integration-mcp.md) — your own request volumes against both quota budgets and, for tenant admins, the organization budget by account, including delegated (MSP) administrators reading your tenant. Visible when MCP access is enabled. |
