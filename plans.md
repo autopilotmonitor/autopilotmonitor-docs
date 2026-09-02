@@ -8,7 +8,7 @@ description: >-
 
 # Plans
 
-Autopilot Monitor will be available in two plans. Your tenant's current plan, and the side-by-side comparison below, are shown in the portal under **Settings → Tenant → Plan**; the same comparison is public at [autopilotmonitor.com/plans](https://autopilotmonitor.com/plans).
+Autopilot Monitor will be available in two plans. Your tenant's current plan, and the side-by-side comparison below, are shown in the portal under **Settings → Tenant → Plan**; the same comparison is public at [autopilotmonitor.com/plans](https://www.autopilotmonitor.com/plans).
 
 ## Community — *available now*
 
@@ -19,7 +19,7 @@ The Community plan is what this documentation describes: the full product as it 
 * **Data retention:** session and telemetry data is retained for up to **90 days**.
 * **Production use is fine** — the Community plan is meant for real fleets, not just labs. What you accept in return: community-based support, and later on, certain capabilities will be Pro-only.
 * **Support:** community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues); rules and IME patterns are community-maintained.
-* **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
+* **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://www.autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
 * **Active development:** frequent updates, no availability guarantees, and data structures may change — see [Requirements & Access](getting-started/requirements-and-access.md#getting-access-tenant-activation).
 
 ## Pro — *coming soon*

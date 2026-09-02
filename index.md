@@ -4,7 +4,7 @@ okf_version: "0.1"
 
 # Autopilot Monitor — Customer Documentation Bundle
 
-Customer-facing product documentation for [Autopilot Monitor](https://autopilotmonitor.com), organized as an
+Customer-facing product documentation for [Autopilot Monitor](https://www.autopilotmonitor.com), organized as an
 [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 knowledge bundle and published via GitBook at https://docs.autopilotmonitor.com.
 Contributor-facing technical documentation lives in the main product repository (separate bundle).

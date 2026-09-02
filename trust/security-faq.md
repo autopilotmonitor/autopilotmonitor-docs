@@ -14,7 +14,7 @@ description: >-
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
-It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://autopilotmonitor.com/terms), the [Privacy Policy](https://autopilotmonitor.com/privacy), and, on the Pro plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
+It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://www.autopilotmonitor.com/terms), the [Privacy Policy](https://www.autopilotmonitor.com/privacy), and, on the Pro plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
 
 Two principles run through every answer below:
 
@@ -315,7 +315,7 @@ Through **[GitHub Security Advisories](https://github.com/okieselbach/Autopilot-
 
 What to expect: an acknowledgement and an initial assessment of severity, then a fix or a mitigation plan, with a shared view of timing before anything is disclosed. Credit in the advisory if you want it — and none if you would rather stay anonymous. Reports are read by the maintainer directly; no response time is guaranteed.
 
-Security research is welcome and is not a violation of the [Terms of Use](https://autopilotmonitor.com/terms). While testing, please do not access other tenants' data, degrade the service for others, or run automated scanners against production. There is no bug bounty — see [What we do not do](#what-we-do-not-do-yet).
+Security research is welcome and is not a violation of the [Terms of Use](https://www.autopilotmonitor.com/terms). While testing, please do not access other tenants' data, degrade the service for others, or run automated scanners against production. There is no bug bounty — see [What we do not do](#what-we-do-not-do-yet).
 
 ### What happens when there is an incident?
 
@@ -412,7 +412,7 @@ Several of these are on the path to Pro general availability. If one of them blo
 
 # Citations
 
-* [Terms of Use](https://autopilotmonitor.com/terms) and [Privacy Policy](https://autopilotmonitor.com/privacy) — the binding documents; this page is the technical explanation behind them.
+* [Terms of Use](https://www.autopilotmonitor.com/terms) and [Privacy Policy](https://www.autopilotmonitor.com/privacy) — the binding documents; this page is the technical explanation behind them.
 * [Data Flows & External Services](data-flows.md) — every outbound connection and what it carries.
 * [Plans](../plans.md) — Community versus Pro.
 * [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md) — how the agent installs, authenticates, and removes itself.

@@ -132,6 +132,62 @@ Yes — when the [Diagnostics Package](diagnostics-and-log-collection.md) featur
 
 </details>
 
+<details>
+
+<summary>Can I follow a Windows Autopilot enrollment live?</summary>
+
+Yes. Every enrolling device appears on the [dashboard](../portal-guide/dashboard-and-sessions.md) as it starts, and its [session](../portal-guide/session-details-and-diagnosis.md) shows ESP phases, app downloads and installs, reboots, errors, and performance snapshots as they happen — no refreshing, no touching the device.
+
+</details>
+
+<details>
+
+<summary>Why did an enrollment fail, and how do I find out without the device?</summary>
+
+Open the session: [analyze rules](../rules/analyze-rules/README.md) have already flagged app install error codes, detection-rule failures that break the ESP, blocking-app timeouts, download and proxy failures, TPM attestation and MDM enrollment error codes, hybrid join problems, failed Windows updates, and low disk space or battery (full list: [built-in rules](../rules/analyze-rules/built-in-rules.md)). [Guided diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis) names the primary suspect with a copyable quick fix; [diagnostics collection](diagnostics-and-log-collection.md) brings the agent and IME logs to you.
+
+</details>
+
+<details>
+
+<summary>Are failed enrollments analyzed automatically?</summary>
+
+Yes. Dozens of built-in, community-maintained rules evaluate every session automatically and report confidence-scored findings with remediation steps. You can adapt [template rules](../rules/analyze-rules/template-rules.md), [write your own](../rules/analyze-rules/cookbook.md), and add [IME log patterns](../rules/ime-log-patterns.md); [regression detection](../rules/analyze-rules/README.md#regression-detection) tells you when a rule starts firing more often than usual.
+
+</details>
+
+<details>
+
+<summary>How do I get alerted when an enrollment fails?</summary>
+
+Configure [notifications](../integrations/notifications.md) for Microsoft Teams, Slack, Discord, or a generic JSON webhook and pick the triggers: start, success, or failure. The same channel carries SLA breach and resolution alerts, consecutive-failure alerts, and hardware rejection notices.
+
+</details>
+
+<details>
+
+<summary>Is there reporting on success rate, enrollment duration, and failing apps?</summary>
+
+Yes. [Fleet Health](../portal-guide/fleet-health.md) shows the success rate, average enrollment time, a daily timeline, top failure reasons, the slowest and most-failing models and apps, and a first-time-right rate. [SLA Compliance](../portal-guide/sla-compliance.md) reports against your own targets; [Geographic Performance](../portal-guide/geographic-performance.md) compares sites.
+
+</details>
+
+<details>
+
+<summary>Why does enrollment take so long, and which app is slowing it down?</summary>
+
+Every finished session gets a [time attribution](../portal-guide/session-details-and-diagnosis.md#time-attribution) bar that shows where the minutes went and which apps blocked the ESP. [Fleet Health](../portal-guide/fleet-health.md#time-attribution) aggregates the same data per enrollment class and ranks the apps that cost the most time.
+
+</details>
+
+<details>
+
+<summary>Can end users or field technicians check a device's status without portal access?</summary>
+
+Yes. The [Progress Portal](../portal-guide/progress-portal.md) shows a device's enrollment status by serial number — status, progress bar, steps, and what is currently downloading or installing — live and strictly read-only. No portal role is needed; the serial number is the access key.
+
+</details>
+
 ## Troubleshooting
 
 <details>
