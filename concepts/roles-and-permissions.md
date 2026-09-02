@@ -29,7 +29,7 @@ Admin Mode is a safety toggle that gates destructive operations. It is only avai
 
 | Action | Location | Description |
 | --- | --- | --- |
-| **Delete Session** | Dashboard → Actions column | Permanently deletes a session and all its event data. The Actions column only appears while Admin Mode is on. Use the **Select** button above the list to pick several sessions and delete them (or block their devices) in one step. |
+| **Delete Session** | Dashboard → Actions column | Permanently deletes a session and all its event data. The Actions column only appears while Admin Mode is on. Use the **Select** button above the list to pick several sessions and delete them (or block their devices) in one step — at most 100 per action; deleting more than 10 at once requires typing `DELETE`. |
 | **Mark as Failed** | Session detail page | Manually fails a stuck *In Progress*/*Pending* session that will never complete on its own. |
 | **Mark as Succeeded** | Session detail page | Manually completes a session; also signals a still-running agent to finish up and clean the device. |
 

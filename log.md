@@ -8,6 +8,7 @@
 * **Update**: `changelog/platform-changelog.md` — September 2026 block: multi-select on the dashboard (Select button) for bulk delete / block.
 * **Update**: `concepts/roles-and-permissions.md` — Delete Session row mentions the Select button for bulk delete / block.
 * **Update**: `trust/security-faq.md` — Delete session wording covers deleting several sessions at once.
+* **Update**: `changelog/platform-changelog.md`, `concepts/roles-and-permissions.md` — bulk actions are capped at 100 sessions; bulk deletes above 10 require typing `DELETE`.
 
 ## 2026-08-30
 

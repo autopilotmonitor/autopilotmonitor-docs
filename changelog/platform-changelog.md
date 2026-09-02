@@ -18,7 +18,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 * **Documentation links in Settings** — Every settings section now has a "Read the docs" link in its header that opens the matching documentation page in a new tab. See [Settings Reference](../reference/settings.md).
 * **Organization-wide MCP quota** — Next to the per-account daily and monthly MCP limits, every tenant now has a shared daily and monthly budget that all members' requests count against; the MCP Usage page shows both. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#rate-limits-and-usage-plans).
 * **MCP access follows your tenant role** — Members of your tenant (Admin, Operator, Viewer) can connect an AI assistant without a separate per-user entry; accounts without a role cannot, and individual accounts can still be blocked. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#prerequisites).
-* **Select several sessions and delete or block them at once** — A new **Select** button on the dashboard (Admin Mode) adds checkboxes to the session list; pick rows, a page, or a Shift+click range, then delete them or block their devices in one confirmation. See [Roles and Permissions](../concepts/roles-and-permissions.md#admin-mode).
+* **Select several sessions and delete or block them at once** — A new **Select** button on the dashboard (Admin Mode) adds checkboxes to the session list; pick rows, a page, or a Shift+click range, then delete them or block their devices in one confirmation. A bulk action covers at most 100 sessions, and deleting more than 10 at once asks you to type `DELETE` first. See [Roles and Permissions](../concepts/roles-and-permissions.md#admin-mode).
 
 ## August 2026
 
