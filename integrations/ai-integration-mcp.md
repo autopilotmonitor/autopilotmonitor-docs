@@ -20,7 +20,7 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 
 ## Prerequisites
 
-1. **MCP access for your account** — enabled by an administrator (access is managed per user). Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
+1. **A role in your organization's tenant** — MCP access follows your portal role: an account with a role (Admin, Operator or Viewer) can connect, an account without one cannot, and individual accounts can be blocked. Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
 2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth.
 
 ## Client setup

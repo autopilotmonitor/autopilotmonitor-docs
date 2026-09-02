@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 29 August 2026 · Next review: 28 February 2027.**
+**Last reviewed: 2 September 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -62,11 +62,11 @@ These connections exist **only because someone configured them**. They point at 
 | --- | --- | --- |
 | **Your own Azure storage account** | Diagnostics upload with the default `CustomerSas` destination | The diagnostics package — agent logs and state, IME logs, session info, RealmJoin logs when that watcher is enabled, plus the additional log paths your administrators configure. This is the default: the payload never reaches our infrastructure. |
 | **Microsoft Teams, Slack, Discord, or a generic webhook endpoint** | Notification channels you configure | Alert payloads — session, device, and finding details. Webhook targets pass an SSRF guard before any request is made. |
-| **Your AI assistant** | If a user connects an AI client through the [MCP integration](../integrations/ai-integration-mcp.md) | Whatever that assistant queries. The platform itself makes no AI calls; this transfer is initiated by your user, to your vendor, under your agreement with them. MCP access is per-user and must be enabled by an administrator. |
+| **Your AI assistant** | If a user connects an AI client through the [MCP integration](../integrations/ai-integration-mcp.md) | Whatever that assistant queries. The platform itself makes no AI calls; this transfer is initiated by your user, to your vendor, under your agreement with them. MCP access is limited to accounts that hold a role in your tenant, and individual accounts can be blocked. |
 | **IP geolocation service** (`ipinfo.io`, fallback `ifconfig.co`) | Geolocation, a tenant setting that is **on by default** | The device's outbound connection reaches the service, which returns approximate location. The session stores country, region, city, and approximate coordinates; the outbound IP is stored separately as a diagnostic event. Disable geolocation to stop this entirely — see the [Security & Privacy FAQ](security-faq.md#is-the-devices-ip-address-stored). |
 
 {% hint style="info" %}
-To eliminate group 5 entirely: leave diagnostics upload off or on `CustomerSas`, configure no notification channels, enable no MCP users, and switch off geolocation. The service is fully functional with all of them disabled — only Geographic Performance goes dark, because it has nothing to plot.
+To eliminate group 5 entirely: leave diagnostics upload off or on `CustomerSas`, configure no notification channels, connect no AI assistant through MCP, and switch off geolocation. The service is fully functional with all of them disabled — only Geographic Performance goes dark, because it has nothing to plot.
 {% endhint %}
 
 # Citations
