@@ -2,6 +2,9 @@
 
 ## 2026-09-02
 
+* **Update**: `reference/settings.md` — Contact section: Company field, both fields optional on Community and required before a Pro trial.
+* **Update**: `plans.md` — Pro trial hint names the contact-profile prerequisite.
+* **Update**: `changelog/platform-changelog.md` — September 2026 block: Company field in Contact settings.
 * **Update**: `changelog/platform-changelog.md` — September 2026 block: multi-select on the dashboard (Select button) for bulk delete / block.
 * **Update**: `concepts/roles-and-permissions.md` — Delete Session row mentions the Select button for bulk delete / block.
 * **Update**: `trust/security-faq.md` — Delete session wording covers deleting several sessions at once.

@@ -65,8 +65,9 @@ Define your enrollment SLA thresholds (e.g. target duration and success rate); t
 | Setting | Description |
 | --- | --- |
 | Contact email address | Where we reach your organization about the service itself — a technical problem affecting your tenant, a security matter, or a change that needs an administrator's attention. Used for nothing else: never for marketing, and never shared. A shared team mailbox is a better choice than a personal address. |
+| Company | The name of your organization as our support engineers should refer to it. Used only alongside the contact address for service and support matters; never shared. |
 
-Leaving it empty is allowed; it only means there is no way to reach you before acting on a problem affecting your tenant. If your organization gave a notification address during sign-up (tenant activation), that address is copied here once as the initial value and is yours to change from then on — it is not kept in sync afterwards.
+On the Community plan both fields are optional; leaving them empty only means there is no way to reach you before acting on a problem affecting your tenant. Both are required before starting a Pro trial or moving to Pro — the Plan section tells you what is still missing — so a paying tenant is reachable and identifiable for support. If your organization gave a notification address during sign-up (tenant activation), that address is copied here once as the initial value and is yours to change from then on — it is not kept in sync afterwards.
 
 ### Optional Graph capabilities
 
