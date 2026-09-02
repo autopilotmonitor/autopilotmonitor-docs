@@ -45,6 +45,8 @@ https://mcp.autopilotmonitor.com/mcp
 }
 ```
 
+**Optional, for humans reading raw results:** tool results are compact JSON by default because indentation costs your assistant tokens on every call. If you read results yourself (for example in an IDE), add the request header `X-MCP-Pretty: 1` to the client configuration (the `headers` object of the server entry) to receive indented JSON.
+
 **Verify:** ask your assistant *"List all available tools from Autopilot Monitor"* — you should see 20+ tools. If authentication fails, your MCP access probably isn't enabled yet.
 
 ## Protocol support
