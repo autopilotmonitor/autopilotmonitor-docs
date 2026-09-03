@@ -23,7 +23,7 @@ This page explains what the two applications are, what your users see while your
 
 Both applications appear in the **Microsoft Entra admin center → Enterprise applications** with the display name **Autopilot Monitor** — always tell them apart by the Application ID, not the name.
 
-The permission set does not change with the migration: the delegated sign-in permission (`User.Read`) and the same read-only Microsoft Graph application permission used for device validation (`DeviceManagementServiceConfig.Read.All`). Migrating does not add or broaden any permission. Optional add-on permissions you may have granted are covered [below](#after-the-migration).
+The permission set does not change with the migration: the delegated sign-in permission (`User.Read`) and the same read-only Microsoft Graph application permission used for device validation (`DeviceManagementServiceConfig.Read.All`). Migrating does not add or broaden any permission. Optional add-on permissions you may have granted are covered [below](#optional-graph-add-on-permissions).
 
 ## Signing in from a new browser or device
 
@@ -44,6 +44,7 @@ If a **Conditional Access** policy in your tenant blocks the new app entirely, t
 2. If your tenant still runs on the previous app, the **Dashboard** shows a blue banner **"Please switch to the new Autopilot Monitor app registration"** with a **Switch in Settings** button; the same banner sits at the top of **Settings → Autopilot Validation**. The dashboard banner can be hidden for the current browser tab and returns in the next one until the tenant has migrated.
 3. In **Settings → Autopilot Validation**, click **Grant consent for the new app** and complete the Microsoft consent prompt. If the new app has already been consented in your tenant (for example by another admin, or directly in the Entra admin center), use **Detect existing access** instead — no consent redirect needed.
 4. The portal verifies the consent and switches your tenant to the new app automatically. A green confirmation banner appears: signed-in users keep working uninterrupted, and every next sign-in uses the new app on its own. Use **Sign in with the new app now** if you want your own browser to switch immediately.
+5. Only if your tenant granted the previous app [optional Graph add-on permissions](#optional-graph-add-on-permissions): instead of the green banner, the portal shows **One more step** with the list of those permissions and a PowerShell command pre-filled with the new app's ID. Run it once, then click **Detect existing access** — the switch completes automatically.
 
 The switch only happens once the new app holds every Microsoft Graph application permission the previous app holds in your tenant, so no capability is lost along the way. A sign-in consent alone (the `User.Read` prompt described above) never switches the tenant — only the admin consent from Settings does.
 
@@ -63,12 +64,23 @@ Most tenants configure nothing on the Autopilot Monitor enterprise application i
 
 The new enterprise application appears in your tenant as soon as the first user or admin consents to it — that is the moment these settings can be replicated.
 
+### Optional Graph add-on permissions
+
+[Optional Graph permissions](../reference/optional-graph-permissions.md) — for example `DeviceManagementScripts.Read.All` for script display names or `CloudPC.Read.All` for [Windows 365 Cloud PC validation](../getting-started/windows-365-cloud-pcs.md) — are tenant-side grants on the service principal of the app your tenant runs on. They are not part of the admin consent, so consenting to the new app does not carry them over, and the portal does **not** switch your tenant while the new app lacks a permission the previous app holds: the feature it powers would silently stop working.
+
+You do not have to work this out yourself. After the consent, **Settings → Autopilot Validation** shows **One more step** with exactly the permissions the new app still lacks and a PowerShell command that grants them on the new app (`886ab5e2-…`). Run it once with an account that can assign application permissions (Global Administrator, Privileged Role Administrator or Cloud Application Administrator — Azure Cloud Shell is the easiest place), then click **Detect existing access**. The switch completes automatically.
+
+{% hint style="info" %}
+Use the command from that banner, not the one on **Settings → Optional Graph capabilities**: until the switch, that page pre-fills the client ID of the app your tenant currently runs on — the previous one. After the switch it targets the new app for any further grants.
+{% endhint %}
+
 ## After the migration
 
-Two things do **not** carry over automatically, because they live on the previous application's service principal in your tenant:
+One thing does **not** carry over automatically, because it lives on the previous application's service principal in your tenant:
 
-* **Optional Graph add-on permissions.** If you granted opt-in add-on permissions — for example `CloudPC.Read.All` for [Windows 365 Cloud PC validation](../getting-started/windows-365-cloud-pcs.md) — re-grant them against the new app. Open **Settings → Optional Graph capabilities** and run the grant command again; it is pre-filled with the new app's client ID. See [Optional Graph Permissions](../reference/optional-graph-permissions.md).
 * **Role assignments made directly on the enterprise application.** Most tenants assign portal roles inside Autopilot Monitor (**Settings → Access Management**) — those are unaffected. Only if you assigned roles on the Autopilot Monitor enterprise application in the Entra admin center do you need to re-create those assignments on the new application (see [above](#before-you-migrate-settings-on-the-enterprise-application)).
+
+Optional Graph add-on permissions are already on the new app at this point — the portal does not switch without them (see [above](#optional-graph-add-on-permissions)). **Settings → Optional Graph capabilities** now targets the new app for anything you grant later.
 
 ## Deleting the previous app
 
@@ -124,6 +136,14 @@ Your tenant has not migrated yet and does not allow users to consent to applicat
 <summary>I granted the consent, but the portal still shows a permission error.</summary>
 
 That is almost always the consent propagation window — Microsoft can take a minute to make a fresh tenant-wide consent visible to token requests. The portal retries automatically; if the error persists, use **Detect existing access** in **Settings → Autopilot Validation**, and check under **Enterprise applications → Autopilot Monitor (886ab5e2-…) → Permissions** that `DeviceManagementServiceConfig.Read.All` is listed as granted.
+
+</details>
+
+<details>
+
+<summary>I granted the consent, but the portal shows "One more step" and lists Graph permissions.</summary>
+
+Your tenant granted the previous app one or more [optional Graph add-on permissions](#optional-graph-add-on-permissions), and the new app does not hold them yet. The portal holds the switch so the feature they power keeps working. Copy the command shown in the banner (it targets the new app's ID `886ab5e2-…` and exactly those permissions), run it once with an account that can assign application permissions, then click **Detect existing access**. If the banner persists right after running the script, wait a minute — Microsoft's grant can take a moment to reach token requests — and click **Detect existing access** again.
 
 </details>
 
