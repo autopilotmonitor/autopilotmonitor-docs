@@ -63,7 +63,7 @@
 
 ## Troubleshooting & Support
 
-* [How to purchase](troubleshooting-and-support/how-to-purchase/README.md)
+* [How to Purchase](troubleshooting-and-support/how-to-purchase/README.md)
   * [Microsoft Marketplace](troubleshooting-and-support/how-to-purchase/microsoft-marketplace.md)
 * [FAQ](troubleshooting/faq.md)
 * [Common Problems](troubleshooting/common-problems.md)
