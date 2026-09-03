@@ -63,8 +63,6 @@
 
 ## Troubleshooting & Support
 
-* [How to Purchase](troubleshooting-and-support/how-to-purchase/README.md)
-  * [Microsoft Marketplace](troubleshooting-and-support/how-to-purchase/microsoft-marketplace.md)
 * [FAQ](troubleshooting/faq.md)
 * [Common Problems](troubleshooting/common-problems.md)
 * [App Registration Migration](troubleshooting/app-registration-migration.md)
@@ -72,6 +70,8 @@
 * [Hybrid Join: Stuck in Account Setup](troubleshooting/hybrid-join-stuck-in-account-setup.md)
 * [Diagnostics & Log Collection](troubleshooting/diagnostics-and-log-collection.md)
 * [Service Announcements](troubleshooting/service-announcements.md)
+* [How to Purchase](troubleshooting-and-support/how-to-purchase/README.md)
+  * [Microsoft Marketplace](troubleshooting-and-support/how-to-purchase/microsoft-marketplace.md)
 
 ## Changelog
 
