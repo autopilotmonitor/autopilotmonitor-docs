@@ -1,10 +1,15 @@
 ---
 type: Feature Guide
-tags: [device-preparation, autopilot, deployment, device-validation, msi]
 description: >-
   Monitor Windows Autopilot Device Preparation enrollments — why the flow is
   different, how to deliver the agent early via the MSI line-of-business app,
-  and how to validate devices with device association or Corporate Identifiers.
+  and how to validate devices with device associati
+tags:
+  - device-preparation
+  - autopilot
+  - deployment
+  - device-validation
+  - msi
 ---
 
 # Autopilot Device Preparation
@@ -19,18 +24,18 @@ Device Preparation support is **young and actively evolving**. If you monitor De
 
 Two structural differences matter for monitoring:
 
-1. **The processing order is reversed.** There is no classic Enrollment Status Page. The Device Preparation page works through the resources selected in the Device Preparation policy in a fixed order: **apps first, then PowerShell scripts**. A PowerShell script therefore runs only *after* the app phase — delivered that way, the agent would arrive too late to watch the apps install, and if the app phase fails hard, the script channel may never run at all.
+1. **The processing order is reversed.** There is no classic Enrollment Status Page. The Device Preparation page works through the resources selected in the Device Preparation policy in a fixed order: **apps first, then PowerShell scripts**. A PowerShell script therefore runs only _after_ the app phase — delivered that way, the agent would arrive too late to watch the apps install, and if the app phase fails hard, the script channel may never run at all.
 2. **Devices are never Autopilot-registered.** Device Preparation does not use Windows Autopilot device identities, so [Autopilot Device Validation](../reference/settings.md#enrollment-device-validation) can never match these devices. Validate them through **device association** or **Corporate Identifiers** instead — see below.
 
 ## Deploy the agent as an MSI line-of-business app
 
-To get the agent onto the device *before* the app phase, Autopilot Monitor provides a small MSI that Intune delivers over the MDM channel. Line-of-business apps install with the first Intune sync — early enough to monitor the Device Preparation app phase from the start.
+To get the agent onto the device _before_ the app phase, Autopilot Monitor provides a small MSI that Intune delivers over the MDM channel. Line-of-business apps install with the first Intune sync — early enough to monitor the Device Preparation app phase from the start.
 
 The MSI contains no agent logic: it is a thin runner that downloads and executes the current server-hosted bootstrap script. It passes through exactly the same [pre-requisite guards](deploy-the-agent.md#safe-to-assign-broadly) and always installs the current agent, so unlike an uploaded script copy there is nothing in Intune to keep up to date.
 
 1. **Download the MSI:** [`AutopilotMonitor-Bootstrap.msi`](https://download.autopilotmonitor.com/agent/AutopilotMonitor-Bootstrap.msi). Every build is published with a signed provenance attestation — verify with `gh attestation verify AutopilotMonitor-Bootstrap.msi --repo okieselbach/AutopilotMonitor` if you want to check what you are uploading.
 2. **Add it in Intune:** in the **Microsoft Intune admin center**, go to **Apps → Windows → + Add**, choose the app type **Line-of-business app**, and upload the MSI.
-3. **Assign it as Required to the right group:** target the **device group configured in your Device Preparation policy** (the group devices are joined to at enrollment time — Intune's *enrollment time grouping*). Because the device becomes a member of that group during enrollment, a Required assignment to exactly this group reaches the device in its very first sync.
+3. **Assign it as Required to the right group:** target the **device group configured in your Device Preparation policy** (the group devices are joined to at enrollment time — Intune's _enrollment time grouping_). Because the device becomes a member of that group during enrollment, a Required assignment to exactly this group reaches the device in its very first sync.
 
 {% hint style="warning" %}
 The group assignment is the part that goes wrong most often: assigning the MSI to any other device group means it is not targeted at enrollment time and installs too late — use the same group that is selected in the Device Preparation policy itself.
@@ -40,7 +45,7 @@ You can keep the platform script from [Deploy the Agent](deploy-the-agent.md) as
 
 ## Device association
 
-[Windows Autopilot device association](https://learn.microsoft.com/autopilot/device-preparation/device-association/overview) binds a device to your tenant *before* it enrolls: you pre-associate the device in Intune, a TPM-backed marker is written to the device's UEFI, and Intune marks the device corporate-owned on its own — no corporate identifier upload needed. Autopilot Monitor supports it since Microsoft's release of the feature:
+[Windows Autopilot device association](https://learn.microsoft.com/autopilot/device-preparation/device-association/overview) binds a device to your tenant _before_ it enrolls: you pre-associate the device in Intune, a TPM-backed marker is written to the device's UEFI, and Intune marks the device corporate-owned on its own — no corporate identifier upload needed. Autopilot Monitor supports it since Microsoft's release of the feature:
 
 1. **Associate your devices** in Intune under **Devices → Enrollment → Device association**, as described in Microsoft's guide. The **Devices** tab there lists every pre-associated and associated device with its state and assigned Device Preparation policy.
 2. **Turn on the validation:** in **Settings → Enrollment Device Validation**, enable **Device Association Validation**. Devices are matched against that list by serial number. It uses the same read-only Graph permission as Autopilot Device Validation — no additional consent.
@@ -66,4 +71,4 @@ Formatting differences between your CSV and what the device reports (upper/lower
 ## Limitations
 
 * The short window between enrollment start and the MSI installing (the first sync) is not yet captured live; coverage of that early window is being improved.
-* Apps that are *not* part of the Device Preparation policy install after the user reaches the desktop, like on any Intune-managed device. The agent keeps tracking those installs for as long as it runs, but a machine can genuinely still be "finishing up" after the session completes.
+* Apps that are _not_ part of the Device Preparation policy install after the user reaches the desktop, like on any Intune-managed device. The agent keeps tracking those installs for as long as it runs, but a machine can genuinely still be "finishing up" after the session completes.

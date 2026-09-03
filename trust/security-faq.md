@@ -1,14 +1,22 @@
 ---
 type: Concept
-tags: [security, privacy, gdpr, compliance, data-residency, trust]
-timestamp: 2026-07-31
+timestamp: 2026-07-31T00:00:00.000Z
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
-  (MSP) access, external services, and what we deliberately do not do.
+  (MSP) access, external services, and what we deliberat
+tags:
+  - security
+  - privacy
+  - gdpr
+  - compliance
+  - data-residency
+  - trust
 ---
 
 # Security & Privacy FAQ
+
+## Security & Privacy FAQ
 
 **Last reviewed: 2 September 2026 · Next review: 2 February 2027.**
 
@@ -18,34 +26,34 @@ It describes how the service is built and operated **as of the review date above
 
 Two principles run through every answer below:
 
-* **Secure configuration is the default.** The settings that carry the most weight — hosted diagnostics upload, delegated access — are off, or point at your own storage, until an administrator explicitly turns them on. Where a default is *not* the most restrictive option, this page says so plainly rather than leaving you to find out; geolocation is the notable case.
+* **Secure configuration is the default.** The settings that carry the most weight — hosted diagnostics upload, delegated access — are off, or point at your own storage, until an administrator explicitly turns them on. Where a default is _not_ the most restrictive option, this page says so plainly rather than leaving you to find out; geolocation is the notable case.
 * **Fail closed, never fail open.** When a check cannot be completed — a certificate chain that cannot be built, an entitlement lookup that errors, a route that nobody registered — the result is denial, not access.
 
 {% hint style="info" %}
 Something not answered here? Ask via a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) or [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach). Questions asked once tend to end up on this page.
 {% endhint %}
 
-## Data Processing and Permissions
+### Data Processing and Permissions
 
-### What data does the agent collect from an enrolling device?
+#### What data does the agent collect from an enrolling device?
 
 Technical enrollment telemetry only. Concretely:
 
 * **Device identity:** serial number, device name, manufacturer, model, and the Entra ID tenant ID the device is enrolling into.
 * **Enrollment progress:** phases, ESP stages, application and script install results, policy and CSP activity, reboots, timings, and failure codes.
 * **Device context:** OS build, hardware characteristics, disk and network state, and the data your own [gather rules](../rules/gather-rules.md) request.
-* **Approximate location**, if enabled — see [Is the device's IP address stored?](#is-the-devices-ip-address-stored) below.
+* **Approximate location**, if enabled — see [Is the device's IP address stored?](security-faq.md#is-the-devices-ip-address-stored) below.
 
-### Does the agent collect the enrolling employee's identity or activity?
+#### Does the agent collect the enrolling employee's identity or activity?
 
 No. During Autopilot provisioning the user signs in once to start the process and then does not interact with the device while it provisions. There is no browsing history, no document or file content, no keystrokes, no screen capture, and no application usage tracking. The agent removes itself when enrollment finishes.
 
 Two honest caveats:
 
-* The agent reads the interactive session's user name from Windows to detect *"the desktop is now up and someone is signed in"* and to evaluate exclusion rules. That value drives state transitions; it is not stored as a session attribute.
+* The agent reads the interactive session's user name from Windows to detect _"the desktop is now up and someone is signed in"_ and to evaluate exclusion rules. That value drives state transitions; it is not stored as a session attribute.
 * If the AutoLogon analyzer is active and the device is configured for automatic logon, the configured default user name can surface as a diagnostic finding — because a device that auto-logs-on is itself the security finding worth reporting.
 
-### Can administrators make the agent collect more?
+#### Can administrators make the agent collect more?
 
 Yes, through [gather rules](../rules/gather-rules.md) — and that capability is fenced in by design, not by policy.
 
@@ -61,7 +69,7 @@ The allow-lists are not a secret you have to take on trust: they live in [`rules
 
 A relaxed **Unrestricted Mode** exists for environments that need broader collection. **A tenant administrator cannot enable it alone** — it is a Pro-plan capability that must additionally be unlocked for the tenant by platform operators on request, and even then the hard blocks above remain in force. If the tenant leaves the Pro plan, the relaxation ends automatically. Enabling it is written to your audit log. Gather rules are authored by your own administrators, visible in the portal, and audited.
 
-### Is the device's IP address stored?
+#### Is the device's IP address stored?
 
 Yes, if geolocation is enabled — and geolocation **is on by default**. Stated precisely, because this is the kind of detail that should not be discovered later:
 
@@ -75,13 +83,13 @@ Yes, if geolocation is enabled — and geolocation **is on by default**. Stated 
 If your data protection assessment requires that no IP addresses are processed, disable geolocation for your tenant. Everything except Geographic Performance keeps working.
 {% endhint %}
 
-### Does anything about the service reach an AI or LLM provider?
+#### Does anything about the service reach an AI or LLM provider?
 
 **The platform makes no LLM API calls.** There is no model provider integration, no API key, and no outbound AI traffic. The semantic search used by the [MCP integration](../integrations/ai-integration-mcp.md) runs locally inside our own container on a small embedding model baked into the image.
 
-What *does* happen: if you connect your own AI assistant through MCP, the data that assistant retrieves is delivered to **your** AI vendor, under **your** agreement with them. That transfer is initiated and controlled by you. MCP access is limited to accounts that hold a role in your tenant, and individual accounts can be blocked.
+What _does_ happen: if you connect your own AI assistant through MCP, the data that assistant retrieves is delivered to **your** AI vendor, under **your** agreement with them. That transfer is initiated and controlled by you. MCP access is limited to accounts that hold a role in your tenant, and individual accounts can be blocked.
 
-### What does the service log about administrator activity?
+#### What does the service log about administrator activity?
 
 * An **audit log** per tenant recording action, entity type, entity ID, the acting user's UPN, and a timestamp — visible to you in the portal.
 * **Request telemetry** in Application Insights carrying tenant ID, the acting user's UPN, role, correlation ID, and the API route. This is operational telemetry for running and supporting the service.
@@ -89,9 +97,9 @@ What *does* happen: if you connect your own AI assistant through MCP, the data t
 
 Portal front-end telemetry is **cookie-free** and carries tenant ID and UI preferences, but **not** user identity.
 
-## Identity and Access
+### Identity and Access
 
-### How does a device prove it is allowed to send data?
+#### How does a device prove it is allowed to send data?
 
 With **mutual TLS using the Intune MDM client certificate** the device already holds — no shared secrets, no API keys, nothing that can leak from a script.
 
@@ -105,7 +113,7 @@ The Function App runs with `clientCertMode = Required`. Validation is intentiona
 
 On top of the certificate, the device is checked against **Microsoft Graph** — only devices actually registered as Autopilot devices in your tenant are accepted — and optionally against a hardware allow-list you maintain.
 
-### How do portal users authenticate?
+#### How do portal users authenticate?
 
 Through **Microsoft Entra ID**, with multi-tenant JWT validation performed by the service. Notable hardening:
 
@@ -113,13 +121,13 @@ Through **Microsoft Entra ID**, with multi-tenant JWT validation performed by th
 * Identity-library PII logging is switched off.
 * Metadata retrieval is HTTPS-only, and the per-tenant metadata cache is bounded so an attacker cannot exhaust memory by presenting a stream of invented tenant IDs.
 
-### How does an AI assistant authenticate to the MCP server?
+#### How does an AI assistant authenticate to the MCP server?
 
 The [MCP integration](../integrations/ai-integration-mcp.md) implements the current MCP specification's OAuth 2.1 profile: the assistant signs the user in through Microsoft Entra ID via the server's own authorization endpoints, PKCE is mandatory, and the authorization response carries the issuer identifier so a client can detect a mixed-up authorization server. The access token that results is the user's own; the MCP server stores no credentials and forwards the token to the API, where the normal role and tenant checks apply. Clients identify themselves through a Client ID Metadata Document (an HTTPS URL the server fetches and validates; addresses inside private or internal networks are refused before any request is made, redirects are not followed, and the document is size- and time-capped) or, for older clients, through dynamic client registration — in both cases the callback address must be on a fixed allowlist of AI-vendor callback URLs or a loopback address, so a self-registered client cannot redirect an authorization code elsewhere. MCP access itself is limited to accounts that hold a role in the tenant (the roles you assign in the portal), and individual accounts can be blocked.
 
-### What roles exist?
+#### What roles exist?
 
-Tenant roles are **Admin**, **Operator**, and **Viewer**, plus a role-less **Member** who can only use the Progress Portal. Platform roles are **Global Admin** and **Global Reader** (cross-tenant read, configuration secrets redacted, no mutations, and raw table access explicitly withheld). Delegated roles for MSP scenarios are **Delegated Reader** and **Delegated Admin** — see [Delegated (MSP) access](#delegated-msp-access).
+Tenant roles are **Admin**, **Operator**, and **Viewer**, plus a role-less **Member** who can only use the Progress Portal. Platform roles are **Global Admin** and **Global Reader** (cross-tenant read, configuration secrets redacted, no mutations, and raw table access explicitly withheld). Delegated roles for MSP scenarios are **Delegated Reader** and **Delegated Admin** — see [Delegated (MSP) access](security-faq.md#delegated-msp-access).
 
 Role resolution is **table-first with claim fallback**, and a disabled assignment row is an explicit deny that overrides an Entra app-role claim. Revocation therefore wins.
 
@@ -127,11 +135,11 @@ Tenant roles are bound to the tenant the token was issued by. Platform and deleg
 
 See [Roles & Permissions](../concepts/roles-and-permissions.md) for what each role can do in the portal.
 
-### How is authorization enforced across the API?
+#### How is authorization enforced across the API?
 
 Through a single **endpoint access policy catalog**: every HTTP route must be registered with a policy tier and a tenant-scoping mode. **An unregistered route fails closed** — a new endpoint is unreachable until someone deliberately classifies it. There is no second, parallel list of exemptions that can drift out of sync; even the set of routes exempt from JWT validation is derived from the same catalog.
 
-### Are there rate limits?
+#### Are there rate limits?
 
 Yes, all sliding-window:
 
@@ -139,9 +147,9 @@ Yes, all sliding-window:
 * **Per portal user**, keyed on the user's Entra object id.
 * **Per MCP user**, plus daily and monthly quotas tied to the tenant's plan — one per account and one shared by the whole tenant, so adding accounts does not add budget.
 
-## Tenant Isolation
+### Tenant Isolation
 
-### How is my tenant's data separated from other tenants'?
+#### How is my tenant's data separated from other tenants'?
 
 Isolation is enforced in the storage keys themselves, not by a filter that a query could forget. Every tenant-scoped table partitions either on the tenant ID directly or on a composite key prefixed with it, so a query for one tenant cannot structurally return another tenant's rows.
 
@@ -149,7 +157,7 @@ The tenant ID used for scoping comes from the **validated JWT**, not from a requ
 
 Real-time channels are equally scoped. SignalR groups are per tenant, and joining one is authorized against **the group's tenant**, not the caller's home tenant — the distinction that keeps a cross-tenant caller from ever streaming a managed tenant's notifications on the strength of a role they hold somewhere else. Even a same-tenant user without member standing cannot subscribe to organization-wide activity. A Progress Portal user without a role must present the device's **serial number** for every view of a session — the initial search, each data read, and the live-update stream alike; no device list is ever sent to the browser, and an internal session identifier alone grants nothing.
 
-### How do you know the isolation actually holds?
+#### How do you know the isolation actually holds?
 
 Because it is asserted mechanically, on every change, rather than reviewed by eye.
 
@@ -161,7 +169,7 @@ The boundary is enforced in one place — the authorization middleware — and *
 
 Roughly a hundred assertions across two dozen test files are dedicated specifically to tenant isolation and cross-tenant access, within a suite of several thousand tests overall. **They run in CI on every pull request and every merge to the main branch** — backend, agent, portal, and MCP server — so a change that weakens the boundary fails before it can be merged, not at the next audit.
 
-### Delegated (MSP) access
+#### Delegated (MSP) access
 
 Delegated administration is the one place where a tenant boundary is crossed — **deliberately, narrowly, and visibly to the customer.** It is a **Pro** capability: the managing partner's own tenant must be on the Pro plan, verified against the unforgeable tenant claim in their token. Managed customer tenants may be on any plan.
 
@@ -171,44 +179,45 @@ The guarantees:
 * **Explicitly scoped.** A delegated principal reaches exactly the tenants with an active, enabled grant — never a tenant beyond that set. Cross-tenant aggregate endpoints that cannot be filtered per tenant are simply not reachable for delegated principals.
 * **Secrets redacted.** Configuration secrets are never served to a delegated reader.
 * **Consent-aware.** A grant is either assigned centrally by platform operators or accepted by the customer's own tenant administrator through a single-use invitation link from the managing organization. An invitation confers nothing until the customer accepts it; the accepting tenant is always the signed-in administrator's own tenant, never one named in the link. Only an active grant grants anything.
-* **Audited in the customer's own trail.** Every grant, revocation, and disablement is written to the audit log of the **managed customer tenant** — so a customer can always answer *"who was given access to my data, by whom, and when?"* from their own portal. Customers can also query which parties currently hold delegated access to their tenant.
+* **Audited in the customer's own trail.** Every grant, revocation, and disablement is written to the audit log of the **managed customer tenant** — so a customer can always answer _"who was given access to my data, by whom, and when?"_ from their own portal. Customers can also query which parties currently hold delegated access to their tenant.
 
 **Bounded and paced.** A managing organization may manage a limited number of tenants (its plan's allowance); a pending invitation and a tenant removed within the last 24 hours each keep a slot, so access cannot be rotated quickly through many customers. Customers can end a self-service delegation themselves at any time; access stops immediately and the removal is written to both audit logs.
+
 * **Revocation is fast.** Every grant change invalidates the cached scope immediately, and the cache is short-lived by design, so revoking access takes effect within seconds across all service instances — not at the next sign-in.
 * **Removed on offboarding.** Delegated grants pointing at an offboarded tenant are deleted with it, so re-onboarding never silently restores someone's old access.
 
 Certain routes are explicitly excluded from delegated reach even though they are read operations — deletion manifests and the customs archive among them.
 
-## Data Protection
+### Data Protection
 
-### Where is my data stored? Is it in the EU?
+#### Where is my data stored? Is it in the EU?
 
 Yes, and specifically in Germany.
 
-| Component | Region |
-| --- | --- |
-| Backend API (Azure Functions), Table Storage, Blob Storage, Queues | **Germany West Central** |
-| SignalR (real-time updates) | **Germany West Central** |
-| MCP server (Container App), Container Registry | **Germany West Central** |
-| Application Insights, Log Analytics | **Germany West Central** |
-| Portal front-end (Azure Static Web App) | **West Europe** — static assets only, no customer data |
+| Component                                                          | Region                                                 |
+| ------------------------------------------------------------------ | ------------------------------------------------------ |
+| Backend API (Azure Functions), Table Storage, Blob Storage, Queues | **Germany West Central**                               |
+| SignalR (real-time updates)                                        | **Germany West Central**                               |
+| MCP server (Container App), Container Registry                     | **Germany West Central**                               |
+| Application Insights, Log Analytics                                | **Germany West Central**                               |
+| Portal front-end (Azure Static Web App)                            | **West Europe** — static assets only, no customer data |
 
-All customer data — sessions, events, configuration, audit logs, diagnostics, backups — resides in **Germany West Central**. Your data is not replicated to another region, and the platform does not move it outside the EU. Should an additional regional deployment ever be offered (see [Can I run Autopilot Monitor in my own Azure subscription?](#can-i-run-autopilot-monitor-in-my-own-azure-subscription)), it would be a separate deployment a customer opts into — not a relocation of this one. See [Data Flows & External Services](data-flows.md) for the connections a customer can deliberately configure outward.
+All customer data — sessions, events, configuration, audit logs, diagnostics, backups — resides in **Germany West Central**. Your data is not replicated to another region, and the platform does not move it outside the EU. Should an additional regional deployment ever be offered (see [Can I run Autopilot Monitor in my own Azure subscription?](security-faq.md#can-i-run-autopilot-monitor-in-my-own-azure-subscription)), it would be a separate deployment a customer opts into — not a relocation of this one. See [Data Flows & External Services](data-flows.md) for the connections a customer can deliberately configure outward.
 
 {% hint style="warning" %}
 Some Azure resource names still carry an `…eu` suffix from before the July 2026 migration. Do not infer a region from a resource name — the deployed region is Germany West Central.
 {% endhint %}
 
-### Is data encrypted?
+#### Is data encrypted?
 
 * **In transit:** HTTPS only, **TLS 1.2 minimum**, with a hardened cipher floor. Real-time updates use secure WebSockets; the MCP container refuses insecure ingress.
-* **At rest:** Azure Storage encryption with **platform-managed keys**, and a storage-account-level TLS 1.2 floor. Customer-managed keys (CMK/BYOK) are **not** currently offered — see [What we do not do](#what-we-do-not-do-yet).
+* **At rest:** Azure Storage encryption with **platform-managed keys**, and a storage-account-level TLS 1.2 floor. Customer-managed keys (CMK/BYOK) are **not** currently offered — see [What we do not do](security-faq.md#what-we-do-not-do-yet).
 
-### How does the backend authenticate to its own storage?
+#### How does the backend authenticate to its own storage?
 
 With **managed identity**, not storage account keys. Container registry admin access is disabled and images are pulled with managed identity. Deployment pipelines authenticate to Azure with **OIDC federation** — there are no long-lived cloud credentials stored in the CI system.
 
-### How long is data kept, and can I control it?
+#### How long is data kept, and can I control it?
 
 Retention is **per tenant and configurable by you**, default **90 days**. The permitted range is 7 to 90 days on Community and 7 to 365 days on Pro; the plan cap is applied when data is actually deleted, so an out-of-range stored value can never extend retention beyond your plan. Expired sessions are purged automatically.
 
@@ -217,26 +226,26 @@ You additionally control:
 * **Delete session** — remove monitoring sessions on demand, individually or several at once.
 * **Offboard tenant** — remove your tenant's data and configuration from the service entirely.
 
-### How long is each kind of record kept?
+#### How long is each kind of record kept?
 
 Your retention setting governs enrollment data. The operational records around it have their own fixed lifetimes:
 
-| Record | Kept for |
-| --- | --- |
-| Enrollment sessions and all their events, findings, and hosted diagnostics | **Your retention setting** — 90 days by default |
-| Deletion manifests (what makes a deletion reversible) | **30 days** |
-| Audit log of administrative actions | **180 days** |
-| Operational events (platform health, security signals) | **90 days** |
-| Portal sign-in activity and usage counters | **90 days** |
-| Aggregated usage statistics | **180 days** |
-| Distress reports (agent emergency channel) | **14 days** |
-| Configuration and authorization backups | Under a storage lifecycle policy, currently **90 days** |
+| Record                                                                     | Kept for                                                |
+| -------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Enrollment sessions and all their events, findings, and hosted diagnostics | **Your retention setting** — 90 days by default         |
+| Deletion manifests (what makes a deletion reversible)                      | **30 days**                                             |
+| Audit log of administrative actions                                        | **180 days**                                            |
+| Operational events (platform health, security signals)                     | **90 days**                                             |
+| Portal sign-in activity and usage counters                                 | **90 days**                                             |
+| Aggregated usage statistics                                                | **180 days**                                            |
+| Distress reports (agent emergency channel)                                 | **14 days**                                             |
+| Configuration and authorization backups                                    | Under a storage lifecycle policy, currently **90 days** |
 
 Everything scoped to your tenant is removed when you offboard, regardless of these periods.
 
 Two categories currently have **no time-based expiry** and are removed only on offboarding: product feedback you submitted, and reports an administrator explicitly submitted to us for support. A support report contains what the submitter chose to include — comment, exports, attached logs and screenshots, and, if the submitter ticked that option, a copy of the session's diagnostics package — and that content follows the report's lifetime, not the session's. Bringing enrollment bootstrap records under the same expiry as the sessions they belong to is in progress.
 
-### What actually happens when data is deleted?
+#### What actually happens when data is deleted?
 
 Deletion is **manifest-first**: before anything is removed, a manifest of exactly what will be deleted is built read-only, and that manifest is itself a faithful copy of the removed rows. Only then does the cascade run, and a verification pass confirms it completed.
 
@@ -251,19 +260,19 @@ Two things survive offboarding, by design and worth stating plainly:
 
 Neither contains enrollment telemetry or personal data — a rule is a detection definition, not device data. If you would rather have yours removed, ask and it is done.
 
-### Is data backed up? What is the recovery story?
+#### Is data backed up? What is the recovery story?
 
 Honestly and specifically:
 
 * **Configuration, authorization, and rules tables are backed up daily** — exported to a private blob container with a manifest written last as a durability anchor, and aged out by a storage lifecycle policy. Restore is guarded: full-table restore is forbidden on authorization tables and replace-all is forbidden on audit tables, so a restore cannot be used to escalate privilege or erase an audit trail.
 * **Session and event telemetry is not backed up.** It is time-bounded operational telemetry with a retention window measured in weeks, reproducible by the next enrollment. Treat Autopilot Monitor as a monitoring system, not a system of record.
-* **Storage is locally redundant (LRS)** within Germany West Central. There is no cross-region disaster-recovery failover today — see [What we do not do](#what-we-do-not-do-yet).
+* **Storage is locally redundant (LRS)** within Germany West Central. There is no cross-region disaster-recovery failover today — see [What we do not do](security-faq.md#what-we-do-not-do-yet).
 
-### How do diagnostics uploads work? Do my logs leave my tenant?
+#### How do diagnostics uploads work? Do my logs leave my tenant?
 
 By default, **no.** Diagnostics upload is **off by default**, and when enabled, the default destination is **your own Azure storage account** via a SAS URL you provide — the package never touches our infrastructure. The one exception is explicit: if an administrator submits a session report to us and ticks the option to include the uploaded diagnostics archive, a copy of that package is stored with the report so it remains available for the investigation.
 
-Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action — in the settings UI, or in the one-step dialog a tenant administrator is offered on a session — always behind a clearly marked *"data leaves your tenant"* disclosure. It is never enabled silently, and no other role can turn it on.
+Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action — in the settings UI, or in the one-step dialog a tenant administrator is offered on a session — always behind a clearly marked _"data leaves your tenant"_ disclosure. It is never enabled silently, and no other role can turn it on.
 
 When hosted upload is used, the SAS we issue is **blob-scoped, create-only, pinned to the requesting session's exact path within your tenant's area** — it cannot be redirected at another tenant's data, and it cannot overwrite a package that already exists — and is short-lived, measured in minutes rather than hours. On the device the SAS is fetched immediately before upload and never written to disk or configuration; log records keep only a truncated prefix, never the signature.
 
@@ -271,16 +280,16 @@ A diagnostics package contains the agent's own logs and state, Intune Management
 
 Once upload is configured, an **administrator or operator of your own tenant** can also request a package from an enrollment that is still running, rather than waiting for it to finish. It collects exactly what the automatic package collects — the configured paths, nothing wider. The request is delivered with the agent's next check-in, so the device is never contacted directly, and both the request and its outcome are recorded as events on that session's timeline. Viewers cannot trigger it, the request is always scoped to the caller's own tenant, and on a tenant with no upload destination configured there is nothing to trigger.
 
-## Security by Design
+### Security by Design
 
-### What is the general design posture?
+#### What is the general design posture?
 
 * **Never trust the client.** Tenant scoping comes from validated tokens, never from headers. Where a header carries a tenant hint at all, it is honoured only on device routes that independently validate it.
-* **Entitlements live in code, not in storage.** Plan limits are defined in an immutable code catalog specifically so that a storage failure can never widen access — a failed lookup resolves to the *least* privileged plan.
+* **Entitlements live in code, not in storage.** Plan limits are defined in an immutable code catalog specifically so that a storage failure can never widen access — a failed lookup resolves to the _least_ privileged plan.
 * **Prefer platform security to custom code.** Managed identity over secrets, App Service mutual TLS over hand-rolled device auth, Entra ID over local accounts.
 * **Minimize blast radius.** Read tiers cannot write. Delegated principals cannot mutate. Global Readers cannot reach raw tables. Restores cannot rewrite audit history.
 
-### Is the agent binary verifiable?
+#### Is the agent binary verifiable?
 
 Yes, through four independent layers:
 
@@ -291,15 +300,15 @@ Yes, through four independent layers:
 
 Build numbers are reserved with an atomic compare-and-swap so two builds can never claim the same version, and the build fails on any executable/manifest/version inconsistency.
 
-### Can you stop a misbehaving agent in the field?
+#### Can you stop a misbehaving agent in the field?
 
 Yes. There is a **kill switch** delivered over the configuration channel that stops agents by version or by device, plus device blocking for compromised or unauthorized hardware. Both raise operational events and are auditable.
 
-### How is the code tested and reviewed?
+#### How is the code tested and reviewed?
 
 Four layers, running continuously rather than at audit time.
 
-**Tests gate every change.** The full suite — several thousand tests across backend, agent, portal, and MCP server — runs in CI on every pull request and every merge to the main branch. It includes suites written specifically against the security boundaries: authentication middleware, policy enforcement, tenant isolation and cross-tenant access, gather-rule guardrails, configuration redaction, revocation enforcement, SSRF protection, audit-log deletion exclusion, and adversarial tests against the MCP raw-data tools. Several of these are *structural* rather than exemplary — they enumerate the service's own endpoints and fail the build on an unclassified route, so the guarantee cannot decay as the surface grows. Rule definitions are schema-validated, and generated security allow-lists are checked against their source on every run.
+**Tests gate every change.** The full suite — several thousand tests across backend, agent, portal, and MCP server — runs in CI on every pull request and every merge to the main branch. It includes suites written specifically against the security boundaries: authentication middleware, policy enforcement, tenant isolation and cross-tenant access, gather-rule guardrails, configuration redaction, revocation enforcement, SSRF protection, audit-log deletion exclusion, and adversarial tests against the MCP raw-data tools. Several of these are _structural_ rather than exemplary — they enumerate the service's own endpoints and fail the build on an unclassified route, so the guarantee cannot decay as the surface grows. Rule definitions are schema-validated, and generated security allow-lists are checked against their source on every run.
 
 **Static analysis runs on the same trigger.** CodeQL analyzes both the C# and the TypeScript/JavaScript on every pull request, every merge, and on a weekly schedule — so a vulnerability class published after a merge still surfaces against existing code.
 
@@ -307,23 +316,23 @@ Four layers, running continuously rather than at audit time.
 
 **Changes are reviewed before merge, and components are reviewed periodically.** Every change is reviewed rather than merged unseen. Beyond that, each major component — backend, agent, MCP server — goes through a recurring, documented architecture and security review that examines it as a whole rather than change by change; findings are written up with severity and file-level references, and tracked to resolution. This is where issues that no diff makes visible get caught.
 
-Deployment pipelines authenticate to Azure with OIDC federation and hold no long-lived cloud credentials, and release artifacts carry build provenance attestation (see [Is the agent binary verifiable?](#is-the-agent-binary-verifiable)).
+Deployment pipelines authenticate to Azure with OIDC federation and hold no long-lived cloud credentials, and release artifacts carry build provenance attestation (see [Is the agent binary verifiable?](security-faq.md#is-the-agent-binary-verifiable)).
 
-### How do I report a security vulnerability?
+#### How do I report a security vulnerability?
 
-Through **[GitHub Security Advisories](https://github.com/okieselbach/Autopilot-Monitor/security/advisories/new)** — private vulnerability reporting is enabled on the repository, so a report reaches the maintainer without ever being public. Please use that rather than a public issue, LinkedIn, or email.
+Through [**GitHub Security Advisories**](https://github.com/okieselbach/Autopilot-Monitor/security/advisories/new) — private vulnerability reporting is enabled on the repository, so a report reaches the maintainer without ever being public. Please use that rather than a public issue, LinkedIn, or email.
 
 What to expect: an acknowledgement and an initial assessment of severity, then a fix or a mitigation plan, with a shared view of timing before anything is disclosed. Credit in the advisory if you want it — and none if you would rather stay anonymous. Reports are read by the maintainer directly; no response time is guaranteed.
 
-Security research is welcome and is not a violation of the [Terms of Use](https://www.autopilotmonitor.com/terms). While testing, please do not access other tenants' data, degrade the service for others, or run automated scanners against production. There is no bug bounty — see [What we do not do](#what-we-do-not-do-yet).
+Security research is welcome and is not a violation of the [Terms of Use](https://www.autopilotmonitor.com/terms). While testing, please do not access other tenants' data, degrade the service for others, or run automated scanners against production. There is no bug bounty — see [What we do not do](security-faq.md#what-we-do-not-do-yet).
 
-### What happens when there is an incident?
+#### What happens when there is an incident?
 
 The service raises operational events for the conditions that matter — devices blocked, kill signals delivered, certificate expiry approaching, capacity thresholds, backup and deletion failures — and those alert the operators directly, so problems surface without waiting for a customer to notice.
 
 From there the sequence is: **contain** (kill switch, device block, or disabling the affected path), **investigate** using the audit log and operational telemetry, **remediate and deploy**, then **communicate**. Customer-visible incidents are published in [Service Announcements](../troubleshooting/service-announcements.md) — including what went wrong and what was done about it, not just that something happened. Where an incident affects personal data, notification follows the terms of your data processing agreement and the statutory obligations that apply.
 
-### Does the service make automated decisions about people?
+#### Does the service make automated decisions about people?
 
 It makes automated decisions about **devices and requests**, not about people, and none of them produce legal or similarly significant effects on an individual:
 
@@ -332,19 +341,19 @@ It makes automated decisions about **devices and requests**, not about people, a
 * **The kill switch** stops agents by version or device when a release turns out to be faulty.
 * **Analyze rules** classify an enrollment as failed, stalled, or successful — a diagnosis of a machine, which an administrator can always overrule by reading the underlying timeline.
 
-### Are outbound webhooks protected against SSRF?
+#### Are outbound webhooks protected against SSRF?
 
 Yes. Notification webhook targets are screened by an SSRF guard before any request is made, so a webhook URL cannot be pointed at internal addresses or cloud metadata endpoints to make the service fetch something on an attacker's behalf.
 
-## GDPR and Contracts
+### GDPR and Contracts
 
-### Who is the controller and who is the processor?
+#### Who is the controller and who is the processor?
 
 For enrollment telemetry, **you are the controller** and Autopilot Monitor operates as your **processor**. You decide which devices are monitored, what additional data gather rules collect, how long it is retained, and when it is deleted.
 
 For the operation of the service itself — account administration, the audit trail of portal actions, and operational telemetry — **glueckkanja AG** is the controller.
 
-### Who operates the service, and who is my counterparty?
+#### Who operates the service, and who is my counterparty?
 
 **glueckkanja AG**, a German company certified to ISO/IEC 27001, operates Autopilot Monitor and is your counterparty — **on both plans**. The service runs in infrastructure operated by glueckkanja AG; the plan is a setting within one system, not a different service or a different operator. Company details are published in the [Imprint](https://www.glueckkanja.com/en/imprint).
 
@@ -355,34 +364,34 @@ What differs between the plans is commercial, not technical:
 * **Community** is free, maintained as an open community contribution, and provided **without commitments by glueckkanja AG** as to availability or support. Support is community-based via [GitHub issues](https://github.com/okieselbach/Autopilot-Monitor/issues).
 * **Pro** is a written agreement with glueckkanja AG carrying support and reliability commitments, higher operating limits, extended retention, and delegated (MSP) administration.
 
-### Can I get a data processing agreement (DPA / AVV)?
+#### Can I get a data processing agreement (DPA / AVV)?
 
 **Yes — available on request**, concluded with glueckkanja AG; a published version is planned. On the Pro plan it forms part of the written agreement. Get in touch through the [Imprint](https://www.glueckkanja.com/en/imprint) contact details, or via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) for the project side.
 
 The agreement is where the engaged parties and the terms of their engagement are set out. This documentation deliberately does not restate that contractually — it explains the architecture, so you can see what happens technically without waiting for a document. The technical data protection measures are identical on both plans: same region, same isolation, same retention and deletion controls, all described on this page.
 
-### Is glueckkanja AG certified?
+#### Is glueckkanja AG certified?
 
 **glueckkanja AG is certified to ISO/IEC 27001.** That certification covers the company's information security management system. It is not a certification of this application: Autopilot Monitor itself is not separately certified, and the Azure platform it runs on carries Microsoft's own certifications. Stated this way so nobody mistakes the scope.
 
-### Which external services are involved?
+#### Which external services are involved?
 
 The **data processing agreement** is the authoritative document here — it names the parties engaged and the terms they are engaged on. It is available on request.
 
-For the technical picture, [Data Flows & External Services](data-flows.md) maps every outbound connection. In short: Microsoft Azure (Germany West Central) is the only place your data is stored. Everything else is either a public reference-data source the service reads *from* — nothing about your environment goes out — or a destination **you** configure: notification channels, your own diagnostics storage, your own AI assistant.
+For the technical picture, [Data Flows & External Services](data-flows.md) maps every outbound connection. In short: Microsoft Azure (Germany West Central) is the only place your data is stored. Everything else is either a public reference-data source the service reads _from_ — nothing about your environment goes out — or a destination **you** configure: notification channels, your own diagnostics storage, your own AI assistant.
 
-### How do I exercise data subject rights?
+#### How do I exercise data subject rights?
 
 Contact us and we will act on requests for access, correction, deletion, restriction, or portability within the statutory time limits. Practically, most requests resolve immediately in the portal: you hold delete-session and offboard-tenant controls yourself, and retention is your setting.
 
-### Is there a service level agreement?
+#### Is there a service level agreement?
 
 * **Community** is free, publicly available, and carries **no availability guarantee**; support is **community-based via GitHub issues**. It is fine for production fleets — with that trade-off understood.
 * **Pro** is the plan that carries reliability and support commitments. Concrete figures are being finalized alongside pricing; ask and you will get the current draft rather than a placeholder.
 
-Note that "SLA" elsewhere in this documentation ([SLA Compliance](../portal-guide/sla-compliance.md)) means *your* enrollment targets — how fast your Autopilot enrollments should complete — not a commitment about this service's uptime.
+Note that "SLA" elsewhere in this documentation ([SLA Compliance](../portal-guide/sla-compliance.md)) means _your_ enrollment targets — how fast your Autopilot enrollments should complete — not a commitment about this service's uptime.
 
-### Can I run Autopilot Monitor in my own Azure subscription?
+#### Can I run Autopilot Monitor in my own Azure subscription?
 
 **No, and it is not planned.** Autopilot Monitor is a SaaS service by design. The device agent authenticates with mutual TLS against a centrally pinned Intune CA trust chain, and the detection logic — analyze rules, IME log patterns, decision engine — is continuously updated centrally, which is precisely where the value sits. A self-hosted copy would be frozen at its install date and would need to reproduce the certificate trust model itself.
 
@@ -397,7 +406,7 @@ What we do instead, so that self-hosting is not the only path to data control:
 
 If a self-hosted deployment or a specific residency region is a hard requirement for your organization, tell us — the requirement is tracked, and residency in particular is the kind of request that gets built when enough organizations ask.
 
-## What we do not do (yet)
+### What we do not do (yet)
 
 Stated explicitly, because a reviewer will find out anyway and the answer is better coming from us:
 
@@ -410,7 +419,7 @@ Stated explicitly, because a reviewer will find out anyway and the answer is bet
 
 Several of these are on the path to Pro general availability. If one of them blocks an evaluation for you, say which one — that is the most useful signal we can get.
 
-# Citations
+## Citations
 
 * [Terms of Use](https://www.autopilotmonitor.com/terms) and [Privacy Policy](https://www.autopilotmonitor.com/privacy) — the binding documents; this page is the technical explanation behind them.
 * [Data Flows & External Services](data-flows.md) — every outbound connection and what it carries.

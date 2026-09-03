@@ -1,11 +1,14 @@
 ---
 type: How-to Guide
-tags: [entra-id, app-registration, migration, consent]
 description: >-
-  Moving your tenant from the previous Autopilot Monitor app registration to
-  the new one: what the two applications are, what users see when signing in
-  from a new browser, the one-time consent, and when the previous app can be
-  deleted from your tenant.
+  Moving your tenant from the previous Autopilot Monitor app registration to the
+  new one: what the two applications are, what users see when signing in from a
+  new browser, the one-time consent, and when
+tags:
+  - entra-id
+  - app-registration
+  - migration
+  - consent
 ---
 
 # App Registration Migration
@@ -16,9 +19,9 @@ This page explains what the two applications are, what your users see while your
 
 ## The two applications
 
-| | Application (client) ID | What it is |
-| --- | --- | --- |
-| **New app** | `886ab5e2-6144-442c-80cc-9b28e0667731` | The current Autopilot Monitor registration. All new tenants consent to this app, and it is the target of the migration. |
+|                  | Application (client) ID                | What it is                                                                                                                                               |
+| ---------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **New app**      | `886ab5e2-6144-442c-80cc-9b28e0667731` | The current Autopilot Monitor registration. All new tenants consent to this app, and it is the target of the migration.                                  |
 | **Previous app** | `1a400946-62c1-4ab4-aa37-f730ac89704d` | The original registration. Tenants onboarded before the migration still run on it until they migrate. It will be retired once the migration period ends. |
 
 Both applications appear in the **Microsoft Entra admin center → Enterprise applications** with the display name **Autopilot Monitor** — always tell them apart by the Application ID, not the name.
@@ -35,7 +38,7 @@ The portal signs everyone in with the **new app** by default. A browser that has
 Neither page appears after your tenant has migrated. Migrating (the one-time admin consent below) is therefore the way to give every user a prompt-free first sign-in.
 
 {% hint style="info" %}
-If a **Conditional Access** policy in your tenant blocks the new app entirely, the sign-in ends on Microsoft's block page instead. Open the portal once with `?authapp=legacy` appended — for example `https://portal.autopilotmonitor.com/progress?authapp=legacy` — to sign that browser in with the previous app; it remembers the choice. Then update the policy for the new app (see [Before you migrate](#before-you-migrate-settings-on-the-enterprise-application)) and migrate.
+If a **Conditional Access** policy in your tenant blocks the new app entirely, the sign-in ends on Microsoft's block page instead. Open the portal once with `?authapp=legacy` appended — for example `https://portal.autopilotmonitor.com/progress?authapp=legacy` — to sign that browser in with the previous app; it remembers the choice. Then update the policy for the new app (see [Before you migrate](app-registration-migration.md#before-you-migrate-settings-on-the-enterprise-application)) and migrate.
 {% endhint %}
 
 ## How to migrate
@@ -58,7 +61,7 @@ Your end users do not need to do anything, and running enrollments are not affec
 
 Most tenants configure nothing on the Autopilot Monitor enterprise application itself and can skip this section. Settings you made **on the previous application's enterprise application** in the Entra admin center live on that application only and do not carry over — replicate them on the new application (`886ab5e2-…`) before or right after migrating:
 
-* **Conditional Access policies scoped to the application.** Policies that target *all cloud apps* already cover both applications. A policy (or an exclusion) that names the previous Autopilot Monitor app explicitly needs the new app added.
+* **Conditional Access policies scoped to the application.** Policies that target _all cloud apps_ already cover both applications. A policy (or an exclusion) that names the previous Autopilot Monitor app explicitly needs the new app added.
 * **Assignment required.** If you set **Properties → Assignment required? = Yes** on the previous application to limit who can sign in, set it on the new application as well and assign the same users or groups — otherwise, after the migration, any member of your tenant can sign in to the portal (they still only see what their [portal role](../concepts/roles-and-permissions.md) allows; members without a role reach the Progress Portal only).
 * **App role assignments** (`Admin` / `Operator` roles assigned on the enterprise application, used only by tenants that opted into Entra app roles). Re-create the assignments on the new application; until then, users signing in with the new app have no role.
 
@@ -87,7 +90,7 @@ Optional Graph add-on permissions are already on the new app at this point — t
 Once your tenant is migrated, the previous application serves no purpose in your tenant anymore and can be deleted:
 
 1. Confirm the migration is complete: **Settings → Autopilot Validation** no longer shows the migration banner, and a fresh portal sign-in works normally.
-2. In the **Microsoft Entra admin center**, open **Enterprise applications** and search for *Autopilot Monitor*.
+2. In the **Microsoft Entra admin center**, open **Enterprise applications** and search for _Autopilot Monitor_.
 3. Open the entry whose Application ID is `1a400946-62c1-4ab4-aa37-f730ac89704d` — this is the previous app.
 4. Under **Properties**, choose **Delete**.
 
