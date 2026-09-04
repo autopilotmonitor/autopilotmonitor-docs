@@ -1,7 +1,5 @@
 ---
-description: >-
-  Purchase Autopilot Monitor via Microsoft Marketplace: prerequisites, the
-  user-segment pricing model, base fees, and invoicing.
+description: Purchase Autopilot Monitor via Microsoft Marketplace.
 ---
 
 # Microsoft Marketplace
@@ -96,18 +94,9 @@ You will only be charged by Microsoft, once you have completed the enrolment on 
 {% endstep %}
 {% endstepper %}
 
-## Plan Overview
+## Pricing Model
 
-Subscriptions for Autopilot Monitor are available based on an **monthly** and **annual** renewal interval.
-
-{% hint style="info" %}
-The annual plan is discounted by  more than 15% in comparison to the monthly plan (calculated over the period of 12 months).
-{% endhint %}
-
-| **Plan**                  | **Renewal Interval** |
-| ------------------------- | -------------------- |
-| Autopilot Monitor Pro (M) | Monthly              |
-| Autopilot Monitor Pro (Y) | Annually             |
+Autopilot Monitor is offered s a **monthly** **or annual subscription plan**.
 
 ## Invoicing
 
@@ -122,6 +111,19 @@ The annual plan is discounted by  more than 15% in comparison to the monthly pla
 {% hint style="info" %}
 For a more detailed cost breakdown of your base and additional user fees, please refer to the invoice in your Azure portal.
 {% endhint %}
+
+## Plan Overview
+
+Subscriptions for Autopilot Monitor are available based on an **monthly** and **annual** renewal interval.
+
+{% hint style="info" %}
+The annual plan is discounted by  10% in comparison to the monthly plan (calculated over the period of 12 months).
+{% endhint %}
+
+| **Plan**                  | **Renewal Interval** |
+| ------------------------- | -------------------- |
+| Autopilot Monitor Pro (M) | Monthly              |
+| Autopilot Monitor Pro (Y) | Annually             |
 
 ## Subscription Management
 
