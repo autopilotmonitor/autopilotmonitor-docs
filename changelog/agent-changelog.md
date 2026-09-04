@@ -14,8 +14,16 @@ User-facing changes to the Autopilot Monitor agent, newest first. Only includes 
 
 Per-version release notes: [GitHub Releases](https://github.com/okieselbach/AutopilotMonitor/releases).
 
+## September 2026
+
+* Keep-awake during User-ESP no longer releases early on an interim Account Setup checkpoint, so the device stays awake until the User-ESP page closes
+* Standby episodes from before the agent started no longer trigger the sleep-during-enrollment warning
+
 ## August 2026
 
+* RealmJoin self-updates during enrollment are now detected, and the session shows the updated version
+* IME log pattern matching no longer skips patterns on heavily loaded virtual machines
+* IME process monitoring re-attaches after an IME restart, so a later crash is still reported
 * Local admin analysis no longer flags localized built-in accounts (e.g. `Gast`, `Administrateur`), and a local account that is signed in when enrollment completes is no longer exempted from the check
 * Local admin analysis now includes disabled accounts and reports each account's membership in the local Administrators group, so a dormant admin backdoor no longer goes unnoticed
 * When the backend reports that the persisted session id belongs to a different device identity (an Intune re-enrollment without a wipe), the agent now starts a fresh session instead of shutting down after repeated authorization failures
