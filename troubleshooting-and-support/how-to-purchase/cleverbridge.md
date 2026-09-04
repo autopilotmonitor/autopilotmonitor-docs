@@ -6,7 +6,7 @@ In order to purchase Autopilot Monitor from our merchant of record, cleverbridge
 
 Depending on your sourcing and purchasing requirements, you might have to set up cleverbridge as a vendor in your system. cleverbridge provides all relevant onboarding information [via their website](https://support.cleverbridge.com/hc/en-us/articles/4405420244243-How-do-I-register-Cleverbridge-as-a-vendor).
 
-Should you have any questions during the onboarding process, especially in regards to legal or taxation aspects, please [contact cleverbridge directly](cleverbridge.md#for-what-inquiries-should-i-contact-cleverbridge-directly).
+Should you have any questions during the onboarding process, especially in regards to legal or taxation aspects, please [contact cleverbridge directly](https://docs.autopilotmonitor.com/troubleshooting-and-support/how-to-purchase/cleverbridge#for-what-inquiries-should-i-contact-cleverbridge-directly).
 
 {% hint style="info" %}
 **For US-based customers only**.
@@ -68,7 +68,7 @@ To access the self management portal, please refer to the initial delivery / ord
 This will either navigate you to the self-management portal directly or you might have to re-generate the link (they might expire after a while) first.
 
 {% hint style="info" %}
-In case you are having difficulties accessing the self-management portal as described above, feel free to [contact cleverbridge directly](cleverbridge.md#for-what-inquiries-should-i-contact-cleverbridge-directly) for assistance by referencing your **Cleverbridge reference number**.
+In case you are having difficulties accessing the self-management portal as described above, feel free to [contact cleverbridge directly](https://docs.autopilotmonitor.com/troubleshooting-and-support/how-to-purchase/cleverbridge#for-what-inquiries-should-i-contact-cleverbridge-directly) for assistance by referencing your **Cleverbridge reference number**.
 {% endhint %}
 
 ### **Automatic Renewal**
@@ -85,7 +85,7 @@ If you decide to disable **Automatic Renewal**, your subscription will not renew
 
 ### Cancellation
 
-* If you would like to (irreversibly) cancel your subscription, navigate to your subscription's [self-management portal](https://docs.scepman.com/other/licensing/cleverbridge#self-management-portal) and disable **Automatic Renewal**.
+* If you would like to (irreversibly) cancel your subscription, navigate to your subscription's [self-management portal](https://docs.autopilotmonitor.com/troubleshooting-and-support/how-to-purchase/cleverbridge#self-management-portal) and disable **Automatic Renewal**.
 * You subscription will expire towards the end of the current cycle.
 * There is **no cancellation notice period**.
 
@@ -113,7 +113,7 @@ To request a quote for Autopilot Monitpr,
 
 Cleverbridge will automatically remove the VAT if you provide a valid European VAT ID (and are not located in Germany) or a valid business registration number in countries where a VAT exemption applies (e.g. ABN in Australia).
 
-If the VAT is not removed but you believe that you are entitled to a VAT exemption, please [contact cleverbridge directly](cleverbridge.md#for-which-inquiries-should-i-contact-cleverbridge-directly).
+If the VAT is not removed but you believe that you are entitled to a VAT exemption, please [contact cleverbridge directly](https://docs.autopilotmonitor.com/troubleshooting-and-support/how-to-purchase/cleverbridge#for-what-inquiries-should-i-contact-cleverbridge-directly).
 
 ### How do I convert a quote into an order?
 
