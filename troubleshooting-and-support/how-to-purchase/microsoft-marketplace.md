@@ -1,7 +1,5 @@
 ---
-description: >-
-  Purchase Autopilot Monitor via Microsoft Marketplace: prerequisites, the
-  user-segment pricing model, base fees, and invoicing.
+description: Purchase Autopilot Monitor via Microsoft Marketplace.
 ---
 
 # Microsoft Marketplace

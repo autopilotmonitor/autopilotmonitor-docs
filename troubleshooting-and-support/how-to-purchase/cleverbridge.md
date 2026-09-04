@@ -1,3 +1,7 @@
+---
+description: Purchase Autopilot Monitor via cleverbridge.
+---
+
 # Cleverbridge
 
 ## Prerequisites & Vendor Onboarding <a href="#prerequisites" id="prerequisites"></a>
