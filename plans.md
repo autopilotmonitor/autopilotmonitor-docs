@@ -53,6 +53,7 @@ Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC
 | **Portal & agent API rate limits** | Standard | Higher |
 | **AI (MCP) usage quota** | Standard | Larger |
 | **Delegated (MSP) administration** | — | Included (2 managed tenants; larger packages on request) |
+| **Managed by a Pro organization** | Tenant is on Pro (badge "Pro (MSP)") for as long as it is managed | Same — the badge shows the delegation as the source |
 | **OOBE bootstrap sessions / Unrestricted Mode** | — | Included, activated on request |
 | **Support** | Community (GitHub) | Priority support with reliability commitments |
 | **Operator & counterparty** | glueckkanja AG — no commitments | glueckkanja AG under written agreement |

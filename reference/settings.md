@@ -146,7 +146,7 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 
 | Setting | Description |
 | --- | --- |
-| Who can read this tenant | Every organization with delegated (MSP) read access to your tenant, with the people behind it. Self-service delegations can be ended here at once; operator-provisioned ones via support. |
+| Who can read this tenant | Every organization with delegated (MSP) read access to your tenant, with the people behind it. Self-service delegations can be ended here at once; operator-provisioned ones via support. While a Pro organization manages your tenant, your tenant is on Pro (badge "Pro (MSP)") — the section says so. |
 | Tenants you manage (Pro) | Slot usage, the tenants you manage with their AI (MCP) budget, single-use invitation links (valid 7 days), and which of your own members hold the read-only access. Removing a tenant keeps its slot occupied for 24 hours. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access). |
 
 ## Reporting

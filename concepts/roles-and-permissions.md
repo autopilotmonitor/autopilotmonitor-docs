@@ -41,7 +41,9 @@ Admin Mode is **not persistent** — it lives in the browser's local storage and
 
 For managed service providers, Autopilot Monitor supports **delegated administration**: a delegated admin manages a defined set of customer tenants and gets a **Fleet** view with the same analytics (Fleet Health, Software, Geographic Performance, SLA, Usage) scoped across exactly those tenants — never more.
 
-Delegated administration is a **Pro-only** capability: the managing (MSP) tenant must be on the [Pro plan](../plans.md). The managed customer tenants can be on any plan, including Community — if the managing tenant is not on Pro, the delegated scope is empty and no customer data is accessible. Pro includes **two managed tenants**; larger packages raise that limit on request. A pending invitation and a recently removed tenant (24 hours) each keep their slot.
+Delegated administration is a **Pro-only** capability: the managing (MSP) tenant must be on the [Pro plan](../plans.md). The managed customer tenants can start on any plan, including Community — if the managing tenant is not on Pro, the delegated scope is empty and no customer data is accessible. Pro includes **two managed tenants**; larger packages raise that limit on request. A pending invitation and a recently removed tenant (24 hours) each keep their slot.
+
+**Managed tenants are on Pro.** A tenant managed by an organization on the Pro plan gets the Pro capabilities for as long as the delegation lasts — its plan badge reads **Pro (MSP)**, also when the tenant has a Pro plan of its own. Conferred Pro does not include delegated administration itself: a managed tenant cannot invite or manage tenants unless it is on Pro in its own right. When the delegation ends, the tenant returns to its own plan; a tenant that had raised its data retention keeps the 30-day grace described under [Plans](../plans.md) before the Community limit applies. A trial of the managing organization does not upgrade its customers.
 
 How the model protects the customer:
 
