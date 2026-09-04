@@ -72,6 +72,7 @@
 * [Service Announcements](troubleshooting/service-announcements.md)
 * [How to Purchase](troubleshooting-and-support/how-to-purchase/README.md)
   * [Microsoft Marketplace](troubleshooting-and-support/how-to-purchase/microsoft-marketplace.md)
+  * [Cleverbridge](troubleshooting-and-support/how-to-purchase/cleverbridge.md)
 
 ## Changelog
 
