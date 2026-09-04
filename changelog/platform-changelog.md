@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Filter the Performance Map from its legend** — Click a legend bucket under the Geographic Performance map to show only the locations in it. See [Geographic Performance](../portal-guide/geographic-performance.md#reading-the-map).
 * **Migration banner names missing add-on permissions** — If the previous app holds optional Graph add-on permissions the new app lacks, the switch now pauses with the exact list and a grant command for the new app; **Detect existing access** then completes it. See [App Registration Migration](../troubleshooting/app-registration-migration.md#optional-graph-add-on-permissions).
 * **Color the Performance Map by any metric** — The Geographic Performance map now has a **Color by** selector (enrollment duration, success rate, API latency, DO peer efficiency, App-Load-Score) and a legend, using the same thresholds as the table badges. See [Geographic Performance](../portal-guide/geographic-performance.md#reading-the-map).
 * **Self-service delegated (MSP) administration** — Pro tenants can now invite customer tenants with a single-use link under Settings → Tenant → Delegated Access, assign their own members as read-only readers, and every tenant sees and can end who reads it; Pro includes two managed tenants. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access).

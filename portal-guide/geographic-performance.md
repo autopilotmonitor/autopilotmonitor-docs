@@ -35,6 +35,8 @@ The **Color by** selector in the map header chooses which metric the marker colo
 
 Light gray always means "nothing to measure yet" for the active metric. The selection applies to the current page view; the map opens on Enrollment duration every time.
 
+The legend doubles as a filter: click a bucket to show only the locations in it, click further buckets to add them, and click **Show all** (or the last selected bucket again) to return to the full map. The map view and marker sizes stay put while you filter, and the Location Performance table keeps listing every location. Switching **Color by** clears the filter.
+
 ## Drilling in
 
 Clicking a location opens its **session list**: summary cards for that site (sessions, success/failure, average duration, DO peer share) and the individual sessions with per-session peer-caching percentages — each row opens the full [session detail](session-details-and-diagnosis.md).
