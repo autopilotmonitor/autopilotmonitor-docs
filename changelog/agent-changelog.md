@@ -12,6 +12,8 @@ description: >-
 
 User-facing changes to the Autopilot Monitor agent, newest first. Only includes changes that affect agent behavior on the device.
 
+Per-version release notes: [GitHub Releases](https://github.com/okieselbach/AutopilotMonitor/releases).
+
 ## August 2026
 
 * Local admin analysis no longer flags localized built-in accounts (e.g. `Gast`, `Administrateur`), and a local account that is signed in when enrollment completes is no longer exempted from the check
