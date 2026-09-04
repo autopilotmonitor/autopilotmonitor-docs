@@ -84,7 +84,7 @@ Some problems deserve attention *before* the session is over — a device loopin
 | --- | --- |
 | `enrollment_end` | at session end (complete / failed / timed out) — the default, recommended for almost every rule |
 | `whiteglove_sealed` | when WhiteGlove pre-provisioning completes and the session is sealed for the user phase — the technician is still at the device |
-| `on_event:<eventType>` | whenever the agent reports an event of that type while the enrollment is running (e.g. `hybrid_login_pending`) |
+| `on_event:<eventType>` | whenever the agent reports an event of that type while the enrollment is running (e.g. `entra_user_affinity_pending`) |
 
 ### How interim findings behave
 
@@ -104,7 +104,7 @@ A rule that runs mid-enrollment sees an *incomplete* session, so its logic must 
 * Prefer conditions that stay true once they became true, and gate on **repetition**: require a signal to occur more than once (confidence factors with `count >= N` and a threshold above the base confidence) so a single transient event doesn't raise a preliminary finding on a healthy session.
 * High-frequency telemetry event types (performance snapshots, download progress, network state changes, …) are **blocked** as `on_event` triggers — the editor and the API reject them, because they would re-run analysis on effectively every data batch.
 
-The built-in rule **ANALYZE-ID-004** (hybrid sign-in never establishes Entra user affinity) is a worked example: it triggers on `hybrid_login_pending` events, but its confidence threshold requires the overdue-login signal to repeat across reboots before a preliminary finding appears.
+The built-in rule **ANALYZE-ID-004** (hybrid sign-in never establishes Entra user affinity) is a worked example: it triggers on `entra_user_affinity_pending` events, but its confidence threshold requires the pending-affinity signal to repeat across reboots before a preliminary finding appears.
 
 ## Condition sources
 

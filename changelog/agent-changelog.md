@@ -16,6 +16,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* On Hybrid Join devices the agent now reports whether the signed-in user obtained an Entra token, and the sign-in-overdue warning reflects the observed desktop instead of the provisioning placeholder
+* User Device Registration failures (events 304 and 305) now appear on the session timeline
 * Keep-awake during User-ESP no longer releases early on an interim Account Setup checkpoint, so the device stays awake until the User-ESP page closes
 * Standby episodes from before the agent started no longer trigger the sleep-during-enrollment warning
 

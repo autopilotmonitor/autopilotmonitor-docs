@@ -1,12 +1,12 @@
 ---
 type: Troubleshooting
 tags: [troubleshooting, hybrid-join, enrollment, entra-id, esp, windows-hello]
-description: Hybrid Join devices that reach the desktop but never finish — the signed-in user never establishes Entra user affinity (no PRT), so Account Setup re-runs forever and Windows Hello never appears.
+description: Hybrid Join devices that reach the desktop but never finish — the signed-in user never establishes Entra user affinity (no PRT), so user-targeted apps, Account Setup and Windows Hello never settle.
 ---
 
 # Hybrid Join: stuck in Account Setup — the sign-in that never lands
 
-Your Autopilot **Hybrid Entra Join** (HAADJ) device sails through Device Setup, the user signs in and even reaches the desktop — but the session never completes. In the portal the session parks in **Account Setup**, the timeline shows the warning **"Hybrid AAD Join: login overdue (placeholder still active)"** repeating across reboots, and the analysis panel raises **"Hybrid Sign-In Never Establishes Entra User Affinity"**. On the device, the Enrollment Status Page's account phase shows `0/x` apps — and comes back on every logon.
+Your Autopilot **Hybrid Entra Join** (HAADJ) device sails through Device Setup, the user signs in and even reaches the desktop — but the session never completes. In the portal the timeline shows the warning **"user affinity pending"** (`entra_user_affinity_pending`) after the sign-in, often once per reboot, and the analysis panel raises **"Hybrid Sign-In Never Establishes Entra User Affinity"**. With a user Enrollment Status Page configured, its account phase shows `0/x` apps — and comes back on every logon.
 
 This is not the device failing to join. It is the **user** failing to register.
 
@@ -14,18 +14,23 @@ This is not the device failing to join. It is the **user** failing to register.
 
 The pattern is distinctive because the device half looks perfectly healthy:
 
-* `dsregcmd /status` on the device reports `AzureAdJoined : YES` **and** `DomainJoined : YES` — the hybrid device registration succeeded.
-* The user signs in and gets a desktop; the session's timeline shows *Real user desktop detected*.
-* Yet the **hybrid sign-in overdue** warning keeps firing, often across several reboots, and the account-phase apps never move past `0/x`.
-* **The Windows Hello for Business enrollment wizard never appears** for the user.
+* The session's timeline shows *Real user desktop detected* — the user signed in and got a desktop.
+* Within minutes of that desktop the Intune Management Extension normally acquires the signed-in user's Entra token; the timeline records that as *Entra user token acquired*. On an affected device that entry never appears. Instead the **user affinity pending** warning fires about ten minutes after the desktop, listing the token error codes the Intune Management Extension logged, and it repeats after every reboot.
+* Entries named *device_registration_event* (Windows User Device Registration events 304 and 305) may accompany it — the operating system's own record that the automatic device registration failed.
+* User-targeted apps and policies do not apply, and **the Windows Hello for Business enrollment wizard never appears** for the user.
 
-The one number that confirms it: sign in as the affected user, run `dsregcmd /status`, and look under **SSO State**. `AzureAdPrt : NO` is the finding — the signed-in user has no **Primary Refresh Token**, so as far as Entra is concerned, this user session doesn't exist on this device.
+The one number that confirms it: sign in as the affected user, run `dsregcmd /status`, and look under **SSO State**. `AzureAdPrt : NO` is the finding — the signed-in user has no **Primary Refresh Token**, so as far as Entra is concerned, this user session doesn't exist on this device. The agent cannot read this value itself: it runs as SYSTEM, and the SSO section is per user.
+
+Two things that are *not* symptoms, even though they look suspicious:
+
+* `AzureAdJoined : YES` and `DomainJoined : YES` under *Device State* only confirm the device half. Both are already true right after the offline domain join, long before Entra Connect has synced anything.
+* The Autopilot provisioning placeholder account staying in the device's join information. On a hybrid device the user's sign-in never replaces it; it is expected there until the Entra device registration completes.
 
 ## What is actually happening
 
-On a hybrid deployment, joining the device is only half the contract. After the reboot, the user signs in with domain credentials and Windows silently runs a second registration: it exchanges the on-premises logon for an **Entra user token (PRT)**. Everything user-facing hangs off that token — user-targeted apps and policies in the Account Setup ESP, Windows Hello for Business provisioning, single sign-on to Microsoft 365.
+On a hybrid deployment, joining the device is only half the contract. After the reboot, the user signs in with domain credentials and Windows silently runs a second registration: it exchanges the on-premises logon for an **Entra user token (PRT)**. Everything user-facing hangs off that token — user-targeted apps and policies, the Account Setup phase of a user ESP, Windows Hello for Business provisioning, single sign-on to Microsoft 365.
 
-When the PRT flow cannot finish, Windows falls back to **cached credentials**: the user gets a desktop, but a desktop without an Entra identity. The Account Setup ESP cannot settle and re-runs on every logon, Hello never offers its wizard (it needs the PRT to provision), and the enrollment session never reaches completion. Rebooting does not fix it — the same sign-in falls into the same hole every time.
+The Intune Management Extension is the first consumer of that token on the device: its user check-in asks the Windows web account manager for the signed-in user's token. When the user has a PRT, the request succeeds within minutes of the sign-in and Autopilot Monitor records *Entra user token acquired*. When the PRT flow cannot finish, Windows falls back to **cached credentials**: the user gets a desktop, but a desktop without an Entra identity. Every token request fails, user-targeted work cannot settle, Hello never offers its wizard (it needs the PRT to provision), and the enrollment session never reaches completion. Rebooting does not fix it — the same sign-in falls into the same hole every time, which is why the warning repeats per reboot.
 
 The most common structural causes:
 
@@ -40,7 +45,7 @@ The most common structural causes:
    `AzureAdPrt : NO` under *SSO State* confirms the diagnosis. (`AzureAdJoined : YES` / `DomainJoined : YES` under *Device State* just confirms the device half is fine.)
 
 2. **Event Viewer → Applications and Services Logs → Microsoft → Windows → User Device Registration → Admin.**
-   Events **304**, **305** and **362** carry the PRT / user-registration failure details and name the blocked endpoint or the failing auth step.
+   Events **304**, **305** and **362** carry the PRT / user-registration failure details and name the blocked endpoint or the failing auth step. Events 304 and 305 also appear on the session timeline as *device_registration_event*.
 
 3. **Can the logon screen reach a domain controller?**
    From the network the device enrolls on, verify a DC is reachable *before* any user-context VPN comes up. If a VPN is in the path, it must run as a **machine tunnel / pre-logon tunnel** (device tunnel in Always On VPN, pre-logon in GlobalProtect and comparable products).
@@ -51,7 +56,7 @@ The most common structural causes:
 5. **Proxy/firewall from the user context.**
    `login.microsoftonline.com`, `device.login.microsoftonline.com`, `enterpriseregistration.windows.net` — reachable without interception from the signed-in user's context.
 
-Autopilot Monitor captures the device-side half automatically: the built-in gather rule runs `dsregcmd /status` during Account Setup, and the finding on the session links the observed sign-in warnings to this diagnosis.
+Autopilot Monitor captures the device-side half automatically: when the warning fires, two built-in gather rules collect the Entra operational log (events 1097 and 1098) from the device, and the optional gather rule GATHER-DEVICE-006 adds the `dsregcmd /status` device join state at that moment. The finding on the session links the observed token failures to this diagnosis.
 
 ## Windows Hello on hybrid devices
 
