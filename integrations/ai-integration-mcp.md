@@ -21,7 +21,7 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 ## Prerequisites
 
 1. **A role in your organization's tenant** — MCP access follows your portal role: an account with a role (Admin, Operator or Viewer) can connect, an account without one cannot, and individual accounts can be blocked. Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
-2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth.
+2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth. Unattended automation connects with its own application identity instead — see [Service principals and automation](#service-principals-and-automation).
 
 ## Client setup
 
@@ -127,6 +127,17 @@ Two **discovery resources** help the assistant use the right vocabulary: `event_
 * *"How do I roll the agent out with Intune?"* (answered from this documentation)
 
 The assistant picks the right tools and chains them — e.g. finding a session by device name first, then pulling its event timeline.
+
+## Service principals and automation
+
+A scheduled report, a pipeline or an agent that runs without a person signed in connects with its **own application identity** rather than a user's. It is granted like a team member and is always read-only.
+
+1. **Register the application in your Entra tenant** (or use one you already have — a federated credential, a certificate or a client secret all work; the platform only sees the resulting token).
+2. **Grant it the Autopilot Monitor application permission.** On the application's **API permissions** page choose *APIs my organization uses* → **Autopilot Monitor** → *Application permissions* → `access_as_application`, then **Grant admin consent** for your tenant. Without this consent the token is refused before any role check.
+3. **Add it as a member.** Under **Settings → Access Management** switch the add form to **Service principal**, enter the application (client) ID and add it. Service principals always hold the **Viewer** role; the role selector is fixed. To let it read tenants you manage as an MSP, assign it under **Settings → Tenant → Delegated Access** like any other member.
+4. **Obtain a token and call the server.** Request a client-credentials token for `api://886ab5e2-6144-442c-80cc-9b28e0667731/.default` from your tenant's Entra endpoint and send it as `Authorization: Bearer …` to `https://mcp.autopilotmonitor.com/mcp` (Streamable HTTP). There is no OAuth sign-in and no browser step; the token typically lasts about an hour, after which the application requests a new one.
+
+Its calls count against your organization's MCP budget like a person's and appear on the **MCP Usage** page marked **App**; disabling or removing the member blocks it. A service principal can never change configuration, annotate sessions or trigger device actions, whatever its Entra permissions say.
 
 ## Rate limits and usage plans
 

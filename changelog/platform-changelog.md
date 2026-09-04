@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Service principals for unattended MCP automation** — Add an application from your Entra tenant as a read-only member under Settings → Access Management and let a pipeline or agent query the MCP server with its own client-credentials token; it needs the `access_as_application` permission granted in your tenant and shows up marked as App on the MCP Usage page. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#service-principals-and-automation).
 * **Filter the Performance Map from its legend** — Click a legend bucket under the Geographic Performance map to show only the locations in it. See [Geographic Performance](../portal-guide/geographic-performance.md#reading-the-map).
 * **Migration banner names missing add-on permissions** — If the previous app holds optional Graph add-on permissions the new app lacks, the switch now pauses with the exact list and a grant command for the new app; **Detect existing access** then completes it. See [App Registration Migration](../troubleshooting/app-registration-migration.md#optional-graph-add-on-permissions).
 * **Color the Performance Map by any metric** — The Geographic Performance map now has a **Color by** selector (enrollment duration, success rate, API latency, DO peer efficiency, App-Load-Score) and a legend, using the same thresholds as the table badges. See [Geographic Performance](../portal-guide/geographic-performance.md#reading-the-map).

@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 2 September 2026 · Next review: 2 February 2027.**
+**Last reviewed: 4 September 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -87,7 +87,7 @@ If your data protection assessment requires that no IP addresses are processed, 
 
 **The platform makes no LLM API calls.** There is no model provider integration, no API key, and no outbound AI traffic. The semantic search used by the [MCP integration](../integrations/ai-integration-mcp.md) runs locally inside our own container on a small embedding model baked into the image.
 
-What _does_ happen: if you connect your own AI assistant through MCP, the data that assistant retrieves is delivered to **your** AI vendor, under **your** agreement with them. That transfer is initiated and controlled by you. MCP access is limited to accounts that hold a role in your tenant, and individual accounts can be blocked.
+What _does_ happen: if you connect your own AI assistant through MCP, the data that assistant retrieves is delivered to **your** AI vendor, under **your** agreement with them. That transfer is initiated and controlled by you. MCP access is limited to accounts that hold a role in your tenant — people, or a service principal your admin added as a read-only member and consented to in Entra — and individual accounts can be blocked.
 
 #### What does the service log about administrator activity?
 
@@ -123,7 +123,7 @@ Through **Microsoft Entra ID**, with multi-tenant JWT validation performed by th
 
 #### How does an AI assistant authenticate to the MCP server?
 
-The [MCP integration](../integrations/ai-integration-mcp.md) implements the current MCP specification's OAuth 2.1 profile: the assistant signs the user in through Microsoft Entra ID via the server's own authorization endpoints, PKCE is mandatory, and the authorization response carries the issuer identifier so a client can detect a mixed-up authorization server. The access token that results is the user's own; the MCP server stores no credentials and forwards the token to the API, where the normal role and tenant checks apply. Clients identify themselves through a Client ID Metadata Document (an HTTPS URL the server fetches and validates; addresses inside private or internal networks are refused before any request is made, redirects are not followed, and the document is size- and time-capped) or, for older clients, through dynamic client registration — in both cases the callback address must be on a fixed allowlist of AI-vendor callback URLs or a loopback address, so a self-registered client cannot redirect an authorization code elsewhere. MCP access itself is limited to accounts that hold a role in the tenant (the roles you assign in the portal), and individual accounts can be blocked.
+The [MCP integration](../integrations/ai-integration-mcp.md) implements the current MCP specification's OAuth 2.1 profile: the assistant signs the user in through Microsoft Entra ID via the server's own authorization endpoints, PKCE is mandatory, and the authorization response carries the issuer identifier so a client can detect a mixed-up authorization server. The access token that results is the user's own; the MCP server stores no credentials and forwards the token to the API, where the normal role and tenant checks apply. Clients identify themselves through a Client ID Metadata Document (an HTTPS URL the server fetches and validates; addresses inside private or internal networks are refused before any request is made, redirects are not followed, and the document is size- and time-capped) or, for older clients, through dynamic client registration — in both cases the callback address must be on a fixed allowlist of AI-vendor callback URLs or a loopback address, so a self-registered client cannot redirect an authorization code elsewhere. MCP access itself is limited to accounts that hold a role in the tenant (the roles you assign in the portal), and individual accounts can be blocked. Unattended automation uses a service principal of your own tenant instead of a person's token: it must hold the `access_as_application` permission your admin consents to in Entra, is added as a member like a person, is always read-only, and is announced to the operator the first time it connects.
 
 #### What roles exist?
 

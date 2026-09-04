@@ -19,7 +19,7 @@ Access to the portal is controlled by role-based permissions. Everyone signs in 
 | **Viewer** | Read-only role: sees everything in the portal — sessions, session details, rules, analytics, settings (secrets redacted), and reports — but cannot change anything or trigger actions. Ideal for auditors, security reviewers, or stakeholders who need full visibility without any write access. |
 | **Member (no role)** | Only sees the **Progress Portal** — a simplified view for tracking a specific device by serial number. No access to session details, diagnostics, or configuration. Ideal for helpdesk staff or on-site technicians who just need to answer "how far along is this device?" |
 
-Team members are added by UPN under **Settings → Access Management**, where admins can also enable/disable accounts and change roles.
+Team members are added by UPN under **Settings → Access Management**, where admins can also enable/disable accounts and change roles. The same page adds a **service principal** (an application in your tenant, by its application ID) for unattended automation over the [MCP integration](../integrations/ai-integration-mcp.md#service-principals-and-automation); a service principal is always a Viewer.
 
 ## Admin Mode
 

@@ -20,7 +20,7 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 
 | Setting | Description |
 | --- | --- |
-| Team Members & Roles | Add members by UPN, assign **Admin**, **Operator**, or **Viewer**, enable/disable accounts, and grant bootstrap-token management. The first user to sign in becomes Admin automatically. See [Roles & Permissions](../concepts/roles-and-permissions.md). |
+| Team Members & Roles | Add members by UPN, assign **Admin**, **Operator**, or **Viewer**, enable/disable accounts, and grant bootstrap-token management. The first user to sign in becomes Admin automatically. Switch the form to **Service principal** to add an application from your Entra tenant (by application ID) as a read-only member for unattended MCP automation. See [Roles & Permissions](../concepts/roles-and-permissions.md) and [Service principals and automation](../integrations/ai-integration-mcp.md#service-principals-and-automation). |
 
 ### Enrollment Device Validation
 
