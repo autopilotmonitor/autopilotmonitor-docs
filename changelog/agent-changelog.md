@@ -16,6 +16,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* Telemetry the backend cannot process is reported back to the agent instead of being silently lost: only the affected items are dropped and the rest of the batch is re-sent
 * On Hybrid Join devices the agent now reports whether the signed-in user obtained an Entra token, and the sign-in-overdue warning reflects the observed desktop instead of the provisioning placeholder
 * User Device Registration failures (events 304 and 305) now appear on the session timeline
 * IME log lines written before the agent started are placed on the timeline with the correct timezone when the device changed its zone during setup, so phase durations are no longer inflated by hours
