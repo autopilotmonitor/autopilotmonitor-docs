@@ -16,6 +16,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* App install events now carry the installer exit code and how the app's Intune return-code table classifies it (Success, Soft reboot, Hard reboot, Retry, Failed), so an app that asked for a restart is visible on the timeline
 * Telemetry the backend rejects is no longer lost: the agent drops only the affected items and re-sends the rest
 * On Hybrid Join devices the agent now reports whether the signed-in user obtained an Entra token, and the sign-in-overdue warning reflects the observed desktop instead of the provisioning placeholder
 * User Device Registration failures (events 304 and 305) now appear on the session timeline

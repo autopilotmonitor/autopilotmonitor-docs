@@ -8,7 +8,7 @@ description: >-
 
 # Built-in Rules Reference
 
-Autopilot Monitor ships with 43 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
+Autopilot Monitor ships with 51 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
 
 Most device-phase rules are additionally evaluated **when WhiteGlove pre-provisioning completes** — findings from the technician phase (app failures, low disk, tampering indicators, firmware and clock problems, critical vulnerabilities) appear at the seal, while the technician is still at the device, instead of days later when the user finishes the enrollment. A handful of rules also evaluate the moment their triggering event arrives (e.g. a failed app install, a failed Windows Update, a TPM attestation error). Early findings behave as described in [Concepts → Evaluation triggers](concepts.md#evaluation-triggers-when-a-rule-runs): they are preliminary, notify at most once, and are confirmed or resolved by the final analysis. Rules whose evidence only exists at the end of a session (explicit failure, timeout, user-phase rules) stay enrollment-end only.
 
@@ -31,6 +31,9 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-APP-013** · App Detection Failure During ESP (0x87D1041C) | critical | The classic ESP killer: an app installed fine, but its detection rule didn't match, failing the whole ESP with HRESULT 0x87D1041C. Includes deep remediation (detection-rule bitness, WOW6432Node, testing as SYSTEM). |
 | **ANALYZE-APP-014** · MSIX/Store App Failure During ESP (AppX Deployment) | warning | The ESP failed on the Apps subcategory and the AppX deployment log scan identified a suspected MSIX/Store package. Store apps install outside the Win32 pipeline, so regular per-app tracking sees nothing — this correlation names the likely culprit. |
 | **ANALYZE-APP-015** · Required App Never Settled — ESP Completion Deferred | high | Intune reported the user session as done, but a required app stayed pending forever — without failing or even starting to install. Typically an assignment or requirement-rule problem (requirements never met, unsatisfied dependency, or an app that needs something unavailable during provisioning, e.g. a VPN client waiting for a portal sign-in). |
+| **ANALYZE-APP-016** · Required Apps Never Started — ESP Apps Gate Starved | warning | The user ESP page closed while one or more required apps had never started installing. Unlike APP-015 this reports the delivery gap regardless of how the session ended: Windows called the enrollment done, but the software is missing. |
+| **ANALYZE-APP-017** · App Install Blocked by Another Installer (0x80070652) | high | A Win32 app failed because the Windows Installer was busy with another installation (HRESULT 0x80070652 / MSI exit code 1618). Names the app, explains the fixed IME retry budget, and walks through finding the competing installer and serializing the chain. |
+| **ANALYZE-APP-018** · App Return Code Requested a Reboot During Enrollment | warning | An installer exit code that the app's Intune return-code table maps to *Soft reboot* or *Hard reboot*. Hard reboot stops app processing and restarts the device mid-ESP (the second sign-in); Soft reboot leaves the app pending until the next restart while the ESP moves on. Confidence rises for Hard reboot and when a reboot was actually observed. |
 | **ANALYZE-CORR-003** · Proxy Configuration Causing Download Failure | high | A proxy/PAC is configured **and** app content downloads failed with download-specific errors — pointing at the proxy blocking Intune content endpoints, with the bypass list to fix it. |
 | **ANALYZE-OFFICE-001** · Microsoft 365 Apps Install Failed | warning | The Office Click-to-Run background install never finished — a failure the Intune app status *hides*, because IME reports the M365 app "done" minutes before C2R actually finishes streaming. |
 
@@ -53,6 +56,12 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-ENRL-003** · TPM Attestation Failure — Known Error Code | high | A TPM-attestation error code from Microsoft's Autopilot known-issues list was observed (0x800705B4, 0x801C03EA, 0x81039001, …) — these block self-deploying and pre-provisioning deployments during "Securing your hardware", each with a documented fix. |
 | **ANALYZE-ENRL-004** · MDM Enrollment Blocked — Known Error Code | high | An enrollment-blocking error code from Microsoft's known-issues pages was observed (0x80180014, 0x80180018, 0xC1036501, 0x801C03F3, 0x80070774) — device-reuse blocks, licensing/enrollment limits, multiple MDM configurations, deleted Entra device objects, or an Intune Connector domain mismatch. |
 | **ANALYZE-ENRL-005** · Hybrid Join Timeout 0x80004005 — Fixed by Windows Update | high | A hybrid-join deployment hit the documented build-dependent 0x80004005 timeout — resolved by specific cumulative updates per Windows version; the finding names the fixed-build thresholds to compare against. |
+
+## Network
+
+| Rule | Severity | What it detects |
+| --- | --- | --- |
+| **ANALYZE-NET-001** · Diagnostics Upload Blocked by Web Security Gateway | warning | A diagnostics package upload was answered by a security appliance's HTML block page instead of the backend — a proxy or secure web gateway with SSL inspection is intercepting the upload endpoint, so exactly the failed sessions lose their diagnostics. |
 
 ## Device
 
