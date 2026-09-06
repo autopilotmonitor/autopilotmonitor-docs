@@ -16,6 +16,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* Diagnostics upload events now report how many files the package included and skipped, and why, so a truncated package is visible without opening the ZIP
+* Windows Update failures now show the symbolic error name for every documented Windows Update, servicing and Win32 code instead of a short built-in list
 * App install events now carry the installer exit code and how the app's Intune return-code table classifies it (Success, Soft reboot, Hard reboot, Retry, Failed), so an app that asked for a restart is visible on the timeline
 * Telemetry the backend rejects is no longer lost: the agent drops only the affected items and re-sends the rest
 * On Hybrid Join devices the agent now reports whether the signed-in user obtained an Entra token, and the sign-in-overdue warning reflects the observed desktop instead of the provisioning placeholder
