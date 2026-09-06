@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 4 September 2026 · Next review: 2 February 2027.**
+**Last reviewed: 6 September 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -144,8 +144,10 @@ Through a single **endpoint access policy catalog**: every HTTP route must be re
 Yes, all sliding-window:
 
 * **Per device**, keyed on the client certificate thumbprint. Misconfigured or zero limits are clamped upward so a bad configuration cannot fail open.
-* **Per portal user**, keyed on the user's Entra object id.
-* **Per MCP user**, plus daily and monthly quotas tied to the tenant's plan — one per account and one shared by the whole tenant, so adding accounts does not add budget.
+* **Per portal user**, keyed on the user's Entra object id. An interactive portal session has its own, more generous budget; all of one account's browser tabs share it.
+* **Per MCP user and integration**, keyed on the same id but counted separately from the portal. The MCP server enforces its own per-minute limit, the API a second per-user budget, plus daily and monthly quotas tied to the tenant's plan — one per account and one shared by the whole tenant, so adding accounts does not add budget.
+
+Which budget a request falls under is derived from how the client authenticated (a signed token claim), never from a request header a client could set itself.
 
 ### Tenant Isolation
 
