@@ -45,7 +45,7 @@ The success rate answers *"did this enrollment work?"* — first-time-right answ
 
 ## How to use it
 
-Fleet Health is the page for the weekly look: a dropping success rate, one model climbing the failing list, or one app dominating the slow list is your cue to drill down — click through to the [Software](software-inventory-and-vulnerabilities.md) app detail for failing apps, or filter the [Dashboard](dashboard-and-sessions.md) by model or status for failing hardware. For contractual reporting against defined targets, use [SLA Compliance](sla-compliance.md) instead.
+Fleet Health is the page for the weekly look: a dropping success rate, one model climbing the failing list, or one app dominating the slow list is your cue to drill down — click through to the [Software](software-inventory-and-vulnerabilities.md) app detail for failing apps, or click a model under **Health by Device Model** to open the [Dashboard](dashboard-and-sessions.md#search-syntax) with that manufacturer and model pre-filtered to failed enrollments. For contractual reporting against defined targets, use [SLA Compliance](sla-compliance.md) instead.
 
 Two questions the page answers that the success rate alone cannot:
 
