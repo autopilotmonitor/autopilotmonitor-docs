@@ -10,7 +10,7 @@ description: >-
 
 Gather rules define **what extra data the agent collects** from the device during enrollment. Each rule specifies a **collector type** (how to collect), a **target** (what to collect), optional **parameters**, and a **trigger** (when to collect). Results arrive as events in the session timeline — where [analyze rules](analyze-rules/README.md) can grade them automatically.
 
-A set of maintained built-in and community gather rules ships with the product; your own rules are created on the **Gather Rules** page. The **Author** of a custom rule is set automatically from the signed-in account that creates it and stays unchanged through later edits.
+A set of maintained built-in and community gather rules ships with the product; your own rules are created on the **Gather Rules** page. The page groups rules by category; each group can be collapsed and remembers that in your browser, and **Expand All** / **Collapse All** sit above the list. The **Author** of a custom rule is set automatically from the signed-in account that creates it and stays unchanged through later edits.
 
 ## Collector types
 

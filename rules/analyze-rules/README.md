@@ -25,7 +25,7 @@ Findings appear as cards on the session detail page and feed the analysis summar
 
 ## Managing rules in the portal
 
-The **Analyze Rules** page (requires the Admin or Operator role; editing requires Admin) shows all rules with search, severity/category filters, and type filters (Built-in / Community / Custom). Each rule card offers:
+The **Analyze Rules** page (requires the Admin or Operator role; editing requires Admin) shows all rules with search, severity/category filters, and type filters (Built-in / Community / Custom). Rules are grouped by category. Each group header shows how many rules it holds and how many are active or custom, and can be collapsed; **Expand All** / **Collapse All** sit above the list. Your collapsed groups are remembered in the browser, separately for the Rules and Templates tabs. While you type in the search box every group stays open so no hit is hidden. Each rule card offers:
 
 * **Enable/disable** per tenant — your choice is preserved across product updates.
 * **Evaluation triggers** — by default a rule runs at enrollment end; custom rules can additionally run while the enrollment is still in progress (at the WhiteGlove seal or when specific events arrive). Such findings appear live as *Preliminary* and are confirmed or resolved by the final analysis — see [Concepts → Evaluation triggers](concepts.md#evaluation-triggers-when-a-rule-runs).
