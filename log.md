@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-06 (2)
+
+* **Update**: `changelog/platform-changelog.md` — September 2026 block: managed tenants on Pro (MSP), annotation note search, `X-MCP-Pretty` readable results, error reference in failure messages, Progress Portal lookup fix, security hardening and polish bullets.
+
 ## 2026-09-06
 
 * **Update**: `rules/analyze-rules/concepts.md` — new section "Absence is not evidence": positive signals over `not_exists`, absence as suppression, the `ime_tracker_degraded` / `collector_degraded` coverage preconditions, and the `coverage` block of `get_session_summary`.
