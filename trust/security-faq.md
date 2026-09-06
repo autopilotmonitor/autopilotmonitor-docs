@@ -87,7 +87,7 @@ If your data protection assessment requires that no IP addresses are processed, 
 
 **The platform makes no LLM API calls.** There is no model provider integration, no API key, and no outbound AI traffic. The semantic search used by the [MCP integration](../integrations/ai-integration-mcp.md) runs locally inside our own container on a small embedding model baked into the image.
 
-What _does_ happen: if you connect your own AI assistant through MCP, the data that assistant retrieves is delivered to **your** AI vendor, under **your** agreement with them. That transfer is initiated and controlled by you. MCP access is limited to accounts that hold a role in your tenant — people, or a service principal your admin added as a read-only member and consented to in Entra — and individual accounts can be blocked.
+What _does_ happen: if you connect your own AI assistant through MCP, the data that assistant retrieves is delivered to **your** AI vendor, under **your** agreement with them. That transfer is initiated and controlled by you. MCP access is limited to accounts that hold a role in your tenant — people, or a service principal your admin added as a read-only member and consented to in Entra — individual accounts can be blocked, and MCP can be switched off for a whole organization on request.
 
 #### What does the service log about administrator activity?
 
