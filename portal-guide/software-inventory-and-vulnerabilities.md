@@ -35,7 +35,7 @@ The normalized software inventory collected by the **Software Inventory & Vulner
 
 The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**:
 
-* KPI tiles — affected devices, distinct CVEs, and known-exploited (KEV) count — plus a severity breakdown (Critical/High/Medium/Low).
+* KPI tiles — affected devices, distinct CVEs, **Act** (known-exploited, KEV) and **Attend** counts — plus a severity breakdown (Critical/High/Medium/Low) and a priority breakdown (Act/Attend/Track). Click a chip to show only those CVEs in the list below; click it again to clear. The chip counts cover every CVE in the window, the list shows the top CVEs by affected devices.
 * **Top CVEs by affected devices**, each linked to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, its EPSS score, a priority label, and sample affected software.
 
 Two signals answer different questions, and the portal shows both:

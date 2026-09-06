@@ -14,6 +14,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Vulnerabilities: filter by priority** — The exposure panel shows Act and Attend as tiles, and every severity or priority chip filters the top-CVE list. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#vulnerabilities).
 * **Dashboard search understands `model=` and `manufacturer=`** — Several terms now narrow each other down, a leading minus excludes, and `field=value` pins a term to one column; the Fleet Health model rows link into the dashboard with exactly that search, which previously came back empty. See [Dashboard & Sessions](../portal-guide/dashboard-and-sessions.md#search-syntax).
 * **New rule: an app's return code asked for a reboot** — ANALYZE-APP-018 fires when an installer exit code is mapped to *Soft reboot* or *Hard reboot* in the app's Intune return-code table; the app timeline and the Install Progress panel now show the exit code of completed apps with that mapping. Needs an agent with the return-code class (see the [agent changelog](agent-changelog.md)). See [Built-in Rules](../rules/analyze-rules/built-in-rules.md#apps).
 * **Rules pages grouped by category** — The Analyze Rules and Gather Rules pages now list rules in collapsible category groups with counters; **Expand All** / **Collapse All** sit above the list and your collapsed groups are remembered per browser. See [Analyze Rules](../rules/analyze-rules/README.md#managing-rules-in-the-portal).
