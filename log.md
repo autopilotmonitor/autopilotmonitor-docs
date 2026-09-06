@@ -1,5 +1,11 @@
 # Log
 
+## 2026-09-06
+
+* **Update**: `rules/analyze-rules/concepts.md` — new section "Absence is not evidence": positive signals over `not_exists`, absence as suppression, the `ime_tracker_degraded` / `collector_degraded` coverage preconditions, and the `coverage` block of `get_session_summary`.
+* **Update**: `integrations/ai-integration-mcp.md` — Session Analysis row: `get_session_summary` returns observation coverage with a `gaps` list.
+* **Update**: `changelog/platform-changelog.md` — September 2026 block: observation coverage in the AI session summary; diagnostics upload event reports packaging counters.
+
 ## 2026-09-02
 
 * **Update**: `concepts/roles-and-permissions.md` — MSP section: 2 managed tenants included, self-service setup (invite, accept, assign, remove with 24-hour slot hold), every tenant sees and can end its delegations.

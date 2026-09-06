@@ -165,6 +165,15 @@ Any condition can carry a `suppressByEvent` block:
 
 If a *resolving* event of that type exists with the same `joinField` value as the matched event, the match is discarded. This is how built-in rules avoid alerting on an app failure that a later retry fixed.
 
+## Absence is not evidence
+
+The agent sees an enrollment only from the moment the Intune Management Extension started it, and only as well as its collectors work. A missing event can mean *it never happened* — or *it was not seen*. Keep that in mind when a rule reasons about something that did **not** occur:
+
+* **Prefer positive signals.** The agent emits dedicated events for many "nothing happened" situations — `app_install_starved` (a required app never started), `entra_user_affinity_pending` (no user token after the desktop), `session_stalled`. A rule built on such an event is monotonic and interim-safe; a rule built on `not_exists` is neither.
+* **Use `not_exists` as a suppression, rarely as a claim.** As a precondition ("skip when `enrollment_complete` exists") it removes false alarms. As a *required* condition it asserts that the agent proved a negative.
+* **Gate absence on coverage.** Events derived from the IME logs (`app_install_*`, `script_*`, `ime_*`, `esp_phase_changed`, …) are only as reliable as the log tracker that matched them. When the tracker skipped work it reports `ime_tracker_degraded` once per session; a rule asserting the absence of such an event should carry the precondition `{ "eventType": "ime_tracker_degraded", "operator": "not_exists" }` so it stays silent on those sessions. `collector_degraded` plays the same role for event-log and kernel watchers. `validate_rule` warns when a required absence lacks the gate.
+* **Read the coverage before the findings.** In the AI integration, `get_session_summary` returns a `coverage` block — from when the agent actually watched, tracker and collector health, upload and diagnostics-package state, and a `gaps` list with one line per blind spot. A finding that rests on an absence is only as strong as an empty `gaps` list.
+
 ## The confidence model
 
 Confidence expresses *how sure* the rule is, and gates whether the finding is shown at all:
