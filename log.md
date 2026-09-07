@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-07
+
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Inventory: the session Vulnerability Report's **Identification Confidence** badge (high/medium/low = how reliably publisher and version were read, not a vulnerability verdict) and the CVE Mapping column next to it.
+
 ## 2026-09-06 (2)
 
 * **Update**: `changelog/platform-changelog.md` — September 2026 block: managed tenants on Pro (MSP), annotation note search, `X-MCP-Pretty` readable results, error reference in failure messages, Progress Portal lookup fix, security hardening and polish bullets.

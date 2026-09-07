@@ -31,6 +31,8 @@ Clicking an app opens its detail page — the place to answer *"is this app hurt
 
 The normalized software inventory collected by the **Software Inventory & Vulnerability Analyzer** ([opt-in setting](../reference/settings.md#agent-analyzers)): every discovered title with version, publisher, session count, last-seen date, and whether it is CPE-mapped (the prerequisite for vulnerability matching).
 
+On a session, the **Vulnerability Report** shows the same items with an **Identification Confidence** badge: *high* — publisher and version were read cleanly from the registry; *medium* — only one of the two; *low* — neither. It rates how reliably the entry could be identified, not whether it is vulnerable: a *low* item is not unsafe, it just could not be matched with certainty. The **CVE Mapping** column next to it carries the result — *vulnerable*, *clean* (checked, nothing known for this version) or *unmapped* (no CPE mapping, so not checked).
+
 ## Vulnerabilities
 
 The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**:
