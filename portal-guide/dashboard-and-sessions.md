@@ -12,7 +12,7 @@ The Dashboard is the landing page for admins and operators: every enrollment ses
 
 ## Stats at the top
 
-Five server-aggregated stat cards headline the page — **Active Sessions** (enrolling right now), **Success Rate** (last 7 days), **Avg. Duration** (last 7 days), **Total Today**, and **Failed Today**. A rotating *Tip of the Day* appears below them.
+Five server-aggregated stat cards headline the page — **Active Sessions** (enrolling right now), **Success Rate** (last 7 days), **Median Duration** (last 7 days, succeeded enrollments, with the P90 underneath — see [Averages, Medians & Percentiles](../concepts/averages-medians-and-percentiles.md)), **Total Today**, and **Failed Today**. A rotating *Tip of the Day* appears below them.
 
 {% hint style="warning" %}
 If **Autopilot Device Validation** is disabled, a red *action required* banner appears — agent ingestion is blocked until you enable it (see [Portal Setup](../getting-started/portal-setup.md)).

@@ -18,6 +18,7 @@
 * [Sessions & Statuses](concepts/sessions-and-statuses.md)
 * [Roles & Permissions](concepts/roles-and-permissions.md)
 * [Agent Lifecycle & Security](concepts/agent-lifecycle-and-security.md)
+* [Averages, Medians & Percentiles](concepts/averages-medians-and-percentiles.md)
 
 ## Portal Guide
 
