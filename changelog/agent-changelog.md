@@ -18,6 +18,9 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* Everything Autopilot Monitor publishes is now Authenticode-signed and timestamped — the agent executables, the deployment scripts on the download host and the bootstrap MSI — so Windows and your security tooling can verify the publisher before anything runs
+* New one-time deployment option: assign the `Start-AutopilotMonitor.ps1` loader script in Intune once and every device fetches the current installer and verifies its publisher before running it, so the platform script no longer has to be replaced when the installer changes
+* Script output shown on the timeline is no longer cut off at 2,000 characters; up to 8,000 characters are kept
 * Gather rules with the new error-code option now show what their `exitCode`, `errorCode` or `hresult` means
 * Diagnostics upload events now report how many files the package included and skipped, and why, so a truncated package is visible without opening the ZIP
 * Windows Update failures now show the symbolic error name for every documented Windows Update, servicing and Win32 code instead of a short built-in list
