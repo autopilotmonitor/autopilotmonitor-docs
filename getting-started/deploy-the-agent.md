@@ -8,7 +8,7 @@ description: >-
 
 # Deploy the Agent
 
-The agent is deployed with a PowerShell bootstrapper script distributed as an Intune **platform script**. The script downloads, installs, and registers the agent automatically — no manual steps on the device are required.
+The agent is deployed with a small PowerShell loader script distributed as an Intune **platform script**. It downloads the current bootstrapper, verifies our signature on it, and lets it install and register the agent — no manual steps on the device, and nothing to re-upload later.
 
 ## Safe to assign broadly
 
@@ -34,24 +34,35 @@ irm 'https://download.autopilotmonitor.com/agent/Test-ShouldBootstrapAgent.ps1' 
 
 The script source is public: [Test-ShouldBootstrapAgent.ps1 on GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Test-ShouldBootstrapAgent.ps1).
 
+## Everything you deploy is signed
+
+Scripts and agent binaries carry an Authenticode signature from **glueckkanja AG**, timestamped so it stays valid beyond the certificate's lifetime.
+
+* The loader refuses to run a bootstrapper that is not signed by us — a tampered or substituted download never executes on your devices.
+* You can check any file before you upload it: `Get-AuthenticodeSignature .\Start-AutopilotMonitor.ps1` must report `Valid` and `glueckkanja AG`.
+* The agent's executables and libraries are signed too, so application control policies (WDAC, AppLocker) can allow them by publisher.
+* If your policy requires signed scripts, **Enforce script signature check** can be turned on in the Intune script settings.
+
 ## Deployment steps
 
-### 1. Download the bootstrapper script
+### 1. Download the loader script
 
-Download [`Install-AutopilotMonitor.ps1`](https://download.autopilotmonitor.com/agent/Install-AutopilotMonitor.ps1) from the Autopilot Monitor download host — current version: ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb). The host always serves the current script, and the badge above always matches it.
+Download [`Start-AutopilotMonitor.ps1`](https://download.autopilotmonitor.com/agent/Start-AutopilotMonitor.ps1) from the Autopilot Monitor download host — current version: ![Latest loader version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.loaderVersion&label=Loader&prefix=v&color=2563eb).
 
 Or fetch it from a PowerShell prompt:
 
 ```powershell
-irm 'https://download.autopilotmonitor.com/agent/Install-AutopilotMonitor.ps1' -OutFile .\Install-AutopilotMonitor.ps1
+irm 'https://download.autopilotmonitor.com/agent/Start-AutopilotMonitor.ps1' -OutFile .\Start-AutopilotMonitor.ps1
 ```
 
-The script source is public: [Install-AutopilotMonitor.ps1 on GitHub](https://github.com/okieselbach/Autopilot-Monitor/blob/main/scripts/Bootstrap/Install-AutopilotMonitor.ps1).
+This is the only file you upload to Intune. On each device it fetches the current bootstrapper, checks that we signed it, and runs it. The loader carries none of the logic that changes over time, so the copy in Intune stays valid — an older loader keeps working.
 
-The agent itself (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified by the script; you never handle the agent binary yourself.
+The agent (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified along the way; you never handle the agent binary yourself.
+
+Sources are public on [GitHub](https://github.com/okieselbach/AutopilotMonitor/tree/main/scripts/Bootstrap). The signed copies are served from the download host — deploy those.
 
 {% hint style="info" %}
-The script does not update itself: devices always get the current agent, but the copy in Intune stays at whatever version you uploaded. Check back occasionally and re-upload when a newer version is published — script updates worth acting on are flagged in the [Platform Changelog](../changelog/platform-changelog.md). See [the FAQ](../troubleshooting/faq.md) for why an outdated copy can silently skip enrollments.
+**Prefer a single script?** Assigning [`Install-AutopilotMonitor.ps1`](https://download.autopilotmonitor.com/agent/Install-AutopilotMonitor.ps1) directly still works and installs exactly the same agent — current version: ![Latest bootstrapper version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.bootstrapVersion&label=Bootstrapper&prefix=v&color=2563eb). The difference is upkeep: that file changes when the bootstrapper changes, so you re-upload it in Intune to stay current. Updates worth acting on are flagged in the [Platform Changelog](../changelog/platform-changelog.md); [the FAQ](../troubleshooting/faq.md) explains why an outdated copy can silently skip enrollments.
 {% endhint %}
 
 ### 2. Create a platform script in Intune
@@ -60,10 +71,10 @@ In the **Microsoft Intune admin center**, go to **Devices → Scripts and remedi
 
 | Setting | Value |
 | --- | --- |
-| Name | `Install Autopilot Monitor` |
+| Name | `Start Autopilot Monitor` |
 | Script | Upload the downloaded `.ps1` file |
 | Run this script using the logged on credentials | **No** (runs as SYSTEM) |
-| Enforce script signature check | **No** |
+| Enforce script signature check | **No** — or **Yes**, the file is [signed](#everything-you-deploy-is-signed) |
 | Run script in 64 bit PowerShell Host | **Yes** |
 
 ### 3. Assign to a device group

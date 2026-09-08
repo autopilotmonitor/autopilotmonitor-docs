@@ -31,9 +31,9 @@ Two structural differences matter for monitoring:
 
 To get the agent onto the device _before_ the app phase, Autopilot Monitor provides a small MSI that Intune delivers over the MDM channel. Line-of-business apps install with the first Intune sync — early enough to monitor the Device Preparation app phase from the start.
 
-The MSI contains no agent logic: it is a thin runner that downloads and executes the current server-hosted bootstrap script. It passes through exactly the same [pre-requisite guards](deploy-the-agent.md#safe-to-assign-broadly) and always installs the current agent, so unlike an uploaded script copy there is nothing in Intune to keep up to date.
+The MSI contains no agent logic: it is packaging around the same signed loader used for the platform script, which downloads the current bootstrapper, verifies our signature on it, and runs it. It passes through exactly the same [pre-requisite guards](deploy-the-agent.md#safe-to-assign-broadly) and always installs the current agent, so unlike an uploaded script copy there is nothing in Intune to keep up to date.
 
-1. **Download the MSI:** [`AutopilotMonitor-Bootstrap.msi`](https://download.autopilotmonitor.com/agent/AutopilotMonitor-Bootstrap.msi). Every build is published with a signed provenance attestation — verify with `gh attestation verify AutopilotMonitor-Bootstrap.msi --repo okieselbach/AutopilotMonitor` if you want to check what you are uploading.
+1. **Download the MSI:** [`AutopilotMonitor-Bootstrap.msi`](https://download.autopilotmonitor.com/agent/AutopilotMonitor-Bootstrap.msi). The package is Authenticode-signed by glueckkanja AG and carries a build provenance attestation — check either with `Get-AuthenticodeSignature` or `gh attestation verify AutopilotMonitor-Bootstrap.msi --repo okieselbach/AutopilotMonitor` before you upload it.
 2. **Add it in Intune:** in the **Microsoft Intune admin center**, go to **Apps → Windows → + Add**, choose the app type **Line-of-business app**, and upload the MSI.
 3. **Assign it as Required to the right group:** target the **device group configured in your Device Preparation policy** (the group devices are joined to at enrollment time — Intune's _enrollment time grouping_). Because the device becomes a member of that group during enrollment, a Required assignment to exactly this group reaches the device in its very first sync.
 
