@@ -44,12 +44,17 @@ flowchart LR
 
 ## Binary integrity
 
-Agent binaries are protected by SHA-256 verification at multiple stages:
+Every stage between our build and the running process is verified, and the checks answer two different questions: a hash proves the bytes were not altered, a signature proves who produced them.
 
-1. **Build-time hashes** — the CI/CD pipeline computes a hash for the agent package (published in `version.json`) and one for the executable (stored in the backend configuration).
-2. **Download verification** — the bootstrapper and the agent's self-updater verify the package hash before installation; a mismatch aborts the install.
-3. **Backend cross-check** — the expected hash is *also* delivered through the authenticated configuration endpoint, an independent second trust channel. Tampering would require compromising the download server and the backend API simultaneously.
-4. **Runtime self-check** — the running agent hashes its own executable and compares it against the value from the backend; a mismatch raises an emergency alert.
+1. **Signed at build time** — the agent's executables and libraries are Authenticode-signed by glueckkanja AG in the build pipeline, before any hash is computed. The deployment scripts are signed by the same publisher.
+2. **Build-time hashes** — the pipeline computes a hash for the agent package (published in `version.json`) and one for the executable (stored in the backend configuration).
+3. **Script verification on the device** — the loader you assign in Intune checks the publisher of the bootstrapper it downloads and refuses to run anything else.
+4. **Download verification** — the bootstrapper and the agent's self-updater verify the package hash before installation; a mismatch aborts the install.
+5. **Publisher verification on the device** — before the agent is started for the first time, the bootstrapper checks that every Autopilot Monitor executable and library in the package carries a valid signature from us. A missing, broken or foreign signature aborts the installation (bootstrapper 2.5 and later).
+6. **Backend cross-check** — the expected hash is *also* delivered through the authenticated configuration endpoint, an independent second trust channel. Tampering would require compromising the download server and the backend API simultaneously.
+7. **Runtime self-check** — the running agent hashes its own executable and compares it against the value from the backend; a mismatch raises an emergency alert.
+
+The signature checks close a gap the hashes cannot: the published hash is served from the same host as the package, while the expected publisher is carried by the signed script itself.
 
 ### Build provenance (Sigstore attestation)
 

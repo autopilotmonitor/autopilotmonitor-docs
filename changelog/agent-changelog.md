@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* The bootstrapper now checks our signature on the agent's own files before it starts them: an unsigned or substituted binary never runs (bootstrapper 2.5)
 * Everything Autopilot Monitor publishes is now Authenticode-signed and timestamped — the agent executables, the deployment scripts on the download host and the bootstrap MSI — so Windows and your security tooling can verify the publisher before anything runs
 * New one-time deployment option: assign the `Start-AutopilotMonitor.ps1` loader script in Intune once and every device fetches the current installer and verifies its publisher before running it, so the platform script no longer has to be replaced when the installer changes
 * Script output shown on the timeline is no longer cut off at 2,000 characters; up to 8,000 characters are kept

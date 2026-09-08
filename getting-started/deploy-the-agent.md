@@ -41,6 +41,7 @@ Scripts and agent binaries carry an Authenticode signature from **glueckkanja AG
 * The loader refuses to run a bootstrapper that is not signed by us — a tampered or substituted download never executes on your devices.
 * You can check any file before you upload it: `Get-AuthenticodeSignature .\Start-AutopilotMonitor.ps1` must report `Valid` and `glueckkanja AG`.
 * The agent's executables and libraries are signed too, so application control policies (WDAC, AppLocker) can allow them by publisher.
+* The bootstrapper checks those signatures on the device and refuses to start an agent that is not signed by us.
 * If your policy requires signed scripts, **Enforce script signature check** can be turned on in the Intune script settings.
 
 ## Deployment steps
