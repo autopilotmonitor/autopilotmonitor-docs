@@ -1,5 +1,12 @@
 # Log
 
+## 2026-09-08
+
+* **Update**: `changelog/platform-changelog.md`, `changelog/agent-changelog.md` — intro sentence on the portal's What's new panel (Help → What's new, website bell, unread counter); September 2026 platform bullet for the panel itself.
+* **Update**: `portal-guide/session-details-and-diagnosis.md`, `portal-guide/dashboard-and-sessions.md` — the timeline search now covers the event details: quoted phrases, `type=` / `message=` / `source=` / `data=` field qualifiers, and the two rules of the details search (values only, what you see is what you search); the dashboard search cross-reference names the shared grammar with its own field set.
+* **Update**: `rules/gather-rules.md`, `changelog/*` — new section **Explaining error codes**: the per-rule opt-in that resolves `exitCode` / `errorCode` / `hresult` against the Windows/MSI/Intune catalog, why it is off by default, and that it needs an updated agent.
+* **Update**: `portal-guide/audit-log-and-system-health.md`, `changelog/platform-changelog.md` — System Health: the MCP Server card reports *Starting instance…* with the attempt count while the endpoint wakes from zero instead of warning.
+
 ## 2026-09-07
 
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Inventory: the session Vulnerability Report's **Identification Confidence** badge (high/medium/low = how reliably publisher and version were read, not a vulnerability verdict) and the CVE Mapping column next to it.

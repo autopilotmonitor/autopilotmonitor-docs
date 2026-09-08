@@ -12,10 +12,13 @@ description: >-
 
 User-facing changes to the Autopilot Monitor agent, newest first. Only includes changes that affect agent behavior on the device.
 
+The same entries appear in the portal under **Help (?) → What's new** on the Agent tab; there a red counter marks entries you have not looked at yet.
+
 Per-version release notes: [GitHub Releases](https://github.com/okieselbach/AutopilotMonitor/releases).
 
 ## September 2026
 
+* Gather rules with the new error-code option now show what their `exitCode`, `errorCode` or `hresult` means
 * Diagnostics upload events now report how many files the package included and skipped, and why, so a truncated package is visible without opening the ZIP
 * Windows Update failures now show the symbolic error name for every documented Windows Update, servicing and Win32 code instead of a short built-in list
 * App install events now carry the installer exit code and how the app's Intune return-code table classifies it (Success, Soft reboot, Hard reboot, Retry, Failed), so an app that asked for a restart is visible on the timeline

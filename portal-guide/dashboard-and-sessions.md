@@ -31,7 +31,7 @@ Default columns: **Device** (name + serial), **Model**, **Status**, **Events**, 
 
 ### Search syntax
 
-The search box follows the conventions you know from other search boxes — the same ones as the [event timeline search](session-details-and-diagnosis.md#filtering-the-event-timeline):
+The search box follows the conventions you know from other search boxes — the same grammar as the [event timeline search](session-details-and-diagnosis.md#filtering-the-event-timeline), each with its own set of field names:
 
 | You type | You get |
 | --- | --- |

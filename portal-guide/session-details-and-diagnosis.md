@@ -30,17 +30,26 @@ Opening a session from the dashboard shows everything Autopilot Monitor knows ab
 
 ## Filtering the event timeline
 
-The search box above the timeline filters the events as you type, matching the event type, the message and the source. It follows the conventions you know from other search boxes:
+The search box above the timeline filters the events as you type. It looks at the event type, the message, the source **and the event's details** — the JSON you see when you expand an event. That last part matters for [gather rules](../rules/gather-rules.md): a log-parsing rule puts the matched log line, the extracted values and the rule ID into the details, not into the message, so `"Installation completed"` finds the HP Image Assistant line even though no message contains those words. It follows the conventions you know from other search boxes:
 
 | You type | You get |
 | --- | --- |
-| `certificate` | Events whose type, message or source contains *certificate* |
-| `esp apps` | Events matching **both** terms — several terms are combined with AND |
+| `certificate` | Events whose type, message, source or details contain *certificate* |
+| `esp apps` | Events matching **both** terms — several terms are combined with AND, each may hit a different field |
+| `"Installation completed"` | A quoted phrase is matched as one term — spaces included |
 | `-app_install_progress` | Everything **except** the matching events |
 | `esp -progress` | A search term and an exclusion combined |
 | `"exit code -1"` | A quoted term is taken literally, leading minus included |
+| `type=app_install` | Only the event type is searched — the `app_install_*` family, wherever the words appear elsewhere |
+| `data=hpia-log-collect` | Only the details are searched — here every event a specific gather rule produced (`content=` is an alias) |
+| `-source=ImeLogTracker` | An exclusion pinned to one field: hides IME log events, keeps an event that merely *mentions* the tracker |
 
-Matching is case-insensitive and by substring, so `-app_install` hides the whole `app_install_*` family in one go, and `-perf -heartbeat` strips out several kinds of noise at once. While an exclusion is active, a **hiding …** pill next to the severity filters names the excluded terms and the counter reports how many events are left.
+Field names for `field=value` (a colon works as well): `type`, `message`, `source`, `data` (or `content`). Anything else stays an ordinary search term, so a time like `14:30` still works. Matching is case-insensitive and by substring, so `-app_install` hides the whole `app_install_*` family in one go, and `-perf -heartbeat` strips out several kinds of noise at once. While an exclusion is active, a **hiding …** pill next to the severity filters names the excluded terms and the counter reports how many events are left.
+
+Two things to know about the details search:
+
+* **Only values are searched, never field names.** `-error` hides events whose text contains *error* — it does not hide every event that merely carries an empty `errorCode` field. Likewise `data=exitcode` finds nothing unless *exitcode* is a value somewhere.
+* **You search what you see.** Details that contain JSON as text (a gather rule's console output, for example) are unpacked the same way the expanded view shows them, so a term that is visible there is a term you can search for.
 
 Filtering is a view on the session you already have open: it changes nothing in the data, works alongside the severity filters, applies to both parts of a pre-provisioning session as well as the raw view, and clearing the box brings every event back.
 

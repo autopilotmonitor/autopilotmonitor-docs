@@ -122,6 +122,16 @@ Each execution emits one event with the rule's configured **output event type** 
 
 See [Cookbook recipe 7](analyze-rules/cookbook.md#recipe-7-collect-your-own-data-and-grade-it-end-to-end) for the full gather → analyze pattern in action.
 
+## Explaining error codes
+
+Built-in events show what a code means: next to an `exitCode`, `errorCode` or `hresult` the timeline names the symbol and the plain-text meaning from the Windows, MSI and Intune catalog. A gather rule's fields are *not* explained that way by default, because you choose their names and their values come from whatever you parsed — HP Image Assistant, Dell Command Update or your own script number their exit codes themselves, and the Windows catalog would attach a confident but wrong meaning to a `1` or a `3010`.
+
+Turn on **Explain error codes with the Windows catalog** in the rule's output section when the source really does use Windows codes — an `msiexec` log, an IME log, a script that returns an HRESULT. The rule card then carries an **Error codes explained** badge, and the code fields in its events get the same explanation built-in events have. Without the option the raw code still travels and is still searchable and gradable; only the interpretation is left out.
+
+{% hint style="info" %}
+The option needs an agent that knows it — the agent marks the events of an opted-in rule. Rules collected by an older agent keep their raw codes until the [agent](../changelog/agent-changelog.md) is updated.
+{% endhint %}
+
 ## Security guardrails
 
 A gather rule is a **declarative collector definition, not a script**. There is no field in which to put code: a rule names a collector type and a target, and the agent decides whether that target is permitted. Custom collection on managed devices is a sensitive capability, so **every collector enforces its allow-list on the agent itself** — the portal's validation is a convenience, not the control. Editing a rule through the API directly changes nothing about what the agent will accept.
