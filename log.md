@@ -1,5 +1,11 @@
 # Log
 
+## 2026-09-08 (2)
+
+* **Update**: `integrations/notifications.md`, `changelog/platform-changelog.md` — new **What's new** notification trigger: per-channel opt-in, one digest per batch of newly published changelog entries, off by default; Triggers table row plus the paragraph that separates it from the session triggers.
+* **Update**: `changelog/platform-changelog.md` — September 2026 polish bullet: layout fixes, two-row rule cards, *Identification Confidence* badge naming.
+* **Update**: `changelog/agent-changelog.md` — September 2026: Authenticode signing across agent, scripts and MSI; the one-time `Start-AutopilotMonitor.ps1` loader; captured script output up to 8,000 characters (agent v2.0.1454).
+
 ## 2026-09-08
 
 * **Update**: `changelog/platform-changelog.md`, `changelog/agent-changelog.md` — intro sentence on the portal's What's new panel (Help → What's new, website bell, unread counter); September 2026 platform bullet for the panel itself.

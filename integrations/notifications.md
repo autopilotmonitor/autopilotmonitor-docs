@@ -57,8 +57,11 @@ The trigger URL carries its own shared-access signature, so treat it like a pass
 | **Notify on Start** | An enrollment session starts |
 | **Notify on Success** | A session completes successfully |
 | **Notify on Failure** | A session ends in failure — keep this one on |
+| **What's new** | New platform or agent changelog entries go live — a product-update digest, not a session event |
 
 **Send Test Notification** posts a sample message to verify the configuration end to end.
+
+**What's new** is the one trigger that is not about an enrollment: whenever new entries appear in the portal's What's new panel, every channel with the toggle on receives one message listing them, with links into the panel and the documentation. It is off by default.
 
 Beyond the session triggers, the same webhook also carries **SLA breach/resolution alerts** (when [SLA targets](../portal-guide/sla-compliance.md) are configured), **consecutive-failure alerts**, and **hardware-rejection notices**.
 

@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Product updates in your notification channels** — A new **What's new** toggle per notification channel sends one digest to Teams, Slack, Discord or a JSON webhook whenever new changelog entries go live. Off by default. See [Notifications](../integrations/notifications.md#triggers).
 * **Gather rules can have their error codes explained** — A new rule option resolves `exitCode`, `errorCode` and `hresult` against the Windows/MSI/Intune catalog; off by default, because a vendor tool's own exit codes would be explained wrongly. Needs an updated agent. See [Gather Rules](../rules/gather-rules.md#explaining-error-codes).
 * **System Health: a waking AI endpoint no longer warns** — The MCP Server card says *Starting instance…* and keeps probing for about a minute while the endpoint scales up from zero. See [System Health](../portal-guide/audit-log-and-system-health.md#system-health).
 * **What's new in the portal** — The Help menu, the Help page and the website navigation open a What's new panel with the Platform and Agent changelog entries; in the portal a red counter shows how many you have not seen yet and resets once you have looked, per user across browsers.
@@ -49,6 +50,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 * **Fixed: Progress Portal could not find older enrollments** — Looking up a device by its exact serial number or device name now works regardless of how long ago it enrolled.
 * **Security hardening** — A series of backend and portal hardening fixes across roles, device blocking, exports and input validation; nothing changes for day-to-day use.
 * **Fixes & polish** — Dialogs now dim the whole page including the navigation bar, the live timeline refreshes once per upload burst instead of once per batch, and the Hardware Whitelist editor splits a pasted comma list into separate entries.
+* **Polish across the portal** — Layout fixes, the rule cards carry a clearer two-row header, and the session Vulnerability Report names its inventory badge *Identification Confidence*. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#inventory).
 
 ## August 2026
 
