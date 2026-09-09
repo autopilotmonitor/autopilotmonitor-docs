@@ -79,3 +79,9 @@
 
 * [Agent Changelog](changelog/agent-changelog.md)
 * [Platform Changelog](changelog/platform-changelog.md)
+
+## Legal
+
+***
+
+* [Support & Service Level](support-and-service-level.md)
