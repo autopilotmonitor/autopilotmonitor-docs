@@ -50,6 +50,6 @@ flowchart LR
 
 All three families ship with maintained built-in rules, so you get full value with zero configuration. On top of that:
 
-* **Community** rules are contributed via GitHub and shown with a *Community* badge — same review and quality bar as built-ins.
+* **Community** rules were submitted by other organizations from their portal and accepted after review — same quality bar as built-ins, shown with a *Community* badge. You can [contribute your own](contribute-a-rule.md).
 * **Template** rules ship as configurable blueprints (e.g. an allow-list you fill in). Enabling one creates your own editable copy. See [Template Rules](analyze-rules/template-rules.md).
 * **Custom** rules are yours alone — created in the portal, scoped to your tenant. The [Cookbook](analyze-rules/cookbook.md) walks you through building them.

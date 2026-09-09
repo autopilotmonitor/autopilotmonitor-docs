@@ -83,4 +83,4 @@ Gather rules execute on enrolling devices, so there is no session dry-run for th
 
 * Dry-run against **recent** sessions: sessions that ran before a gather rule was deployed don't contain its events.
 * If a condition unexpectedly doesn't match, check the trace's per-condition event count first — it tells you whether the session contains the referenced event type at all.
-* Well-tested rules that would help other organizations are welcome as [community contributions](analyze-rules/built-in-rules.md) via the [GitHub repository](https://github.com/okieselbach/Autopilot-Monitor/tree/main/rules).
+* Well-tested rules that would help other organizations are welcome as community contributions — submit them from the portal, see [Contribute a Rule](contribute-a-rule.md).

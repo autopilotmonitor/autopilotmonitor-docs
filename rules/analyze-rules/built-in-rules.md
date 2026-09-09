@@ -97,4 +97,4 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 
 ## Reading a rule's full definition
 
-Every rule's complete definition — conditions, confidence model, full explanation and remediation text — is visible in the portal (expand the rule card, or use **Export** for the raw JSON). The rule sources are also public in the [GitHub repository](https://github.com/okieselbach/Autopilot-Monitor/tree/main/rules/analyze) — community contributions welcome.
+Every rule's complete definition — conditions, confidence model, full explanation and remediation text — is visible in the portal (expand the rule card, or use **Export** for the raw JSON). The rule sources are also public in the [GitHub repository](https://github.com/okieselbach/Autopilot-Monitor/tree/main/rules/analyze). To contribute a rule of your own, submit it from the portal — see [Contribute a Rule](../contribute-a-rule.md).
