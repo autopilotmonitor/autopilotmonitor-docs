@@ -30,7 +30,7 @@ A set of maintained built-in and community gather rules ships with the product; 
 {% endhint %}
 
 {% hint style="info" %}
-**Targeting the user profile:** the agent runs as SYSTEM, so `%USERPROFILE%` resolves to the SYSTEM profile. Use the special token `%LOGGED_ON_USER_PROFILE%` to reach the signed-in user's profile (only `AppData\Local` and `AppData\Roaming` are allowed). Rules using the token are skipped automatically until a user session exists.
+**Targeting the user profile:** the agent runs as SYSTEM, so `%USERPROFILE%` resolves to the SYSTEM profile. Use the special token `%LOGGED_ON_USER_PROFILE%` to reach the signed-in user's profile. Nothing outside `AppData\Local` and `AppData\Roaming` is reachable, and within them only the specific folders on the `userProfileFilePrefixes` allow-list — a folder below the profile is not readable just because it sits under `AppData`. Rules using the token are skipped automatically until a user session exists.
 {% endhint %}
 
 ## Triggers
@@ -155,7 +155,7 @@ The portal keeps you out of that situation in the first place: a custom rule who
 {% hint style="danger" %}
 **Hard blocks — these hold even in Unrestricted Mode and cannot be enabled by any configuration:**
 
-* `C:\Users` (only the signed-in user's `AppData\Local` and `AppData\Roaming` are reachable, and only via the `%LOGGED_ON_USER_PROFILE%` token)
+* `C:\Users` (only allow-listed folders under the signed-in user's `AppData\Local` and `AppData\Roaming` are reachable, and only via the `%LOGGED_ON_USER_PROFILE%` token — see `userProfileFilePrefixes` in `guardrails.json`)
 * `C:\Windows\System32\config` — the SAM, SECURITY, and SYSTEM registry hives
 * The **Security** event log and the **PowerShell** operational logs — the audit trail of user behaviour, and script-block logging, which routinely contains secrets in clear text
 * Downloading files (`Invoke-WebRequest`, `curl`, `certutil -urlcache`, …), creating users or group memberships, altering boot configuration, establishing persistence via scheduled tasks, and destructive operations such as `Format-Volume`
