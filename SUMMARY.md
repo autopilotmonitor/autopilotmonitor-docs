@@ -82,6 +82,4 @@
 
 ## Legal
 
-***
-
-* [Support & Service Level](support-and-service-level.md)
+* [Support & Service Level](legal/support-and-service-level.md)
