@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **ANALYZE-ESP-004 only fires on a real ESP timeout** — The soft-failure finding now needs the agent's own verdict that the ESP gave up while a blocking app was still installing; an ESP failure with a specific error code goes to the rule for that code, and the configured ESP limit is shown as a limit, not as elapsed time. See [Built-in Rules](../rules/analyze-rules/built-in-rules.md#esp).
 * **A gather rule's target is judged the way the device judges it** — The rule editor and the rule validator now expand `%ProgramData%` and the other environment variables before checking a target, so a path that works on the device is no longer reported as blocked; a folder in the signed-in user's profile is shown as allowed only when it is genuinely on the allow-list. See [Gather Rules](../rules/gather-rules.md#security-guardrails).
 * **Product updates in your notification channels** — A new **What's new** toggle per notification channel sends one digest to Teams, Slack, Discord or a JSON webhook whenever new changelog entries go live. Off by default. See [Notifications](../integrations/notifications.md#triggers).
 * **Gather rules can have their error codes explained** — A new rule option resolves `exitCode`, `errorCode` and `hresult` against the Windows/MSI/Intune catalog; off by default, because a vendor tool's own exit codes would be explained wrongly. Needs an updated agent. See [Gather Rules](../rules/gather-rules.md#explaining-error-codes).
