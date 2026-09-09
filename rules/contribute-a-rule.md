@@ -14,7 +14,7 @@ Custom rules are yours alone. When one of them would help other organizations, y
 
 1. Open **Analyze Rules** or **Gather Rules** and click **Contribute a rule** in the community box above the rule list.
 2. Pick one or more of your custom rules (up to 10 per submission). Built-in and community rules cannot be submitted.
-3. Add a comment: what the rule detects and why it is useful beyond your organization. The reviewer reads it first.
+3. Add a comment: what the rule detects and why it is useful beyond your organization. The reviewer reads it first. Optionally leave a contact email for questions about the submission — a sign-in account is not always a mailbox. The address is never published.
 4. Choose the **credit** for the published rule:
    * **Community contribution** (default) — anonymous. Nothing about you or your organization is published.
    * **My organization** — the company name from your tenant settings.
@@ -28,7 +28,9 @@ The rule is frozen at submit time: later edits or deletions of your copy do not 
 
 ## What happens next
 
-The submission appears in a **Community submissions** list on the same page, with one of these statuses:
+The submission appears in a **Community submissions** list on the same page. Pending submissions are shown by default; decided and withdrawn ones sit behind **Show all**. Withdrawn entries disappear after 30 days, declined ones after 90 days; approved and published entries stay as the record of where a community rule came from.
+
+Statuses:
 
 | Status | Meaning |
 | --- | --- |
