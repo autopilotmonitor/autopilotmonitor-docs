@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* ESP failures keep their error code and failed step even when Windows closes the status page before the agent has confirmed the failure — the session's failure reason and the app verdicts name the real cause instead of a generic timeout
 * Reading inside a user profile stays strictly limited: only folders on the published allow-list are readable, and never anything outside `AppData\Local` and `AppData\Roaming`
 * Gather rules and diagnostics paths can now collect the RealmJoin client's tray log from the signed-in user's profile and its package install logs under `C:\ProgramData`
 * The bootstrapper now checks our signature on the agent's own files before it starts them: an unsigned or substituted binary never runs (bootstrapper 2.5)

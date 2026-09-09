@@ -1,5 +1,11 @@
 # Log
 
+## 2026-09-09
+
+* **Update**: `changelog/agent-changelog.md` — September 2026: ESP failures keep error code and failed step when the status page closes first (agent v2.0.1456).
+* **Update**: `changelog/platform-changelog.md` — September 2026: ANALYZE-ESP-004 fires only on the agent's ESP timeout verdict; Entra device-registration (`0x801C…`) error codes in the catalog; published agent version visible within minutes; `not_exists` on a field matches a missing field.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-ESP-004 row: new title and scope (fires on the agent's timeout verdict, silent on failures with an error code).
+
 ## 2026-09-08 (2)
 
 * **Update**: `integrations/notifications.md`, `changelog/platform-changelog.md` — new **What's new** notification trigger: per-channel opt-in, one digest per batch of newly published changelog entries, off by default; Triggers table row plus the paragraph that separates it from the session triggers.

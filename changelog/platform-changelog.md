@@ -17,6 +17,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 ## September 2026
 
 * **ANALYZE-ESP-004 only fires on a real ESP timeout** — The soft-failure finding now needs the agent's own verdict that the ESP gave up while a blocking app was still installing; an ESP failure with a specific error code goes to the rule for that code, and the configured ESP limit is shown as a limit, not as elapsed time. See [Built-in Rules](../rules/analyze-rules/built-in-rules.md#esp).
+* **Entra device-registration error codes explained** — The error-code catalog now covers the `0x801C…` family that hybrid joins and the account-setup phase report, so timeline badges and `lookup_error_code` name the code's meaning instead of leaving it unknown. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#available-tools).
 * **A gather rule's target is judged the way the device judges it** — The rule editor and the rule validator now expand `%ProgramData%` and the other environment variables before checking a target, so a path that works on the device is no longer reported as blocked; a folder in the signed-in user's profile is shown as allowed only when it is genuinely on the allow-list. See [Gather Rules](../rules/gather-rules.md#security-guardrails).
 * **Product updates in your notification channels** — A new **What's new** toggle per notification channel sends one digest to Teams, Slack, Discord or a JSON webhook whenever new changelog entries go live. Off by default. See [Notifications](../integrations/notifications.md#triggers).
 * **Gather rules can have their error codes explained** — A new rule option resolves `exitCode`, `errorCode` and `hresult` against the Windows/MSI/Intune catalog; off by default, because a vendor tool's own exit codes would be explained wrongly. Needs an updated agent. See [Gather Rules](../rules/gather-rules.md#explaining-error-codes).
@@ -53,6 +54,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 * **Security hardening** — A series of backend and portal hardening fixes across roles, device blocking, exports and input validation; nothing changes for day-to-day use.
 * **Fixes & polish** — Dialogs now dim the whole page including the navigation bar, the live timeline refreshes once per upload burst instead of once per batch, and the Hardware Whitelist editor splits a pasted comma list into separate entries.
 * **Polish across the portal** — Layout fixes, the rule cards carry a clearer two-row header, and the session Vulnerability Report names its inventory badge *Identification Confidence*. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#inventory).
+* **A newly published agent version shows up within minutes** — The What's new panel and the outdated-agent badges in the session list read the published version every few minutes instead of once every twelve hours.
+* **Custom rules: `not_exists` on a field matches a missing field** — A condition with a `dataField` and `not_exists` now fires when no event of that type carries the field, as the concepts page describes. See [Analyze Rules: Concepts](../rules/analyze-rules/concepts.md#absence-is-not-evidence).
 
 ## August 2026
 
