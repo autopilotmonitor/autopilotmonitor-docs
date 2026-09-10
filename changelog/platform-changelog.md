@@ -16,6 +16,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Completed-by-timeout is marked in the Network Timeline** — When an enrollment counted as complete because a wait ran out (Windows Hello not set up within the wait, or no user phase after device setup), the Completed marker is drawn hollow and labelled *(timeout)*, with its own legend line. Such a marker can sit inside an Asleep block: nothing happened on the device at that instant, the wait simply expired.
+* **MCP: oversized results answer with guidance instead of a cut-off page** — A tool result that would exceed the size cap now comes back as a clear overflow answer naming the page size that fits; `query_raw_events` pages that include event payloads default to 50 rows (max 100). An MCP call you cancel in the client is now cancelled at the backend as well.
 * **Apps still installing at session end are marked Incomplete** — The Install and Download Progress panels no longer run a timer forever for an app that had no result when the agent stopped; the row says **Incomplete** with the watched time as a lower bound. The app metrics disclose the same rows in their own bucket, outside the failure rate, and `get_session_summary` lists them under `coverage`. See [Session Details](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **Contribute a rule from the portal** — A **Contribute a rule** button on the Analyze Rules and Gather Rules pages submits your custom rules for the community rule pool; you choose the credit (anonymous by default), follow the review status on the same page, and accepted rules ship to every tenant as community rules. See [Contribute a Rule](../rules/contribute-a-rule.md).
 * **ANALYZE-ESP-004 only fires on a real ESP timeout** — The soft-failure finding now needs the agent's own verdict that the ESP gave up while a blocking app was still installing; an ESP failure with a specific error code goes to the rule for that code, and the configured ESP limit is shown as a limit, not as elapsed time. See [Built-in Rules](../rules/analyze-rules/built-in-rules.md#esp).
@@ -58,6 +60,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 * **Polish across the portal** — Layout fixes, the rule cards carry a clearer two-row header, and the session Vulnerability Report names its inventory badge *Identification Confidence*. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#inventory).
 * **A newly published agent version shows up within minutes** — The What's new panel and the outdated-agent badges in the session list read the published version every few minutes instead of once every twelve hours.
 * **Custom rules: `not_exists` on a field matches a missing field** — A condition with a `dataField` and `not_exists` now fires when no event of that type carries the field, as the concepts page describes. See [Analyze Rules: Concepts](../rules/analyze-rules/concepts.md#absence-is-not-evidence).
+* **Fixed: standby time on the session page** — The Duration cell in Session Info now shows the standby time with seconds and counts only standby inside the enrollment window, so it matches the time-attribution chip below.
 
 ## August 2026
 
