@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Scripts still running at session end are marked Incomplete** — A script with no result by the time the agent stopped no longer shows as running forever; the row says **Incomplete**, outside the succeeded and failed counts. `get_session_summary` lists such scripts under `coverage`. See [Session Details](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **Completed-by-timeout is marked in the Network Timeline** — When an enrollment counted as complete because a wait ran out (Windows Hello not set up within the wait, or no user phase after device setup), the Completed marker is drawn hollow and labelled *(timeout)*, with its own legend line. Such a marker can sit inside an Asleep block: nothing happened on the device at that instant, the wait simply expired.
 * **MCP: results that are too large say so** — Instead of a cut-off page you get a short answer with the page size that fits. Cancelling a call in your AI client now stops it on the server too.
 * **Apps still installing at session end are marked Incomplete** — The Install and Download Progress panels no longer run a timer forever for an app that had no result when the agent stopped; the row says **Incomplete** with the watched time as a lower bound. The app metrics disclose the same rows in their own bucket, outside the failure rate, and `get_session_summary` lists them under `coverage`. See [Session Details](../portal-guide/session-details-and-diagnosis.md#session-detail).
