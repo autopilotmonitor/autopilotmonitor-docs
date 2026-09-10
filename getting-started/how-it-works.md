@@ -2,13 +2,17 @@
 type: Concept
 tags: [architecture, agent, telemetry]
 description: >-
-  The architecture of Autopilot Monitor — four components, one enrollment
+  The architecture of Autopilot Monitor — five components, one enrollment
   session, and how telemetry flows from the device to your dashboard.
 ---
 
 # How Autopilot Monitor Works
 
-Autopilot Monitor consists of four components that work together to turn a Windows Autopilot enrollment from a black box into a live, analyzable timeline:
+Autopilot Monitor turns a Windows Autopilot enrollment from a black box into a live, analyzable timeline. The overview shows what talks to what: the device reports during enrollment, admins and AI assistants read the results, and every device and user is validated against your own tenant.
+
+<figure><img src="../.gitbook/assets/architecture-overview.svg" alt="Autopilot Monitor architecture: Microsoft Intune in the customer tenant deploys the agent to the Autopilot device; the device sends enrollment telemetry to the Autopilot Monitor service in Microsoft Azure (telemetry ingest, analysis, storage, portal and AI access); the service validates devices and users against the customer's Entra ID; admins use the portal at www.autopilotmonitor.com and AI assistants connect through the MCP server; the service pulls public CVE data and sends alerts to Teams, Slack, Discord, or a webhook"><figcaption><p>Devices report during enrollment, admins and AI assistants read the results, and the service validates devices and users against your own tenant — there are no servers to run on your side.</p></figcaption></figure>
+
+Five components work together:
 
 | Component | Where it runs | What it does |
 | --- | --- | --- |
@@ -16,6 +20,7 @@ Autopilot Monitor consists of four components that work together to turn a Windo
 | **Monitoring agent** | On the device, during enrollment | A lightweight .NET application that collects enrollment telemetry in real time and removes itself when enrollment completes |
 | **Backend** | Cloud (Azure) | Receives, validates, and stores telemetry; runs the analyze-rule engine against every session |
 | **Web portal** | Browser | Live dashboard, session timelines, rule findings, fleet analytics, and all configuration |
+| **MCP server** | Cloud (Azure), optional | Lets AI assistants — Claude or any MCP client — query your enrollment data read-only, with access following your portal role; see [AI Integration (MCP)](../integrations/ai-integration-mcp.md) |
 
 ## The flow of an enrollment
 

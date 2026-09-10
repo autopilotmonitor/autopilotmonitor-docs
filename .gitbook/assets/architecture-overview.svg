@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 720" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" role="img" aria-label="Autopilot Monitor architecture overview: devices, customer tenant, admins and AI assistants connect to the Azure backend, which pulls vulnerability data and sends notifications">
+  <title>Autopilot Monitor Architecture</title>
+  <defs>
+    <marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a9a3c"/></marker>
+    <marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a4fb5"/></marker>
+    <marker id="a-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d3f8a"/></marker>
+    <marker id="a-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a9099"/></marker>
+  </defs>
+
+  <!-- ground and card -->
+  <rect width="1160" height="720" fill="#f4f8fd"/>
+  <rect x="16" y="16" width="1128" height="688" rx="18" fill="#ffffff" stroke="#d5e3f3"/>
+
+  <!-- ===== Azure backend ===== -->
+  <rect x="80" y="82" width="300" height="26" rx="4" fill="#e9eef4"/>
+  <text x="92" y="100" font-size="14" font-weight="600" fill="#1e2a3a">Autopilot Monitor — Azure Backend</text>
+  <rect x="80" y="112" width="620" height="200" rx="14" fill="#dbeaf9" stroke="#8fb8e3" stroke-width="1.5"/>
+
+  <!-- backend tile: cloud -->
+  <rect x="124" y="140" width="64" height="64" rx="10" fill="#ffffff" stroke="#b9d3ee"/>
+  <path d="M143 184 h30 a10 10 0 0 0 1 -20 a13 13 0 0 0 -25 -4 a9 9 0 0 0 -6 24 z" fill="none" stroke="#1f6fc9" stroke-width="2.2" stroke-linejoin="round"/>
+  <text x="212" y="162" font-size="16" font-weight="600" fill="#1e2a3a">Autopilot Monitor Service</text>
+  <text x="212" y="184" font-size="12" fill="#5b6b7d">Runs in Microsoft Azure · one multi-tenant service, isolated per customer</text>
+
+  <!-- capability chips -->
+  <g font-size="12" fill="#1e2a3a" text-anchor="middle">
+    <rect x="124" y="232" width="128" height="52" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+    <text x="188" y="253" font-weight="600">Telemetry ingest</text>
+    <text x="188" y="271" fill="#5b6b7d">events from devices</text>
+
+    <rect x="266" y="232" width="128" height="52" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+    <text x="330" y="253" font-weight="600">Analysis</text>
+    <text x="330" y="271" fill="#5b6b7d">rule engine · verdicts</text>
+
+    <rect x="408" y="232" width="128" height="52" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+    <text x="472" y="253" font-weight="600">Storage</text>
+    <text x="472" y="271" fill="#5b6b7d">sessions · reports</text>
+
+    <rect x="550" y="232" width="128" height="52" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+    <text x="614" y="253" font-weight="600">Portal &amp; AI access</text>
+    <text x="614" y="271" fill="#5b6b7d">web app · MCP server</text>
+  </g>
+
+  <!-- ===== Vulnerability feeds ===== -->
+  <rect x="820" y="112" width="270" height="84" rx="12" fill="#dbeaf9" stroke="#8fb8e3" stroke-width="1.5"/>
+  <rect x="836" y="130" width="48" height="48" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+  <path d="M860 139 l13 5 v10 c0 9 -6 15 -13 18 c-7 -3 -13 -9 -13 -18 v-10 z" fill="none" stroke="#1f6fc9" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M860 147 v8 M860 159 v1" stroke="#1f6fc9" stroke-width="2" stroke-linecap="round"/>
+  <text x="898" y="150" font-size="14" font-weight="600" fill="#1e2a3a">Vulnerability Feeds</text>
+  <text x="898" y="168" font-size="12" fill="#5b6b7d">public CVE sources</text>
+  <text x="898" y="184" font-size="12" fill="#5b6b7d">matched against installed software</text>
+
+  <!-- ===== Notifications ===== -->
+  <rect x="820" y="220" width="270" height="92" rx="12" fill="#dbeaf9" stroke="#8fb8e3" stroke-width="1.5"/>
+  <rect x="836" y="238" width="48" height="48" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+  <path d="M851 271 h18 l-3 -4 v-8 a6 6 0 0 0 -12 0 v8 z M857 275 a3 3 0 0 0 6 0" fill="none" stroke="#1f6fc9" stroke-width="2" stroke-linejoin="round"/>
+  <text x="898" y="260" font-size="14" font-weight="600" fill="#1e2a3a">Notifications</text>
+  <text x="898" y="280" font-size="12" fill="#5b6b7d">Teams · Slack · Discord · webhook</text>
+
+  <!-- ===== Customer tenant ===== -->
+  <rect x="80" y="418" width="150" height="26" rx="4" fill="#e9eef4"/>
+  <text x="92" y="436" font-size="14" font-weight="600" fill="#1e2a3a">Customer Tenant</text>
+  <rect x="96" y="464" width="280" height="176" rx="14" fill="#eef4fb" stroke="#b9d3ee" stroke-width="1.5"/>
+  <rect x="88" y="456" width="280" height="176" rx="14" fill="#f6f9fd" stroke="#b9d3ee" stroke-width="1.5"/>
+  <rect x="80" y="448" width="280" height="176" rx="14" fill="#dbeaf9" stroke="#8fb8e3" stroke-width="1.5"/>
+
+  <!-- Entra ID tile -->
+  <rect x="112" y="480" width="48" height="48" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+  <circle cx="136" cy="497" r="6" fill="none" stroke="#1f6fc9" stroke-width="2"/>
+  <path d="M124 519 a12 10 0 0 1 24 0" fill="none" stroke="#1f6fc9" stroke-width="2" stroke-linecap="round"/>
+  <text x="136" y="548" font-size="13" font-weight="600" fill="#1e2a3a" text-anchor="middle">Entra ID</text>
+  <text x="136" y="565" font-size="11" fill="#5b6b7d" text-anchor="middle">sign-in · consent</text>
+
+  <!-- Intune tile -->
+  <rect x="220" y="480" width="48" height="48" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
+  <rect x="230" y="491" width="28" height="20" rx="3" fill="none" stroke="#1f6fc9" stroke-width="2"/>
+  <path d="M236 517 h16 M238 501 l4 4 l8 -8" fill="none" stroke="#1f6fc9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="244" y="548" font-size="13" font-weight="600" fill="#1e2a3a" text-anchor="middle">Microsoft Intune</text>
+  <text x="244" y="565" font-size="11" fill="#5b6b7d" text-anchor="middle">deploys the agent</text>
+
+  <text x="220" y="600" font-size="11" fill="#5b6b7d" text-anchor="middle" font-style="italic">no servers to run on the customer side</text>
+
+  <!-- ===== Autopilot device ===== -->
+  <rect x="440" y="470" width="72" height="72" rx="10" fill="#ffffff" stroke="#b9d3ee"/>
+  <rect x="452" y="486" width="48" height="30" rx="3" fill="none" stroke="#1f6fc9" stroke-width="2.2"/>
+  <rect x="457" y="491" width="38" height="20" rx="1" fill="#dbeaf9"/>
+  <path d="M446 524 h60" stroke="#1f6fc9" stroke-width="2.2" stroke-linecap="round"/>
+  <text x="476" y="564" font-size="14" font-weight="600" fill="#1e2a3a" text-anchor="middle">Autopilot Device</text>
+  <text x="476" y="582" font-size="12" fill="#5b6b7d" text-anchor="middle">agent runs only during enrollment</text>
+  <text x="476" y="598" font-size="12" fill="#5b6b7d" text-anchor="middle">and removes itself afterwards</text>
+
+  <!-- ===== AI assistant ===== -->
+  <rect x="644" y="470" width="72" height="72" rx="10" fill="#ffffff" stroke="#b9d3ee"/>
+  <path d="M680 486 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 z" fill="none" stroke="#1f6fc9" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M698 522 l1.5 4 l4 1.5 l-4 1.5 l-1.5 4 l-1.5 -4 l-4 -1.5 l4 -1.5 z" fill="#1f6fc9"/>
+  <text x="680" y="564" font-size="14" font-weight="600" fill="#1e2a3a" text-anchor="middle">AI Assistant</text>
+  <text x="680" y="582" font-size="12" fill="#5b6b7d" text-anchor="middle">Claude or any MCP client</text>
+  <text x="680" y="598" font-size="12" fill="#5b6b7d" text-anchor="middle">ask questions about enrollments</text>
+
+  <!-- ===== Admin browser ===== -->
+  <rect x="864" y="470" width="72" height="72" rx="10" fill="#ffffff" stroke="#b9d3ee"/>
+  <rect x="876" y="486" width="48" height="40" rx="3" fill="none" stroke="#1f6fc9" stroke-width="2.2"/>
+  <path d="M876 496 h48" stroke="#1f6fc9" stroke-width="2.2"/>
+  <circle cx="882" cy="491" r="1.6" fill="#1f6fc9"/><circle cx="888" cy="491" r="1.6" fill="#1f6fc9"/><circle cx="894" cy="491" r="1.6" fill="#1f6fc9"/>
+  <text x="900" y="514" font-size="11" font-weight="700" fill="#1f6fc9" text-anchor="middle">www</text>
+  <text x="900" y="564" font-size="14" font-weight="600" fill="#1e2a3a" text-anchor="middle">Admin Portal</text>
+  <text x="900" y="582" font-size="12" fill="#5b6b7d" text-anchor="middle">www.autopilotmonitor.com</text>
+  <text x="900" y="598" font-size="12" fill="#5b6b7d" text-anchor="middle">live status · reports · settings</text>
+
+  <!-- ===== flows ===== -->
+  <!-- Intune -> device: agent assignment -->
+  <path d="M362 506 L436 506" fill="none" stroke="#4a9a3c" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a-green)"/>
+  <text x="399" y="497" font-size="10.5" fill="#4a9a3c" text-anchor="middle">agent</text>
+
+  <!-- device -> backend: telemetry -->
+  <path d="M476 466 L476 318" fill="none" stroke="#4a9a3c" stroke-width="2.4" marker-end="url(#a-green)"/>
+  <text x="486" y="412" font-size="11" fill="#4a9a3c">enrollment telemetry</text>
+
+  <!-- backend <-> tenant: device validation and user sign-in -->
+  <path d="M300 318 L300 444" fill="none" stroke="#7a4fb5" stroke-width="2" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+  <text x="310" y="384" font-size="11" fill="#7a4fb5">device &amp; user validation</text>
+
+  <!-- AI <-> backend -->
+  <path d="M680 466 L680 318" fill="none" stroke="#7a4fb5" stroke-width="2.4" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+  <text x="670" y="378" font-size="11" fill="#7a4fb5" text-anchor="end">questions &amp; answers</text>
+
+  <!-- admin <-> backend -->
+  <path d="M866 470 L706 316" fill="none" stroke="#1d3f8a" stroke-width="2.4" marker-end="url(#a-navy)" marker-start="url(#a-navy)"/>
+  <text x="808" y="378" font-size="11" fill="#1d3f8a">portal</text>
+
+  <!-- vulnerability feeds -> backend -->
+  <path d="M814 154 L708 154" fill="none" stroke="#8a9099" stroke-width="2" marker-end="url(#a-gray)"/>
+  <text x="761" y="146" font-size="10.5" fill="#8a9099" text-anchor="middle">CVE data</text>
+
+  <!-- backend -> notifications -->
+  <path d="M706 266 L812 266" fill="none" stroke="#8a9099" stroke-width="2" marker-end="url(#a-gray)"/>
+  <text x="759" y="258" font-size="10.5" fill="#8a9099" text-anchor="middle">alerts</text>
+
+  <!-- footer -->
+  <text x="1104" y="680" font-size="11" fill="#5b6b7d" text-anchor="end">Autopilot Monitor Architecture · autopilotmonitor.com</text>
+</svg>
