@@ -55,6 +55,8 @@ So that we can start work without an extra round trip, please include with your 
 * What you expected to happen, what happened instead, and when it started
 * A [diagnostics package](../troubleshooting/diagnostics-and-log-collection.md) where the issue involves a device or an agent
 
+The easiest way to send us all of this is directly from the portal: [**Report Session**](../troubleshooting/diagnostics-and-log-collection.md#reporting-a-session) on the affected session, or **Settings → Tenant → Submit Logs** for issues not tied to a session. Both send your comment, contact address and attachments to us, and Report Session adds the session's timeline and, optionally, its diagnostics package. If you use one of them, the list above is covered; just mention the report in your ticket.
+
 Our response target starts once we have a ticket with enough information to reproduce or investigate the issue.
 
 ### Languages
