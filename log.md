@@ -2,7 +2,7 @@
 
 ## 2026-09-10
 
-* **Update**: `changelog/platform-changelog.md` — September 2026: timeout verdicts (Hello wait, device-only detection) drawn as a hollow *(timeout)* marker in the Network Timeline; standby time in Session Info shown with seconds and clipped to the enrollment window; MCP overflow answer with the fitting page size, payload pages of `query_raw_events` capped at 100 rows, client cancellation reaches the backend (agent release the same day carries only internal changes).
+* **Update**: `changelog/platform-changelog.md` — September 2026: timeout verdicts (Hello wait, device-only detection) drawn as a hollow *(timeout)* marker in the Network Timeline; standby time in Session Info shown with seconds and clipped to the enrollment window; MCP results that are too large answer with the fitting page size, cancelled calls stop on the server (agent release the same day carries only internal changes).
 
 ## 2026-09-09
 
