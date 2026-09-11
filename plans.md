@@ -1,16 +1,19 @@
 ---
 type: Reference
-tags: [plans, licensing, features]
 description: >-
-  The available plans of Autopilot Monitor — the free Community plan today,
-  the Pro plan coming soon.
+  The available plans of Autopilot Monitor — the free Community plan today, the
+  Pro plan coming soon.
+tags:
+  - plans
+  - licensing
+  - features
 ---
 
 # Plans
 
 Autopilot Monitor will be available in two plans. Your tenant's current plan, and the side-by-side comparison below, are shown in the portal under **Settings → Tenant → Plan**; the same comparison is public at [autopilotmonitor.com/plans](https://www.autopilotmonitor.com/plans).
 
-## Community — *available now*
+## Community — _available now_
 
 The Community plan is what this documentation describes: the full product as it exists today. It is **free — and stays free**. That's the point of a community plan: it is the free way to use Autopilot Monitor, publicly available to every organization.
 
@@ -22,7 +25,7 @@ The Community plan is what this documentation describes: the full product as it 
 * **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://www.autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
 * **Active development:** frequent updates, no availability guarantees, and data structures may change — see [Requirements & Access](getting-started/requirements-and-access.md#getting-access-tenant-activation).
 
-## Pro — *coming soon*
+## Pro — _coming soon_
 
 A commercial plan for organizations that need more than the Community plan can promise — reliability commitments and priority support, plus higher operating limits. Pro includes **everything in Community**, plus:
 
@@ -44,21 +47,21 @@ Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC
 
 ## At a glance
 
-| | Community | Pro |
-| --- | --- | --- |
-| **Availability** | Now — publicly available, free | Coming soon |
-| **Price** | Free — always | To be announced |
-| **Feature set** | Full current feature set — AI (MCP) within usage limits | Everything in Community, plus the Pro capabilities above |
-| **Data retention** | Up to 90 days | Up to 365 days |
-| **Portal & agent API rate limits** | Standard | Higher |
-| **AI (MCP) usage quota** | Standard | Larger |
-| **Delegated (MSP) administration** | — | Included (2 managed tenants; larger packages on request) |
-| **Managed by a Pro organization** | Tenant is on Pro (badge "Pro (MSP)") for as long as it is managed | Same — the badge shows the delegation as the source |
-| **OOBE bootstrap sessions / Unrestricted Mode** | — | Included, activated on request |
-| **Support** | Community (GitHub) | Priority support with reliability commitments |
-| **Operator & counterparty** | glueckkanja AG — no commitments | glueckkanja AG under written agreement |
-| **Maintainer** | Oliver Kieselbach (open community contribution) | Oliver Kieselbach |
-| **Data processing agreement** | On request | Part of the agreement |
-| **Intended for** | Labs **and** production fleets — with community support | Organizations needing support commitments and Pro-only capabilities, MSPs |
+|                                                 | Community                                                         | Pro                                                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Availability**                                | Now — publicly available, free                                    | Coming soon                                                               |
+| **Price**                                       | Free — always                                                     | To be announced                                                           |
+| **Feature set**                                 | Full current feature set — AI (MCP) within usage limits           | Everything in Community, plus the Pro capabilities above                  |
+| **Data retention**                              | Up to 90 days                                                     | Up to 365 days                                                            |
+| **Portal & agent API rate limits**              | Standard                                                          | Advanced                                                                  |
+| **AI (MCP) usage quota**                        | Small                                                             | Advanced                                                                  |
+| **Delegated (MSP) administration**              | —                                                                 | Included (2 managed tenants; larger packages on request)                  |
+| **Managed by a Pro organization**               | Tenant is on Pro (badge "Pro (MSP)") for as long as it is managed | Same — the badge shows the delegation as the source                       |
+| **OOBE bootstrap sessions / Unrestricted Mode** | —                                                                 | Included, activated on request                                            |
+| **Support**                                     | Community (GitHub)                                                | Priority support with reliability commitments                             |
+| **Operator & counterparty**                     | glueckkanja AG — no commitments                                   | glueckkanja AG under written agreement                                    |
+| **Maintainer**                                  | Oliver Kieselbach (open community contribution)                   | Oliver Kieselbach                                                         |
+| **Data processing agreement**                   | On request                                                        | Part of the agreement                                                     |
+| **Intended for**                                | Labs **and** production fleets — with community support           | Organizations needing support commitments and Pro-only capabilities, MSPs |
 
 Both plans run on the same infrastructure, in the same region, with the same security model — see the [Security & Privacy FAQ](trust/security-faq.md). The plan changes limits, support, and the contractual counterparty, not how your data is protected.
