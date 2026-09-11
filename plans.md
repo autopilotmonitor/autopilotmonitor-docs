@@ -52,7 +52,7 @@ Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC
 | **Data retention** | Up to 90 days | Up to 365 days |
 | **Portal & agent API rate limits** | Standard | Higher |
 | **AI (MCP) usage quota** | Standard | Larger |
-| **Delegated (MSP) administration** | — | Included (2 managed tenants; larger packages on request) |
+| **Delegated (MSP) administration** | — | Included (2 managed tenants; larger packages on request — each additional slot also extends the AI (MCP) budgets) |
 | **Managed by a Pro organization** | Tenant is on Pro (badge "Pro (MSP)") for as long as it is managed | Same — the badge shows the delegation as the source |
 | **OOBE bootstrap sessions / Unrestricted Mode** | — | Included, activated on request |
 | **Support** | Community (GitHub) | Priority support with reliability commitments |

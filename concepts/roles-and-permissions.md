@@ -41,7 +41,7 @@ Admin Mode is **not persistent** — it lives in the browser's local storage and
 
 For managed service providers, Autopilot Monitor supports **delegated administration**: a delegated admin manages a defined set of customer tenants and gets a **Fleet** view with the same analytics (Fleet Health, Software, Geographic Performance, SLA, Usage) scoped across exactly those tenants — never more.
 
-Delegated administration is a **Pro-only** capability: the managing (MSP) tenant must be on the [Pro plan](../plans.md). The managed customer tenants can start on any plan, including Community — if the managing tenant is not on Pro, the delegated scope is empty and no customer data is accessible. Pro includes **two managed tenants**; larger packages raise that limit on request. A pending invitation and a recently removed tenant (24 hours) each keep their slot.
+Delegated administration is a **Pro-only** capability: the managing (MSP) tenant must be on the [Pro plan](../plans.md). The managed customer tenants can start on any plan, including Community — if the managing tenant is not on Pro, the delegated scope is empty and no customer data is accessible. Pro includes **two managed tenants**; larger packages raise that limit on request, and every additional slot also extends your organization's and your accounts' AI (MCP) budgets. A pending invitation and a recently removed tenant (24 hours) each keep their slot.
 
 **Managed tenants are on Pro.** A tenant managed by an organization on the Pro plan gets the Pro capabilities for as long as the delegation lasts — its plan badge reads **Pro (MSP)**, also when the tenant has a Pro plan of its own. Conferred Pro does not include delegated administration itself: a managed tenant cannot invite or manage tenants unless it is on Pro in its own right. When the delegation ends, the tenant returns to its own plan; a tenant that had raised its data retention keeps the 30-day grace described under [Plans](../plans.md) before the Community limit applies. A trial of the managing organization does not upgrade its customers.
 
@@ -52,14 +52,14 @@ How the model protects the customer:
 | **Read-only access** | Delegated principals can view sessions, events, and analytics across their assigned tenants. Write and destructive operations are structurally unavailable — there is no path for a delegated principal to change configuration, delete sessions, or run device actions in a customer tenant. |
 | **Secrets redacted** | Configuration is visible in redacted form: secrets such as SAS URLs, tokens, and webhook credentials are never exposed to a delegated reader. |
 | **Customer-visible audit trail** | Every grant and revoke of delegated access is written to the audit log of the **managed customer tenant**, not the MSP's own tenant — so the customer can always see who was given access to their data, and when. |
-| **AI usage follows the customer's plan** | MCP requests a delegated admin makes into a managed tenant count against **that tenant's** own MCP budget and plan, and the customer's admins see them, marked as delegated, on their MCP Usage page. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#rate-limits-and-usage-plans). |
+| **AI usage is the manager's own** | MCP requests a delegated admin makes into a managed tenant count against the **managing organization's** own MCP budgets — never against the customer's. A managed tenant is never slowed down or blocked by its manager's AI usage. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#rate-limits-and-usage-plans). |
 
 ### Setting it up yourself
 
 A Pro tenant manages its delegations under **Settings → Tenant → Delegated Access**:
 
 1. **Invite a customer.** Create an invitation link (valid 7 days, works once) and send it to an administrator of the customer tenant. Nothing is granted until they accept.
-2. **The customer accepts.** Their tenant administrator opens the link, sees exactly what is granted (read-only, secrets redacted, AI usage on their own budget) and confirms. The grant appears in their audit log immediately.
+2. **The customer accepts.** Their tenant administrator opens the link, sees exactly what is granted (read-only, secrets redacted, AI usage on the manager's own budget) and confirms. The grant appears in their audit log immediately.
 3. **Assign your team.** Pick which members of your own tenant (Access Management) may read the managed tenants — always read-only.
 4. **Remove a tenant.** Either side can end the delegation at any time; access stops immediately. The managing tenant's slot stays occupied for 24 hours after a removal, so a small allowance cannot be rotated through many customers.
 

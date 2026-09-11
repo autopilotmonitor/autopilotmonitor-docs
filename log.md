@@ -2,6 +2,8 @@
 
 ## 2026-09-11
 
+* **Update**: `concepts/roles-and-permissions.md`, `integrations/ai-integration-mcp.md`, `reference/settings.md`, `plans.md` — delegated (MSP) AI usage is charged to the managing organization's own budgets, never the customer's; purchased managed-tenant slots beyond the two included extend both budgets; the fleet overview no longer skips exhausted tenants.
+* **Update**: `changelog/platform-changelog.md` — September 2026: delegated AI usage charged to the manager, slot purchases extend the budgets.
 * **New**: `troubleshooting/microsoft-365-apps-shown-twice.md` — why Install Progress can list Microsoft 365 Apps twice (deployment package row vs. the Click-to-Run row), which rows each delivery method produces (built-in app type, Win32 package, RealmJoin, preinstalled Office), and how to read the two rows together; linked from `SUMMARY.md` and the Install Progress bullet in `portal-guide/session-details-and-diagnosis.md`.
 * **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-OFFICE-001 row: fires on a Click-to-Run error code; Intune (not IME) marks the built-in app done early.
 

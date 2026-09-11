@@ -147,10 +147,10 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 | Setting | Description |
 | --- | --- |
 | Who can read this tenant | Every organization with delegated (MSP) read access to your tenant, with the people behind it. Self-service delegations can be ended here at once; operator-provisioned ones via support. While a Pro organization manages your tenant, your tenant is on Pro (badge "Pro (MSP)") — the section says so. |
-| Tenants you manage (Pro) | Slot usage, the tenants you manage with their AI (MCP) budget, single-use invitation links (valid 7 days), and which of your own members hold the read-only access. Removing a tenant keeps its slot occupied for 24 hours. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access). |
+| Tenants you manage (Pro) | Slot usage, the tenants you manage, single-use invitation links (valid 7 days), and which of your own members hold the read-only access. Removing a tenant keeps its slot occupied for 24 hours. Reads into managed tenants draw on your own AI (MCP) budgets; every purchased slot beyond the two included extends them. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access). |
 
 ## Reporting
 
 | Page | Description |
 | --- | --- |
-| MCP Usage | Usage reporting for the [AI integration (MCP)](../integrations/ai-integration-mcp.md) — your own request volumes against both quota budgets and, for tenant admins, the organization budget by account, including delegated (MSP) administrators reading your tenant. Visible when MCP access is enabled. |
+| MCP Usage | Usage reporting for the [AI integration (MCP)](../integrations/ai-integration-mcp.md) — your own request volumes against both quota budgets and, for tenant admins, the organization budget by account. Budgets extended by purchased delegation slots show the breakdown. Visible when MCP access is enabled. |
