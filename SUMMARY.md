@@ -84,4 +84,5 @@
 
 ## Legal
 
+* [Licensing](legal/licensing.md)
 * [Support & Service Level](legal/support-and-service-level.md)

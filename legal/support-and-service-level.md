@@ -7,8 +7,6 @@ description: >-
 
 # Support & Service Level
 
-***
-
 ## Scope and precedence
 
 This page describes the support services and the service level for **Autopilot Monitor Pro**. It is provided by glueckkanja AG, Offenbach/GERMANY, ("we", "us", "our") and forms part of the agreement under which you subscribed to Autopilot Monitor Pro.
@@ -158,4 +156,7 @@ This limitation does **not** apply to liability for intent or gross negligence, 
 
 * **Version:** 0.1
 
-We may change this page, for example when we add plans or features. Changes are announced under [Service Announcements](../troubleshooting/service-announcements.md) at least 30 days before they take effect, and they apply from your next subscription renewal. The version published when you place an order or when your subscription renews is the version that applies to that term. Earlier versions are available from our support on request.
+We may change this page, for example when we add plans or features. Changes are announced under [Service Announcements](../troubleshooting/service-announcements.md) at least 30 days before they take effect.
+
+* For a paid subscription, changes apply from your next renewal. The version published when you place an order or when your subscription renews is the version that applies to that term.
+* For Community Edition and Pro trials, changes apply 30 days after the announcement.
