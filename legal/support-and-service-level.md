@@ -7,8 +7,6 @@ description: >-
 
 # Support & Service Level
 
-***
-
 ## Scope and precedence
 
 This page describes the support services and the service level for **Autopilot Monitor Pro**. It is provided by glueckkanja AG, Offenbach/GERMANY, ("we", "us", "our") and forms part of the agreement under which you subscribed to Autopilot Monitor Pro.
