@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-11 (4)
+
+* **Update**: `plans.md`, `concepts/roles-and-permissions.md` — additional managed tenants beyond the two included in Pro are purchased as add-ons (was: "larger packages on request").
+
 ## 2026-09-11 (3)
 
 * **Update**: `plans.md` — Pro is available: "coming soon" removed from description, heading, hint and table; new sections **Buy Pro** (Microsoft Marketplace listing, Cleverbridge checkout, pointer to How to Purchase and to the list price on autopilotmonitor.com/plans) and **Try Pro first** (one-time 30-day trial by a tenant administrator, contact profile required).

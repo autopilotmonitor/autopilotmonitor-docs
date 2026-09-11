@@ -66,7 +66,7 @@ Questions about Pro, or requirements it must cover? Reach out via [LinkedIn](htt
 | **Data retention**                              | Up to 90 days                                                     | Up to 365 days                                                            |
 | **Portal & agent API rate limits**              | Standard                                                          | Advanced                                                                  |
 | **AI (MCP) usage quota**                        | Small                                                             | Advanced                                                                  |
-| **Delegated (MSP) administration**              | —                                                                 | Included (2 managed tenants; larger packages on request — each additional slot also extends the AI (MCP) budgets) |
+| **Delegated (MSP) administration**              | —                                                                 | Included (2 managed tenants; additional tenants as add-ons — each additional slot also extends the AI (MCP) budgets) |
 | **Managed by a Pro organization**               | Tenant is on Pro (badge "Pro (MSP)") for as long as it is managed | Same — the badge shows the delegation as the source                       |
 | **OOBE bootstrap sessions / Unrestricted Mode** | —                                                                 | Included, activated on request                                            |
 | **Support**                                     | Community (GitHub)                                                | Priority support with reliability commitments                             |
