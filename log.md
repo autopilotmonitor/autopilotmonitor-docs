@@ -1,5 +1,10 @@
 # Log
 
+## 2026-09-11
+
+* **New**: `troubleshooting/microsoft-365-apps-shown-twice.md` — why Install Progress can list Microsoft 365 Apps twice (deployment package row vs. the Click-to-Run row), which rows each delivery method produces (built-in app type, Win32 package, RealmJoin, preinstalled Office), and how to read the two rows together; linked from `SUMMARY.md` and the Install Progress bullet in `portal-guide/session-details-and-diagnosis.md`.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-OFFICE-001 row: fires on a Click-to-Run error code; Intune (not IME) marks the built-in app done early.
+
 ## 2026-09-10
 
 * **Update**: `getting-started/how-it-works.md` — architecture overview picture (new asset `.gitbook/assets/architecture-overview.svg`) above the component table; the MCP server listed as the fifth component.
