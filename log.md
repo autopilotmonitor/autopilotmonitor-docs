@@ -1,5 +1,11 @@
 # Log
 
+## 2026-09-11 (3)
+
+* **Update**: `plans.md` — Pro is available: "coming soon" removed from description, heading, hint and table; new sections **Buy Pro** (Microsoft Marketplace listing, Cleverbridge checkout, pointer to How to Purchase and to the list price on autopilotmonitor.com/plans) and **Try Pro first** (one-time 30-day trial by a tenant administrator, contact profile required).
+* **Update**: `troubleshooting-and-support/how-to-purchase/README.md` — the empty page now names both channels with direct links; `microsoft-marketplace.md` links the listing and names Autopilot Monitor instead of another product in the technical-contact hint; `cleverbridge.md` gets a "Buy online" checkout link and the self-service trial under Trials; typos fixed.
+* **Update**: `changelog/platform-changelog.md` — September 2026: Pro available (purchase channels, self-service trial), Terms + DPA acceptance on the Get started page.
+
 ## 2026-09-11 (2)
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — Downloads / Install Progress and Script Executions: the **Device phase** / **User phase** divider at the first row that started after the device entered Account Setup; no divider without a user phase.

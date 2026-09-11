@@ -1,8 +1,8 @@
 ---
 type: Reference
 description: >-
-  The available plans of Autopilot Monitor — the free Community plan today, the
-  Pro plan coming soon.
+  The available plans of Autopilot Monitor — the free Community plan and the
+  Pro plan, how to buy Pro and how to try it first.
 tags:
   - plans
   - licensing
@@ -11,7 +11,7 @@ tags:
 
 # Plans
 
-Autopilot Monitor will be available in two plans. Your tenant's current plan, and the side-by-side comparison below, are shown in the portal under **Settings → Tenant → Plan**; the same comparison is public at [autopilotmonitor.com/plans](https://www.autopilotmonitor.com/plans).
+Autopilot Monitor is available in two plans. Your tenant's current plan, and the side-by-side comparison below, are shown in the portal under **Settings → Tenant → Plan**; the same comparison is public at [autopilotmonitor.com/plans](https://www.autopilotmonitor.com/plans).
 
 ## Community — _available now_
 
@@ -25,7 +25,7 @@ The Community plan is what this documentation describes: the full product as it 
 * **Maintained by** Oliver Kieselbach as an open community contribution, and operated by glueckkanja AG — without commitments as to availability or support. See the [Terms of Use](https://www.autopilotmonitor.com/terms) and the [Security & Privacy FAQ](trust/security-faq.md).
 * **Active development:** frequent updates, no availability guarantees, and data structures may change — see [Requirements & Access](getting-started/requirements-and-access.md#getting-access-tenant-activation).
 
-## Pro — _coming soon_
+## Pro — _available now_
 
 A commercial plan for organizations that need more than the Community plan can promise — reliability commitments and priority support, plus higher operating limits. Pro includes **everything in Community**, plus:
 
@@ -41,16 +41,27 @@ It is aimed at larger fleets and managed service providers.
 
 Pro is contracted with **glueckkanja AG**, a German company certified to ISO/IEC 27001 — which operates Autopilot Monitor for both plans, and is the counterparty for the agreement, the data processing agreement, and the support commitments. Local data residency in an additional region (for example a US deployment) is something we can accommodate in a Pro context; ask if you need it.
 
-{% hint style="info" %}
-🚧 **Coming soon.** Pricing and timeline will be announced here. Pro is planned to be sold through two channels — **direct purchase** (online, credit card or invoice) and the **Microsoft commercial marketplace** — and a one-time **30-day Pro trial** will be startable by tenant administrators from Settings → Tenant → Plan (a contact address and company name under Settings → Tenant → Contact are required first, so we can reach and identify you for support). None of these are open yet; the portal shows them as "coming soon". If the Pro plan is interesting for your organization — or you have requirements it must cover — reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues); early feedback directly shapes what it becomes.
-{% endhint %}
+### Buy Pro
+
+Pro is sold through two channels — both lead to the same Pro plan on your existing tenant, and your data stays where it is:
+
+* **Microsoft Marketplace** — [open the listing](https://marketplace.microsoft.com/en-us/product/saas/glueckkanja-gabag.autopilot-monitor-transactable-prod?tab=Overview), billed through your Azure subscription.
+* **Cleverbridge** — [go to checkout](https://www.cleverbridge.com/306/purl-Autopilot-Monitor-Buy-Y), by credit card, PayPal or bank transfer.
+
+Prerequisites, payment and subscription management per channel are described under [How to Purchase](troubleshooting-and-support/how-to-purchase/README.md); the list price is shown at [autopilotmonitor.com/plans](https://www.autopilotmonitor.com/plans).
+
+### Try Pro first
+
+A tenant administrator can start a one-time, free **30-day Pro trial** under **Settings → Tenant → Plan**. Pro — the trial included — needs a contact address and a company name under **Settings → Tenant → Contact** first, so we can reach and identify you for support; the Plan section tells you what is still missing. When the trial ends, the tenant returns to Community automatically.
+
+Questions about Pro, or requirements it must cover? Reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues).
 
 ## At a glance
 
 |                                                 | Community                                                         | Pro                                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Availability**                                | Now — publicly available, free                                    | Coming soon                                                               |
-| **Price**                                       | Free — always                                                     | To be announced                                                           |
+| **Availability**                                | Now — publicly available, free                                    | Now — Microsoft Marketplace or Cleverbridge; free 30-day trial            |
+| **Price**                                       | Free — always                                                     | See [autopilotmonitor.com/plans](https://www.autopilotmonitor.com/plans)  |
 | **Feature set**                                 | Full current feature set — AI (MCP) within usage limits           | Everything in Community, plus the Pro capabilities above                  |
 | **Data retention**                              | Up to 90 days                                                     | Up to 365 days                                                            |
 | **Portal & agent API rate limits**              | Standard                                                          | Advanced                                                                  |

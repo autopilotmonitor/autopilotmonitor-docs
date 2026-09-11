@@ -18,9 +18,13 @@ Should you have any questions during the onboarding process, especially in regar
 Since cleverbridge operates a local entity in the US, cleverbridge Inc., certain tax implications may arise from this. As part of their vendor [onboarding information](https://support.cleverbridge.com/hc/en-us/articles/4405449389587-I-m-a-vendor-looking-to-place-an-order-from-the-U-S-What-documents-do-I-need), they also provide a W-9 form.
 {% endhint %}
 
+## Buy online
+
+Start the checkout here: [Buy Autopilot Monitor Pro via Cleverbridge](https://www.cleverbridge.com/306/purl-Autopilot-Monitor-Buy-Y).
+
 ## Pricing Model
 
-Autopilot Monitor is offered s a **monthly** **or annual subscription plan**.
+Autopilot Monitor is offered as a **monthly** **or annual subscription plan**.
 
 ## Payment Options
 
@@ -95,7 +99,7 @@ If you decide to disable **Automatic Renewal**, your subscription will not renew
 
 ### **Trials** <a href="#trials" id="trials"></a>
 
-In case you would like to test Autopilot Monitor, please reach out via the [support page](https://www.autopilotmonitor.com/help/).
+To try Pro before buying, a tenant administrator can start a one-time, free 30-day Pro trial in the portal under **Settings → Tenant → Plan**. For anything beyond that, reach out via the [support page](https://www.autopilotmonitor.com/help/).
 
 ## FAQs <a href="#faqs" id="faqs"></a>
 
@@ -105,7 +109,7 @@ In case you would like to test Autopilot Monitor, please reach out via the [supp
 Quotes are valid for 14 days.
 {% endhint %}
 
-To request a quote for Autopilot Monitpr,
+To request a quote for Autopilot Monitor,
 
 * Please [contact us](https://products.glueckkanja.com/support/tickets/new?ticket_form=drop_a_question_\(autopilotmonitor\)) to request a quote link.
 * Once we have sent the quote link to you,

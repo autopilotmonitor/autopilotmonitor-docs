@@ -26,9 +26,9 @@ To get started with your Autopilot Monitor subscription, follow below steps:
 {% step %}
 ### Locate the product version on the Microsoft Marketplace
 
-Select the following:
+Open the listing:
 
-* Autopilot Monitor
+* [Autopilot Monitor on Microsoft Marketplace](https://marketplace.microsoft.com/en-us/product/saas/glueckkanja-gabag.autopilot-monitor-transactable-prod?tab=Overview)
 
 In case we have extended a **Private Offer** to you or your MSP/distribution has extended a **Multiparty Offer (MPO)** to you, navigate to **Marketplace** in your **Azure Portal** and then to **Private Offer Management** to locate the Private Offer.
 
@@ -71,7 +71,7 @@ Once the deployment is complete, please navigate to our platform to complete the
 After authenticating on our platform using your Microsoft credentials, you will be prompted for additional information, such as a **Technical contact**.
 
 {% hint style="info" %}
-The **Technical contact** must have a mailbox connected to it, so we are able to notify you in case there are relevant issues with RealmJoin. In case you'd like to change that, please [let us know](https://www.autopilotmonitor.com/help/).
+The **Technical contact** must have a mailbox connected to it, so we are able to notify you in case there are relevant issues with Autopilot Monitor. In case you'd like to change that, please [let us know](https://www.autopilotmonitor.com/help/).
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
@@ -96,7 +96,7 @@ You will only be charged by Microsoft, once you have completed the enrolment on 
 
 ## Pricing Model
 
-Autopilot Monitor is offered s a **monthly** **or annual subscription plan**.
+Autopilot Monitor is offered as a **monthly** **or annual subscription plan**.
 
 ## Invoicing
 
