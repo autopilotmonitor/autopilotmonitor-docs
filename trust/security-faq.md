@@ -392,7 +392,7 @@ Contact us and we will act on requests for access, correction, deletion, restric
 #### Is there a service level agreement?
 
 * **Community** is free, publicly available, and carries **no availability guarantee**; support is **community-based via GitHub issues**. It is fine for production fleets — with that trade-off understood.
-* **Pro** is the plan that carries reliability and support commitments. Concrete figures are being finalized alongside pricing; ask and you will get the current draft rather than a placeholder.
+* **Pro** carries a published service level: support hours with a response target for incidents, a monthly availability target, and time credits when that target is missed. The figures and how availability is measured are set out in [Support & Service Level](../legal/support-and-service-level.md). Pro trials carry no support entitlement and no service level.
 
 Note that "SLA" elsewhere in this documentation ([SLA Compliance](../portal-guide/sla-compliance.md)) means _your_ enrollment targets — how fast your Autopilot enrollments should complete — not a commitment about this service's uptime.
 
