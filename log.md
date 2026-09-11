@@ -1,5 +1,10 @@
 # Log
 
+## 2026-09-11 (2)
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Downloads / Install Progress and Script Executions: the **Device phase** / **User phase** divider at the first row that started after the device entered Account Setup; no divider without a user phase.
+* **Update**: `changelog/platform-changelog.md` — September 2026: device/user phase divider in the app and script panels; optional Graph features picked in the table build the grant command.
+
 ## 2026-09-11
 
 * **Update**: `reference/optional-graph-permissions.md` — admin-UI hint: tick the features in the capability table to build the grant command (every feature ticked ⇒ `-Features All`), Copy permissions follows the same selection, paste into Azure Cloud Shell or a PS prompt; new example granting several features as a comma-separated `-Features` list.
