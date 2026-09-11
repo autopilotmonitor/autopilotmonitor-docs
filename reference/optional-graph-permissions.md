@@ -47,7 +47,7 @@ irm 'https://download.autopilotmonitor.com/agent/Grant-AutopilotMonitorAddOn.ps1
 ## Running the script
 
 {% hint style="info" %}
-The easiest path is to open the admin UI in Autopilot Monitor → **Settings → Optional Graph capabilities**, hit **Copy command**, and paste the resulting PowerShell into a PS prompt. The command downloads the script and runs it — the ClientId is pre-filled with the live value for your environment.
+The easiest path is to open the admin UI in Autopilot Monitor → **Settings → Optional Graph capabilities**, tick the features you want in the capability table, hit **Copy command**, and paste the resulting PowerShell into Azure Cloud Shell or a PS prompt. The command follows your selection — ticking every feature switches it to `-Features All` — downloads the script and runs it, with the ClientId pre-filled with the live value for your environment. **Copy permissions** copies the raw permission strings for the same selection.
 {% endhint %}
 
 {% hint style="success" %}
@@ -60,6 +60,12 @@ If you prefer the high-level feature form:
 .\Grant-AutopilotMonitorAddOn.ps1 `
     -ClientId "<the-autopilot-monitor-app-id>" `
     -Features ScriptDisplayNames
+```
+
+To grant several features at once, pass them as a comma-separated list:
+
+```powershell
+.\Grant-AutopilotMonitorAddOn.ps1 -ClientId "<...>" -Features ScriptDisplayNames,W365CloudPcValidation
 ```
 
 To grant **every** optional capability in one run, use the `All` meta-feature — it expands to all features in the table above:
