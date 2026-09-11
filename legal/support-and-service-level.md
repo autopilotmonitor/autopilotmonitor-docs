@@ -11,7 +11,7 @@ description: >-
 
 ## Scope and precedence
 
-This page describes the support services and the service level for **Autopilot Monitor Pro**. It is provided by glueckkanja AG, \[registered seat], ("we", "us", "our") and forms part of the agreement under which you subscribed to Autopilot Monitor Pro.
+This page describes the support services and the service level for **Autopilot Monitor Pro**. It is provided by glueckkanja AG, Offenbach/GERMANY, ("we", "us", "our") and forms part of the agreement under which you subscribed to Autopilot Monitor Pro.
 
 Where this page and your individually signed agreement or order form differ, the agreement or order form prevails. For the processing of personal data, the data processing agreement (DPA) applies and takes precedence over this page. This page is governed by German law; the place of jurisdiction is the one stated in the agreement under which you purchased Autopilot Monitor Pro.
 
