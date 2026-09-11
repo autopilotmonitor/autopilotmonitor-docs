@@ -10,12 +10,12 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 6 September 2026 · Next review: 2 March 2027.**
+**Last reviewed: 11 September 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
 {% hint style="info" %}
-This page describes the architecture. The **data processing agreement** is the authoritative document for the contractual side — which parties are engaged, on what terms, and how changes are handled. It is available on request; see the [Security & Privacy FAQ](security-faq.md#can-i-get-a-data-processing-agreement-dpa--avv).
+This page describes the architecture. The **data processing agreement** is the authoritative document for the contractual side — which parties are engaged, on what terms, and how changes are handled. It is [published](../legal/data-privacy-agreement-dpa/README.md) and applies to every tenant; its [list of sub-processors](../legal/data-privacy-agreement-dpa/list-of-sub-processors.md) names the parties engaged. See also the [Security & Privacy FAQ](security-faq.md#can-i-get-a-data-processing-agreement-dpa--avv).
 {% endhint %}
 
 ## 1. Where your data is stored

@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-11 (5)
+
+* **Update**: `trust/security-faq.md`, `trust/data-flows.md`, `plans.md` — the DPA is published and applies to every tenant (was: "available on request"): the FAQ answer names Community, Pro and trials, acceptance at sign-up with the version recorded, the TOMs and sub-processor annexes, and that an individually signed DPA prevails; "Which external services" and Data Flows point to the sub-processor list; the Plans table row reads "Published DPA, accepted at sign-up" for both plans. Both trust pages reviewed 11 September 2026.
+
 ## 2026-09-11 (4)
 
 * **Update**: `plans.md`, `concepts/roles-and-permissions.md` — additional managed tenants beyond the two included in Pro are purchased as add-ons (was: "larger packages on request").

@@ -18,11 +18,11 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 8 September 2026 · Next review: 2 February 2027.**
+**Last reviewed: 11 September 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
-It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://www.autopilotmonitor.com/terms), the [Privacy Policy](https://www.autopilotmonitor.com/privacy), and, on the Pro plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
+It describes how the service is built and operated **as of the review date above** — it is a technical description, not a contractual commitment. The binding documents are the [Terms of Use](https://www.autopilotmonitor.com/terms), the [Privacy Policy](https://www.autopilotmonitor.com/privacy), the [Data Processing Agreement](../legal/data-privacy-agreement-dpa/README.md), and, on the Pro plan, your signed agreement. Where a change here would matter to a customer's own assessment — data residency, external services, what is collected by default, the delegation model — it is announced through [Service Announcements](../troubleshooting/service-announcements.md) rather than quietly edited. If you are relying on a specific statement below, ask and you will get it confirmed for the current release.
 
 Two principles run through every answer below:
 
@@ -371,9 +371,9 @@ What differs between the plans is commercial, not technical:
 
 #### Can I get a data processing agreement (DPA / AVV)?
 
-**Yes — available on request**, concluded with glueckkanja AG; a published version is planned. On the Pro plan it forms part of the written agreement. Get in touch through the [Imprint](https://www.glueckkanja.com/en/imprint) contact details, or via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues) for the project side.
+**Yes — it is published and applies to every tenant**, on Community, Pro and Pro trials alike: the [Data Processing Agreement](../legal/data-privacy-agreement-dpa/README.md) with glueckkanja AG under Art. 28 GDPR, built on the EU Commission's standard contractual clauses. Your organization accepts it when it signs up, before the first sign-in, and the accepted version is recorded with your tenant. Its annexes set out the [technical and organisational measures](../legal/data-privacy-agreement-dpa/technical-and-organisational-measures-toms.md) and the [sub-processors](../legal/data-privacy-agreement-dpa/list-of-sub-processors.md). Where you have concluded an individually signed data processing agreement with us that covers Autopilot Monitor, that agreement prevails.
 
-The agreement is where the engaged parties and the terms of their engagement are set out. This documentation deliberately does not restate that contractually — it explains the architecture, so you can see what happens technically without waiting for a document. The technical data protection measures are identical on both plans: same region, same isolation, same retention and deletion controls, all described on this page.
+The agreement is where the engaged parties and the terms of their engagement are set out. This page deliberately does not restate that contractually — it explains the architecture. The technical data protection measures are identical on both plans: same region, same isolation, same retention and deletion controls, all described on this page.
 
 #### Is glueckkanja AG certified?
 
@@ -381,7 +381,7 @@ The agreement is where the engaged parties and the terms of their engagement are
 
 #### Which external services are involved?
 
-The **data processing agreement** is the authoritative document here — it names the parties engaged and the terms they are engaged on. It is available on request.
+The **data processing agreement** is the authoritative document here — its [list of sub-processors](../legal/data-privacy-agreement-dpa/list-of-sub-processors.md) names the parties engaged and the terms they are engaged on, and additions to that list are announced in advance under [Service Announcements](../troubleshooting/service-announcements.md).
 
 For the technical picture, [Data Flows & External Services](data-flows.md) maps every outbound connection. In short: Microsoft Azure (Germany West Central) is the only place your data is stored. Everything else is either a public reference-data source the service reads _from_ — nothing about your environment goes out — or a destination **you** configure: notification channels, your own diagnostics storage, your own AI assistant.
 

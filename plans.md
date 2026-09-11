@@ -72,7 +72,7 @@ Questions about Pro, or requirements it must cover? Reach out via [LinkedIn](htt
 | **Support**                                     | Community (GitHub)                                                | Priority support with reliability commitments                             |
 | **Operator & counterparty**                     | glueckkanja AG — no commitments                                   | glueckkanja AG under written agreement                                    |
 | **Maintainer**                                  | Oliver Kieselbach (open community contribution)                   | Oliver Kieselbach                                                         |
-| **Data processing agreement**                   | On request                                                        | Part of the agreement                                                     |
+| **Data processing agreement**                   | [Published DPA](legal/data-privacy-agreement-dpa/README.md), accepted at sign-up | Same DPA                                                                  |
 | **Intended for**                                | Labs **and** production fleets — with community support           | Organizations needing support commitments and Pro-only capabilities, MSPs |
 
 Both plans run on the same infrastructure, in the same region, with the same security model — see the [Security & Privacy FAQ](trust/security-faq.md). The plan changes limits, support, and the contractual counterparty, not how your data is protected.
