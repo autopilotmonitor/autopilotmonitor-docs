@@ -5,7 +5,7 @@ description: >-
   (EU) 2021/915)
 ---
 
-# Data Privacy Agreement (DPA)
+# Data Processing Agreement (DPA)
 
 ## Scope and conclusion of this agreement
 
@@ -22,6 +22,14 @@ This DPA is concluded electronically. By ticking the acceptance checkbox during 
 
 Where the customer has concluded an individually signed data processing agreement with us that covers Autopilot Monitor, that agreement prevails over this page.
 
+### Delegated tenants
+
+Where a customer on the Pro plan manages other tenants (delegated tenants), each delegated tenant is a controller in its own right for the data of its devices and users. The administrator of the delegated tenant accepts this DPA when granting admin consent for the delegation in the portal; a delegation, including one assigned centrally by us at the customer's request, becomes active only after that acceptance. The managing customer and its users act as recipients authorised by the delegated tenant through that consent.
+
+### Existing tenants
+
+Tenants activated before this DPA was published are asked to accept it at the next sign-in of a tenant administrator. Until then, this DPA applies from its effective date; a customer that does not agree can end the processing by offboarding its tenant.
+
 ### Basis and structure
 
 Clauses 1 to 10 of this DPA are the standard contractual clauses between controllers and processors adopted by the European Commission under Article 28(7) GDPR (Commission Implementing Decision (EU) 2021/915). They are reproduced unchanged; the optional docking clause (Clause 5) is not used. The Annexes are completed for Autopilot Monitor:
@@ -34,12 +42,12 @@ Clauses 1 to 10 of this DPA are the standard contractual clauses between control
 This DPA is governed by German law. The place of jurisdiction is the one stated in the agreement under which you use Autopilot Monitor.
 
 {% hint style="info" %}
-For a technical description of how Autopilot Monitor handles data, see the [Security & Privacy FAQ](../../trust/security-faq.md) and [Data Flows & External Services](../../trust/data-flows.md). Those pages explain the architecture; this page is the binding agreement.
+For a technical description of how Autopilot Monitor handles data, see the Security & Privacy FAQ and Data Flows & External Services. Those pages explain the architecture; this page is the binding agreement.
 {% endhint %}
 
 ### How to accept
 
-Customers accept the DPA during tenant activation.
+Customers accept the DPA during tenant activation. Administrators of delegated tenants accept it when granting admin consent for the delegation.
 
 ## Section I
 
@@ -181,12 +189,12 @@ The Parties shall set out in Annex III all other elements to be provided by the 
 
 The customer. Identity and contact details of the controller are those provided during tenant activation in the Autopilot Monitor portal:
 
-| Item                    | Value                                                                                                                                                                             |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name and address        | The organization named during tenant activation, identified by its Microsoft Entra tenant ID                                                                                      |
-| Contact person          | The administrator who accepted this DPA during tenant activation (name and e-mail address as provided), or any administrator of the tenant named subsequently                     |
-| Data protection officer | To be communicated by the controller, if appointed, via the [contact-form](https://products.glueckkanja.com/support/tickets/new?ticket_form=drop_a_question_\(autopilotmonitor\)) |
-| Accession               | By acceptance of this DPA during tenant activation; the accession date is the recorded timestamp of acceptance                                                                    |
+| Item                    | Value                                                                                                                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Name and address        | The organization named during tenant activation, identified by its Microsoft Entra tenant ID                                                                                               |
+| Contact person          | The administrator who accepted this DPA during tenant activation (name and e-mail address as provided), or any administrator of the tenant named subsequently                              |
+| Data protection officer | To be communicated by the controller, if appointed, via the [contact-form](https://products.glueckkanja.com/support/tickets/new?ticket_form=drop_a_question_\(autopilotmonitor\))          |
+| Accession               | By acceptance of this DPA during tenant activation, or, for a delegated tenant, when granting admin consent for the delegation; the accession date is the recorded timestamp of acceptance |
 
 The controller shall keep its contact details current. Notices under this DPA to the controller are sent to the e-mail address of the accepting administrator unless the controller has named another contact.
 
@@ -206,7 +214,8 @@ The controller shall keep its contact details current. Notices under this DPA to
 
 * Employees and other persons of the controller who use devices that are enrolled through Windows Autopilot, Autopilot Device Preparation, or Windows 365 and monitored by Autopilot Monitor (device users).
 * Employees and other persons of the controller who use the Autopilot Monitor portal or the MCP integration (administrators, operators, viewers, members).
-* Where the controller manages delegated tenants (MSP scenario): the corresponding persons of the delegated tenants.
+* Where the controller is a delegated tenant: its device users and portal users, whose data is additionally accessible to the users of the managing tenant.
+* Employees of the controller who contact our support or submit feedback or support reports.
 
 ### Categories of personal data processed
 
@@ -218,9 +227,9 @@ The controller shall keep its contact details current. Notices under this DPA to
 * **Diagnostics packages**, if the controller enables hosted diagnostics upload or includes a package in a support report: agent logs and state, Intune Management Extension logs, session information, RealmJoin logs where enabled, and additional log paths configured by the controller. These may contain user names and other personal data contained in the logs.
 * **Portal and MCP user data**: user principal name, assigned role, sign-in activity, and actions recorded in the tenant audit log.
 * **Notification and integration data**: session, device and finding details sent to notification destinations configured by the controller, and data retrieved by AI assistants the controller's users connect through MCP.
-* **Support and feedback data** submitted by the controller's administrators: free-text comments, exports, attached logs and screenshots.
+* **Support and feedback data** submitted by the controller's administrators through the portal or the ticket system: free-text comments, session exports and reports, attached logs, screenshots and diagnostics packages. Such attachments may contain any of the categories listed above.
 
-Processing for which glueckkanja AG is itself the controller (operation and security of the service, account administration, operational telemetry) is not covered by these Clauses; see the [Privacy Policy](https://www.autopilotmonitor.com/privacy).
+Processing for which glueckkanja AG is itself the controller is not covered by these Clauses; see the [Privacy Policy](https://www.autopilotmonitor.com/privacy). This concerns in particular the operation and security of the service, account administration and operational telemetry, the verification of licence-compliant use (see below), and the contact and correspondence data of the controller's employees processed for managing the customer relationship (sales, contract administration, support communication).
 
 ### Sensitive data processed (if applicable) and applied restrictions or safeguards
 
@@ -228,11 +237,16 @@ Not applicable. Autopilot Monitor is not intended for the processing of sensitiv
 
 ### Nature of the processing
 
-Collection (receipt of telemetry from the agent), storage, automated analysis (evaluation of analyze rules), display to the controller's users, transmission to destinations configured by the controller, and deletion.
+Collection (receipt of telemetry from the agent), storage, automated analysis (evaluation of analyze rules), display to the controller's users, transmission to destinations configured by the controller, access by our personnel under the platform roles described in the Security & Privacy FAQ, and deletion.
 
 ### Purpose(s) for which the personal data is processed on behalf of the controller
 
-Monitoring, diagnosis and analysis of the enrollment of the controller's devices, including fleet health, geographic and SLA reporting, software inventory and vulnerability correlation, notifications, and natural-language queries by the controller's users via MCP; and provision of support to the controller in connection with the service.
+1. **Monitoring, diagnosis and analysis** of the enrollment of the controller's devices, including fleet health, geographic and SLA reporting, software inventory and vulnerability correlation, notifications, and natural-language queries by the controller's users via MCP.
+2. **Support**: handling of support requests, incidents and feedback of the controller, including the analysis of the controller's sessions and of data the controller submits to us through the portal or the ticket system.
+3. **Operation of the service**: capacity, performance and health analysis of the platform, carried out on aggregated or pseudonymised data wherever possible.
+4. **Improvement of detection**: analysis of individual enrollment sessions by our personnel to develop and refine analyze rules, IME log patterns and the decision engine, from which all tenants benefit. The controller instructs us to carry out this analysis and may withdraw this instruction at any time via the [support form](https://products.glueckkanja.com/support/tickets/new?ticket_form=drop_a_question_\(autopilotmonitor\)), in which case the controller's sessions are excluded from it.
+
+**Verification of licence-compliant use.** In addition to the purposes above, we regularly verify that the service is used in accordance with the Licensing Policy and the agreement under which the controller uses Autopilot Monitor, in particular the plan entitlements, the number of delegated tenants, the restrictions on use, and the limits and quotas. This verification is carried out in our own responsibility on the basis of that agreement, not on behalf of the controller. It uses tenant configuration and usage data (Entra tenant ID, plan, session volumes, number of delegated tenants, portal and MCP user accounts and their roles, rate-limit and quota counters), not the content of enrollment sessions or diagnostics.
 
 ### Duration of the processing
 
@@ -240,7 +254,8 @@ The processing takes place for the duration of the controller's use of Autopilot
 
 * Enrollment sessions and their events, findings and hosted diagnostics are retained according to the retention period configured by the controller (default 90 days; 7 to 90 days on Community Edition, 7 to 365 days on Pro) and purged automatically thereafter.
 * Operational records have fixed lifetimes as described in the Security & Privacy FAQ.
-* The controller can delete individual sessions at any time and can end the processing by offboarding its tenant, which removes all tenant-scoped data. Offboarding is the deletion within the meaning of Clause 10(4). Where the controller requests return of the data instead, the Parties agree on the format and scope.
+* The controller can delete individual sessions at any time and can end the processing by offboarding its tenant, which removes all tenant-scoped data. Offboarding is the deletion within the meaning of Clause 10(4). Autopilot Monitor is a monitoring system, not a system of record: a general return of data is not offered. Before offboarding, the controller can export session data and reports through the export functions of the portal.
+* Support tickets, including data of the controller contained in them, are retained by glueckkanja AG for the duration of the business relationship and thereafter for as long as required by statutory retention obligations and for evidencing the services rendered, generally 5 years after the end of the year in which the ticket was closed.
 * Custom rules and IME log patterns authored by the controller, and product feedback submitted by the controller, contain no personal data and are archived rather than deleted on offboarding; they are removed on request.
 
 ## Annex III – Technical and organisational measures
@@ -254,7 +269,7 @@ See the subpage [List of sub-processors](list-of-sub-processors.md).
 ## Version and changes
 
 * **Version:** 2026-09-1.7
-* **Effective:** 2026-09-12
+* **Effective:** 2026-09-10
 
 Clauses 1 to 10 are standard contractual clauses and are not modified. We may update the Annexes, for example when the processing changes or when sub-processors are added or replaced. Changes are announced under Service Announcements at least 30 days before they take effect. The announcement of a change to the list of sub-processors is the notification under Clause 7.7(1); the controller may object within that period via the [support form](https://products.glueckkanja.com/support/tickets/new?ticket_form=drop_a_question_\(autopilotmonitor\)). Where an objection cannot be resolved, the controller may end the processing by offboarding its tenant.
 

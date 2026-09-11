@@ -12,7 +12,7 @@ description: >-
 This page is Annex III of the Data Processing Agreement for Autopilot Monitor. It lists the technical and organisational measures pursuant to Art. 32 GDPR implemented by **glueckkanja AG** as processor. The measures apply to glueckkanja AG as an organization, including the operation of Autopilot Monitor.
 
 {% hint style="info" %}
-A description of the security controls specific to Autopilot Monitor (tenant isolation, device authentication, encryption, retention and deletion) is provided in the [Security & Privacy FAQ](../../trust/security-faq.md). That page is a technical description and complements, but does not replace, this Annex.
+A description of the security controls specific to Autopilot Monitor (tenant isolation, device authentication, encryption, retention and deletion) is provided in the [Security & Privacy FAQ.](../../trust/security-faq.md) That page is a technical description and complements, but does not replace, this Annex.
 {% endhint %}
 
 ### Management & Organization
@@ -215,9 +215,33 @@ A description of the security controls specific to Autopilot Monitor (tenant iso
 | Internal Policies and Guidelines                                      | The use of AI systems is regulated by internal policies, standards, and guidelines.                                                                   | Art. 24 (2) GDPR        |
 | Regular Review of AI Systems                                          | The AI systems in use are regularly reviewed for compliance with data protection, security, and regulatory requirements.                              | Art. 32 (1) lit. d GDPR |
 
+## Assistance to the controller
+
+This section sets out, as required by Clause 8(4) and Clause 9.2 of the Data Processing Agreement, how glueckkanja AG assists the controller.
+
+### Notification of personal data breaches (Clause 9)
+
+* We notify the controller of a personal data breach concerning data processed on its behalf without undue delay after becoming aware of it, by e-mail to the contact named in Annex I. Where a breach affects several tenants, we additionally publish the notification under Service Announcements.
+* The notification contains the elements listed in Clause 9.2 as far as they are known at the time, and is supplemented as further information becomes available. The contact point for further information is the [support form](https://products.glueckkanja.com/support/tickets/new?ticket_form=drop_a_question_\(autopilotmonitor\)).
+* On request we provide the controller with the information available to us that the controller needs for its notification to the supervisory authority (Art. 33(3) GDPR) and its communication to data subjects (Art. 34 GDPR), in particular the categories and approximate number of data subjects and records concerned, drawn from the affected sessions, the audit log and operational telemetry.
+
+### Data subject requests (Clause 8(1) and (2))
+
+* Requests from data subjects that reach us are forwarded to the controller without undue delay; we do not respond to them ourselves.
+* The controller can fulfil most requests itself with the controls in the portal: viewing and exporting session data, deleting individual sessions, setting the retention period, and offboarding the tenant. Where a request cannot be fulfilled with those controls, we assist via the support form within the statutory time limits applicable to the controller.
+
+### Data protection impact assessment and prior consultation (Clause 8(3)(a) and (b))
+
+* We provide the information about the processing required for the controller's assessment through this Annex, Annex II, the Security & Privacy FAQ and Data Flows & External Services, and answer further inquiries via the support form.
+
+### Accuracy and security (Clause 8(3)(c) and (d))
+
+* If we become aware that personal data we process on behalf of the controller is inaccurate or outdated, we inform the controller without undue delay.
+* Our assistance regarding Art. 32 GDPR consists of the measures listed on this page and the product-level controls described in the Security & Privacy FAQ.
+
 ## Version and changes
 
 * **Version:** 2026-09-7.0
-* **Effective:** 2026-09-12
+* **Effective:** 2026-09-10
 
 Changes to this Annex are announced under Service Announcements as described in the Data Processing Agreement.
