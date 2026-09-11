@@ -86,6 +86,6 @@
 
 * [Licensing](legal/licensing.md)
 * [Support & Service Level](legal/support-and-service-level.md)
-* [Data Privacy Agreement (DPA)](legal/data-privacy-agreement-dpa/README.md)
+* [Data Processing Agreement (DPA)](legal/data-privacy-agreement-dpa/README.md)
   * [Technical and Organisational Measures (TOMs)](legal/data-privacy-agreement-dpa/technical-and-organisational-measures-toms.md)
   * [List of Sub-processors](legal/data-privacy-agreement-dpa/list-of-sub-processors.md)

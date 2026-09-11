@@ -15,9 +15,7 @@ In order to purchase solutions from independent software vendors (ISV) such as A
 ## How to purchase Autopilot Monitor?
 
 {% hint style="info" %}
-Deploying an Autopilot Monitor subscription via Microsoft Marketplace **will not result** **in a re-configuration of your Autopilot Monitor tenant if you already have an active trial or production tenant**. Instead, we will assign the license obtained as part of this subscription to your existing tenant.
-
-For **new customers**, we will provision a new Autopilot Monitor tenant once below steps are completed. **We will require our \*.onmicrosoft.com domain for this**. Please allow up to 1 business day for us to complete the provisioning.
+Deploying an Autopilot Monitor subscription via Microsoft Marketplace **will not result** **in a re-configuration of your Autopilot Monitor tenant if you already have an active trial or production tenant**. Instead, we will assign the license obtained as part of this subscription to your existing tenant. Please allow up to 1 business day for us to complete the provisioning.
 {% endhint %}
 
 To get started with your Autopilot Monitor subscription, follow below steps:
@@ -47,8 +45,8 @@ In case we have extended a **Private Offer** to you or your MSP/distribution has
 * Assign a descriptive **Name** to later identify your subscription.
 * We recommend to keep **Auto-renew** **On** so that you do not have to worry about an automatic termination of your subscription.
 * Create or select the **Resource group** you would like to deploy the subscription to.
-* Define **Tags** and fill in your **Contact details**.&#x20;
-* Click **Complete purchase**&#x20;
+* Define **Tags** and fill in your **Contact details**.
+* Click **Complete purchase**
 
 <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
@@ -117,7 +115,7 @@ For a more detailed cost breakdown of your base and additional user fees, please
 Subscriptions for Autopilot Monitor are available based on an **monthly** and **annual** renewal interval.
 
 {% hint style="info" %}
-The annual plan is discounted by  10% in comparison to the monthly plan (calculated over the period of 12 months).
+The annual plan is discounted by 10% in comparison to the monthly plan (calculated over the period of 12 months).
 {% endhint %}
 
 | **Plan**                  | **Renewal Interval** |
