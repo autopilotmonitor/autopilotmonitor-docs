@@ -66,7 +66,7 @@ Autopilot Monitor is moving to a new multi-tenant app registration. The applicat
 
 <summary>How do I deploy the agent?</summary>
 
-Via an Intune platform script — the [Deploy the Agent](../getting-started/deploy-the-agent.md) guide covers it step by step, including the safety guards and a dry-run tester. For **Autopilot Device Preparation** enrollments the agent is instead delivered as a small MSI line-of-business app, because the platform script would arrive after the app phase there — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md).
+Via an Intune platform script — the [Deploy the Agent](../getting-started/deploy-the-agent.md) guide covers it step by step, including the safety guards and a dry-run tester. For **Autopilot Device Preparation** enrollments the recommended channel is a small MSI line-of-business app. It installs before Microsoft 365 Apps, while the platform script only runs after them — see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md).
 
 </details>
 

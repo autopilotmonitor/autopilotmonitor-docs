@@ -1,5 +1,10 @@
 # Log
 
+## 2026-09-12
+
+* **Fix**: `getting-started/autopilot-device-preparation.md` — the Device Preparation order is three phases (policies, line-of-business apps and Microsoft 365 Apps → PowerShell scripts → Win32, Store and Enterprise App Catalog apps), not "apps first, then scripts"; the MSI is motivated by installing before Microsoft 365 Apps; new section **Alternative: the platform script** (works with less coverage, must be selected in the Device Preparation policy to run during setup, both channels can stay assigned).
+* **Fix**: `getting-started/deploy-the-agent.md`, `troubleshooting/faq.md`, `getting-started/how-it-works.md`, `index.md` — same correction: the platform script runs after Microsoft 365 Apps, the MSI is the recommended channel rather than the only one.
+
 ## 2026-09-11 (6)
 
 * **Update**: `trust/security-faq.md` — "Is there a service level agreement?": the Pro bullet links the published `legal/support-and-service-level.md` page (support hours and response target, monthly availability target, time credits; no service level for trials) instead of "figures are being finalized alongside pricing".

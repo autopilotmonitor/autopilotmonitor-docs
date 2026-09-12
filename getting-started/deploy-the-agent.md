@@ -95,7 +95,7 @@ Assign the script to the device group that covers your Autopilot devices. The tw
 {% endhint %}
 
 {% hint style="info" %}
-**Using Autopilot Device Preparation?** There the platform script runs only *after* the app phase — too late for full monitoring. Deploy the agent via the MSI line-of-business app instead; setup on [Autopilot Device Preparation](autopilot-device-preparation.md).
+**Using Autopilot Device Preparation?** There the platform script runs only after Microsoft 365 Apps have installed. For full coverage, deploy the agent via the MSI line-of-business app; setup on [Autopilot Device Preparation](autopilot-device-preparation.md).
 {% endhint %}
 
 ### 4. Done

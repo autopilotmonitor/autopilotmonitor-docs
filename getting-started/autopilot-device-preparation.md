@@ -24,12 +24,17 @@ Device Preparation support is **young and actively evolving**. If you monitor De
 
 Two structural differences matter for monitoring:
 
-1. **The processing order is reversed.** There is no classic Enrollment Status Page. The Device Preparation page works through the resources selected in the Device Preparation policy in a fixed order: **apps first, then PowerShell scripts**. A PowerShell script therefore runs only _after_ the app phase — delivered that way, the agent would arrive too late to watch the apps install, and if the app phase fails hard, the script channel may never run at all.
+1. **Resources install in three fixed phases.** There is no classic Enrollment Status Page. The Device Preparation page works through the resources selected in the Device Preparation policy in this order:
+   1. policies, line-of-business apps and **Microsoft 365 Apps**
+   2. **PowerShell scripts**
+   3. **Win32, Microsoft Store and Enterprise App Catalog apps**
+
+   Each phase starts only after the previous one succeeded. An agent delivered by a platform script therefore arrives after Microsoft 365 Apps have installed.
 2. **Devices are never Autopilot-registered.** Device Preparation does not use Windows Autopilot device identities, so [Autopilot Device Validation](../reference/settings.md#enrollment-device-validation) can never match these devices. Validate them through **device association** or **Corporate Identifiers** instead — see below.
 
 ## Deploy the agent as an MSI line-of-business app
 
-To get the agent onto the device _before_ the app phase, Autopilot Monitor provides a small MSI that Intune delivers over the MDM channel. Line-of-business apps install with the first Intune sync — early enough to monitor the Device Preparation app phase from the start.
+To get the agent onto the device in the first phase, Autopilot Monitor provides a small MSI that Intune delivers over the MDM channel. As a line-of-business app it installs before Microsoft 365 Apps, so the agent monitors all three phases.
 
 The MSI contains no agent logic: it is packaging around the same signed loader used for the platform script, which downloads the current bootstrapper, verifies our signature on it, and runs it. It passes through exactly the same [pre-requisite guards](deploy-the-agent.md#safe-to-assign-broadly) and always installs the current agent, so unlike an uploaded script copy there is nothing in Intune to keep up to date.
 
@@ -41,7 +46,13 @@ The MSI contains no agent logic: it is packaging around the same signed loader u
 The group assignment is the part that goes wrong most often: assigning the MSI to any other device group means it is not targeted at enrollment time and installs too late — use the same group that is selected in the Device Preparation policy itself.
 {% endhint %}
 
-You can keep the platform script from [Deploy the Agent](deploy-the-agent.md) assigned as well — the deployment marker guarantees that only one channel ever installs the agent, so the two coexist safely.
+## Alternative: the platform script
+
+The platform script from [Deploy the Agent](deploy-the-agent.md) works with Device Preparation too, with less coverage. It runs in the script phase, so the agent misses the installation of line-of-business apps and Microsoft 365 Apps. It monitors the remaining scripts, the Win32 and Store app phase and the rest of setup.
+
+To run during setup, the script must be assigned to the Device Preparation device group **and** selected in the Device Preparation policy. A script that is only assigned runs after the deployment has finished.
+
+You can keep both channels assigned. The deployment marker guarantees that only one of them installs the agent.
 
 ## Device association
 
