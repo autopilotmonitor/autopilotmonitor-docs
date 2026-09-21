@@ -16,7 +16,7 @@ Configuration lives under **Settings → Agent → Diagnostics Package** ([full 
 
 * **Upload destination** — your own Azure Blob Storage (Container SAS URL; data never leaves your tenant) or the built-in hosted storage (short-lived, write-only upload tokens; no storage account needed).
 * **Upload Mode** — `Always`, `On Failure Only` (recommended), or `Off`.
-* **Additional Log Paths** — extend the default collection with your own files: wildcards in the last path segment, environment variables, and the `%LOGGED_ON_USER_PROFILE%` token for user-profile logs (limited to `AppData\Local`/`Roaming`), optionally with subfolders. Paths are validated against an agent-side allow-list of known log locations.
+* **Additional Log Paths** — extend the default collection with your own folders, files or wildcard patterns: a folder path collects every file in that folder, wildcards go in the last path segment, environment variables, and the `%LOGGED_ON_USER_PROFILE%` token for user-profile logs (limited to `AppData\Local`/`Roaming`), optionally with subfolders. Paths are validated against an agent-side allow-list of known log locations.
 
 The built-in collection covers the agent's own logs, state, pending uploads and completion markers, the Intune Management Extension logs, the Device Preparation bootstrapper event log on Autopilot Device Preparation enrollments, and — when the RealmJoin Watcher is enabled — the RealmJoin client, package, Chocolatey and per-user logs. The exact list is shown read-only under **Settings → Agent → Diagnostics Package → Built-in**, together with any platform-wide paths. Everything else (Windows Setup/Panther logs, SetupDiag, other event logs, vendor logs) is added through Additional Log Paths.
 

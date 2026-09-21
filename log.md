@@ -2,6 +2,7 @@
 
 ## 2026-09-21
 
+* **Update**: `reference/settings.md`, `troubleshooting/diagnostics-and-log-collection.md` — **Additional Log Paths** accept a folder path, which collects every file in that folder; a single file entry is never collected recursively.
 * **Update**: `portal-guide/sla-compliance.md`, `integrations/notifications.md` — new section **Which period each number covers**: banner and the success-rate/duration gauges cover the last 30 days (rolling), the same period the SLA breach alerts judge; app installs the current ISO week; a period without finished enrollments shows **No data**. A lasting breach is reported again only after new enrollments have finished.
 
 ## 2026-09-12
