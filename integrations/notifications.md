@@ -65,6 +65,8 @@ The trigger URL carries its own shared-access signature, so treat it like a pass
 
 Beyond the session triggers, the same webhook also carries **SLA breach/resolution alerts** (when [SLA targets](../portal-guide/sla-compliance.md) are configured), **consecutive-failure alerts**, and **hardware-rejection notices**.
 
+SLA alerts judge the success rate and the P95 duration over the **last 30 days** and the app install rate over the **current ISO week** — the same periods the [SLA Compliance](../portal-guide/sla-compliance.md#which-period-each-number-covers) page shows in its banner and gauges. A breach is reported when it starts and again only after new enrollments (or app installs) have finished since the last alert — never more often than the repeat interval; a tenant with no new enrollments is not reminded of the same value. A resolution alert follows when the target is met again.
+
 ## In-portal alerts
 
 Some alerts are delivered as **bell notifications** in the portal header rather than through the webhook — they are about your configuration or your hardware, not about a single enrollment, and they are raised once per subject instead of per event:

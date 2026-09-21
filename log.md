@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-21
+
+* **Update**: `portal-guide/sla-compliance.md`, `integrations/notifications.md` — new section **Which period each number covers**: banner and the success-rate/duration gauges cover the last 30 days (rolling), the same period the SLA breach alerts judge; app installs the current ISO week; a period without finished enrollments shows **No data**. A lasting breach is reported again only after new enrollments have finished.
+
 ## 2026-09-12
 
 * **Fix**: `getting-started/autopilot-device-preparation.md` — the Device Preparation order is three phases (policies, line-of-business apps and Microsoft 365 Apps → PowerShell scripts → Win32, Store and Enterprise App Catalog apps), not "apps first, then scripts"; the MSI is motivated by installing before Microsoft 365 Apps; new section **Alternative: the platform script** (works with less coverage, must be selected in the Device Preparation policy to run during setup, both channels can stay assigned).
