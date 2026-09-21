@@ -18,6 +18,10 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* A folder entered under Additional Log Paths now collects every file in exactly that folder
+* Diagnostics packages never include the Security, PowerShell or Sysmon event logs, in any mode
+* The agent no longer refuses to start when an unrelated process with the same name runs in a user session
+* A platform script no longer picks up the exit code of a remediation script that ran at the same time
 * Script results, exit codes and output are no longer lost when Intune runs several scripts at the same time
 * ESP failures keep their error code and failed step even when Windows closes the status page before the agent has confirmed the failure — the session's failure reason and the app verdicts name the real cause instead of a generic timeout
 * Reading inside a user profile stays strictly limited: only folders on the published allow-list are readable, and never anything outside `AppData\Local` and `AppData\Roaming`

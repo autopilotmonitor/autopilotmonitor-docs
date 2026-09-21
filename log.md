@@ -1,5 +1,10 @@
 # Log
 
+## 2026-09-21 (2)
+
+* **Update**: `changelog/agent-changelog.md` — September 2026: a folder under Additional Log Paths collects exactly that folder; Security, PowerShell and Sysmon event logs never enter a diagnostics package; agent start no longer blocked by a same-named process in a user session; a platform script no longer takes a remediation script's exit code (agent v2.0.1462).
+* **Update**: `changelog/platform-changelog.md` — September 2026: SLA page and alerts judge the same rolling 30 days, empty period shows No data; Additional Log Paths accept a folder and flag blocked event logs; profile photo in the navigation bar; dashboard and navigation polish.
+
 ## 2026-09-21
 
 * **Update**: `reference/settings.md`, `troubleshooting/diagnostics-and-log-collection.md` — **Additional Log Paths** accept a folder path, which collects every file in that folder; a single file entry is never collected recursively.
