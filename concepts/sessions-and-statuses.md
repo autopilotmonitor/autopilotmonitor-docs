@@ -63,9 +63,9 @@ There is no single "enrollment done" signal in Windows, so the agent combines se
 
 Three separate mechanisms make sure a session never stays *In Progress* forever — and that no agent is ever left behind on a device:
 
-* **Agent maximum lifetime (on the device):** the agent itself runs for at most **6 hours**. If enrollment hasn't completed by then, the agent emits an explicit failure event (which does mark the session *Failed*), performs a final upload, and cleans itself up.
+* **Agent maximum lifetime (on the device):** the agent stops after **6 hours of active time**. Time the device spends in standby or hibernation does not count, and the 6 hours start again after a reboot. If enrollment hasn't completed by then, the agent reports that it is stopping, performs a final upload, and cleans itself up. The session is then classified from its evidence (see below).
 * **Session timeout (in the backend):** sessions that stop receiving events are reclassified out of *In Progress* after the configured **Session Timeout** (default **5 hours**, configurable 1–12 hours under **Configuration → Maintenance → Data Management**). Crucially, a silent session is **no longer blanket-marked _Failed_** — the backend classifies it from the evidence it already has (see below).
-* **48-hour emergency brake (on the device):** independent of everything above, the agent unconditionally removes itself **48 hours after installation** — regardless of session status, connectivity, or whatever error state it might be in. Even in the worst failure scenario, no orphaned agent ever remains on a device.
+* **48-hour emergency brake (on the device):** every time the agent starts — which is at every boot — it checks the age of its enrollment phase. If that phase began more than **48 hours** ago, the agent removes itself instead of starting, regardless of session status, connectivity, or error state. A device that is powered off, asleep, or not rebooted is cleaned up at its next start. With pre-provisioning, the technician phase and the user phase each have their own 48 hours; the agent stays installed while the sealed device waits for its user.
 
 ### Timeout ≠ failure
 
@@ -85,7 +85,7 @@ The backend now decides the outcome from the last evidence in the timeline inste
 
 The agent's own max-lifetime shutdown is not a failure verdict either — the session is classified from the same evidence table. Because that shutdown proves the agent is gone for good, such a session skips the *Awaiting User* wait entirely and is decided immediately; a late completion signal (e.g. from Intune logs after the next boot) still corrects the verdict.
 
-**The grace window** is anchored to the agent, not a magic number. Because the agent self-destructs at its 48-hour emergency brake and sends nothing afterwards, a completion can only ever arrive *before* that cap. The backend therefore waits out the cap plus a small buffer (~**51 hours** by default) before settling *Awaiting User* → *Incomplete* — long enough that a legitimately late user completion still lands and **reconciles to _Succeeded_**. This costs nothing on the device: a waiting session is just a table row compared against a timestamp — no process, no heartbeat, no extra agent load.
+**The grace window** is anchored to the agent, not a magic number: the backend waits out the agent's 48-hour emergency brake plus a small buffer (~**51 hours** by default) before settling *Awaiting User* → *Incomplete* — long enough that a legitimately late user completion still lands and **reconciles to _Succeeded_**. This costs nothing on the device: a waiting session is just a table row compared against a timestamp — no process, no heartbeat, no extra agent load.
 
 {% hint style="info" %}
 An **Incomplete** session means the **evidence stopped** without a verdict — a user may simply have shut the laptop mid-ESP, or the device went permanently offline. It is deliberately kept out of the failure rate. The session timeline still contains everything up to the last received event, and if a real completion or failure signal ever arrives, the status is corrected accordingly.

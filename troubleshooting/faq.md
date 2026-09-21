@@ -86,7 +86,7 @@ To check: compare the current version badge on [Deploy the Agent](../getting-sta
 
 <summary>Does the agent run permanently on the device?</summary>
 
-No. The agent only exists during the enrollment window: it self-destructs after completion, stops at its 6-hour maximum lifetime, and — as an unconditional backstop — removes itself 48 hours after installation no matter what. It never runs as a persistent background service. See [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md).
+No. The agent only exists during the enrollment window: it self-destructs after completion, stops after 6 hours of active time, and — as a backstop — removes itself at its next start once an enrollment phase is older than 48 hours. It never runs as a persistent background service. See [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md).
 
 </details>
 
