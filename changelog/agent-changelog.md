@@ -18,6 +18,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* Remediation scripts that Intune re-runs on a schedule appear once with a summary of the repeats, and again whenever their result changes
+* An unstable network connection no longer keeps performance monitoring running or hides a stalled enrollment
 * A folder entered under Additional Log Paths now collects every file in exactly that folder
 * Diagnostics packages never include the Security, PowerShell or Sysmon event logs, in any mode
 * The agent no longer refuses to start when an unrelated process with the same name runs in a user session

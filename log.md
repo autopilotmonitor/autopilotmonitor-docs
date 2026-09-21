@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-22
+
+* **Update**: `changelog/agent-changelog.md` — September 2026: scheduled remediation scripts appear once with a summary of the repeats and again on a changed result; an unstable network connection no longer keeps performance monitoring running or hides a stalled enrollment.* **Update**: `concepts/sessions-and-statuses.md`, `concepts/agent-lifecycle-and-security.md`, `troubleshooting/faq.md` — agent lifetime limits: 6 hours of active time; the 48-hour emergency brake is checked at every agent start and applies per enrollment phase with pre-provisioning.
+
 ## 2026-09-21 (2)
 
 * **Update**: `changelog/agent-changelog.md` — September 2026: a folder under Additional Log Paths collects exactly that folder; Security, PowerShell and Sysmon event logs never enter a diagnostics package; agent start no longer blocked by a same-named process in a user session; a platform script no longer takes a remediation script's exit code (agent v2.0.1462).
