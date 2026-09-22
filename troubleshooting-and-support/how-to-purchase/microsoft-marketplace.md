@@ -115,7 +115,7 @@ For a more detailed cost breakdown of your base and additional user fees, please
 Subscriptions for Autopilot Monitor are available based on an **monthly** and **annual** renewal interval.
 
 {% hint style="info" %}
-The annual plan is discounted by 10% in comparison to the monthly plan (calculated over the period of 12 months).
+The annual plan is discounted by 16% in comparison to the monthly plan (calculated over the period of 12 months).
 {% endhint %}
 
 | **Plan**                  | **Renewal Interval** |

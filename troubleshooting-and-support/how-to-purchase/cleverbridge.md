@@ -47,7 +47,7 @@ The reference currency for Autopilot Monitor is Euro (EUR). The forex rate cleve
 Subscriptions for Autopilot Monitor are available based on an **monthly** and **annual** renewal interval.
 
 {% hint style="info" %}
-The annual plan is discounted by  10% in comparison to the monthly plan (calculated over the period of 12 months).
+The annual plan is discounted by 16% in comparison to the monthly plan (calculated over the period of 12 months).
 {% endhint %}
 
 | **Plan**                  | **Renewal Interval** |
