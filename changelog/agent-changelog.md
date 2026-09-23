@@ -18,6 +18,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* The session timeline shows when a downloaded app is waiting for its install deadline and when an app install was postponed because the app was in use
+* A script's run time is no longer inflated by hours, and no false timeout warning follows, when Intune's log lines disagree on the time zone; a run time that cannot be measured reliably is left out
 * Remediation scripts that Intune re-runs on a schedule appear once with a summary of the repeats, and again whenever their result changes
 * An unstable network connection no longer keeps performance monitoring running or hides a stalled enrollment
 * A folder entered under Additional Log Paths now collects every file in exactly that folder

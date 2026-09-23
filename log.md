@@ -1,8 +1,14 @@
 # Log
 
+## 2026-09-23
+
+* **Update**: `changelog/agent-changelog.md` — September 2026: the timeline shows install-deadline waits and in-use deferrals of apps; script run times are no longer inflated by time-zone disagreement between log lines and an unmeasurable run time is left out.
+* **Update**: `changelog/platform-changelog.md` — September 2026: faster portal loading; MCP tool descriptions reach AI clients in full; Script Executions shows n/a instead of a run time off by hours; farewell feedback after offboarding is delivered again and a suspended organization sees an explanatory page.
+
 ## 2026-09-22
 
-* **Update**: `changelog/agent-changelog.md` — September 2026: scheduled remediation scripts appear once with a summary of the repeats and again on a changed result; an unstable network connection no longer keeps performance monitoring running or hides a stalled enrollment.* **Update**: `concepts/sessions-and-statuses.md`, `concepts/agent-lifecycle-and-security.md`, `troubleshooting/faq.md` — agent lifetime limits: 6 hours of active time; the 48-hour emergency brake is checked at every agent start and applies per enrollment phase with pre-provisioning.
+* **Update**: `changelog/agent-changelog.md` — September 2026: scheduled remediation scripts appear once with a summary of the repeats and again on a changed result; an unstable network connection no longer keeps performance monitoring running or hides a stalled enrollment.
+* **Update**: `concepts/sessions-and-statuses.md`, `concepts/agent-lifecycle-and-security.md`, `troubleshooting/faq.md` — agent lifetime limits: 6 hours of active time; the 48-hour emergency brake is checked at every agent start and applies per enrollment phase with pre-provisioning.
 
 ## 2026-09-21 (2)
 

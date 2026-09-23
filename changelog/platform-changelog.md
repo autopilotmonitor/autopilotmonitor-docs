@@ -16,6 +16,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Faster portal loading** — The portal's program files stay cached in your browser between visits, pages start loading as soon as you point at a link, and the dashboard's first data loads alongside your sign-in check.
+* **MCP: every tool description reaches your AI client in full** — The tool catalog is about a fifth smaller, and no tool description or server instruction exceeds the 2,048 characters some AI clients cut off at.
 * **SLA page and alerts judge the same 30 days** — The banner and the success-rate and duration gauges now cover the last 30 days, the same period the SLA breach alerts judge; a period without finished enrollments shows **No data** instead of a breach. A lasting breach is reported again only after new enrollments have finished. See [SLA Compliance](../portal-guide/sla-compliance.md#which-period-each-number-covers).
 * **Additional Log Paths accept a folder** — Enter a folder and every file in it is collected; a path to the Security, PowerShell or Sysmon event log is flagged before you save it. Needs agent 2.0.1462. See [Diagnostics & Log Collection](../troubleshooting/diagnostics-and-log-collection.md#the-diagnostics-package).
 * **Your profile photo in the navigation bar** — The avatar shows your Microsoft 365 profile photo; your browser loads it directly from Microsoft and it never reaches our servers.
@@ -70,6 +72,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 * **A newly published agent version shows up within minutes** — The What's new panel and the outdated-agent badges in the session list read the published version every few minutes instead of once every twelve hours.
 * **Custom rules: `not_exists` on a field matches a missing field** — A condition with a `dataField` and `not_exists` now fires when no event of that type carries the field, as the concepts page describes. See [Analyze Rules: Concepts](../rules/analyze-rules/concepts.md#absence-is-not-evidence).
 * **Fixed: standby time on the session page** — The Duration cell in Session Info now shows the standby time with seconds and counts only standby inside the enrollment window, so it matches the time-attribution chip below.
+* **Fixed: script run times off by hours** — When a script's start and end log lines were read with different time-zone assumptions, Script Executions shows **n/a** with an explanation instead of a wrong run time, also for sessions from older agents.
+* **Fixed: farewell feedback after offboarding** — The feedback form shown after you offboard your organization is delivered again, and a suspended organization sees an explanatory page with sign-out instead of a browser alert.
 
 ## August 2026
 
