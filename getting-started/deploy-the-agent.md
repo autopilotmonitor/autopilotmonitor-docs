@@ -42,7 +42,7 @@ Scripts and agent binaries carry an Authenticode signature from **glueckkanja AG
 * You can check any file before you upload it: `Get-AuthenticodeSignature .\Start-AutopilotMonitor.ps1` must report `Valid` and `glueckkanja AG`.
 * The agent's executables and libraries are signed too, so application control policies (WDAC, AppLocker) can allow them by publisher.
 * The bootstrapper checks those signatures on the device and refuses to start an agent that is not signed by us.
-* If your policy requires signed scripts, **Enforce script signature check** can be turned on in the Intune script settings.
+* Leave **Enforce script signature check** in Intune at **No**. With **Yes**, PowerShell trusts only publishers listed in the device's **Trusted Publishers** certificate store. An enrolling device does not have our certificate there, and there is no reliable way to place it before the script runs, so the script would never start. The checks above do not depend on that store.
 
 ## Deployment steps
 
@@ -75,7 +75,7 @@ In the **Microsoft Intune admin center**, go to **Devices → Scripts and remedi
 | Name | `Start Autopilot Monitor` |
 | Script | Upload the downloaded `.ps1` file |
 | Run this script using the logged on credentials | **No** (runs as SYSTEM) |
-| Enforce script signature check | **No** — or **Yes**, the file is [signed](#everything-you-deploy-is-signed) |
+| Enforce script signature check | **No** — **Yes** would block the script: it needs our certificate in the device's Trusted Publishers store first ([details](#everything-you-deploy-is-signed)) |
 | Run script in 64 bit PowerShell Host | **Yes** |
 
 ### 3. Assign to a device group

@@ -2,6 +2,7 @@
 
 ## 2026-09-23
 
+* **Fix**: `getting-started/deploy-the-agent.md` — **Enforce script signature check** must stay **No**: with Yes, PowerShell trusts only publishers in the device's Trusted Publishers store, which an enrolling device does not have, so the script would never start; the “or Yes, the file is signed” option is removed from the platform-script table and the signing section explains why.
 * **Update**: `changelog/agent-changelog.md` — September 2026: the timeline shows install-deadline waits and in-use deferrals of apps; script run times are no longer inflated by time-zone disagreement between log lines and an unmeasurable run time is left out.
 * **Update**: `changelog/platform-changelog.md` — September 2026: faster portal loading; MCP tool descriptions reach AI clients in full; Script Executions shows n/a instead of a run time off by hours; farewell feedback after offboarding is delivered again and a suspended organization sees an explanatory page.
 
