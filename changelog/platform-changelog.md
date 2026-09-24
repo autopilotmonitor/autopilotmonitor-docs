@@ -16,6 +16,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Connect a self-hosted AI client such as LibreChat** — A Tenant Admin registers the client's callback URL under Settings → Tenant → Self-hosted AI clients. The client then uses the normal browser sign-in, limited to your tenant's accounts. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients).
+* **MCP sign-in works for clients that expect a client secret** — The server now tells clients that it issues none, so they complete the sign-in instead of failing at the token step.
 * **Faster portal loading** — The portal's program files stay cached in your browser between visits, pages start loading as soon as you point at a link, and the dashboard's first data loads alongside your sign-in check.
 * **MCP: every tool description reaches your AI client in full** — The tool catalog is about a fifth smaller, and no tool description or server instruction exceeds the 2,048 characters some AI clients cut off at.
 * **SLA page and alerts judge the same 30 days** — The banner and the success-rate and duration gauges now cover the last 30 days, the same period the SLA breach alerts judge; a period without finished enrollments shows **No data** instead of a breach. A lasting breach is reported again only after new enrollments have finished. See [SLA Compliance](../portal-guide/sla-compliance.md#which-period-each-number-covers).

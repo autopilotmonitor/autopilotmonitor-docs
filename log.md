@@ -1,5 +1,12 @@
 # Log
 
+## 2026-09-24
+
+* **New**: `integrations/ai-integration-mcp.md` — section **Self-hosted AI clients**: a Tenant Admin registers the exact callback URL of a client the organization hosts (LibreChat example with the server identifier), the client uses the `amc_…` client ID with OAuth and no secret; sign-in limited to the tenant's directory; deletion takes effect within about a minute; three causes of "Failed to initialize MCP server". Prerequisites and protocol paragraph point to it.
+* **Update**: `reference/settings.md` — tenant setting **Self-hosted AI clients**.
+* **Update**: `trust/security-faq.md` — MCP authentication: tenant-bound registrations for self-hosted clients (directory-bound sign-in, tokens of other organizations discarded); Last reviewed 24 September 2026.
+* **Update**: `changelog/platform-changelog.md` — September 2026: self-hosted AI clients; MCP sign-in for clients that expect a client secret.
+
 ## 2026-09-23
 
 * **Fix**: `getting-started/deploy-the-agent.md` — **Enforce script signature check** must stay **No**: with Yes, PowerShell trusts only publishers in the device's Trusted Publishers store, which an enrolling device does not have, so the script would never start; the “or Yes, the file is signed” option is removed from the platform-script table and the signing section explains why.

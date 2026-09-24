@@ -21,7 +21,7 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 ## Prerequisites
 
 1. **A role in your organization's tenant** — MCP access follows your portal role: an account with a role (Admin, Operator or Viewer) can connect, an account without one cannot, and individual accounts can be blocked. On request, MCP can also be switched off for your whole organization; every connection attempt then shows the recorded reason, while portal and API access stay unchanged. Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
-2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth. Unattended automation connects with its own application identity instead — see [Service principals and automation](#service-principals-and-automation).
+2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth. A client your organization hosts itself, such as LibreChat, is registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients). Unattended automation connects with its own application identity instead — see [Service principals and automation](#service-principals-and-automation).
 
 ## Client setup
 
@@ -79,7 +79,7 @@ Remove the header again when you no longer read raw results — every indented r
 
 The server implements the **current MCP specification (revision 2026-07-28)** — the stateless Streamable HTTP transport with `server/discover`, cache hints on tool and resource listings, and header-based request routing — and stays compatible with clients that still use the previous (2025) handshake. You do not have to configure anything: a client picks the newest revision it understands, and the tools, resources and instructions it sees are identical on either path.
 
-Authentication follows the specification's OAuth 2.1 profile: PKCE (S256) is mandatory, the authorization response carries the RFC 9207 issuer so clients can detect mix-up attacks, and clients register either through a **Client ID Metadata Document** (the client identifies itself with an HTTPS URL that serves its metadata — the mechanism the current specification recommends) or, for older clients, through Dynamic Client Registration. Redirect targets are always checked against a fixed allowlist of AI-vendor callback URLs plus loopback, whichever registration mechanism a client uses.
+Authentication follows the specification's OAuth 2.1 profile: PKCE (S256) is mandatory, the authorization response carries the RFC 9207 issuer so clients can detect mix-up attacks, and clients register either through a **Client ID Metadata Document** (the client identifies itself with an HTTPS URL that serves its metadata — the mechanism the current specification recommends) or, for older clients, through Dynamic Client Registration. Redirect targets are checked against a fixed allowlist of AI-vendor callback URLs plus loopback, whichever registration mechanism a client uses; a self-hosted client may redirect only to the exact callback a Tenant Admin registered for it.
 
 ## Signing in — which account goes where
 
@@ -98,6 +98,23 @@ flowchart TD
 {% endhint %}
 
 If the connect hangs or fails after the Microsoft sign-in succeeded, it is almost always the first half that's missing: the browser is not (or with the wrong account) signed in at your AI vendor's site. Typical causes are multiple browser profiles, or being signed in to the desktop app only but not in the browser. Sign in to the vendor site in your default browser first, then retry the connect.
+
+## Self-hosted AI clients
+
+An AI client your organization runs on its own domain, such as LibreChat, connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
+
+1. **Find the client's callback URL.** It is the address the client's sign-in returns to. LibreChat uses `https://<your LibreChat host>/api/mcp/<server identifier>/oauth/callback`; the server identifier is shown under the title of LibreChat's **Edit MCP Server** dialog, for example `autopilot-monitor`.
+2. **Register it.** Under **Settings → Tenant → Self-hosted AI clients**, enter a name and the callback URL and select **Register**. The URL must use `https` (plain `http` only on `localhost`) and match exactly, without a query or wildcard. A tenant can register up to three clients.
+3. **Configure the client.** Server URL `https://mcp.autopilotmonitor.com/mcp`, transport Streamable HTTP, authentication **OAuth**. Enter the `amc_…` client ID from the list and leave the client secret empty. Leave the authorization and token URLs empty; the client discovers them.
+4. **Connect.** The client opens the Microsoft sign-in. Only accounts in your tenant's Microsoft Entra directory can sign in through the registration, and each user's portal role applies.
+
+Deleting a registration stops new sign-ins and token refreshes of that client within about a minute; an access token already issued stays valid until it expires. Every registration and deletion is written to your audit log.
+
+**"Failed to initialize MCP server" in a self-hosted client** usually has one of three causes:
+
+* The client registers itself dynamically instead of using the registered client ID. Its own domain is on no allowlist, so enter the `amc_…` client ID.
+* The callback URL differs from the registered one. Check the server identifier in the path.
+* The client is set to a mode that brings its own token, such as on-behalf-of. Choose **OAuth**.
 
 ## Available tools
 
