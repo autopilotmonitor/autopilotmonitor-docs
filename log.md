@@ -2,10 +2,10 @@
 
 ## 2026-09-24
 
-* **New**: `integrations/ai-integration-mcp.md` — section **Self-hosted AI clients**: a Tenant Admin registers the exact callback URL of a client the organization hosts (LibreChat example with the server identifier), the client uses the `amc_…` client ID with OAuth and no secret; sign-in limited to the tenant's directory; deletion takes effect within about a minute; three causes of "Failed to initialize MCP server". Prerequisites and protocol paragraph point to it.
-* **Update**: `reference/settings.md` — tenant setting **Self-hosted AI clients**.
+* **New**: `integrations/ai-integration-mcp.md` — section **Self-hosted AI clients** (only for clients the organization runs on its own servers): a Tenant Admin registers the exact callback URL under Settings → Tenant → AI Integration (one per tenant, more on request), the client uses the `amc_…` client ID with OAuth and no secret; sign-in limited to the tenant's directory; deletion takes effect within about a minute; three causes of "Failed to initialize MCP server". Client setup names the portal page; prerequisites and protocol paragraph point to the section.
+* **Update**: `reference/settings.md` — tenant settings page **AI Integration** (server URL for hosted assistants; self-hosted registration).
 * **Update**: `trust/security-faq.md` — MCP authentication: tenant-bound registrations for self-hosted clients (directory-bound sign-in, tokens of other organizations discarded); Last reviewed 24 September 2026.
-* **Update**: `changelog/platform-changelog.md` — September 2026: self-hosted AI clients; MCP sign-in for clients that expect a client secret.
+* **Update**: `changelog/platform-changelog.md` — September 2026: AI Integration page in the tenant settings; self-hosted AI clients; MCP sign-in for clients that expect a client secret.
 
 ## 2026-09-23
 

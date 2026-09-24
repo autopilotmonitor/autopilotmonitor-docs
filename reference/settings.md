@@ -149,11 +149,12 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 | Who can read this tenant | Every organization with delegated (MSP) read access to your tenant, with the people behind it. Self-service delegations can be ended here at once; operator-provisioned ones via support. While a Pro organization manages your tenant, your tenant is on Pro (badge "Pro (MSP)") — the section says so. |
 | Tenants you manage (Pro) | Slot usage, the tenants you manage, single-use invitation links (valid 7 days), and which of your own members hold the read-only access. Removing a tenant keeps its slot occupied for 24 hours. Reads into managed tenants draw on your own AI (MCP) budgets; every purchased slot beyond the two included extends them. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access). |
 
-### Self-hosted AI clients
+### AI Integration
 
 | Setting | Description |
 | --- | --- |
-| Registered clients | Up to three AI clients your organization hosts itself (for example LibreChat), each with its exact OAuth callback URL. The list shows the client ID to configure in the client; deleting a registration stops that client's sign-ins within about a minute. Tenant Admins only. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients). |
+| AI Integration | The MCP server URL for Claude, ChatGPT, VS Code and other hosted assistants. Nothing to register; each user signs in with their own account. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#client-setup). |
+| Self-hosted AI clients | Only for an AI client your organization runs on its own servers: its exact OAuth callback URL and the client ID to configure in the client. One registration per tenant, more on request; deleting it stops that client's sign-ins within about a minute. Tenant Admins only. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients). |
 
 ## Reporting
 

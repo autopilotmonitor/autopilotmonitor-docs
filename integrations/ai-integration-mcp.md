@@ -32,6 +32,7 @@ https://mcp.autopilotmonitor.com/mcp
 ```
 
 * **Claude Desktop:** Settings → MCP Servers → Add, enter the URL. OAuth authentication runs automatically in the browser.
+* **In the portal:** **Settings → Tenant → AI Integration** shows the server URL to copy. Hosted assistants such as Claude, ChatGPT and VS Code need nothing registered there.
 * **VS Code (Claude extension):** add to `.vscode/mcp.json` or user settings:
 
 ```json
@@ -101,10 +102,12 @@ If the connect hangs or fails after the Microsoft sign-in succeeded, it is almos
 
 ## Self-hosted AI clients
 
-An AI client your organization runs on its own domain, such as LibreChat, connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
+This part applies only to an AI client your organization runs on its own servers and domain, for example a self-hosted chat front end. Claude, ChatGPT, VS Code and other hosted assistants connect as described in [Client setup](#client-setup) and need no registration.
 
-1. **Find the client's callback URL.** It is the address the client's sign-in returns to. LibreChat uses `https://<your LibreChat host>/api/mcp/<server identifier>/oauth/callback`; the server identifier is shown under the title of LibreChat's **Edit MCP Server** dialog, for example `autopilot-monitor`.
-2. **Register it.** Under **Settings → Tenant → Self-hosted AI clients**, enter a name and the callback URL and select **Register**. The URL must use `https` (plain `http` only on `localhost`) and match exactly, without a query or wildcard. A tenant can register up to three clients.
+A self-hosted client connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
+
+1. **Find the client's callback URL.** It is the address the client's sign-in returns to; the client's MCP server settings or its documentation show it. LibreChat, for example, uses `https://<your LibreChat host>/api/mcp/<server identifier>/oauth/callback`, with the server identifier shown under the title of its **Edit MCP Server** dialog.
+2. **Register it.** Under **Settings → Tenant → AI Integration**, section **Self-hosted AI clients**, enter a name and the callback URL and select **Register**. The URL must use `https` (plain `http` only on `localhost`) and match exactly, without a query or wildcard. A tenant can register one self-hosted client; more are available on request.
 3. **Configure the client.** Server URL `https://mcp.autopilotmonitor.com/mcp`, transport Streamable HTTP, authentication **OAuth**. Enter the `amc_…` client ID from the list and leave the client secret empty. Leave the authorization and token URLs empty; the client discovers them.
 4. **Connect.** The client opens the Microsoft sign-in. Only accounts in your tenant's Microsoft Entra directory can sign in through the registration, and each user's portal role applies.
 
