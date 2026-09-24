@@ -2,6 +2,7 @@
 
 ## 2026-09-24
 
+* **Update**: `integrations/ai-integration-mcp.md` — new **Ways to connect** table (hosted AI assistant, self-hosted AI client, service principal); **Supported AI clients** under Client setup (Claude, ChatGPT, VS Code, local-sign-in clients such as Claude Code, Codex, Gemini CLI; another hosted service on request after review); sections reordered: common path first (setup, sign-in, tools, examples), then self-hosted clients and service principals, then limits and protocol details.
 * **New**: `integrations/ai-integration-mcp.md` — section **Self-hosted AI clients** (only for clients the organization runs on its own servers): a Tenant Admin registers the exact callback URL under Settings → Tenant → AI Integration (one per tenant, more on request), the client uses the `amc_…` client ID with OAuth and no secret; sign-in limited to the tenant's directory; deletion takes effect within about a minute; three causes of "Failed to initialize MCP server". Client setup names the portal page; prerequisites and protocol paragraph point to the section.
 * **Update**: `reference/settings.md` — tenant settings page **AI Integration** (server URL for hosted assistants; self-hosted registration).
 * **Update**: `trust/security-faq.md` — MCP authentication: tenant-bound registrations for self-hosted clients (directory-bound sign-in, tokens of other organizations discarded); Last reviewed 24 September 2026.

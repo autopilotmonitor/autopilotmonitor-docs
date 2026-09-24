@@ -18,10 +18,18 @@ AI client  →  MCP server  →  Backend API  →  Your data
 
 Your existing sign-in token is forwarded with every request — the MCP server stores no credentials, and all data access is scoped to your tenant exactly like in the portal.
 
+## Ways to connect
+
+| Way | For | What you set up | Sign-in |
+| --- | --- | --- | --- |
+| [Hosted AI assistant](#client-setup) | Claude, ChatGPT, VS Code, and command-line clients such as Claude Code or Codex | Add the server URL in the client — nothing to register | Each user with their own account, in the browser |
+| [Self-hosted AI client](#self-hosted-ai-clients) | An AI client your organization runs on its own servers | A Tenant Admin registers its callback URL once; the client uses the issued client ID | Each user with their own account; only accounts of your tenant |
+| [Service principal](#service-principals-and-automation) | Scheduled reports, pipelines and agents without a person | An app registration with the application permission, added as a member | No sign-in; the application's own token, always read-only |
+
 ## Prerequisites
 
 1. **A role in your organization's tenant** — MCP access follows your portal role: an account with a role (Admin, Operator or Viewer) can connect, an account without one cannot, and individual accounts can be blocked. On request, MCP can also be switched off for your whole organization; every connection attempt then shows the recorded reason, while portal and API access stay unchanged. Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
-2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth. A client your organization hosts itself on its own servers is registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients). Unattended automation connects with its own application identity instead — see [Service principals and automation](#service-principals-and-automation).
+2. **An MCP client** — one of the [supported AI clients](#supported-ai-clients), an AI client your organization hosts itself (registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients)), or unattended automation with its own application identity (see [Service principals and automation](#service-principals-and-automation)).
 
 ## Client setup
 
@@ -30,6 +38,19 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 ```
 https://mcp.autopilotmonitor.com/mcp
 ```
+
+### Supported AI clients
+
+The sign-in hands its result back only to addresses the server knows. Supported today:
+
+* **Claude** — connectors on claude.ai and claude.com, including the Claude desktop and mobile apps
+* **ChatGPT** — connectors
+* **VS Code** — including GitHub Copilot, in the desktop app and on vscode.dev
+* **Clients that sign in on your own computer**, such as Claude Code, Codex or Gemini CLI — their sign-in returns to a local address, which is always accepted
+
+Another hosted AI service can be added on request after a review. An AI client your organization runs on its own servers is not added here; a Tenant Admin registers it in the portal — see [Self-hosted AI clients](#self-hosted-ai-clients).
+
+### Setting up a client
 
 * **Claude Desktop:** Settings → MCP Servers → Add, enter the URL. OAuth authentication runs automatically in the browser.
 * **In the portal:** **Settings → Tenant → AI Integration** shows the server URL to copy. Hosted assistants such as Claude, ChatGPT and VS Code need nothing registered there.
@@ -76,12 +97,6 @@ Remove the header again when you no longer read raw results — every indented r
 
 **Verify:** ask your assistant *"List all available tools from Autopilot Monitor"* — you should see 20+ tools. If authentication fails, your MCP access probably isn't enabled yet.
 
-## Protocol support
-
-The server implements the **current MCP specification (revision 2026-07-28)** — the stateless Streamable HTTP transport with `server/discover`, cache hints on tool and resource listings, and header-based request routing — and stays compatible with clients that still use the previous (2025) handshake. You do not have to configure anything: a client picks the newest revision it understands, and the tools, resources and instructions it sees are identical on either path.
-
-Authentication follows the specification's OAuth 2.1 profile: PKCE (S256) is mandatory, the authorization response carries the RFC 9207 issuer so clients can detect mix-up attacks, and clients register either through a **Client ID Metadata Document** (the client identifies itself with an HTTPS URL that serves its metadata — the mechanism the current specification recommends) or, for older clients, through Dynamic Client Registration. Redirect targets are checked against a fixed allowlist of AI-vendor callback URLs plus loopback, whichever registration mechanism a client uses; a self-hosted client may redirect only to the exact callback a Tenant Admin registered for it.
-
 ## Signing in — which account goes where
 
 Connecting the MCP server involves **two sign-ins**, and they are often two *different* accounts: the account of your AI subscription (e.g. your personal Claude account) and the work account you use for Autopilot Monitor (often a separate admin account). This is the most common source of confusion during setup.
@@ -99,25 +114,6 @@ flowchart TD
 {% endhint %}
 
 If the connect hangs or fails after the Microsoft sign-in succeeded, it is almost always the first half that's missing: the browser is not (or with the wrong account) signed in at your AI vendor's site. Typical causes are multiple browser profiles, or being signed in to the desktop app only but not in the browser. Sign in to the vendor site in your default browser first, then retry the connect.
-
-## Self-hosted AI clients
-
-This part applies only to an AI client your organization runs on its own servers and domain, for example a self-hosted chat front end. Claude, ChatGPT, VS Code and other hosted assistants connect as described in [Client setup](#client-setup) and need no registration.
-
-A self-hosted client connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
-
-1. **Find the client's callback URL.** It is the address the client's sign-in returns to; the client's MCP server settings or its documentation show it. A typical callback looks like `https://<your-self-hosted-ai>/api/mcp/<server identifier>/oauth/callback`, where the server identifier is the name the client gives this MCP server.
-2. **Register it.** Under **Settings → Tenant → AI Integration**, section **Self-hosted AI clients**, enter a name and the callback URL and select **Register**. The URL must use `https` (plain `http` only on `localhost`) and match exactly, without a query or wildcard. A tenant can register one self-hosted client; more are available on request.
-3. **Configure the client.** Server URL `https://mcp.autopilotmonitor.com/mcp`, transport Streamable HTTP, authentication **OAuth**. Enter the `amc_…` client ID from the list and leave the client secret empty. Leave the authorization and token URLs empty; the client discovers them.
-4. **Connect.** The client opens the Microsoft sign-in. Only accounts in your tenant's Microsoft Entra directory can sign in through the registration, and each user's portal role applies.
-
-Deleting a registration stops new sign-ins and token refreshes of that client within about a minute; an access token already issued stays valid until it expires. Every registration and deletion is written to your audit log.
-
-**"Failed to initialize MCP server" in a self-hosted client** usually has one of three causes:
-
-* The client registers itself dynamically instead of using the registered client ID. Its own domain is on no allowlist, so enter the `amc_…` client ID.
-* The callback URL differs from the registered one. Check the server identifier in the path.
-* The client is set to a mode that brings its own token, such as on-behalf-of. Choose **OAuth**.
 
 ## Available tools
 
@@ -148,6 +144,25 @@ Two **discovery resources** help the assistant use the right vocabulary: `event_
 
 The assistant picks the right tools and chains them — e.g. finding a session by device name first, then pulling its event timeline.
 
+## Self-hosted AI clients
+
+This part applies only to an AI client your organization runs on its own servers and domain, for example a self-hosted chat front end. Claude, ChatGPT, VS Code and other hosted assistants connect as described in [Client setup](#client-setup) and need no registration.
+
+A self-hosted client connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
+
+1. **Find the client's callback URL.** It is the address the client's sign-in returns to; the client's MCP server settings or its documentation show it. A typical callback looks like `https://<your-self-hosted-ai>/api/mcp/<server identifier>/oauth/callback`, where the server identifier is the name the client gives this MCP server.
+2. **Register it.** Under **Settings → Tenant → AI Integration**, section **Self-hosted AI clients**, enter a name and the callback URL and select **Register**. The URL must use `https` (plain `http` only on `localhost`) and match exactly, without a query or wildcard. A tenant can register one self-hosted client; more are available on request.
+3. **Configure the client.** Server URL `https://mcp.autopilotmonitor.com/mcp`, transport Streamable HTTP, authentication **OAuth**. Enter the `amc_…` client ID from the list and leave the client secret empty. Leave the authorization and token URLs empty; the client discovers them.
+4. **Connect.** The client opens the Microsoft sign-in. Only accounts in your tenant's Microsoft Entra directory can sign in through the registration, and each user's portal role applies.
+
+Deleting a registration stops new sign-ins and token refreshes of that client within about a minute; an access token already issued stays valid until it expires. Every registration and deletion is written to your audit log.
+
+**"Failed to initialize MCP server" in a self-hosted client** usually has one of three causes:
+
+* The client registers itself dynamically instead of using the registered client ID. Its own domain is on no allowlist, so enter the `amc_…` client ID.
+* The callback URL differs from the registered one. Check the server identifier in the path.
+* The client is set to a mode that brings its own token, such as on-behalf-of. Choose **OAuth**.
+
 ## Service principals and automation
 
 A scheduled report, a pipeline or an agent that runs without a person signed in connects with its **own application identity** rather than a user's. It is granted like a team member and is always read-only.
@@ -164,3 +179,8 @@ Its calls count against your organization's MCP budget like a person's and appea
 Requests are rate-limited to **60 per minute per user** (sliding window). Exceeding it returns HTTP 429 with `retryAfterSeconds`; clients typically retry automatically. Overall MCP usage is additionally **tied to your tenant's usage plan**, with two budgets: a daily and monthly quota **per account**, and a daily and monthly quota **for your whole organization** that every member's requests count against — adding accounts does not add budget. When either is exhausted, the assistant receives a message naming which budget it was and when it resets. Tenant admins can track consumption against both budgets under **Configuration → Reporting → MCP Usage**, including a breakdown of the organization budget by account.
 
 **Delegated (MSP) administrators:** every request you make — into your own tenant or into a tenant you manage — counts against **your** organization's budget and your own per-account budget, both from your home tenant's plan. A managed tenant's budget is never touched and never blocks you. Each managed-tenant slot you buy beyond the two included in Pro extends both of your budgets; the MCP Usage page shows the breakdown.
+## Protocol support
+
+The server implements the **current MCP specification (revision 2026-07-28)** — the stateless Streamable HTTP transport with `server/discover`, cache hints on tool and resource listings, and header-based request routing — and stays compatible with clients that still use the previous (2025) handshake. You do not have to configure anything: a client picks the newest revision it understands, and the tools, resources and instructions it sees are identical on either path.
+
+Authentication follows the specification's OAuth 2.1 profile: PKCE (S256) is mandatory, the authorization response carries the RFC 9207 issuer so clients can detect mix-up attacks, and clients register either through a **Client ID Metadata Document** (the client identifies itself with an HTTPS URL that serves its metadata — the mechanism the current specification recommends) or, for older clients, through Dynamic Client Registration. Redirect targets are checked against a fixed allowlist of AI-vendor callback URLs plus loopback, whichever registration mechanism a client uses; a self-hosted client may redirect only to the exact callback a Tenant Admin registered for it.
