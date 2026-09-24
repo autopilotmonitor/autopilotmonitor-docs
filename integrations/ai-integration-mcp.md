@@ -21,7 +21,7 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 ## Prerequisites
 
 1. **A role in your organization's tenant** — MCP access follows your portal role: an account with a role (Admin, Operator or Viewer) can connect, an account without one cannot, and individual accounts can be blocked. On request, MCP can also be switched off for your whole organization; every connection attempt then shows the recorded reason, while portal and API access stay unchanged. Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
-2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth. A client your organization hosts itself, such as LibreChat, is registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients). Unattended automation connects with its own application identity instead — see [Service principals and automation](#service-principals-and-automation).
+2. **An MCP-compatible client** — Claude Desktop, VS Code with the Claude extension, or anything speaking Streamable HTTP with OAuth. A client your organization hosts itself on its own servers is registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients). Unattended automation connects with its own application identity instead — see [Service principals and automation](#service-principals-and-automation).
 
 ## Client setup
 
@@ -106,7 +106,7 @@ This part applies only to an AI client your organization runs on its own servers
 
 A self-hosted client connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
 
-1. **Find the client's callback URL.** It is the address the client's sign-in returns to; the client's MCP server settings or its documentation show it. LibreChat, for example, uses `https://<your LibreChat host>/api/mcp/<server identifier>/oauth/callback`, with the server identifier shown under the title of its **Edit MCP Server** dialog.
+1. **Find the client's callback URL.** It is the address the client's sign-in returns to; the client's MCP server settings or its documentation show it. A typical callback looks like `https://<your-self-hosted-ai>/api/mcp/<server identifier>/oauth/callback`, where the server identifier is the name the client gives this MCP server.
 2. **Register it.** Under **Settings → Tenant → AI Integration**, section **Self-hosted AI clients**, enter a name and the callback URL and select **Register**. The URL must use `https` (plain `http` only on `localhost`) and match exactly, without a query or wildcard. A tenant can register one self-hosted client; more are available on request.
 3. **Configure the client.** Server URL `https://mcp.autopilotmonitor.com/mcp`, transport Streamable HTTP, authentication **OAuth**. Enter the `amc_…` client ID from the list and leave the client secret empty. Leave the authorization and token URLs empty; the client discovers them.
 4. **Connect.** The client opens the Microsoft sign-in. Only accounts in your tenant's Microsoft Entra directory can sign in through the registration, and each user's portal role applies.
