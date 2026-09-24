@@ -19,6 +19,16 @@ The Progress Portal answers the most common question during a rollout — *"how 
 
 Everything updates live — no refreshing needed. The view is strictly read-only: no filters, no drill-downs, no admin controls, and no access to timelines or device internals.
 
+## Link straight to a device
+
+Add the serial number to the portal URL to open the page with that device already looked up:
+
+```
+https://portal.autopilotmonitor.com/progress?serial=<serial number>
+```
+
+Send the link to the device's user in your onboarding mail, ticket or workflow. The link does not replace sign-in or the serial check: the recipient signs in with their work account first, and the device must belong to their organization. The exact device name works in place of the serial number, for example for a Windows 365 Cloud PC. After every lookup the address bar holds the link for the device shown, so you can copy it from there.
+
 {% hint style="info" %}
-**Rollout tip:** during large deployments, give the field technicians the portal URL and the device serials — they can watch each device's progress without anyone granting portal roles or answering status calls. The serial doubles as the access key, so a technician can only follow devices whose serials they were given.
+**Rollout tip:** during large deployments, give the field technicians a [link per device](#link-straight-to-a-device) or the portal URL and the device serials — they can watch each device's progress without anyone granting portal roles or answering status calls. The serial doubles as the access key, so a technician can only follow devices whose serials they were given.
 {% endhint %}

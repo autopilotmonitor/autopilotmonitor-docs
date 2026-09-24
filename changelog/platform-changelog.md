@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Link straight to a device in the Progress Portal** — `/progress?serial=<serial number>` opens the page with that device already looked up, so you can send users a link to follow their own device. Sign-in and the serial check stay as they are. See [Progress Portal](../portal-guide/progress-portal.md#link-straight-to-a-device).
 * **AI Integration in the tenant settings** — Settings → Tenant → AI Integration shows the MCP server URL for Claude, ChatGPT and VS Code. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#client-setup).
 * **Connect a self-hosted AI client** — For an AI client your organization runs on its own servers, a Tenant Admin registers its callback URL under Settings → Tenant → AI Integration. The client then uses the normal browser sign-in, limited to your tenant's accounts. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients).
 * **MCP sign-in works for clients that expect a client secret** — The server now tells clients that it issues none, so they complete the sign-in instead of failing at the token step.

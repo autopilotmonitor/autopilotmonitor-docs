@@ -2,6 +2,8 @@
 
 ## 2026-09-24
 
+* **New**: `portal-guide/progress-portal.md` — section **Link straight to a device**: `/progress?serial=<serial number>` opens the page with the device already looked up (sign-in and serial check unchanged; exact device name works too); after a lookup the address bar holds the link for the device shown. Rollout tip points to it.
+* **Update**: `changelog/platform-changelog.md` — September 2026: Progress Portal deep link by serial number.
 * **Update**: `integrations/ai-integration-mcp.md` — new **Ways to connect** table (hosted AI assistant, self-hosted AI client, service principal); **Supported AI clients** under Client setup (Claude, ChatGPT, VS Code, local-sign-in clients such as Claude Code, Codex, Gemini CLI; another hosted service on request after review); sections reordered: common path first (setup, sign-in, tools, examples), then self-hosted clients and service principals, then limits and protocol details.
 * **New**: `integrations/ai-integration-mcp.md` — section **Self-hosted AI clients** (only for clients the organization runs on its own servers): a Tenant Admin registers the exact callback URL under Settings → Tenant → AI Integration (one per tenant, more on request), the client uses the `amc_…` client ID with OAuth and no secret; sign-in limited to the tenant's directory; deletion takes effect within about a minute; three causes of "Failed to initialize MCP server". Client setup names the portal page; prerequisites and protocol paragraph point to the section.
 * **Update**: `reference/settings.md` — tenant settings page **AI Integration** (server URL for hosted assistants; self-hosted registration).
