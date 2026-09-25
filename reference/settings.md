@@ -154,7 +154,7 @@ Relaxes the [Gather Rule guardrails](../rules/gather-rules.md#security-guardrail
 | Setting | Description |
 | --- | --- |
 | AI Integration | The MCP server URL for Claude, ChatGPT, VS Code and other hosted assistants. Nothing to register; each user signs in with their own account. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#client-setup). |
-| Self-hosted AI clients | Only for an AI client your organization runs on its own servers: its exact OAuth callback URL and the client ID to configure in the client. One registration per tenant, more on request; deleting it stops that client's sign-ins within about a minute. Tenant Admins only. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients). |
+| Self-hosted AI clients | Only for an AI client your organization hosts itself: its exact OAuth callback URL and the client ID to configure in the client. One registration per tenant, more on request; deleting it stops that client's sign-ins within about a minute. Tenant Admins only. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients). |
 
 ## Reporting
 

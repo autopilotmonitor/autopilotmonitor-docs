@@ -23,7 +23,7 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 | Way | For | What you set up | Sign-in |
 | --- | --- | --- | --- |
 | [Hosted AI assistant](#client-setup) | Claude, ChatGPT, VS Code, and command-line clients such as Claude Code or Codex | Add the server URL in the client — nothing to register | Each user with their own account, in the browser |
-| [Self-hosted AI client](#self-hosted-ai-clients) | An AI client your organization runs on its own servers | A Tenant Admin registers its callback URL once; the client uses the issued client ID | Each user with their own account; only accounts of your tenant |
+| [Self-hosted AI client](#self-hosted-ai-clients) | An AI client your organization hosts itself | A Tenant Admin registers its callback URL once; the client uses the issued client ID | Each user with their own account; only accounts of your tenant |
 | [Service principal](#service-principals-and-automation) | Scheduled reports, pipelines and agents without a person | An app registration with the application permission, added as a member | No sign-in; the application's own token, always read-only |
 
 ## Prerequisites
@@ -48,7 +48,7 @@ The sign-in hands its result back only to addresses the server knows. Supported 
 * **VS Code** — including GitHub Copilot, in the desktop app and on vscode.dev
 * **Clients that sign in on your own computer**, such as Claude Code, Codex or Gemini CLI — their sign-in returns to a local address, which is always accepted
 
-Another hosted AI service can be added on request after a review. An AI client your organization runs on its own servers is not added here; a Tenant Admin registers it in the portal — see [Self-hosted AI clients](#self-hosted-ai-clients).
+Another hosted AI service can be added on request after a review. An AI client your organization hosts itself is not added here; a Tenant Admin registers it in the portal — see [Self-hosted AI clients](#self-hosted-ai-clients).
 
 ### Setting up a client
 
@@ -146,7 +146,7 @@ The assistant picks the right tools and chains them — e.g. finding a session b
 
 ## Self-hosted AI clients
 
-This part applies only to an AI client your organization runs on its own servers and domain, for example a self-hosted chat front end. Claude, ChatGPT, VS Code and other hosted assistants connect as described in [Client setup](#client-setup) and need no registration.
+This part applies only to an AI client your organization hosts itself under its own domain, such as a chat front end, whether on premises or in the cloud. Claude, ChatGPT, VS Code and other hosted assistants connect as described in [Client setup](#client-setup) and need no registration.
 
 A self-hosted client connects through the same browser sign-in as Claude. A Tenant Admin registers the client's exact callback URL once; the client then uses the client ID the portal shows.
 

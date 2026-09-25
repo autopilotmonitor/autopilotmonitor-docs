@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-25
+
+* **Update**: `integrations/ai-integration-mcp.md`, `reference/settings.md`, `changelog/platform-changelog.md` — self-hosted AI clients are described as clients "your organization hosts itself" instead of "runs on its own servers": on premises or in the cloud makes no difference, the client's own domain does; one term with the prerequisites and the security FAQ.
+
 ## 2026-09-24
 
 * **New**: `portal-guide/progress-portal.md` — section **Link straight to a device**: `/progress?serial=<serial number>` opens the page with the device already looked up (sign-in and serial check unchanged; exact device name works too); after a lookup the address bar holds the link for the device shown. Rollout tip points to it.
