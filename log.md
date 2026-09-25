@@ -2,6 +2,12 @@
 
 ## 2026-09-25
 
+* **New**: `integrations/ai-integration-mcp.md` — section **Your own app on behalf of users** and a fourth row in **Ways to connect**: a client that signs users in through its own app registration (on-behalf-of, in-house tools) needs the delegated permission `access_as_user` with admin consent and is added as a member (Service principal form); users keep their own identity, role and budget but are read-only through it; removing the member entry ends access within about two minutes; two refusal causes. Prerequisites name it; the self-hosted troubleshooting bullet on on-behalf-of points to it.
+* **Update**: `concepts/roles-and-permissions.md`, `reference/settings.md` — the service-principal member entry also admits an app of your own whose users connect through it, read-only for them.
+* **Update**: `trust/security-faq.md` — token validation checks the requesting application (own portal and MCP sign-in, or a member application; read-only through it); MCP authentication and the AI-provider answer describe apps of your own.
+* **Update**: `trust/data-flows.md` — AI assistant row: apps of your own only as members, read-only; Last reviewed 25 September 2026.
+* **Update**: `changelog/platform-changelog.md` — September 2026: apps that send a user's token must be members.
+
 * **New**: `getting-started/autopilot-device-preparation.md` — section **Without pre-registration**: grant the `IntuneDeviceBinding` add-on, enable **Intune Enrollment Validation**; the device is identified by the Intune device id in its MDM certificate and must be enrolled in the tenant; warning that personal devices are accepted when enrollment restrictions allow them; sessions show **Intune Enrollment**.
 * **Update**: `reference/settings.md`, `reference/optional-graph-permissions.md` — Intune Enrollment Validation row; `IntuneDeviceBinding` feature (`DeviceManagementManagedDevices.Read.All`) in the add-on table.
 * **Update**: `trust/security-faq.md` — the Graph device check lists every validation method, including the Intune enrollment of the certificate's device; Last reviewed 25 September 2026.

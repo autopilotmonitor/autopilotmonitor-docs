@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Apps that send a user's token must be members** — A user's token is now accepted only when the portal, the MCP sign-in or an app a Tenant Admin added under Settings → Access Management requested it. Through such an app, for example a self-hosted AI client in on-behalf-of mode, users can only read. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users).
 * **Monitor Autopilot device preparation without pre-registration** — The new **Intune Enrollment Validation** accepts devices enrolled in your Intune tenant, matched by the device's MDM certificate. No Autopilot hash, corporate identifier or device association is needed. It needs the optional `IntuneDeviceBinding` Graph permission. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#without-pre-registration).
 * **Validation banner for device preparation tenants** — The dashboard warns only when no validation method is enabled. Tenants that validate by device association alone no longer see it.
 * **Link straight to a device in the Progress Portal** — `/progress?serial=<serial number>` opens the page with that device already looked up, so you can send users a link to follow their own device. Sign-in and the serial check stay as they are. See [Progress Portal](../portal-guide/progress-portal.md#link-straight-to-a-device).

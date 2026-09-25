@@ -24,12 +24,13 @@ Your existing sign-in token is forwarded with every request — the MCP server s
 | --- | --- | --- | --- |
 | [Hosted AI assistant](#client-setup) | Claude, ChatGPT, VS Code, and command-line clients such as Claude Code or Codex | Add the server URL in the client — nothing to register | Each user with their own account, in the browser |
 | [Self-hosted AI client](#self-hosted-ai-clients) | An AI client your organization hosts itself | A Tenant Admin registers its callback URL once; the client uses the issued client ID | Each user with their own account; only accounts of your tenant |
+| [Your own app on behalf of users](#your-own-app-on-behalf-of-users) | A client that signs users in through its own app registration and sends their token, such as a self-hosted AI client in on-behalf-of mode | An app registration with the delegated permission and admin consent, added as a member | Each user with their own account, through your app; always read-only |
 | [Service principal](#service-principals-and-automation) | Scheduled reports, pipelines and agents without a person | An app registration with the application permission, added as a member | No sign-in; the application's own token, always read-only |
 
 ## Prerequisites
 
 1. **A role in your organization's tenant** — MCP access follows your portal role: an account with a role (Admin, Operator or Viewer) can connect, an account without one cannot, and individual accounts can be blocked. On request, MCP can also be switched off for your whole organization; every connection attempt then shows the recorded reason, while portal and API access stay unchanged. Tenant admins can see usage under **Configuration → Reporting → MCP Usage**.
-2. **An MCP client** — one of the [supported AI clients](#supported-ai-clients), an AI client your organization hosts itself (registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients)), or unattended automation with its own application identity (see [Service principals and automation](#service-principals-and-automation)).
+2. **An MCP client** — one of the [supported AI clients](#supported-ai-clients), an AI client your organization hosts itself (registered by a Tenant Admin first — see [Self-hosted AI clients](#self-hosted-ai-clients)), an app of your own that sends its users' tokens (added as a member first — see [Your own app on behalf of users](#your-own-app-on-behalf-of-users)), or unattended automation with its own application identity (see [Service principals and automation](#service-principals-and-automation)).
 
 ## Client setup
 
@@ -161,7 +162,22 @@ The client receives its refresh tokens only encrypted and bound to the registrat
 
 * The client registers itself dynamically instead of using the registered client ID. Its own domain is on no allowlist, so enter the `amc_…` client ID.
 * The callback URL differs from the registered one. Check the server identifier in the path.
-* The client is set to a mode that brings its own token, such as on-behalf-of. Choose **OAuth**.
+* The client is set to a mode that brings its own token, such as on-behalf-of. Choose **OAuth**, or set that mode up as described in [Your own app on behalf of users](#your-own-app-on-behalf-of-users).
+
+## Your own app on behalf of users
+
+Some clients sign users in through their own Microsoft Entra app registration and send the resulting token themselves, for example a self-hosted AI client in on-behalf-of mode or an in-house tool. The server accepts such a token only from an app a Tenant Admin added as a member, and everyone who connects through it is read-only.
+
+1. **Grant the app the delegated permission.** On the app registration's **API permissions** page choose *APIs my organization uses* → **Autopilot Monitor** → *Delegated permissions* → `access_as_user`, then **Grant admin consent** for your tenant. Users cannot consent to this permission themselves.
+2. **Add the app as a member.** Under **Settings → Access Management** switch the add form to **Service principal** and enter the app's application (client) ID. It is the same entry as for automation and always shows the **Viewer** role.
+3. **Configure the client.** Let it request its tokens for the scope `api://886ab5e2-6144-442c-80cc-9b28e0667731/access_as_user` and send them as `Authorization: Bearer …` to `https://mcp.autopilotmonitor.com/mcp` (Streamable HTTP).
+
+Each person keeps their own identity. They need a role in your tenant like any MCP user, their requests count against their own and your organization's MCP budget, and blocking their account ends their access. Through the app they can only read, whatever their role; as delegated (MSP) administrators they read the tenants they manage. Removing or disabling the app's member entry ends access for all of its users within about two minutes.
+
+**Connection refused?**
+
+* *"The application … that obtained this token is not registered in your organization"*: step 2 is missing, or the member entry is disabled.
+* *Invalid token* (401): the client requested its token for another resource. Use the scope from step 3.
 
 ## Service principals and automation
 
