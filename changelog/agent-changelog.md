@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* When public geolocation services are blocked, the agent still records the device's country through Microsoft's Delivery Optimization service
 * Devices accepted by the new Intune Enrollment Validation register correctly, so device preparation without pre-registration can be monitored
 * The session timeline shows when a downloaded app is waiting for its install deadline and when an app install was postponed because the app was in use
 * A script's run time is no longer inflated by hours, and no false timeout warning follows, when Intune's log lines disagree on the time zone; a run time that cannot be measured reliably is left out

@@ -2,6 +2,9 @@
 
 ## 2026-09-25
 
+* **Update**: `trust/data-flows.md` — IP geolocation row: Microsoft's Delivery Optimization geo endpoint as last-resort fallback, country only.
+* **Update**: `changelog/agent-changelog.md` — September 2026: the device's country is recorded through Delivery Optimization when public geolocation services are blocked.
+
 * **New**: `integrations/ai-integration-mcp.md` — section **Your own app on behalf of users** and a fourth row in **Ways to connect**: a client that signs users in through its own app registration (on-behalf-of, in-house tools) needs the delegated permission `access_as_user` with admin consent and is added as a member (Service principal form); users keep their own identity, role and budget but are read-only through it; removing the member entry ends access within about two minutes; two refusal causes. Prerequisites name it; the self-hosted troubleshooting bullet on on-behalf-of points to it.
 * **Update**: `concepts/roles-and-permissions.md`, `reference/settings.md` — the service-principal member entry also admits an app of your own whose users connect through it, read-only for them.
 * **Update**: `trust/security-faq.md` — token validation checks the requesting application (own portal and MCP sign-in, or a member application; read-only through it); MCP authentication and the AI-provider answer describe apps of your own.
