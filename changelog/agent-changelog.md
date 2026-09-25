@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* Devices accepted by the new Intune Enrollment Validation register correctly, so device preparation without pre-registration can be monitored
 * The session timeline shows when a downloaded app is waiting for its install deadline and when an app install was postponed because the app was in use
 * A script's run time is no longer inflated by hours, and no false timeout warning follows, when Intune's log lines disagree on the time zone; a run time that cannot be measured reliably is left out
 * Remediation scripts that Intune re-runs on a schedule appear once with a summary of the repeats, and again whenever their result changes

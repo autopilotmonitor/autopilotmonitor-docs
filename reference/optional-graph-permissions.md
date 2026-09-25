@@ -14,6 +14,7 @@ Autopilot Monitor's default Microsoft Graph permissions are intentionally minima
 | --- | --- | --- |
 | `ScriptDisplayNames` | Resolves Intune Platform Script + Remediation Script display names in session timelines | `DeviceManagementScripts.Read.All` |
 | `W365CloudPcValidation` | Validates [Windows 365 Cloud PCs](../getting-started/windows-365-cloud-pcs.md) against the tenant's Cloud PC inventory — Cloud PCs are never Autopilot-registered, so this enables monitoring of Cloud PC first-connect enrollment | `CloudPC.Read.All` |
+| `IntuneDeviceBinding` | Backs **Intune Enrollment Validation**: accepts devices enrolled in your tenant's Intune without any pre-registration, matched by the Intune device id from the device's MDM certificate (see [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#without-pre-registration)) | `DeviceManagementManagedDevices.Read.All` |
 
 The **Feature** column values are exactly what the grant script's `-Features` parameter accepts; the meta-value `All` selects every feature in the table at once.
 

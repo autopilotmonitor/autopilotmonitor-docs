@@ -2,6 +2,12 @@
 
 ## 2026-09-25
 
+* **New**: `getting-started/autopilot-device-preparation.md` — section **Without pre-registration**: grant the `IntuneDeviceBinding` add-on, enable **Intune Enrollment Validation**; the device is identified by the Intune device id in its MDM certificate and must be enrolled in the tenant; warning that personal devices are accepted when enrollment restrictions allow them; sessions show **Intune Enrollment**.
+* **Update**: `reference/settings.md`, `reference/optional-graph-permissions.md` — Intune Enrollment Validation row; `IntuneDeviceBinding` feature (`DeviceManagementManagedDevices.Read.All`) in the add-on table.
+* **Update**: `trust/security-faq.md` — the Graph device check lists every validation method, including the Intune enrollment of the certificate's device; Last reviewed 25 September 2026.
+* **Update**: `changelog/platform-changelog.md` — September 2026: device preparation without pre-registration; the validation banner warns only when no method is enabled.
+* **Update**: `changelog/agent-changelog.md` — September 2026: devices accepted by Intune Enrollment Validation register correctly.
+
 * **Update**: `integrations/ai-integration-mcp.md`, `reference/settings.md`, `changelog/platform-changelog.md` — self-hosted AI clients are described as clients "your organization hosts itself" instead of "runs on its own servers": on premises or in the cloud makes no difference, the client's own domain does; one term with the prerequisites and the security FAQ.
 
 ## 2026-09-24

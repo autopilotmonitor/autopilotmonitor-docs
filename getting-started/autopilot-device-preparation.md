@@ -30,7 +30,7 @@ Two structural differences matter for monitoring:
    3. **Win32, Microsoft Store and Enterprise App Catalog apps**
 
    Each phase starts only after the previous one succeeded. An agent delivered by a platform script therefore arrives after Microsoft 365 Apps have installed.
-2. **Devices are never Autopilot-registered.** Device Preparation does not use Windows Autopilot device identities, so [Autopilot Device Validation](../reference/settings.md#enrollment-device-validation) can never match these devices. Validate them through **device association** or **Corporate Identifiers** instead — see below.
+2. **Devices are never Autopilot-registered.** Device Preparation does not use Windows Autopilot device identities, so [Autopilot Device Validation](../reference/settings.md#enrollment-device-validation) can never match these devices. Validate them through **device association** or **Corporate Identifiers** instead, or **without pre-registration** through their Intune enrollment — see below.
 
 ## Deploy the agent as an MSI line-of-business app
 
@@ -71,6 +71,21 @@ If you do not use device association, register the devices as **corporate device
 2. **Turn on the validation:** in **Settings → Enrollment Device Validation**, enable **Corporate Identifier Validation**. It uses the same read-only Graph permission as Autopilot Device Validation — no additional consent.
 
 Formatting differences between your CSV and what the device reports (upper/lower case, hyphens in serial numbers) are handled: values are matched the way Intune normalizes them.
+
+## Without pre-registration
+
+If you register no devices up front, validate them by their Intune enrollment instead:
+
+1. **Grant the add-on permission:** under **Settings → Tenant → Optional Graph capabilities**, grant the `IntuneDeviceBinding` feature. It adds the read-only permission `DeviceManagementManagedDevices.Read.All`. See [Optional Graph Permissions](../reference/optional-graph-permissions.md).
+2. **Turn on the validation:** in **Settings → Enrollment Device Validation**, enable **Intune Enrollment Validation**.
+
+The device is identified by the Intune device id in its MDM certificate, and it must be enrolled in your tenant's Intune. Nothing is pre-registered and no serial number is involved. Until the permission is granted, no device is accepted this way.
+
+{% hint style="warning" %}
+This method accepts every device your Intune tenant lets enroll. If your enrollment restrictions allow personal Windows devices, those are monitored too. For corporate devices only, block personal enrollment in Intune, or use device association or Corporate Identifiers.
+{% endhint %}
+
+Sessions accepted this way show **Intune Enrollment** as the validation method in the session details.
 
 ## What you see in the portal
 

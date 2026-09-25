@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 24 September 2026 · Next review: 2 February 2027.**
+**Last reviewed: 25 September 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -111,7 +111,7 @@ The Function App runs with `clientCertMode = Required`. Validation is intentiona
 * If no trust anchors load, validation **fails closed** — the service rejects everything rather than accepting anything.
 * Rejections are recorded with structured reasons, so an enrollment that fails authentication is diagnosable without guesswork.
 
-On top of the certificate, the device is checked against **Microsoft Graph** — only devices actually registered as Autopilot devices in your tenant are accepted — and optionally against a hardware allow-list you maintain.
+On top of the certificate, the device is checked against **Microsoft Graph** with the validation methods you enable: Autopilot registration, corporate identifiers, device association, the Windows 365 Cloud PC inventory, or the Intune enrollment of the certificate's device. Only devices your tenant knows are accepted. Optionally, a hardware allow-list you maintain applies on top.
 
 #### How do portal users authenticate?
 

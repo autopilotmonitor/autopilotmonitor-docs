@@ -16,6 +16,8 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Monitor Autopilot device preparation without pre-registration** — The new **Intune Enrollment Validation** accepts devices enrolled in your Intune tenant, matched by the device's MDM certificate. No Autopilot hash, corporate identifier or device association is needed. It needs the optional `IntuneDeviceBinding` Graph permission. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#without-pre-registration).
+* **Validation banner for device preparation tenants** — The dashboard warns only when no validation method is enabled. Tenants that validate by device association alone no longer see it.
 * **Link straight to a device in the Progress Portal** — `/progress?serial=<serial number>` opens the page with that device already looked up, so you can send users a link to follow their own device. Sign-in and the serial check stay as they are. See [Progress Portal](../portal-guide/progress-portal.md#link-straight-to-a-device).
 * **AI Integration in the tenant settings** — Settings → Tenant → AI Integration shows the MCP server URL for Claude, ChatGPT and VS Code. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#client-setup).
 * **Connect a self-hosted AI client** — For an AI client your organization hosts itself, a Tenant Admin registers its callback URL under Settings → Tenant → AI Integration. The client then uses the normal browser sign-in, limited to your tenant's accounts. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#self-hosted-ai-clients).
