@@ -8,6 +8,10 @@
 * **Update**: `changelog/platform-changelog.md` — September 2026: device preparation without pre-registration; the validation banner warns only when no method is enabled.
 * **Update**: `changelog/agent-changelog.md` — September 2026: devices accepted by Intune Enrollment Validation register correctly.
 
+* **Update**: `integrations/ai-integration-mcp.md` — self-hosted AI clients: refresh tokens are handed out only encrypted and bound to the registration, so deleting the registration also ends copies taken from the client's storage; Protocol support gains a paragraph on token lifetimes (Entra's) and how to end a person's access (role, block, Entra session revocation; a user's password change alone does not).
+* **Update**: `trust/security-faq.md` — MCP authentication: sealed refresh tokens of self-hosted clients, Entra token lifetimes, how blocking and session revocation end access.
+* **Update**: `changelog/platform-changelog.md` — September 2026, self-hosted AI client entry: deleting the registration also ends copied refresh tokens.
+
 * **Update**: `integrations/ai-integration-mcp.md`, `reference/settings.md`, `changelog/platform-changelog.md` — self-hosted AI clients are described as clients "your organization hosts itself" instead of "runs on its own servers": on premises or in the cloud makes no difference, the client's own domain does; one term with the prerequisites and the security FAQ.
 
 ## 2026-09-24
