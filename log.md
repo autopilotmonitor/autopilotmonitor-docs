@@ -2,6 +2,8 @@
 
 ## 2026-09-28
 
+* **Update**: `trust/security-faq.md` — device authentication: each enrollment session is bound to the device that started it (Intune certificate identity, or bootstrap code and serial number until the certificate takes over); no other device of the tenant can write into it; a device re-enrolled without a wipe with a new Intune identity starts a new session. Last reviewed 28 September 2026.
+
 * **Update**: `reference/optional-graph-permissions.md` — the grant script needs Global Administrator or Privileged Role Administrator; Application Administrator and Cloud Application Administrator cannot grant Microsoft Graph application permissions. Troubleshooting row for a grant or revoke refused with 403 (`Authorization_RequestDenied`).
 * **Update**: `troubleshooting/app-registration-migration.md` — Optional Graph add-on permissions and the "One more step" FAQ: the same two roles.
 

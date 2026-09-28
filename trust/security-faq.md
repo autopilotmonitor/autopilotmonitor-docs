@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 25 September 2026 · Next review: 2 February 2027.**
+**Last reviewed: 28 September 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -112,6 +112,8 @@ The Function App runs with `clientCertMode = Required`. Validation is intentiona
 * Rejections are recorded with structured reasons, so an enrollment that fails authentication is diagnosable without guesswork.
 
 On top of the certificate, the device is checked against **Microsoft Graph** with the validation methods you enable: Autopilot registration, corporate identifiers, device association, the Windows 365 Cloud PC inventory, or the Intune enrollment of the certificate's device. Only devices your tenant knows are accepted. Optionally, a hardware allow-list you maintain applies on top.
+
+Passing these checks makes a device a member of your tenant, not the owner of every enrollment in it. Each enrollment session is **bound to the device that started it**: to its Intune certificate identity, or, for a device started with a [bootstrap code](../reference/bootstrap-script-and-tokens.md), to that code and the device's serial number until the certificate takes over. No other device can write into the session, not even a device of your own tenant. A device that is re-enrolled without a wipe and receives a new Intune identity therefore starts a new session instead of continuing its old one.
 
 #### How do portal users authenticate?
 
