@@ -2,6 +2,9 @@
 
 ## 2026-09-28
 
+* **Update**: `reference/optional-graph-permissions.md` — the grant script needs Global Administrator or Privileged Role Administrator; Application Administrator and Cloud Application Administrator cannot grant Microsoft Graph application permissions. Troubleshooting row for a grant or revoke refused with 403 (`Authorization_RequestDenied`).
+* **Update**: `troubleshooting/app-registration-migration.md` — Optional Graph add-on permissions and the "One more step" FAQ: the same two roles.
+
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Installs: RealmJoin packages appear next to Intune apps with a RealmJoin pill and an All / Intune / RealmJoin filter (RealmJoin Watcher on); their version is the package version; RealmJoin packages deployed as Intune apps appear as those Intune apps; they count in app details, Fleet Health, SLA and the duration regression banner; the Inventory tab is unchanged.
 * **Update**: `portal-guide/sla-compliance.md` — the app install success rate counts Intune apps and, with the RealmJoin Watcher on, RealmJoin packages.
 * **Update**: `reference/settings.md` — RealmJoin Watcher row: its packages also appear in the Software view.

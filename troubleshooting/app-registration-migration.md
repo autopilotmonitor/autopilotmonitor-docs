@@ -71,7 +71,7 @@ The new enterprise application appears in your tenant as soon as the first user 
 
 [Optional Graph permissions](../reference/optional-graph-permissions.md) — for example `DeviceManagementScripts.Read.All` for script display names or `CloudPC.Read.All` for [Windows 365 Cloud PC validation](../getting-started/windows-365-cloud-pcs.md) — are tenant-side grants on the service principal of the app your tenant runs on. They are not part of the admin consent, so consenting to the new app does not carry them over, and the portal does **not** switch your tenant while the new app lacks a permission the previous app holds: the feature it powers would silently stop working.
 
-You do not have to work this out yourself. After the consent, **Settings → Autopilot Validation** shows **One more step** with exactly the permissions the new app still lacks and a PowerShell command that grants them on the new app (`886ab5e2-…`). Run it once with an account that can assign application permissions (Global Administrator, Privileged Role Administrator or Cloud Application Administrator — Azure Cloud Shell is the easiest place), then click **Detect existing access**. The switch completes automatically.
+You do not have to work this out yourself. After the consent, **Settings → Autopilot Validation** shows **One more step** with exactly the permissions the new app still lacks and a PowerShell command that grants them on the new app (`886ab5e2-…`). Run it once, signed in as a Global Administrator or Privileged Role Administrator (only these roles can grant Microsoft Graph application permissions; Azure Cloud Shell is the easiest place), then click **Detect existing access**. The switch completes automatically.
 
 {% hint style="info" %}
 Use the command from that banner, not the one on **Settings → Optional Graph capabilities**: until the switch, that page pre-fills the client ID of the app your tenant currently runs on — the previous one. After the switch it targets the new app for any further grants.
@@ -146,7 +146,7 @@ That is almost always the consent propagation window — Microsoft can take a mi
 
 <summary>I granted the consent, but the portal shows "One more step" and lists Graph permissions.</summary>
 
-Your tenant granted the previous app one or more [optional Graph add-on permissions](#optional-graph-add-on-permissions), and the new app does not hold them yet. The portal holds the switch so the feature they power keeps working. Copy the command shown in the banner (it targets the new app's ID `886ab5e2-…` and exactly those permissions), run it once with an account that can assign application permissions, then click **Detect existing access**. If the banner persists right after running the script, wait a minute — Microsoft's grant can take a moment to reach token requests — and click **Detect existing access** again.
+Your tenant granted the previous app one or more [optional Graph add-on permissions](#optional-graph-add-on-permissions), and the new app does not hold them yet. The portal holds the switch so the feature they power keeps working. Copy the command shown in the banner (it targets the new app's ID `886ab5e2-…` and exactly those permissions), run it once signed in as a Global Administrator or Privileged Role Administrator, then click **Detect existing access**. If the banner persists right after running the script, wait a minute — Microsoft's grant can take a moment to reach token requests — and click **Detect existing access** again.
 
 </details>
 

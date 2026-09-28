@@ -34,7 +34,7 @@ Behind the scenes:
 ## Prerequisites
 
 - The Autopilot Monitor multi-tenant app must already be admin-consented in your tenant. Without that, the service principal doesn't exist yet and the script has nothing to grant against.
-- The signed-in admin needs one of: **Global Administrator**, **Privileged Role Administrator**, or **Cloud Application Administrator** (sufficient for `AppRoleAssignment.ReadWrite.All` + `Application.Read.All`).
+- The signed-in admin needs **Global Administrator** or **Privileged Role Administrator** (PIM/JIT users: activate the role first). Only these roles can grant Microsoft Graph application permissions; **Application Administrator** and **Cloud Application Administrator** cannot.
 - The `Microsoft.Graph.Authentication` PowerShell module. The script auto-installs it for the current user if missing.
 
 ## Downloading the script
@@ -110,6 +110,7 @@ Use the script's `-Revoke` flag, or remove the assignment manually in the Entra 
 | --- | --- |
 | Script errors with `Service principal not found` | The Autopilot Monitor app has never been admin-consented in your tenant. Run the consent flow first. |
 | `AppRoleAssignment.ReadWrite.All` was NOT granted in the sign-in scopes line (interactive sign-in) | Signed-in user lacks one of the required admin roles. PIM/JIT users: activate the eligible role before running the script. |
+| A grant or revoke fails with `Forbidden` or `Authorization_RequestDenied: Insufficient privileges to complete the operation.` (403) | The signed-in account may not manage Microsoft Graph application permissions (for example Application Administrator, Cloud Application Administrator or Intune Administrator). Sign in as Global Administrator or Privileged Role Administrator (PIM/JIT: activate the role first) and run the script again. |
 | Interactive sign-in is blocked by Conditional Access (device-code flow) | Run the script in Azure Cloud Shell — it uses the ambient Cloud Shell identity and needs no device-code sign-in. |
 | Permission shows as granted in the UI but the backend still sees it as not granted | The backend's per-tenant token cache hasn't refreshed yet. Click **Refresh permission status** in the admin UI. |
 | Permission grant succeeds but the optional feature still doesn't activate | Verify the granted permission via `Get-MgServicePrincipalAppRoleAssignment` and recheck the admin UI status panel. If still inconsistent, send the correlation IDs from the relevant calls to support. |
