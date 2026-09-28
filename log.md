@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-28 (3)
+
+* **Update**: `changelog/agent-changelog.md` — September 2026: the 48-hour emergency brake entry on the session timeline shows the session's age.
+
 ## 2026-09-28 (2)
 
 * **Update**: `changelog/platform-changelog.md` — September 2026: enrollment sessions are bound to the device that started them.

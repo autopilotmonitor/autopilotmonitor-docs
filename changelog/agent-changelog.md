@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* The session timeline entry for the 48-hour emergency brake shows how old the enrollment session was when it fired
 * A device moved to another organization without a wipe now starts a new session instead of stopping monitoring
 * When public geolocation services are blocked, the agent still records the device's country through Microsoft's Delivery Optimization service
 * Devices accepted by the new Intune Enrollment Validation register correctly, so device preparation without pre-registration can be monitored
