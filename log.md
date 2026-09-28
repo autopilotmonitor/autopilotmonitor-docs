@@ -1,5 +1,10 @@
 # Log
 
+## 2026-09-28 (2)
+
+* **Update**: `changelog/platform-changelog.md` — September 2026: enrollment sessions are bound to the device that started them.
+* **Update**: `changelog/agent-changelog.md` — September 2026: a device moved to another organization without a wipe starts a new session.
+
 ## 2026-09-28
 
 * **Update**: `trust/security-faq.md` — device authentication: each enrollment session is bound to the device that started it (Intune certificate identity, or bootstrap code and serial number until the certificate takes over); no other device of the tenant can write into it; a device re-enrolled without a wipe with a new Intune identity starts a new session. Last reviewed 28 September 2026.
