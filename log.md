@@ -1,5 +1,12 @@
 # Log
 
+## 2026-09-28
+
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Installs: RealmJoin packages appear next to Intune apps with a RealmJoin pill and an All / Intune / RealmJoin filter (RealmJoin Watcher on); their version is the package version; RealmJoin packages deployed as Intune apps appear as those Intune apps; they count in app details, Fleet Health, SLA and the duration regression banner; the Inventory tab is unchanged.
+* **Update**: `portal-guide/sla-compliance.md` — the app install success rate counts Intune apps and, with the RealmJoin Watcher on, RealmJoin packages.
+* **Update**: `reference/settings.md` — RealmJoin Watcher row: its packages also appear in the Software view.
+* **Update**: `changelog/platform-changelog.md` — September 2026: RealmJoin packages in the Software view.
+
 ## 2026-09-25
 
 * **Update**: `trust/data-flows.md` — IP geolocation row: Microsoft's Delivery Optimization geo endpoint as last-resort fallback, country only.

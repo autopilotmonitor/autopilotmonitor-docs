@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **RealmJoin packages in the Software view** — Packages the RealmJoin agent installs during enrollment now appear under Software → Installs next to your Intune apps, with a RealmJoin label and a filter. They count in the app reports and the app install SLA. Needs the RealmJoin Watcher setting. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#installs).
 * **Apps that send a user's token must be members** — A user's token is now accepted only when the portal, the MCP sign-in or an app a Tenant Admin added under Settings → Access Management requested it. Through such an app, for example a self-hosted AI client in on-behalf-of mode, users can only read. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users).
 * **Monitor Autopilot device preparation without pre-registration** — The new **Intune Enrollment Validation** accepts devices enrolled in your Intune tenant, matched by the device's MDM certificate. No Autopilot hash, corporate identifier or device association is needed. It needs the optional `IntuneDeviceBinding` Graph permission. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#without-pre-registration).
 * **Validation banner for device preparation tenants** — The dashboard warns only when no validation method is enabled. Tenants that validate by device association alone no longer see it.

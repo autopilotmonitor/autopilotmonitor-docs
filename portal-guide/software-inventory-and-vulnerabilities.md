@@ -16,6 +16,7 @@ The app-install health view across all enrollments:
 
 * Stat cards (total apps, total installs, average failure rate) and a **Delivery Optimization rollup** — peer offload percentage, bytes saved via peers and Connected Cache, and a sourcing breakdown.
 * A sortable **apps table**: app (with type badge — Win32, MSI, WinGet, …), installs, succeeded/failed, failure rate (red at ≥ 20 %), average install time (the final install attempt — see [Fleet Health](fleet-health.md) for what counts), and a **trend** arrow (improving/worsening in percentage points).
+* **RealmJoin packages** — With the [RealmJoin Watcher](../reference/settings.md#agent-collectors) on, packages the RealmJoin agent installs during enrollment appear next to your Intune apps with a **RealmJoin** pill. A filter (All / Intune / RealmJoin) appears once both are present. Their version is the RealmJoin package version. A RealmJoin package you deploy as an Intune app appears as that Intune app. RealmJoin packages count in the app details, Fleet Health, the [SLA](sla-compliance.md) and the duration regression banner; the Inventory tab still comes from the analyzer alone.
 
 ### Per-app deep dive
 

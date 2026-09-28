@@ -103,7 +103,7 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | Setting | Default | Description |
 | --- | --- | --- |
 | Performance Collector | Enabled, 30 s | Periodic CPU/memory/disk/network snapshots (interval 30–300 s). Core collectors (enrollment tracking, Windows Hello detector) are always active. |
-| RealmJoin Watcher | Disabled | Tracks the RealmJoin client during provisioning — client version and release channel, deployment-phase changes, and per-package start and completion — so RealmJoin packages appear as their own rows in [Install Progress](../portal-guide/session-details-and-diagnosis.md) and the enrollment is not reported complete while a RealmJoin deployment is still running (bounded by a safety timeout that extends while packages are still installing). Enable only for tenants that provision devices with RealmJoin; elsewhere it produces no signal. |
+| RealmJoin Watcher | Disabled | Tracks the RealmJoin client during provisioning — client version and release channel, deployment-phase changes, and per-package start and completion — so RealmJoin packages appear as their own rows in [Install Progress](../portal-guide/session-details-and-diagnosis.md) and in the [Software](../portal-guide/software-inventory-and-vulnerabilities.md#installs) view, and the enrollment is not reported complete while a RealmJoin deployment is still running (bounded by a safety timeout that extends while packages are still installing). Enable only for tenants that provision devices with RealmJoin; elsewhere it produces no signal. |
 | Hello Wait Timeout | 30 s | How long to wait for the Windows Hello wizard after ESP exit (30–300 s) before proceeding with completion. |
 
 ### Agent Analyzers

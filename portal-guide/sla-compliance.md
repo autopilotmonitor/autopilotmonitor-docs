@@ -31,7 +31,7 @@ Targets are defined under **Settings → Tenant → SLA Targets** (the page link
 | Element | Period |
 | --- | --- |
 | Banner, **Enrollment Success Rate** and **P95 Enrollment Duration** gauges | The last 30 days, rolling — finished enrollments only (succeeded or failed). |
-| **App Install Success Rate** gauge, Top Failing Apps, App Install Summary | The current ISO week. Shown once the week has at least 5 install attempts; skipped apps don't count. |
+| **App Install Success Rate** gauge, Top Failing Apps, App Install Summary | The current ISO week. Shown once the week has at least 5 install attempts; skipped apps don't count. Intune apps and, with the RealmJoin Watcher on, RealmJoin packages count. |
 | **This week** stat cards | The current ISO week (Monday to Sunday, UTC). |
 | Weekly trend, SLA Violators | The selected 1/3/6-month window. |
 
