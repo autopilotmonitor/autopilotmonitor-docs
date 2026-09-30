@@ -1,5 +1,9 @@
 # Log
 
+## 2026-09-30
+
+* **Update**: `reference/settings.md` — Hello Wait Timeout row: default 300 s, range 30–3600 s; values up to 300 s use the built-in 5-minute wait, larger values extend it up to one hour.
+
 ## 2026-09-28 (3)
 
 * **Update**: `changelog/agent-changelog.md` — September 2026: the 48-hour emergency brake entry on the session timeline shows the session's age.
