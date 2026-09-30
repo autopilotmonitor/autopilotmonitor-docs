@@ -1,5 +1,10 @@
 # Log
 
+## 2026-09-30 (2)
+
+* **Update**: `changelog/platform-changelog.md` — September 2026: Hello Wait Timeout accepts 30 to 3600 seconds.
+* **Update**: `changelog/agent-changelog.md` — September 2026: the agent waits up to one hour for Windows Hello under a raised Hello Wait Timeout; such an enrollment is not reported as stalled during the wait.
+
 ## 2026-09-30
 
 * **Update**: `reference/settings.md` — Hello Wait Timeout row: default 300 s, range 30–3600 s; values up to 300 s use the built-in 5-minute wait, larger values extend it up to one hour.

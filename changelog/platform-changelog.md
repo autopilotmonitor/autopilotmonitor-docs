@@ -16,6 +16,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## September 2026
 
+* **Hello Wait Timeout up to one hour** — The setting under Settings → Agent now accepts 30 to 3600 seconds. Values up to 300 seconds keep the 5-minute wait, larger values extend it. See [Settings Reference](../reference/settings.md#agent-collectors).
 * **Enrollment sessions are bound to the device that started them** — No other device can write into a session, not even one of your own tenant. A device re-enrolled without a wipe now starts a new session instead of continuing the old one. See [Security & Privacy FAQ](../trust/security-faq.md#how-does-a-device-prove-it-is-allowed-to-send-data).
 * **RealmJoin packages in the Software view** — Packages the RealmJoin agent installs during enrollment now appear under Software → Installs next to your Intune apps, with a RealmJoin label and a filter. They count in the app reports and the app install SLA. Needs the RealmJoin Watcher setting. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#installs).
 * **Apps that send a user's token must be members** — A user's token is now accepted only when the portal, the MCP sign-in or an app a Tenant Admin added under Settings → Access Management requested it. Through such an app, for example a self-hosted AI client in on-behalf-of mode, users can only read. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users).

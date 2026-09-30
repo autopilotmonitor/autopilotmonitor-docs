@@ -18,6 +18,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## September 2026
 
+* The agent waits up to one hour for Windows Hello when the Hello Wait Timeout setting is raised above five minutes
+* An enrollment that is waiting for Windows Hello under a longer timeout is not reported as stalled during the wait
 * White Glove devices with the user phase enabled in the Enrollment Status Page are recognized reliably, so the user's part is still monitored when the device is handed out days later
 * The 48-hour emergency brake report now says why earlier agent starts could not register the session, such as a missing network connection
 * The Enrollment Status Page registry details on the timeline no longer label a step that every Windows 11 25H2 enrollment writes as a White Glove signal
