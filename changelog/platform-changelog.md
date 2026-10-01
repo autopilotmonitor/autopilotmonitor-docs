@@ -17,6 +17,7 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 ## October 2026
 
 * **A clearer Vulnerabilities view** — Software → Vulnerabilities shows the CVEs by severity in a donut with the remediation priority below it, and the most exposed software with each product's most urgent CVEs. Known-exploited CVEs stay in the list even when they affect only a few devices. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#vulnerabilities).
+* **AI integration filters by your gather rules' event types** — The event tools accept the output event type of your own gather rules. An empty result for a type that is not built in names the closest built-in types. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#available-tools).
 
 ## September 2026
 

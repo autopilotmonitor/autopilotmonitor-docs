@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-01 (5)
+
+* **Update**: `changelog/agent-changelog.md` — October 2026: Log Parser gather rules continue after reboots and agent restarts, skip no lines at the line limit and read UTF-16 logs; On change rules stay silent after a reboot; user-profile rules find the profile after sign-in without an agent restart.
+* **Update**: `changelog/platform-changelog.md` — October 2026: the AI integration filters by gather rules' own event types.
+
 ## 2026-10-01 (4)
 
 * **Update**: `rules/gather-rules.md` — Log Parser: each rule remembers per log how far it has read, also across reboots and agent restarts; a replaced log is read from the beginning, an unfinished line waits for the next run of an interval rule, UTF-16 logs are supported. Emit mode On change: the comparison holds across reboots and agent restarts; `suppressedPolls` counts from the last agent start.
