@@ -54,7 +54,7 @@ Yes. [Delegated administration](concepts/roles-and-permissions.md) gives an MSP 
 
 ### Can I ask an AI assistant about my enrollments?
 
-Yes. Connect Claude Desktop, VS Code with Claude, or any MCP client to the [Autopilot Monitor MCP server](integrations/ai-integration-mcp.md) and ask questions like "show me all failed enrollments from the last 24 hours". Access follows your portal role and is scoped to your tenant.
+Yes. Connect Claude, ChatGPT, VS Code with GitHub Copilot, or a command-line client such as Claude Code, Codex or Gemini CLI to the [Autopilot Monitor MCP server](integrations/ai-integration-mcp.md) and ask questions like "show me all failed enrollments from the last 24 hours". An AI client your organization hosts itself is registered once by a Tenant Admin. Access follows your portal role, with usage limits tied to the tenant's plan.
 
 ### Where is my data stored, and what does the agent do on the device?
 

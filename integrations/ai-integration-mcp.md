@@ -2,13 +2,13 @@
 type: Integration Guide
 tags: [mcp, ai, integration]
 description: >-
-  Query your enrollment data in natural language — connect Claude or any MCP
-  client to the Autopilot Monitor MCP server.
+  Query your enrollment data in natural language — connect Claude, ChatGPT,
+  VS Code or a command-line AI client to the Autopilot Monitor MCP server.
 ---
 
 # AI Integration (MCP)
 
-Autopilot Monitor exposes a **Model Context Protocol (MCP)** server that lets AI assistants query enrollment data conversationally: *"show me all failed enrollments from the last 24 hours"*, *"why did session X fail?"*, *"which devices are affected by CVE-2024-30078?"*. Connect Claude Desktop, VS Code with Claude, or any MCP client supporting Streamable HTTP.
+Autopilot Monitor exposes a **Model Context Protocol (MCP)** server that lets AI assistants query enrollment data conversationally: *"show me all failed enrollments from the last 24 hours"*, *"why did session X fail?"*, *"which devices are affected by CVE-2024-30078?"*. Connect Claude, ChatGPT, VS Code with GitHub Copilot, or a command-line client such as Claude Code — see [Supported AI clients](#supported-ai-clients).
 
 ## How it works
 
@@ -16,7 +16,7 @@ Autopilot Monitor exposes a **Model Context Protocol (MCP)** server that lets AI
 AI client  →  MCP server  →  Backend API  →  Your data
 ```
 
-Your existing sign-in token is forwarded with every request — the MCP server stores no credentials, and all data access is scoped to your tenant exactly like in the portal.
+Your existing sign-in token is forwarded with every request — the MCP server stores no credentials, and the backend authorizes every request exactly like in the portal: the assistant sees what your role allows.
 
 ## Ways to connect
 
@@ -53,9 +53,9 @@ Another hosted AI service can be added on request after a review. An AI client y
 
 ### Setting up a client
 
-* **Claude Desktop:** Settings → MCP Servers → Add, enter the URL. OAuth authentication runs automatically in the browser.
+* **Claude** (web and desktop app): **Customize → Connectors → + → Add custom connector**, enter the URL. On Team and Enterprise plans an owner adds the connector once under **Organization settings → Connectors**; each member then connects it with their own account. OAuth authentication runs automatically in the browser.
 * **In the portal:** **Settings → Tenant → AI Integration** shows the server URL to copy. Hosted assistants such as Claude, ChatGPT and VS Code need nothing registered there.
-* **VS Code (Claude extension):** add to `.vscode/mcp.json` or user settings:
+* **VS Code** (including GitHub Copilot): add to `.vscode/mcp.json` in your workspace, or run **MCP: Open User Configuration** to use it in every workspace:
 
 ```json
 {
@@ -72,7 +72,7 @@ Another hosted AI service can be added on request after a review. An AI client y
 
 Tool results are compact JSON by default because indentation costs your assistant tokens on every call. If you read raw results yourself (for example in an IDE), send the request header `X-MCP-Pretty: 1` and the server returns indented JSON for that client only.
 
-* **VS Code (Claude extension):** add a `headers` object to the server entry:
+* **VS Code:** add a `headers` object to the server entry:
 
 ```json
 {
@@ -120,15 +120,15 @@ If the connect hangs or fails after the Microsoft sign-in succeeded, it is almos
 
 | Category | Tools |
 | --- | --- |
-| **Search & Discovery** | `search_sessions` (by status, device properties, serial, model, OS, location…) · `search_sessions_by_event` · `search_sessions_by_cve` · `search_events` (hybrid keyword + semantic — finds "machine restarted unexpectedly" without literal word overlap) · `search_knowledge` (semantic search over your rules and IME patterns; an error code in the query also returns its catalog entry) · `lookup_error_code` (explains one Windows, MSI, Windows Update, AppX or Intune error code by hex, decimal, symbol or IME enforcement state) · `search_docs` (semantic search over this documentation) |
-| **Session Analysis** | `get_session_summary` (the best starting point: overview, observation coverage with a `gaps` list of what the agent could not see, key events, rule analysis, annotations, stats) · `get_session` · `get_session_events` |
+| **Search & Discovery** | `search_sessions` (by status, device properties, serial, model, OS, location…) · `search_sessions_by_event` · `search_sessions_by_cve` · `search_events` (hybrid keyword + semantic — finds "machine restarted unexpectedly" without literal word overlap) · `search_knowledge` (semantic search over the built-in analysis rules, gather rules and IME log patterns; an error code in the query also returns its catalog entry) · `lookup_error_code` (explains one Windows, MSI, Windows Update, AppX or Intune error code by hex, decimal, symbol or IME enforcement state) · `search_docs` (semantic search over this documentation) |
+| **Session Analysis** | `get_session_summary` (the best starting point: overview, observation coverage with a `gaps` list of what the agent could not see, key events, rule analysis, annotations, stats) · `get_session` · `get_session_events` · `get_session_diagnostics` (a short-lived download link for the session's diagnostics package, if one was uploaded; clients with file access such as Claude Code unpack and search it, chat apps hand you the link) |
 | **Metrics & Observability** | `get_metrics` · `get_app_install_metrics` (incl. Delivery Optimization rollup) · `get_time_attribution` (where enrollment time goes — one session or the fleet) · `get_device_history` (a device's enrollment attempts, or the fleet's first-time-right rate) · `get_geographic_metrics` / `get_geographic_sessions` · `get_vulnerability_summary` · `get_rule_stats` (incl. active rule regressions) · `get_ime_version_history` · `get_usage_metrics` |
 | **Inventory & Audit** | `get_software_inventory` · `get_audit_logs` |
 | **Raw Data** | `query_raw_events` · `query_raw_sessions` · `get_resource` (discovery catalogs) |
 
 Two **discovery resources** help the assistant use the right vocabulary: `event_types` (every event type string, by category) and `device_properties` (dot-notation property keys like `tpm_status.specVersion` or `hardware_spec.ramTotalGB`).
 
-`search_docs` searches this documentation site, so the assistant can answer product questions — setup, roles, settings, notifications, security and privacy — and cite the page it used. It is a separate corpus from `search_knowledge`: ask *"how does X work?"* and it answers from the docs; ask *"why did this enrollment fail?"* and it reaches for your rules and session data instead.
+`search_docs` searches this documentation site, so the assistant can answer product questions — setup, roles, settings, notifications, security and privacy — and cite the page it used. It is a separate corpus from `search_knowledge`: ask *"how does X work?"* and it answers from the docs; ask *"why did this enrollment fail?"* and it reaches for the built-in rules and your session data instead.
 
 ## Example prompts
 

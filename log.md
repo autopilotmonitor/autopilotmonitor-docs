@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-01
+
+* **Update**: `integrations/ai-integration-mcp.md` — Intro and description name the supported AI clients instead of "any MCP client". Claude is set up as a custom connector, on Team and Enterprise by an organization owner. The VS Code entries no longer say "Claude extension" and show the user configuration. `search_knowledge` searches the built-in rule catalog, `get_session_diagnostics` is listed, and access is described as what the portal role allows.
+* **Update**: `README.md` — FAQ "Can I ask an AI assistant about my enrollments?": the documented clients, self-hosted clients registered by a Tenant Admin, usage limits per plan; no longer "scoped to your tenant".
+* **Update**: `getting-started/how-it-works.md` — The MCP server row names the supported AI clients instead of "any MCP client".
+
 ## 2026-09-30 (2)
 
 * **Update**: `changelog/platform-changelog.md` — September 2026: Hello Wait Timeout accepts 30 to 3600 seconds.

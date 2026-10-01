@@ -20,7 +20,7 @@ Five components work together:
 | **Monitoring agent** | On the device, during enrollment | A lightweight .NET application that collects enrollment telemetry in real time and removes itself when enrollment completes |
 | **Backend** | Cloud (Azure) | Receives, validates, and stores telemetry; runs the analyze-rule engine against every session |
 | **Web portal** | Browser | Live dashboard, session timelines, rule findings, fleet analytics, and all configuration |
-| **MCP server** | Cloud (Azure), optional | Lets AI assistants — Claude or any MCP client — query your enrollment data read-only, with access following your portal role; see [AI Integration (MCP)](../integrations/ai-integration-mcp.md) |
+| **MCP server** | Cloud (Azure), optional | Lets AI assistants such as Claude, ChatGPT or GitHub Copilot in VS Code query your enrollment data read-only, with access following your portal role; see [AI Integration (MCP)](../integrations/ai-integration-mcp.md) |
 
 ## The flow of an enrollment
 
