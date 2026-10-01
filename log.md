@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-01 (3)
+
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Vulnerabilities: selecting a band also lists that band's own entries on the most devices, so a band with CVEs never shows an empty list.
+
 ## 2026-10-01 (2)
 
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Vulnerabilities: KPI tiles with known-exploited devices and exposed software, a severity donut and the remediation priority as list filters, and a Most exposed list with Software and CVEs views; known-exploited entries stay listed; in the lists the KEV badge marks Act and a label marks Attend.
