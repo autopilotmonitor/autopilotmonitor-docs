@@ -38,15 +38,16 @@ On a session, the **Vulnerability Report** shows the same items with an **Identi
 
 The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**:
 
-* KPI tiles — affected devices, distinct CVEs, **Act** (known-exploited, KEV) and **Attend** counts — plus a severity breakdown (Critical/High/Medium/Low) and a priority breakdown (Act/Attend/Track). Click a chip to show only those CVEs in the list below; click it again to clear. The chip counts cover every CVE in the window, the list shows the top CVEs by affected devices.
-* **Top CVEs by affected devices**, each linked to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, its EPSS score, a priority label, and sample affected software.
+* **KPI tiles** — affected devices, distinct CVEs, **known exploited** CVEs (CISA KEV) with the number of devices that carry one, and **exposed software**, the products with at least one known CVE.
+* **Exposure by severity** — a donut of the distinct CVEs by CVSS band (Critical/High/Medium/Low), with the **remediation priority** (Act/Attend/Track) below it. Select a band or a priority to filter the list; select it again to clear. These counts cover every CVE in the window.
+* **Most exposed** — switch between **Software** and **CVEs**, sorted with known-exploited entries first or by affected devices. A product row folds every title and version the product was detected under, shows its most severe CVE and its device count, and expands to its most urgent CVEs. Each CVE links to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, and its EPSS score. The lists show the entries on the most devices, and known-exploited entries even when they affect fewer devices. Under a filter, a product counts with its most severe CVE and its highest priority.
 
 Two signals answer different questions, and the portal shows both:
 
 * **CVSS** (severity) says how bad a successful exploit would be. The session report also shows the CVSS vector, so you can tell a network-reachable flaw (`AV:N`) from one that needs local access.
 * **EPSS** (likelihood) is FIRST.org's estimated probability that the CVE is exploited in the wild within the next 30 days — `EPSS 12.3%` means 12.3 %. Scores are refreshed daily. A CVE without an EPSS pill has not been scored yet; that is unknown, not safe.
 
-The **priority** label combines them into a remediation order: **Act** — listed in CISA KEV, exploitation is confirmed; **Attend** — EPSS of 10 % or more, or CVSS 9.0 and above; **Track** — everything else. A low-CVSS vulnerability with a high EPSS is still an *Attend*.
+The **priority** combines them into a remediation order: **Act** — listed in CISA KEV, exploitation is confirmed; **Attend** — EPSS of 10 % or more, or CVSS 9.0 and above; **Track** — everything else. A low-CVSS vulnerability with a high EPSS is still an *Attend*. In the lists, the KEV badge marks *Act*, an *Attend* label marks *Attend*, and *Track* carries no label.
 
 Critical findings also surface directly on the affected sessions via the built-in rule [ANALYZE-ID-003](../rules/analyze-rules/built-in-rules.md#identity-and-security).
 

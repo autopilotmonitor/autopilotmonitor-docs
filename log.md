@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-01 (2)
+
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Vulnerabilities: KPI tiles with known-exploited devices and exposed software, a severity donut and the remediation priority as list filters, and a Most exposed list with Software and CVEs views; known-exploited entries stay listed; in the lists the KEV badge marks Act and a label marks Attend.
+* **Update**: `changelog/platform-changelog.md` — October 2026: a clearer Vulnerabilities view.
+
 ## 2026-10-01
 
 * **Update**: `integrations/ai-integration-mcp.md` — Intro and description name the supported AI clients instead of "any MCP client". Claude is set up as a custom connector, on Team and Enterprise by an organization owner. The VS Code entries no longer say "Claude extension" and show the user configuration. `search_knowledge` searches the built-in rule catalog, `get_session_diagnostics` is listed, and access is described as what the portal role allows.

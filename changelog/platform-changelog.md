@@ -14,6 +14,10 @@ The same entries appear in the portal under **Help (?) → What's new** and behi
 
 Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
+## October 2026
+
+* **A clearer Vulnerabilities view** — Software → Vulnerabilities shows the CVEs by severity in a donut with the remediation priority below it, and the most exposed software with each product's most urgent CVEs. Known-exploited CVEs stay in the list even when they affect only a few devices. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#vulnerabilities).
+
 ## September 2026
 
 * **Hello Wait Timeout up to one hour** — The setting under Settings → Agent now accepts 30 to 3600 seconds. Values up to 300 seconds keep the 5-minute wait, larger values extend it. See [Settings Reference](../reference/settings.md#agent-collectors).
