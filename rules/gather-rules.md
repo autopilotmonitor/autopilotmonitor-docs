@@ -30,6 +30,10 @@ A set of maintained built-in and community gather rules ships with the product; 
 {% endhint %}
 
 {% hint style="info" %}
+**Log Parser rules read every line once.** With **Track position** on (the default), each rule remembers how far it has read each log, also across reboots and agent restarts during the enrollment. A log replaced by a new file is read from the beginning. With an **Interval** trigger, a line the writer is still in waits for the next run. UTF-8, ANSI and UTF-16 logs are supported, including logs written by Windows PowerShell `Out-File`.
+{% endhint %}
+
+{% hint style="info" %}
 **Targeting the user profile:** the agent runs as SYSTEM, so `%USERPROFILE%` resolves to the SYSTEM profile. Use the special token `%LOGGED_ON_USER_PROFILE%` to reach the signed-in user's profile. Nothing outside `AppData\Local` and `AppData\Roaming` is reachable, and within them only the specific folders on the `userProfileFilePrefixes` allow-list — a folder below the profile is not readable just because it sits under `AppData`. Rules using the token are skipped automatically until a user session exists.
 {% endhint %}
 
@@ -95,6 +99,8 @@ Details worth knowing:
 | **On change** | The rule still collects on its trigger cadence, but only emits an event **when the collected result differs from the last emitted one**. New rules default to this. |
 
 With **On change**, the first collection always emits (on an absent registry key, that first `exists: false` event is your confirmation the rule is polling). Afterwards the timeline stays silent until the value actually changes — the next emitted event carries `suppressedPolls` and `suppressedSinceUtc` in its data, so you can see how many identical polls were skipped and since when.
+
+The comparison holds across reboots and agent restarts during the enrollment: an unchanged result stays silent. `suppressedPolls` counts from the last agent start.
 
 {% hint style="info" %}
 **The zero-noise pattern for "wait until a key appears":** an interval registry rule with `emitOnlyIfExists: true`, phase scoping, and emit mode **On change** produces *no* events while the key is absent, exactly **one** event the moment it appears, and further events only when its values change.

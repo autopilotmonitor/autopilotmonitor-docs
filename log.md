@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-01 (4)
+
+* **Update**: `rules/gather-rules.md` — Log Parser: each rule remembers per log how far it has read, also across reboots and agent restarts; a replaced log is read from the beginning, an unfinished line waits for the next run of an interval rule, UTF-16 logs are supported. Emit mode On change: the comparison holds across reboots and agent restarts; `suppressedPolls` counts from the last agent start.
+
 ## 2026-10-01 (3)
 
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — Vulnerabilities: selecting a band also lists that band's own entries on the most devices, so a band with CVEs never shows an empty list.
