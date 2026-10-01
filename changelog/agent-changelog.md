@@ -18,8 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
-* Log Parser gather rules continue where they stopped after a reboot or agent restart instead of reading the log again
-* Log Parser gather rules no longer skip lines at the per-run line limit and read UTF-16 logs completely
+* Log Parser gather rules remember where they stopped reading, even after a reboot. Log lines are no longer reported twice or skipped, and UTF-16 logs are read completely.
 * On change gather rules stay silent after a reboot when their result has not changed
 * Gather rules that read from the signed-in user's profile find it after sign-in without an agent restart
 

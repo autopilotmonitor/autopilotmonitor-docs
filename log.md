@@ -2,7 +2,7 @@
 
 ## 2026-10-01 (5)
 
-* **Update**: `changelog/agent-changelog.md` — October 2026: Log Parser gather rules continue after reboots and agent restarts, skip no lines at the line limit and read UTF-16 logs; On change rules stay silent after a reboot; user-profile rules find the profile after sign-in without an agent restart.
+* **Update**: `changelog/agent-changelog.md` — October 2026: Log Parser gather rules remember where they stopped reading, even after a reboot, report no line twice or skip it, and read UTF-16 logs; On change rules stay silent after a reboot; user-profile rules find the profile after sign-in without an agent restart.
 * **Update**: `changelog/platform-changelog.md` — October 2026: the AI integration filters by gather rules' own event types.
 
 ## 2026-10-01 (4)
