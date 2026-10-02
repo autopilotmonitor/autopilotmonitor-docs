@@ -67,6 +67,7 @@
 
 * [FAQ](troubleshooting/faq.md)
 * [Common Problems](troubleshooting/common-problems.md)
+* [Signed in, but only the Progress Portal](troubleshooting/progress-portal-only.md)
 * [Microsoft 365 Apps Shown Twice](troubleshooting/microsoft-365-apps-shown-twice.md)
 * [App Registration Migration](troubleshooting/app-registration-migration.md)
 * [Hybrid Join: Late Device Registration](troubleshooting/hybrid-join-late-device-registration.md)

@@ -15,7 +15,7 @@ Before the agent can send any data to the portal, a few one-time steps are requi
 Open the portal and sign in with your Microsoft Entra ID account. The very first user to sign in for your organization is automatically granted **Tenant Admin** rights for your tenant.
 
 {% hint style="info" %}
-The Tenant Admin can later promote other users via **Settings → Access Management**. Users without a role only see the **Progress Portal** — a simplified view for tracking a specific device by serial number — and have no access to session details, diagnostics, or configuration. See [Roles & Permissions](../concepts/roles-and-permissions.md).
+The Tenant Admin can later promote other users via **Settings → Access Management**. Users without a role only see the **Progress Portal** — a simplified view for tracking a specific device by serial number — and have no access to session details, diagnostics, or configuration. See [Roles & Permissions](../concepts/roles-and-permissions.md) and, for colleagues who sign in later, [Signed in, but only the Progress Portal](../troubleshooting/progress-portal-only.md).
 {% endhint %}
 
 ## 2. Enable Autopilot Device Validation

@@ -21,7 +21,7 @@ Everything updates live — no refreshing needed. The view is strictly read-only
 
 ## Members without a role
 
-Below the search, members without a portal role see a note that their organization already uses Autopilot Monitor. It tells them to ask their Autopilot Monitor admin for a role (see [Roles & Permissions](../concepts/roles-and-permissions.md)). If no device has been monitored recently and the organization signed up more than two weeks ago, the note also names the support address.
+Below the search, members without a portal role see a note that their organization already uses Autopilot Monitor. It tells them to ask their Autopilot Monitor admin for a role (see [Roles & Permissions](../concepts/roles-and-permissions.md)). If no device has been monitored recently and the organization signed up more than two weeks ago, the note also names the support address. See [Signed in, but only the Progress Portal](../troubleshooting/progress-portal-only.md).
 
 ## Link straight to a device
 

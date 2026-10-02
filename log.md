@@ -2,6 +2,7 @@
 
 ## 2026-10-02 (2)
 
+* **New**: `troubleshooting/progress-portal-only.md` — Signed in, but only the Progress Portal: why members without a role see only the Progress Portal, how to get a role and find the admin, what to do when no device has been monitored recently, and why a new role may not show yet. Listed in `SUMMARY.md` and `index.md`, linked from `portal-guide/progress-portal.md` and `getting-started/portal-setup.md`.
 * **Update**: `portal-guide/progress-portal.md` — New section "Members without a role": the note below the search names the admin as the way to a role, and the support address for an organization without recent monitoring.
 * **Update**: `trust/security-faq.md` — Tenant Isolation: about their organization, a Progress Portal user without a role sees only the signup date and whether a device was monitored recently. Last-reviewed date bumped.
 * **Update**: `changelog/platform-changelog.md` — October 2026: the Progress Portal points members without a role to their admins.
