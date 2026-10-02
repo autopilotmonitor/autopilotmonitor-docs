@@ -19,6 +19,10 @@ The Progress Portal answers the most common question during a rollout — *"how 
 
 Everything updates live — no refreshing needed. The view is strictly read-only: no filters, no drill-downs, no admin controls, and no access to timelines or device internals.
 
+## Members without a role
+
+Below the search, members without a portal role see a note that their organization already uses Autopilot Monitor. It tells them to ask their Autopilot Monitor admin for a role (see [Roles & Permissions](../concepts/roles-and-permissions.md)). If no device has been monitored recently and the organization signed up more than two weeks ago, the note also names the support address.
+
 ## Link straight to a device
 
 Add the serial number to the portal URL to open the page with that device already looked up:

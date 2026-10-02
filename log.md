@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-02 (2)
+
+* **Update**: `portal-guide/progress-portal.md` — New section "Members without a role": the note below the search names the admin as the way to a role, and the support address for an organization without recent monitoring.
+* **Update**: `trust/security-faq.md` — Tenant Isolation: about their organization, a Progress Portal user without a role sees only the signup date and whether a device was monitored recently. Last-reviewed date bumped.
+* **Update**: `changelog/platform-changelog.md` — October 2026: the Progress Portal points members without a role to their admins.
+
 ## 2026-10-02
 
 * **Update**: `changelog/agent-changelog.md` — October 2026: Windows and .NET updates that install during the enrollment appear in the session timeline, from the download to the required restart, including failures; the agent records the Windows update page at the end of OOBE and the related update policy settings.

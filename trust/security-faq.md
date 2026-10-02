@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 28 September 2026 · Next review: 2 February 2027.**
+**Last reviewed: 2 October 2026 · Next review: 2 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -160,7 +160,7 @@ Isolation is enforced in the storage keys themselves, not by a filter that a que
 
 The tenant ID used for scoping comes from the **validated JWT**, not from a request header or body — it is not client-supplied and not forgeable.
 
-Real-time channels are equally scoped. SignalR groups are per tenant, and joining one is authorized against **the group's tenant**, not the caller's home tenant — the distinction that keeps a cross-tenant caller from ever streaming a managed tenant's notifications on the strength of a role they hold somewhere else. Even a same-tenant user without member standing cannot subscribe to organization-wide activity. A Progress Portal user without a role must present the device's **serial number** for every view of a session — the initial search, each data read, and the live-update stream alike; no device list is ever sent to the browser, and an internal session identifier alone grants nothing.
+Real-time channels are equally scoped. SignalR groups are per tenant, and joining one is authorized against **the group's tenant**, not the caller's home tenant — the distinction that keeps a cross-tenant caller from ever streaming a managed tenant's notifications on the strength of a role they hold somewhere else. Even a same-tenant user without member standing cannot subscribe to organization-wide activity. A Progress Portal user without a role must present the device's **serial number** for every view of a session — the initial search, each data read, and the live-update stream alike; no device list is ever sent to the browser, and an internal session identifier alone grants nothing. About their organization, such a user sees only when it signed up and whether a device was monitored recently, so the page can tell them whom to ask for access.
 
 #### How do you know the isolation actually holds?
 
