@@ -1,5 +1,12 @@
 # Log
 
+## 2026-10-02 (4)
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Time attribution: the segments *Windows Update* (the quality update at the end of OOBE, page start to the last sign of the update, KBs and restarts in the legend and tooltip; no segment when the page found nothing or was turned off) and *Waiting for sign-in* (after the update's restart until the user is back); the standby badge; the maintenance pass recomputes the last 30 days when the split changes; the update segments need agent 2.0.1473 or later.
+* **Update**: `portal-guide/fleet-health.md` — Time attribution: the two new segments in the stack, shown once a class median is above zero; *How to use it* explains a large Windows Update or Waiting for sign-in segment.
+* **Update**: `changelog/platform-changelog.md` — October 2026: Windows Update and the wait for sign-in are segments of the time attribution; Access Management shows one line per member with search and role filters, role changes apply on save, Viewer can be an Entra app role.
+* **Update**: `changelog/agent-changelog.md` — October 2026: the Windows update page at the end of OOBE is recorded completely in every display language without duplicates after a restart; the start of the Windows Hello setup is recognized in every display language.
+
 ## 2026-10-02 (3)
 
 * **Update**: `concepts/roles-and-permissions.md` — Access Management lists one line per member and filters by role; a click on a member opens the role, disable and remove actions.

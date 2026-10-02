@@ -24,13 +24,14 @@ App install times measure the **final install attempt**. The Intune Management E
 
 ## Time attribution
 
-*Where does enrollment time actually go?* This section splits the median enrollment into the six segments of the enrollment stack — **Device preparation**, **Apps (ESP)**, **Identity & Hello**, **User ESP**, **Desktop handoff**, and the honest **Unattributed** remainder — as one stacked bar per **enrollment class**. Classes (user-driven, pre-provisioning/White Glove, self-deploying, Device Preparation v2) are never mixed: their timelines are structurally different, so an average across them would be meaningless.
+*Where does enrollment time actually go?* This section splits the median enrollment into the segments of the enrollment stack — **Device preparation**, **Apps (ESP)**, **Windows Update**, **Waiting for sign-in**, **Identity & Hello**, **User ESP**, **Desktop handoff**, and the honest **Unattributed** remainder — as one stacked bar per **enrollment class** (what each segment covers: [Session Details](session-details-and-diagnosis.md#time-attribution)). Classes (user-driven, pre-provisioning/White Glove, self-deploying, Device Preparation v2) are never mixed: their timelines are structurally different, so an average across them would be meaningless.
 
 Unlike the rest of the page, this section always covers the **last 30 days**, independent of the time-range selector — a median needs a stable window, and a median of daily medians is not the median of the range.
 
 * A class is only shown with numbers once it has **at least 20 clean sessions** in the window; below that it reads *"insufficient data (n=…)"* rather than a number that would move with every new device.
 * Sessions whose data can't carry the split — a **flagged** session (e.g. the agent started late and missed early phases) or one **without a breakdown** — are excluded and counted next to the class, so you can see how much of your fleet the bar actually represents.
 * Hovering a segment shows its median and p90.
+* A segment appears once its median is above zero. **Windows Update** and **Waiting for sign-in** therefore show only when at least half of a class's enrollments installed a quality update at the end of OOBE.
 
 **Top time-consuming blocking apps** ranks the apps that sit on the ESP's critical path — the ones the user is actually waiting for. Membership in the blocking set is read from the device's own ESP tracking data, not guessed from install order. *Removing it saves* is a **what-if upper bound**: the time the enrollment would have ended earlier if that app had not blocked, including the idle wait before it started. It is always worded *"up to"* with a p75 next to it — real savings are usually lower, because another app often takes over the critical path.
 
@@ -49,5 +50,5 @@ Fleet Health is the page for the weekly look: a dropping success rate, one model
 
 Two questions the page answers that the success rate alone cannot:
 
-* *"Enrollment takes too long"* → **Time attribution**. If the *Apps (ESP)* segment dominates, the blocking-apps table names the candidates to take off the critical path (make an app non-blocking in the ESP profile rather than removing it, and it stops costing enrollment time while still being installed). A large *Unattributed* share means the timeline is thin for that class — usually an agent that started late.
+* *"Enrollment takes too long"* → **Time attribution**. If the *Apps (ESP)* segment dominates, the blocking-apps table names the candidates to take off the critical path (make an app non-blocking in the ESP profile rather than removing it, and it stops costing enrollment time while still being installed). A large *Windows Update* segment is the quality update at the end of OOBE (Enrollment Status Page setting *Install Windows quality updates*); a more recent installation image leaves less to install. A large *Waiting for sign-in* segment is time nobody was at the device after the update's restart. A large *Unattributed* share means the timeline is thin for that class — usually an agent that started late.
 * *"How much rework is my fleet actually causing?"* → **First-time-right**. Compare it with the success rate: a healthy success rate next to a low first-time-right rate means devices are being retried until they pass, and the *Repeat devices* list tells you which ones and why.

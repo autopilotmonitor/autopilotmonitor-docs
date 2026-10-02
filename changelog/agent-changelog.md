@@ -18,6 +18,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
+* The Windows update page at the end of OOBE is recorded completely in every display language, and no step is sent twice after a restart
+* The start of the Windows Hello setup is recognized in every display language
 * Windows and .NET updates that install during the enrollment now appear in the session timeline, from the download to the required restart, including failures
 * The agent also records the Windows update page at the end of OOBE and the related update policy settings
 * Log Parser gather rules remember where they stopped reading, even after a reboot. Log lines are no longer reported twice or skipped, and UTF-16 logs are read completely.

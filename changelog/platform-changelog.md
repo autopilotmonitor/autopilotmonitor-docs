@@ -16,9 +16,11 @@ Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/o
 
 ## October 2026
 
+* **Windows Update in the time attribution** — The quality update Windows installs at the end of OOBE is now a segment of its own, with the installed KBs and restarts, followed by the wait until the user signs in again. Until now that time counted toward Apps (ESP) or Identity & Hello. See [Session Details](../portal-guide/session-details-and-diagnosis.md#time-attribution).
 * **Windows updates in the enrollment analysis** — Enrollment analysis flags a Windows or .NET update that failed to download or install during the enrollment and notes one that installed. See [Built-in Rules Reference](../rules/analyze-rules/built-in-rules.md#device).
 * **A clearer Vulnerabilities view** — Software → Vulnerabilities shows the CVEs by severity in a donut with the remediation priority below it, and the most exposed software with each product's most urgent CVEs. Known-exploited CVEs stay in the list even when they affect only a few devices. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#vulnerabilities).
 * **AI integration filters by your gather rules' event types** — The event tools accept the output event type of your own gather rules. An empty result for a type that is not built in names the closest built-in types. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#available-tools).
+* **A compact member list in Access Management** — One line per member with a search and role filters; click a member to change the role, which applies when you save it. Viewer can now also be assigned as an Entra app role. See [Settings Reference](../reference/settings.md#access-management).
 * **Progress Portal points to your admins** — Members without a role now see that their organization already uses Autopilot Monitor and whom to ask for access. See [Progress Portal](../portal-guide/progress-portal.md#members-without-a-role).
 
 ## September 2026
