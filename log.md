@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-02
+
+* **Update**: `changelog/agent-changelog.md` — October 2026: Windows and .NET updates that install during the enrollment appear in the session timeline, from the download to the required restart, including failures; the agent records the Windows update page at the end of OOBE and the related update policy settings.
+* **Update**: `changelog/platform-changelog.md` — October 2026: the enrollment analysis flags a Windows or .NET update that failed to download or install and notes one that installed.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-DEV-004 counts download and install failures (EventID 20 or 31), not a failed update search; DEV-004 and DEV-005 name Windows or .NET updates.
+
 ## 2026-10-01 (5)
 
 * **Update**: `changelog/agent-changelog.md` — October 2026: Log Parser gather rules remember where they stopped reading, even after a reboot, report no line twice or skip it, and read UTF-16 logs; On change rules stay silent after a reboot; user-profile rules find the profile after sign-in without an agent restart.
