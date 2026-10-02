@@ -20,7 +20,7 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 
 | Setting | Description |
 | --- | --- |
-| Team Members & Roles | Add members by UPN, assign **Admin**, **Operator**, or **Viewer**, enable/disable accounts, and grant bootstrap-token management. The first user to sign in becomes Admin automatically. Switch the form to **Service principal** to add an application from your Entra tenant (by application ID) as a read-only member for unattended MCP automation, or an app of your own whose users connect through it (always read-only for them). See [Roles & Permissions](../concepts/roles-and-permissions.md), [Service principals and automation](../integrations/ai-integration-mcp.md#service-principals-and-automation) and [Your own app on behalf of users](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users). |
+| Team Members & Roles | Add members by UPN and assign **Admin**, **Operator**, or **Viewer**. Click a member in the list to change the role, disable or remove the entry, or let an Operator manage bootstrap tokens. The first user to sign in becomes Admin automatically. Switch the form to **Service principal** to add an application from your Entra tenant (by application ID) as a read-only member for unattended MCP automation, or an app of your own whose users connect through it (always read-only for them). See [Roles & Permissions](../concepts/roles-and-permissions.md), [Service principals and automation](../integrations/ai-integration-mcp.md#service-principals-and-automation) and [Your own app on behalf of users](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users). |
 
 ### Enrollment Device Validation
 

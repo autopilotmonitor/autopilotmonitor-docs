@@ -63,7 +63,7 @@ Most tenants configure nothing on the Autopilot Monitor enterprise application i
 
 * **Conditional Access policies scoped to the application.** Policies that target _all cloud apps_ already cover both applications. A policy (or an exclusion) that names the previous Autopilot Monitor app explicitly needs the new app added.
 * **Assignment required.** If you set **Properties → Assignment required? = Yes** on the previous application to limit who can sign in, set it on the new application as well and assign the same users or groups — otherwise, after the migration, any member of your tenant can sign in to the portal (they still only see what their [portal role](../concepts/roles-and-permissions.md) allows; members without a role reach the Progress Portal only).
-* **App role assignments** (`Admin` / `Operator` roles assigned on the enterprise application, used only by tenants that opted into Entra app roles). Re-create the assignments on the new application; until then, users signing in with the new app have no role.
+* **App role assignments** (`Admin` / `Operator` / `Viewer` roles assigned on the enterprise application, used only by tenants that opted into Entra app roles). Re-create the assignments on the new application; until then, users signing in with the new app have no role.
 
 The new enterprise application appears in your tenant as soon as the first user or admin consents to it — that is the moment these settings can be replicated.
 

@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-02 (3)
+
+* **Update**: `concepts/roles-and-permissions.md` — Access Management lists one line per member and filters by role; a click on a member opens the role, disable and remove actions.
+* **Update**: `reference/settings.md` — Team Members & Roles: the member actions sit behind a click on the member.
+* **Update**: `troubleshooting/app-registration-migration.md` — App role assignments on the enterprise application include `Viewer`.
+
 ## 2026-10-02 (2)
 
 * **New**: `troubleshooting/progress-portal-only.md` — Signed in, but only the Progress Portal: why members without a role see only the Progress Portal, how to get a role and find the admin, what to do when no device has been monitored recently, and why a new role may not show yet. Listed in `SUMMARY.md` and `index.md`, linked from `portal-guide/progress-portal.md` and `getting-started/portal-setup.md`.
