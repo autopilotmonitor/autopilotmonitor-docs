@@ -18,6 +18,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
+* A platform script no longer shows the output and exit code of another script that started at the same moment
+* Platform script output is checked against the result the Intune Management Extension saved for the script and corrected when they differ
 * The Windows update page at the end of OOBE is recorded completely in every display language, and no step is sent twice after a restart
 * The start of the Windows Hello setup is recognized in every display language
 * Windows and .NET updates that install during the enrollment now appear in the session timeline, from the download to the required restart, including failures

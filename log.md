@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-04
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Script Executions: a platform script whose output the agent corrected from the result the Intune Management Extension saved carries the note *from IME's saved result*; when the log had given the run another script's output, the exit code shows as **exit n/a** and the event timeline marks the original entry as corrected.
+* **Update**: `changelog/platform-changelog.md` — October 2026: platform scripts no longer show another script's output; Windows update activity from before the agent started no longer moves the session start.
+* **Update**: `changelog/agent-changelog.md` — October 2026: a platform script no longer shows the output and exit code of another script that started at the same moment; platform script output is checked against the result the Intune Management Extension saved and corrected when they differ.
+
 ## 2026-10-02 (4)
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — Time attribution: the segments *Windows Update* (the quality update at the end of OOBE, page start to the last sign of the update, KBs and restarts in the legend and tooltip; no segment when the page found nothing or was turned off) and *Waiting for sign-in* (after the update's restart until the user is back); the standby badge; the maintenance pass recomputes the last 30 days when the split changes; the update segments need agent 2.0.1473 or later.
