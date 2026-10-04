@@ -20,6 +20,18 @@ Configuration lives under **Settings → Agent → Diagnostics Package** ([full 
 
 The built-in collection covers the agent's own logs, state, pending uploads and completion markers, the Intune Management Extension logs, the Device Preparation bootstrapper event log on Autopilot Device Preparation enrollments, and — when the RealmJoin Watcher is enabled — the RealmJoin client, package, Chocolatey and per-user logs. The exact list is shown read-only under **Settings → Agent → Diagnostics Package → Built-in**, together with any platform-wide paths. Everything else (Windows Setup/Panther logs, SetupDiag, other event logs, vendor logs) is added through Additional Log Paths.
 
+### Size limits
+
+The agent caps every package, so a runaway log or an overly broad path cannot turn into a huge upload:
+
+| Limit | Value |
+| --- | --- |
+| Single file | 100 MB — larger files are skipped |
+| Total size (uncompressed) | 500 MB per package |
+| Number of files | 5,000 per package |
+
+The limits apply to the whole package, built-in collection and Additional Log Paths together. The built-in collection is added first, so a broad Additional Log Path cannot push out the agent or IME logs, but it can use up the remaining budget for the paths listed after it. A file that does not fit is left out entirely, never cut off — every file in the ZIP is complete. When files were left out, the session timeline's diagnostics event says how many, and the ZIP contains `_TRUNCATED.txt` listing each skipped file with its size and the reason; `package-manifest.txt` records every packaging decision. Logs compress well, so the uploaded ZIP is usually a fraction of the uncompressed size.
+
 ## The agent's own log
 
 `%ProgramData%\AutopilotMonitor\Logs` on the device records the agent's startup, guard decisions, collection activity, and every backend interaction. Two settings matter when hunting an agent problem:

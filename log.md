@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-04 (2)
+
+* **Update**: `troubleshooting/diagnostics-and-log-collection.md` — New subsection "Size limits": 100 MB per file, 500 MB uncompressed and 5,000 files per package, shared by the built-in collection and Additional Log Paths; skipped files are listed in `_TRUNCATED.txt` and counted in the session timeline.
+* **Update**: `reference/settings.md` — Additional Log Paths links to the package size limits.
+
 ## 2026-10-04
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — Script Executions: a platform script whose output the agent corrected from the result the Intune Management Extension saved carries the note *from IME's saved result*; when the log had given the run another script's output, the exit code shows as **exit n/a** and the event timeline marks the original entry as corrected.
