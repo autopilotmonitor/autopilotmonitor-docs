@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-04 (3)
+
+* **Update**: `changelog/agent-changelog.md` — October 2026: each run of a platform script the Intune Management Extension retried shows its own result, exit code and output; a platform script whose result was not logged in time is judged by its error output, not its exit code; platform script error output is no longer lost when the script wrote nothing else.
+
 ## 2026-10-04 (2)
 
 * **Update**: `troubleshooting/diagnostics-and-log-collection.md` — New subsection "Size limits": 100 MB per file, 500 MB uncompressed and 5,000 files per package, shared by the built-in collection and Additional Log Paths; skipped files are listed in `_TRUNCATED.txt` and counted in the session timeline.

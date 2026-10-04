@@ -18,6 +18,9 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
+* When the Intune Management Extension retried a platform script, each run now shows its own result, exit code and output
+* A platform script whose result the Intune Management Extension did not log in time is judged by its error output, as the Intune Management Extension does, not by its exit code
+* Platform script error output is no longer lost when the script wrote nothing else
 * A platform script no longer shows the output and exit code of another script that started at the same moment
 * Platform script output is checked against the result the Intune Management Extension saved for the script and corrected when they differ
 * The Windows update page at the end of OOBE is recorded completely in every display language, and no step is sent twice after a restart
