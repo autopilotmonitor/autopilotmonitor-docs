@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
+* When the agent starts while the Windows update page at the end of OOBE is already running, it now also records the page's earlier steps, up to an hour back, so the time attribution shows the whole update
 * Platform script run times no longer show as n/a when the Intune Management Extension overwrote the script's result line in its log
 * When the Intune Management Extension retried a platform script, each run now shows its own result, exit code and output
 * A platform script whose result the Intune Management Extension did not log in time is judged by its error output, as the Intune Management Extension does, not by its exit code

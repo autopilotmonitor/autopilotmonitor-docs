@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-05 (3)
+
+* **Update**: `changelog/agent-changelog.md` — October 2026: an agent that starts while the Windows update page at the end of OOBE is already running records the page's earlier steps, up to an hour back.
+
 ## 2026-10-05 (2)
 
 * **Update**: `rules/analyze-rules/built-in-rules.md` — 54 maintained rules; new ANALYZE-DEV-013 (OOBE quality update failed), ANALYZE-DEV-014 (OOBE quality update not offered after an earlier failure) and ANALYZE-DEV-015 (OOBE update check ended without a result).
