@@ -8,7 +8,7 @@ description: >-
 
 # Built-in Rules Reference
 
-Autopilot Monitor ships with 51 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
+Autopilot Monitor ships with 54 maintained rules. All are enabled by default except the three [template rules](template-rules.md) (marked *off by default*), which need your environment-specific values first.
 
 Most device-phase rules are additionally evaluated **when WhiteGlove pre-provisioning completes** — findings from the technician phase (app failures, low disk, tampering indicators, firmware and clock problems, critical vulnerabilities) appear at the seal, while the technician is still at the device, instead of days later when the user finishes the enrollment. A handful of rules also evaluate the moment their triggering event arrives (e.g. a failed app install, a failed Windows Update, a TPM attestation error). Early findings behave as described in [Concepts → Evaluation triggers](concepts.md#evaluation-triggers-when-a-rule-runs): they are preliminary, notify at most once, and are confirmed or resolved by the final analysis. Rules whose evidence only exists at the end of a session (explicit failure, timeout, user-phase rules) stay enrollment-end only.
 
@@ -78,6 +78,9 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-DEV-009** · Battery Critically Low During Enrollment | high | The battery dropped to 15 % or less while the device was enrolling on battery power (detected live by the agent's power watcher). A device dying mid-enrollment is left half-provisioned and usually needs a reset — this fires while there is still time to plug it in. |
 | **ANALYZE-DEV-010** · Enrollment Switched From AC to Battery Power | warning | The device lost AC power mid-enrollment and switched to battery. Enrollments drain batteries quickly and Windows may throttle on battery; the timeline shows whether power was restored or the battery kept draining (50/30/15 % threshold events). |
 | **ANALYZE-DEV-012** · Device Entered Standby During Enrollment | info | The device slept (sleep, hibernate or Modern Standby) for five minutes or more while enrolling. Nothing progresses during sleep, so the wall-clock duration includes the pause — the matched timeline event carries the exact sleep and wake times, so a long quiet gap is explained rather than mistaken for a hang. |
+| **ANALYZE-DEV-013** · OOBE Quality Update Failed | warning | The quality update page at the end of OOBE (Enrollment Status Page setting *Install Windows quality updates*) reported a failed download or install, and no successful install followed. The enrollment continues, but the device finishes setup without the monthly security update. Names the reported failure; an install success after a retry or an OS build change keeps it silent. |
+| **ANALYZE-DEV-014** · OOBE Quality Update Not Offered After an Earlier Failure | warning | The update page found no update to install although Windows reports the device as out of date, and the page counts an earlier failed download or install on this device. Names how many days the device is behind and the failure count. |
+| **ANALYZE-DEV-015** · OOBE Update Check Ended Without a Result | warning | The update page started its Windows Update scan but ended without a result — in the observed cases two minutes after the scan started, on devices more than a year behind — so the device finished setup without the update. Names how many days the device is behind. |
 
 ## Identity and Security
 

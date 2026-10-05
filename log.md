@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-05 (2)
+
+* **Update**: `rules/analyze-rules/built-in-rules.md` — 54 maintained rules; new ANALYZE-DEV-013 (OOBE quality update failed), ANALYZE-DEV-014 (OOBE quality update not offered after an earlier failure) and ANALYZE-DEV-015 (OOBE update check ended without a result).
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Time attribution: the Windows Update segment begins at the update's first recorded step when the agent started after the update page; the legend and tooltip name how the update ended and the KBs it worked on without installing them.
+* **Update**: `changelog/platform-changelog.md` — October 2026: OOBE quality updates that did not install; how the Windows update ended, in the time attribution.
+
 ## 2026-10-05
 
 * **Update**: `changelog/agent-changelog.md` — October 2026: platform script run times no longer show as n/a when the Intune Management Extension overwrote the script's result line in its log.
