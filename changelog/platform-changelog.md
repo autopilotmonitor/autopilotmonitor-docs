@@ -16,6 +16,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## October 2026
 
+* **Windows Update while the enrollment runs** — Session Details shows the quality update at the end of OOBE as it happens: how long it has been running, its restarts, and the wait for the user after the restart. The Progress Portal tells the user that Windows is installing updates and when to sign in. See [Session Details](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **Send feedback from the portal** — Help (?) → Send feedback takes ideas, problems and praise straight to the Autopilot Monitor team. No GitHub account needed; every member with a role can use it.
 * **More room for logs and screenshots** — Submit Logs and Report Session share one size budget for all attachments, and the form shows how much is used. Logs are compressed before sending, so far more than the previous 5 MB fits. See [Diagnostics & Log Collection](../troubleshooting/diagnostics-and-log-collection.md#reporting-a-session).
 * **Operators can report sessions** — Report Session is now open to Operators as well as Tenant Admins. Viewers no longer see the button. See [Roles & Permissions](../concepts/roles-and-permissions.md#tenant-roles).

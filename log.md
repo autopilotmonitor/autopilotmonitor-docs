@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-05 (5)
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Enrollment Progress: while the enrollment runs, a line below the timeline follows the Windows quality update — running, restarting, waiting for the user after its restart, failed or skipped — and says when the device last reported after 15 minutes of silence.
+* **Update**: `portal-guide/progress-portal.md` — the status says when Windows installs its quality update and asks the user to sign in after the update's restart.
+* **Update**: `changelog/platform-changelog.md` — October 2026: Windows Update while the enrollment runs.
+
 ## 2026-10-05 (4)
 
 * **Update**: `changelog/platform-changelog.md` — October 2026: send feedback from the portal; more room for logs and screenshots; Operators can report sessions. The intro names Help (?) → Send feedback next to GitHub issues.
