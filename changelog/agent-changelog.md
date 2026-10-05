@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
+* Platform script run times no longer show as n/a when the Intune Management Extension overwrote the script's result line in its log
 * When the Intune Management Extension retried a platform script, each run now shows its own result, exit code and output
 * A platform script whose result the Intune Management Extension did not log in time is judged by its error output, as the Intune Management Extension does, not by its exit code
 * Platform script error output is no longer lost when the script wrote nothing else

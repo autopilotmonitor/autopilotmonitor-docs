@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-05
+
+* **Update**: `changelog/agent-changelog.md` — October 2026: platform script run times no longer show as n/a when the Intune Management Extension overwrote the script's result line in its log.
+
 ## 2026-10-04 (3)
 
 * **Update**: `changelog/agent-changelog.md` — October 2026: each run of a platform script the Intune Management Extension retried shows its own result, exit code and output; a platform script whose result was not logged in time is judged by its error output, not its exit code; platform script error output is no longer lost when the script wrote nothing else.
