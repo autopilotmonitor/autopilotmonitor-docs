@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-05 (6)
+
+* **Update**: `integrations/notifications.md` — the Teams Legacy Connector section is gone; one sentence under Teams Workflow says Microsoft switched off Office 365 connectors in May 2026 and such a channel needs a Workflow webhook.
+* **Update**: `reference/settings.md` — Notification Provider no longer lists the Teams Legacy Connector.
+* **Update**: `changelog/platform-changelog.md` — October 2026: Teams Legacy Connector removed.
+
 ## 2026-10-05 (5)
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — Enrollment Progress: while the enrollment runs, a line below the timeline follows the Windows quality update — running, restarting, waiting for the user after its restart, failed or skipped — and says when the device last reported after 15 minutes of silence.

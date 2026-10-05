@@ -49,7 +49,7 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 
 | Setting | Description |
 | --- | --- |
-| Notification Provider | **Microsoft Teams (Workflow Webhook)** — recommended, free, no Power Automate Premium needed · **Microsoft Teams (Legacy Connector)** — deprecated by Microsoft, existing configs keep working · **Slack** (Incoming Webhook) · **Generic JSON webhook** — stable JSON payload for ticketing/automation systems, supports custom HTTP headers (e.g. `Authorization`) · **Discord** (channel webhook, embed format). |
+| Notification Provider | **Microsoft Teams (Workflow Webhook)** — free, no Power Automate Premium needed · **Slack** (Incoming Webhook) · **Generic JSON webhook** — stable JSON payload for ticketing/automation systems, supports custom HTTP headers (e.g. `Authorization`) · **Discord** (channel webhook, embed format). |
 | Webhook URL | The URL generated during provider setup. |
 | Signing Secret | Generic JSON provider only, optional. When set, requests carry `X-AutopilotMonitor-Signature` (HMAC-SHA256) so the receiving endpoint can [verify authenticity](../integrations/notifications.md#verifying-signed-requests). |
 | Notify on Start / Success / Failure | Which session events trigger a notification. Keep *Failure* on so broken enrollments surface without watching the portal. |

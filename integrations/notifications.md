@@ -12,7 +12,7 @@ Autopilot Monitor pushes enrollment events to your team the moment they happen �
 
 ## Providers
 
-### Microsoft Teams — Workflow Webhook *(recommended)*
+### Microsoft Teams — Workflow Webhook
 
 1. In Teams, open the target channel → **Manage channel** → **Workflows**.
 2. Add the template *"Post to a channel when a webhook request is received"* and copy the generated URL.
@@ -20,9 +20,7 @@ Autopilot Monitor pushes enrollment events to your team the moment they happen �
 
 Workflow webhooks are free and don't require a Power Automate Premium license.
 
-### Microsoft Teams — Legacy Connector *(deprecated)*
-
-The legacy Office 365 Connector (MessageCard) format. Microsoft has deprecated this method — existing configurations keep working, but switch to Workflow Webhooks when you can.
+Microsoft switched off the older Office 365 connectors (Incoming Webhook) in May 2026. A channel that used one needs a Workflow webhook.
 
 ### Slack
 
