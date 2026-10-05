@@ -27,6 +27,8 @@ The agent authenticates with the device's **MDM client certificate** (mutual TLS
 
 Usually the completion signal was missed (device powered off or rebooted at the wrong moment, connectivity lost). This self-heals: after the [session timeout](../reference/settings.md#data-management) (default 5 hours) the backend reclassifies the silent session from its evidence — **Awaiting User** if Device Setup finished, or **Incomplete** if it went quiet without a completion or failure (neither counts as a failure) — and if a real completion later arrives it is reconciled to **Succeeded**. On the device, the agent's own 6-hour lifetime plus the unconditional 48-hour emergency brake guarantee cleanup. If you already know the outcome, mark the session succeeded/failed manually via [Admin Mode](../concepts/roles-and-permissions.md#admin-mode). See [Sessions & Statuses → Timeouts](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions).
 
+If the Enrollment Status Page has already closed, Windows may still be installing its quality update at the end of OOBE. The session waits through it; see [Sessions & Statuses → Windows quality update at the end of OOBE](../concepts/sessions-and-statuses.md#windows-quality-update-at-the-end-of-oobe).
+
 If it happens *consistently*, check whether something on the device kills connectivity mid-enrollment — security clients activating during ESP (VPN/SASE agents, e.g. Zscaler or Cloudflare One in strict modes) are the classic cause; give the Autopilot Monitor endpoints a gateway/split-tunnel exception.
 
 ## App failures dominate the timeline, but the apps are fine

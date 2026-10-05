@@ -91,6 +91,15 @@ The agent's own max-lifetime shutdown is not a failure verdict either — the se
 An **Incomplete** session means the **evidence stopped** without a verdict — a user may simply have shut the laptop mid-ESP, or the device went permanently offline. It is deliberately kept out of the failure rate. The session timeline still contains everything up to the last received event, and if a real completion or failure signal ever arrives, the status is corrected accordingly.
 {% endhint %}
 
+### Windows quality update at the end of OOBE
+
+With the Enrollment Status Page setting *Install Windows quality updates*, Windows installs an update after the device phase and restarts before the user signs in. The session waits through it instead of failing:
+
+* While the update installs — for up to **3 hours**. An update that is still installing after that fails the session.
+* After the update has finished — for up to **1 hour** for the user to sign in.
+
+If nobody signs in, the agent stops waiting and the session is classified from its evidence: a pre-provisioned (White Glove) device shows **Awaiting User**, any other device **Incomplete**. Neither counts as a failure.
+
 ## Manual overrides (Admin Mode)
 
 Admins can manually mark an *In Progress* or *Pending* session as **Succeeded** or **Failed** from the session detail page — useful when a session will clearly never complete on its own. Marking a session succeeded also signals the agent (if still running) to finish up and clean the device. These actions are gated behind the [Admin Mode](roles-and-permissions.md#admin-mode) safety toggle.

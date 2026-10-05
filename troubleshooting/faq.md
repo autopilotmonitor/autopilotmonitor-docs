@@ -208,6 +208,14 @@ The completion signal was missed — for example the device rebooted before the 
 
 <details>
 
+<summary>The Enrollment Status Page closed, but the session is still waiting.</summary>
+
+Windows may be installing its quality update at the end of OOBE (Enrollment Status Page setting *Install Windows quality updates*). The session waits through the update and its restart, then for the user to sign in. Session Details shows the update while it runs. See [Sessions & Statuses → Windows quality update at the end of OOBE](../concepts/sessions-and-statuses.md#windows-quality-update-at-the-end-of-oobe).
+
+</details>
+
+<details>
+
 <summary>Where are the agent's own log files?</summary>
 
 `%ProgramData%\AutopilotMonitor\Logs` on the device — startup, event collection, and backend communication are all logged there. Log verbosity is a [tenant setting](../reference/settings.md#agent-parameters). Note the logs are removed by self-destruct unless **Keep Log File** is enabled.

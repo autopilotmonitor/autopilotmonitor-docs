@@ -1,5 +1,12 @@
 # Log
 
+## 2026-10-05 (7)
+
+* **Update**: `concepts/sessions-and-statuses.md` — new section *Windows quality update at the end of OOBE*: the session waits up to 3 hours while the update installs and up to 1 hour for the sign-in afterwards; without a sign-in a pre-provisioned device shows Awaiting User, any other device Incomplete.
+* **Update**: `troubleshooting/faq.md` — new entry: the Enrollment Status Page closed, but the session is still waiting.
+* **Update**: `troubleshooting/common-problems.md` — Sessions stuck "In Progress": the Windows quality update at the end of OOBE.
+* **Update**: `changelog/platform-changelog.md` — October 2026: sessions wait for the Windows update at the end of OOBE.
+
 ## 2026-10-05 (6)
 
 * **Update**: `integrations/notifications.md` — the Teams Legacy Connector section is gone; one sentence under Teams Workflow says Microsoft switched off Office 365 connectors in May 2026 and such a channel needs a Workflow webhook.
