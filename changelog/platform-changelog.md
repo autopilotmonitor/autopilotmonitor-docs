@@ -12,10 +12,13 @@ This changelog tracks significant platform changes — architecture updates, dat
 
 The same entries appear in the portal under **Help (?) → What's new** and behind the bell on the website; in the portal a red counter marks entries you have not looked at yet.
 
-Found a bug or want to give feedback? [Open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
+Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the portal or [open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
 ## October 2026
 
+* **Send feedback from the portal** — Help (?) → Send feedback takes ideas, problems and praise straight to the Autopilot Monitor team. No GitHub account needed; every member with a role can use it.
+* **More room for logs and screenshots** — Submit Logs and Report Session share one size budget for all attachments, and the form shows how much is used. Logs are compressed before sending, so far more than the previous 5 MB fits. See [Diagnostics & Log Collection](../troubleshooting/diagnostics-and-log-collection.md#reporting-a-session).
+* **Operators can report sessions** — Report Session is now open to Operators as well as Tenant Admins. Viewers no longer see the button. See [Roles & Permissions](../concepts/roles-and-permissions.md#tenant-roles).
 * **OOBE quality updates that did not install** — Enrollment analysis flags a quality update at the end of OOBE that failed to download or install, one Windows did not offer to an out-of-date device after an earlier failure, and an update check that ended without a result. See [Built-in Rules Reference](../rules/analyze-rules/built-in-rules.md#device).
 * **How the Windows update ended, in the time attribution** — The Windows Update segment names whether the update installed, failed or was skipped, and lists the KBs it worked on without installing them separately. When the agent started only after the update page had begun, the segment now begins at the update's first recorded step instead of counting the update toward Apps (ESP). See [Session Details](../portal-guide/session-details-and-diagnosis.md#time-attribution).
 * **Windows Update in the time attribution** — The quality update Windows installs at the end of OOBE is now a segment of its own, with the installed KBs and restarts, followed by the wait until the user signs in again. Until now that time counted toward Apps (ESP) or Identity & Hello. See [Session Details](../portal-guide/session-details-and-diagnosis.md#time-attribution).

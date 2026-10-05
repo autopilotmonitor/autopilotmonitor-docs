@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-05 (4)
+
+* **Update**: `changelog/platform-changelog.md` — October 2026: send feedback from the portal; more room for logs and screenshots; Operators can report sessions. The intro names Help (?) → Send feedback next to GitHub issues.
+* **Update**: `troubleshooting/diagnostics-and-log-collection.md` — Reporting a session: open to Tenant Admins and Operators; logs are compressed; one size budget for the attachments; the timeline exports go along when they fit.
+* **Update**: `concepts/roles-and-permissions.md` — Operators can report sessions; every member with a role can send feedback from the help menu.
+
 ## 2026-10-05 (3)
 
 * **Update**: `changelog/agent-changelog.md` — October 2026: an agent that starts while the Windows update page at the end of OOBE is already running records the page's earlier steps, up to an hour back.
