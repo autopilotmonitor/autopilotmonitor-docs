@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 2 October 2026 · Next review: 2 February 2027.**
+**Last reviewed: 8 October 2026 · Next review: 8 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -374,7 +374,7 @@ What differs between the plans is commercial, not technical:
 
 #### Can I get a data processing agreement (DPA / AVV)?
 
-**Yes — it is published and applies to every tenant**, on Community, Pro and Pro trials alike: the [Data Processing Agreement](../legal/data-privacy-agreement-dpa/README.md) with glueckkanja AG under Art. 28 GDPR, built on the EU Commission's standard contractual clauses. Your organization accepts it when it signs up, before the first sign-in, and the accepted version is recorded with your tenant. Its annexes set out the [technical and organisational measures](../legal/data-privacy-agreement-dpa/technical-and-organisational-measures-toms.md) and the [sub-processors](../legal/data-privacy-agreement-dpa/list-of-sub-processors.md). Where you have concluded an individually signed data processing agreement with us that covers Autopilot Monitor, that agreement prevails.
+**Yes — it is published and applies to every tenant**, on Community, Pro and Pro trials alike: the [Data Processing Agreement](../legal/data-privacy-agreement-dpa/README.md) with glueckkanja AG under Art. 28 GDPR, built on the EU Commission's standard contractual clauses. Your organization accepts it when it signs up, on the Get started page or in the portal right after the first sign-in, and the accepted version is recorded with your tenant. Its annexes set out the [technical and organisational measures](../legal/data-privacy-agreement-dpa/technical-and-organisational-measures-toms.md) and the [sub-processors](../legal/data-privacy-agreement-dpa/list-of-sub-processors.md). Where you have concluded an individually signed data processing agreement with us that covers Autopilot Monitor, that agreement prevails.
 
 The agreement is where the engaged parties and the terms of their engagement are set out. This page deliberately does not restate that contractually — it explains the architecture. The technical data protection measures are identical on both plans: same region, same isolation, same retention and deletion controls, all described on this page.
 
