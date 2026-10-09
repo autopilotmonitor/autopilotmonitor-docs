@@ -4,7 +4,6 @@
 
 * **Update**: `portal-guide/fleet-health.md`, `portal-guide/geographic-performance.md`, `portal-guide/software-inventory-and-vulnerabilities.md`, `portal-guide/usage-metrics.md`, `rules/analyze-rules/README.md` — a different range via `?days=` in the page address (up to 90 days on Community, 365 on Pro).
 * **Update**: `trust/security-faq.md` — statistics computed from sessions follow the retention setting; the audit log keeps 180 days, on Pro up to a longer retention setting (365 days). Reviewed 9 October 2026.
-* **Update**: `troubleshooting/service-announcements.md` — 2026-10-09: statistics and the audit log follow your retention setting.
 * **Update**: `troubleshooting/progress-portal-only.md` — a link to a session shows *You don't have access yet* to a member without a role.
 * **Update**: `changelog/platform-changelog.md` — October 2026: session links for members without a role; fixed app details for names with a slash; fixed outdated live views after returning to a tab.
 

@@ -10,12 +10,6 @@ description: >-
 
 Documented issues caused by external changes (e.g. Microsoft updates) and platform incidents — each entry describes the impact, what still works, and whether action is needed. Newest first.
 
-## 2026-10-09 — **Changed:** Statistics and the Audit Log Follow Your Retention Setting
-
-First-time-right, time-attribution and rule statistics now follow your data retention setting, like the sessions they come from. Statistics older than your retention setting are removed. The audit log keeps at least 180 days; on Pro it follows a longer retention setting, up to 365 days.
-
-There is nothing to do on your side.
-
 ## 2026-07-18 — **Resolved:** Infrastructure Maintenance Completed Successfully
 
 The scheduled infrastructure maintenance was completed successfully on **Saturday, 18 Jul** — well ahead of the announced window. The platform is fully operational again: portal, ingestion API, realtime updates, and the MCP server are all back to normal, and agents have resumed syncing. Enrollment data collected on devices during the window was preserved and uploaded as designed — no data was lost.
