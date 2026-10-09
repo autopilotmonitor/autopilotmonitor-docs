@@ -9,7 +9,7 @@ description: >-
 
 # Signed in, but only the Progress Portal
 
-You sign in to Autopilot Monitor and see only **Device Setup Progress**, a search box for a single device, instead of the dashboard. Below the search, a note points you to your organization's Autopilot Monitor admin.
+You sign in to Autopilot Monitor and see only **Device Setup Progress**, a search box for a single device, instead of the dashboard. Below the search, a note points you to your organization's Autopilot Monitor admin. A link to a session shows **You don't have access yet** instead of the session.
 
 Nothing is broken. Your organization is set up, and you are signed in to it. You just have no portal role yet.
 

@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-09
+
+* **Update**: `troubleshooting/progress-portal-only.md` — a link to a session shows *You don't have access yet* to a member without a role.
+* **Update**: `changelog/platform-changelog.md` — October 2026: session links for members without a role; fixed app details for names with a slash; fixed outdated live views after returning to a tab.
+
 ## 2026-10-05 (7)
 
 * **Update**: `concepts/sessions-and-statuses.md` — new section *Windows quality update at the end of OOBE*: the session waits up to 3 hours while the update installs and up to 1 hour for the sign-in afterwards; without a sign-in a pre-provisioned device shows Awaiting User, any other device Incomplete.

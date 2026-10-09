@@ -30,8 +30,11 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **AI integration filters by your gather rules' event types** — The event tools accept the output event type of your own gather rules. An empty result for a type that is not built in names the closest built-in types. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#available-tools).
 * **A compact member list in Access Management** — One line per member with a search and role filters; click a member to change the role, which applies when you save it. Viewer can now also be assigned as an Entra app role. See [Settings Reference](../reference/settings.md#access-management).
 * **Progress Portal points to your admins** — Members without a role now see that their organization already uses Autopilot Monitor and whom to ask for access. See [Progress Portal](../portal-guide/progress-portal.md#members-without-a-role).
+* **Session links for members without a role** — A member without a portal role who opens a link to a session now sees whom to ask for access instead of an empty page. See [Signed in, but only the Progress Portal](../troubleshooting/progress-portal-only.md).
 * **Fixed: platform scripts showing another script's output** — Script Executions shows such a run with the script's own output, as the Intune Management Extension saved it, and the exit code as n/a. See [Session Details](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **Fixed: Windows updates stretching session durations** — Windows update activity from before the agent started no longer moves the session start earlier.
+* **Fixed: app details for names with a slash** — Apps whose name contains a slash now open their detail page. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive).
+* **Fixed: outdated live views after returning to a tab** — The Progress Portal, Session Details and the notification bells show the current state as soon as the live connection is back.
 
 ## September 2026
 
