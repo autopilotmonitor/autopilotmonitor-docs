@@ -35,6 +35,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Fixed: Windows updates stretching session durations** — Windows update activity from before the agent started no longer moves the session start earlier.
 * **Fixed: app details for names with a slash** — Apps whose name contains a slash now open their detail page. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive).
 * **Fixed: outdated live views after returning to a tab** — The Progress Portal, Session Details and the notification bells show the current state as soon as the live connection is back.
+* **Fixed: software with padded registry entries** — Programs whose installer pads their registry entries now appear in the software inventory and are checked for vulnerabilities. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#inventory).
 
 ## September 2026
 

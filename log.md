@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-09 (2)
+
+* **Update**: `changelog/platform-changelog.md` — October 2026: fixed software with padded registry entries missing from the software inventory.
+* **Update**: `changelog/agent-changelog.md` — October 2026: the software inventory no longer picks up invisible padding from program names and publishers.
+
 ## 2026-10-09
 
 * **Update**: `portal-guide/fleet-health.md`, `portal-guide/geographic-performance.md`, `portal-guide/software-inventory-and-vulnerabilities.md`, `portal-guide/usage-metrics.md`, `rules/analyze-rules/README.md` — a different range via `?days=` in the page address (up to 90 days on Community, 365 on Pro).

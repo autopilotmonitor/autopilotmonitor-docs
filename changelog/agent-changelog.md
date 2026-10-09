@@ -18,6 +18,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## October 2026
 
+* The software inventory no longer picks up invisible padding that some installers leave in program names and publishers
 * When the agent starts while the Windows update page at the end of OOBE is already running, it now also records the page's earlier steps, up to an hour back, so the time attribution shows the whole update
 * Platform script run times no longer show as n/a when the Intune Management Extension overwrote the script's result line in its log
 * When the Intune Management Extension retried a platform script, each run now shows its own result, exit code and output
