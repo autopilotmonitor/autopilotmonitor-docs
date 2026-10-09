@@ -36,6 +36,8 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Fixed: app details for names with a slash** — Apps whose name contains a slash now open their detail page. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive).
 * **Fixed: outdated live views after returning to a tab** — The Progress Portal, Session Details and the notification bells show the current state as soon as the live connection is back.
 * **Fixed: software with padded registry entries** — Programs whose installer pads their registry entries now appear in the software inventory and are checked for vulnerabilities. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#inventory).
+* **Fixed: data from deleted sessions** — Telemetry that arrives after a session was deleted or was never registered is now refused, so it no longer shows up in the software inventory or the app statistics. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#inventory).
+* **Fixed: empty pages from the session search by event** — The MCP tool `search_sessions_by_event` now reads on until it has matches or the index is exhausted, instead of answering an empty page with a continuation. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md).
 
 ## September 2026
 

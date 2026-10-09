@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-09 (3)
+
+* **Update**: `changelog/agent-changelog.md` — October 2026: the agent stops and cleans up when the backend no longer knows its session.
+* **Update**: `changelog/platform-changelog.md` — October 2026: fixed data from deleted sessions reaching the software inventory and app statistics; fixed empty pages from the MCP session search by event.
+
 ## 2026-10-09 (2)
 
 * **Update**: `changelog/platform-changelog.md` — October 2026: fixed software with padded registry entries missing from the software inventory.
