@@ -8,7 +8,7 @@ description: >-
 
 # Geographic Performance
 
-When one office keeps reporting "enrollment takes forever" while others are fine, this page turns the anecdote into data. It groups sessions by **city, region, or country** (your choice), over a 7/30/90-day window.
+When one office keeps reporting "enrollment takes forever" while others are fine, this page turns the anecdote into data. It groups sessions by **city, region, or country** (your choice), over a 7/30/90-day window. For a different window, add `?days=` to the page address (up to 90 days on Community, 365 on Pro).
 
 {% hint style="info" %}
 Location data comes from the agent's **Geo-Location Detection** ([tenant setting](../reference/settings.md#agent-parameters), IP-based). A coverage note on the page shows how many sessions actually carry location data.

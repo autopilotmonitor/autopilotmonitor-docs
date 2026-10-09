@@ -8,7 +8,7 @@ description: >-
 
 # Software Inventory & Vulnerabilities
 
-The **Software** area is a three-tab hub with a shared 7/30/90-day time range.
+The **Software** area is a three-tab hub with a shared 7/30/90-day time range. For a different range, add `?days=` to the page address (up to 90 days on Community, 365 on Pro). App details open with the same range.
 
 ## Installs
 

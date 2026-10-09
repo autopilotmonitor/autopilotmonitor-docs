@@ -19,4 +19,6 @@ Usage Metrics is the informational overview of how your tenant uses Autopilot Mo
 * **Performance** — average, median, **P95**, and **P99** enrollment durations. The percentiles are the honest numbers for planning: the median tells you the typical experience, P95/P99 tell you what your unluckiest users live through. See [Averages, Medians & Percentiles](../concepts/averages-medians-and-percentiles.md) for how to read them.
 * **Hardware** — top manufacturers and top models with counts and shares.
 
+Apart from the total enrollments since signup, the counts cover the last 90 days. For a different window, add `?days=` to the page address (up to 365 days on Pro).
+
 The page is read-only; metrics are cached with a computed-at note and a **Refresh** button.

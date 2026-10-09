@@ -1,6 +1,6 @@
 ---
 type: Concept
-timestamp: 2026-07-31T00:00:00.000Z
+timestamp: 2026-10-09T00:00:00.000Z
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 8 October 2026 · Next review: 8 February 2027.**
+**Last reviewed: 9 October 2026 · Next review: 9 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -233,18 +233,18 @@ You additionally control:
 
 #### How long is each kind of record kept?
 
-Your retention setting governs enrollment data. The operational records around it have their own fixed lifetimes:
+Your retention setting governs enrollment data and the statistics computed from it. The operational records around it have their own lifetimes:
 
-| Record                                                                     | Kept for                                                |
-| -------------------------------------------------------------------------- | ------------------------------------------------------- |
-| Enrollment sessions and all their events, findings, and hosted diagnostics | **Your retention setting** — 90 days by default         |
-| Deletion manifests (what makes a deletion reversible)                      | **30 days**                                             |
-| Audit log of administrative actions                                        | **180 days**                                            |
-| Operational events (platform health, security signals)                     | **90 days**                                             |
-| Portal sign-in activity and usage counters                                 | **90 days**                                             |
-| Aggregated usage statistics                                                | **180 days**                                            |
-| Distress reports (agent emergency channel)                                 | **14 days**                                             |
-| Configuration and authorization backups                                    | Under a storage lifecycle policy, currently **90 days** |
+| Record                                                                                                         | Kept for                                                                |
+| -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Enrollment sessions with all their events, findings, hosted diagnostics, and the statistics computed from them | **Your retention setting** — 90 days by default                         |
+| Deletion manifests (what makes a deletion reversible)                                                          | **30 days**                                                             |
+| Audit log of administrative actions                                                                            | **180 days**, or your retention setting if longer (Pro, up to 365 days) |
+| Operational events (platform health, security signals)                                                         | **90 days**                                                             |
+| Portal sign-in activity and usage counters                                                                     | **90 days**                                                             |
+| Aggregated usage statistics                                                                                    | **180 days**                                                            |
+| Distress reports (agent emergency channel)                                                                     | **14 days**                                                             |
+| Configuration and authorization backups                                                                        | Under a storage lifecycle policy, currently **90 days**                 |
 
 Everything scoped to your tenant is removed when you offboard, regardless of these periods.
 

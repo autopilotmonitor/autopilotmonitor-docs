@@ -8,7 +8,7 @@ description: >-
 
 # Fleet Health
 
-Fleet Health zooms out from individual sessions to the whole fleet: is enrollment healthy *in general*, where does the time go, and where do the systematic problems hide? A **time-range selector** (7 / 30 / 90 days) drives the page — the one exception is [Time attribution](#time-attribution), which is fixed to the last 30 days — and all numbers refresh live as new sessions arrive.
+Fleet Health zooms out from individual sessions to the whole fleet: is enrollment healthy *in general*, where does the time go, and where do the systematic problems hide? A **time-range selector** (7 / 30 / 90 days) drives the page — the one exception is [Time attribution](#time-attribution), which is fixed to the last 30 days — and all numbers refresh live as new sessions arrive. For a different range, add `?days=` to the page address (up to 90 days on Community, 365 on Pro).
 
 ## What you see
 
