@@ -65,6 +65,19 @@ Beyond the session triggers, the same webhook also carries **SLA breach/resoluti
 
 SLA alerts judge the success rate and the P95 duration over the **last 30 days** and the app install rate over the **current ISO week** — the same periods the [SLA Compliance](../portal-guide/sla-compliance.md#which-period-each-number-covers) page shows in its banner and gauges. A breach is reported when it starts and again only after new enrollments (or app installs) have finished since the last alert — never more often than the repeat interval; a tenant with no new enrollments is not reminded of the same value. A resolution alert follows when the target is met again.
 
+## Channel status
+
+Each saved channel shows a status dot next to its name, based on its recent deliveries:
+
+| Status | Meaning |
+| --- | --- |
+| **Operating normally** | Recent deliveries were accepted. |
+| **Failure rate** | Some of the last 20 deliveries failed within the past seven days; the others went through. |
+| **Error** | At least two deliveries in a row failed. The card shows the reason, for example `HTTP 401 Unauthorized`. |
+| **No deliveries yet** | Nothing was sent since the channel's destination was last changed. |
+
+Hover the dot to see the last delivery and the last failure. A channel in **Error** keeps receiving notifications, so it recovers by itself once the destination accepts them again. After you fix the destination, **Send Test** updates the status right away. Tenant Admins see the status.
+
 ## In-portal alerts
 
 Some alerts are delivered as **bell notifications** in the portal header rather than through the webhook — they are about your configuration or your hardware, not about a single enrollment, and they are raised once per subject instead of per event:
@@ -74,6 +87,7 @@ Some alerts are delivered as **bell notifications** in the portal header rather 
 | **Rule fires more often than usual** | An analyze rule's [regression detection](../rules/analyze-rules/README.md#regression-detection) flags a sustained, statistically separated increase in its hit rate. Links straight to the rule card. | Tenant Admins |
 | **App version installs slower** | A newly rolled-out app version's median install time (the final install attempt) rises sharply above the previous version's — at least twice as long and 5+ minutes more, with enough measured installs on both sides to be meaningful. Links to the [app's detail page](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive). Raised once per (app, version). | Tenant Admins |
 | **Device with an incompatible TPM** | A device's TPM cannot perform the signature Windows requires for the agent's certificate authentication, so the agent can never authenticate from it. The fix is on your side — a TPM firmware update or device replacement. | Tenant Admins |
+| **Notification channel failing** | A channel's status turned to **Error** (see [Channel status](#channel-status)). Raised once; the next successful delivery or test clears the condition. Links to the notification settings. | Tenant Admins |
 | **Hardware rejection** | A device was refused because it is outside the tenant's [Hardware Whitelist](../reference/settings.md#hardware-whitelist). Also sent to the webhook, if one is configured. | Tenant Admins |
 | **SLA breach / resolution, consecutive failures** | Same events as the webhook alerts above. | All tenant members |
 

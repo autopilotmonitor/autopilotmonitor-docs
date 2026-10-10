@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-10
+
+* **Update**: `integrations/notifications.md` — new section *Channel status* (four states, recovery after a fix, visible to Tenant Admins); in-portal alert *Notification channel failing*.
+* **Update**: `changelog/platform-changelog.md` — October 2026: status of each notification channel.
+
 ## 2026-10-09 (3)
 
 * **Update**: `changelog/agent-changelog.md` — October 2026: the agent stops and cleans up when the backend no longer knows its session.
