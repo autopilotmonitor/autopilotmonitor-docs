@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-12 (2)
+
+* **Update**: `changelog/platform-changelog.md` — October 2026 split into *Mid October 2026* and *Early October 2026*; Mid October adds rule tests in AI assistants for the Admin role and the fixed Geographic Performance sign-in.
+
 ## 2026-10-12
 
 * **Update**: `integrations/ai-integration-mcp.md` — new section *Built-in prompts* (investigate-failed-session, debug-session, cve-exposure-audit, author-rule); tools table row *Rule Authoring*, the two test tools for the Admin role; `get_session_diagnostics` searches the IME and agent logs.
