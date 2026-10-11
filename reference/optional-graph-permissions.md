@@ -2,8 +2,9 @@
 type: How-to Guide
 tags: [graph, permissions, entra-id, setup]
 description: >-
-  Opt-in tenant-side Microsoft Graph permission grants for optional features
-  via appRoleAssignment, without changing the published app manifest.
+  Opt-in tenant-side Microsoft Graph permissions for optional features via
+  appRoleAssignment, without changing the published app manifest, and how to
+  revoke them.
 ---
 
 # Optional Graph Permissions

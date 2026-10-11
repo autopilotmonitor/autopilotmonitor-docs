@@ -3,7 +3,8 @@ type: Overview
 tags: [rules, analyze]
 description: >-
   Automated analysis of every enrollment session — findings with severity,
-  confidence, explanation, and remediation, produced by rules you can extend.
+  confidence, explanation and remediation, from rules you can manage and
+  extend.
 ---
 
 # Analyze Rules

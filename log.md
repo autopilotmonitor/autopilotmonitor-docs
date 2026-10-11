@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-11 (2)
+
+* **Update**: the remaining 29 pages whose description was shorter than 150 characters (getting started, concepts, portal guide, rules, integrations, reference, troubleshooting, agent changelog) — page descriptions (search-result snippets) lengthened to 150–160 characters. Every page now has 150–160.
+
 ## 2026-10-11
 
 * **Update**: `README.md`, `plans.md`, `getting-started/requirements-and-access.md`, `portal-guide/dashboard-and-sessions.md`, `portal-guide/audit-log-and-system-health.md`, `rules/analyze-rules/built-in-rules.md`, `troubleshooting/faq.md`, `troubleshooting/common-problems.md`, `troubleshooting-and-support/how-to-purchase/README.md`, `troubleshooting-and-support/how-to-purchase/microsoft-marketplace.md`, `troubleshooting-and-support/how-to-purchase/cleverbridge.md`, `changelog/platform-changelog.md` — page descriptions (search-result snippets) lengthened to 150–160 characters.

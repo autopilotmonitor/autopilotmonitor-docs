@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, software-inventory, vulnerabilities, cve]
 description: >-
-  App install health, the software inventory across enrolled devices, and
-  CVE/KEV vulnerability correlation.
+  App install health and Delivery Optimization across enrollments, the
+  software inventory of your enrolled devices, and CVE and KEV vulnerability
+  correlation.
 ---
 
 # Software Inventory & Vulnerabilities

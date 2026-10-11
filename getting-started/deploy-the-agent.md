@@ -2,8 +2,9 @@
 type: How-to Guide
 tags: [agent, deployment, intune]
 description: >-
-  Deploy the monitoring agent as an Intune platform script — safe to assign
-  broadly thanks to built-in pre-requisite guards.
+  Deploy the agent as an Intune platform script — signed, safe to assign
+  broadly thanks to built-in pre-requisite guards, with a dry run to try it
+  first.
 ---
 
 # Deploy the Agent

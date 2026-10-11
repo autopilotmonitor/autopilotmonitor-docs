@@ -3,7 +3,8 @@ type: Reference
 tags: [rules, analyze, templates]
 description: >-
   Rules that ship as configurable blueprints — fill in your environment's
-  values and get a tailored custom rule in under a minute.
+  values and get a tailored custom rule in under a minute. Lists the available
+  templates.
 ---
 
 # Template Rules

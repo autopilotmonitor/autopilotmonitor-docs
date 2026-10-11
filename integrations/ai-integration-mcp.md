@@ -2,8 +2,9 @@
 type: Integration Guide
 tags: [mcp, ai, integration]
 description: >-
-  Query your enrollment data in natural language — connect Claude, ChatGPT,
-  VS Code or a command-line AI client to the Autopilot Monitor MCP server.
+  Query your enrollment data in natural language — connect Claude, ChatGPT, VS
+  Code or a command-line AI client to the Autopilot Monitor MCP server, step
+  by step.
 ---
 
 # AI Integration (MCP)

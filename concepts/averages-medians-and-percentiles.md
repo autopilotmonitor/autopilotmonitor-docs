@@ -2,8 +2,9 @@
 type: Concept
 tags: [metrics, statistics, percentiles]
 description: >-
-  What average, median, P90, P95 and P99 mean, how to read them, and which
-  portal page uses which one over which sessions.
+  What average, median, P90, P95 and P99 mean in a worked example, how small
+  samples affect them, and which portal page uses which statistic over which
+  sessions.
 ---
 
 # Averages, Medians & Percentiles

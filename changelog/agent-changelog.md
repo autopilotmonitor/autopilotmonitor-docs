@@ -3,7 +3,8 @@ type: Changelog
 tags: [agent, changelog]
 description: >-
   User-facing changes to the Autopilot Monitor agent, newest first — only
-  changes that affect agent behavior on the device.
+  changes that affect behavior on the device, with the current agent and
+  loader versions.
 ---
 
 # Agent Changelog

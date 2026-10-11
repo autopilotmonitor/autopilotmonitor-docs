@@ -3,7 +3,8 @@ type: Concept
 tags: [agent, lifecycle, security]
 description: >-
   The temporary agent from installation to self-destruct: timeline backfill,
-  certificate authentication, binary integrity, and what data is collected.
+  certificate authentication, binary integrity, provenance, and what data is
+  collected.
 ---
 
 # Agent Lifecycle & Security

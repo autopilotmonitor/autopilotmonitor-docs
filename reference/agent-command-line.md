@@ -2,8 +2,9 @@
 type: Reference
 tags: [agent, command-line, parameters]
 description: >-
-  The agent CLI reference for testing, debugging, and advanced scenarios —
-  including replaying captured enrollments.
+  The agent's command-line parameters for testing, debugging and advanced
+  scenarios — session and lifecycle, authentication and bootstrap, and
+  enrollment replay.
 ---
 
 # Agent Command-Line Parameters

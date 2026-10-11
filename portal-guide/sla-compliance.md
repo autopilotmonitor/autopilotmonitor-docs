@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, sla, compliance]
 description: >-
-  Track enrollment performance against your defined SLA targets — success rate,
-  P95 duration, and app install success.
+  Track enrollment performance against the SLA targets you define — success
+  rate, P95 duration and app install success — over a one, three or six-month
+  window.
 ---
 
 # SLA Compliance

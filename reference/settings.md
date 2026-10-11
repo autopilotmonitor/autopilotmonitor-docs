@@ -3,7 +3,8 @@ type: Reference
 tags: [settings, configuration]
 description: >-
   Every tenant setting explained — access, device validation, notifications,
-  agent behavior, diagnostics, data retention, and offboarding.
+  SLA targets, agent behavior, diagnostics, data retention, and tenant
+  offboarding.
 ---
 
 # Settings Reference

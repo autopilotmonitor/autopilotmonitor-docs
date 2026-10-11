@@ -2,8 +2,9 @@
 type: Concept
 tags: [rules, analyze, gather]
 description: >-
-  The three rule families — IME Log Patterns, Gather Rules, and Analyze Rules —
-  and how they interlock into one detection pipeline.
+  The three rule families — IME Log Patterns, Gather Rules and Analyze Rules —
+  how they interlock into one detection pipeline, and which rule type you need
+  when.
 ---
 
 # How Rules Work Together

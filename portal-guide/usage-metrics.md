@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, usage, metrics]
 description: >-
-  Tenant usage at a glance — session volumes, deployment types, performance
-  percentiles, and hardware distribution.
+  Tenant usage at a glance — session volumes and success rate, deployment
+  types, apps and scripts per session, portal users, duration percentiles, and
+  hardware.
 ---
 
 # Usage Metrics

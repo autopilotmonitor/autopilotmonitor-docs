@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, progress, real-time]
 description: >-
-  The simple self-service status page — anyone can follow a device's enrollment
-  by serial number, no admin role required.
+  A self-service status page: helpdesk, technicians or end users follow a
+  device's enrollment by serial number, without a portal role or session
+  details.
 ---
 
 # Progress Portal

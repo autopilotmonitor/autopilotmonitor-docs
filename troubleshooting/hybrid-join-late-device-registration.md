@@ -1,7 +1,10 @@
 ---
 type: Troubleshooting
 tags: [troubleshooting, hybrid-join, enrollment, entra-connect]
-description: Hybrid Join devices whose sessions start late or never — the agent is waiting for a device registration that your directory hasn't delivered yet.
+description: >-
+  Hybrid Join devices whose sessions start late or never — the agent is
+  waiting for a device registration your directory hasn't delivered yet, and
+  what to check.
 ---
 
 # Hybrid Join: sessions start late — or never

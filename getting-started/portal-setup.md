@@ -2,8 +2,9 @@
 type: How-to Guide
 tags: [portal, setup, onboarding]
 description: >-
-  One-time tenant setup: first sign-in, enabling Autopilot Device Validation,
-  and the recommended initial configuration.
+  One-time tenant setup in the portal: the first sign-in that makes you Tenant
+  Admin, enabling Autopilot Device Validation, and the recommended initial
+  settings.
 ---
 
 # Portal Setup

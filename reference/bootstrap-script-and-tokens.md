@@ -2,8 +2,9 @@
 type: Reference
 tags: [bootstrap, tokens, deployment]
 description: >-
-  How the bootstrap script decides to install, and how Bootstrap Tokens enable
-  pre-MDM scenarios.
+  How the bootstrap script verifies and installs the agent, which guards make
+  it skip a device, and how Bootstrap Tokens start the agent before MDM
+  enrollment.
 ---
 
 # Bootstrap Script & Tokens

@@ -2,8 +2,9 @@
 type: Concept
 tags: [sessions, statuses, completion]
 description: >-
-  What an enrollment session is, the statuses it can have, how attempts group
-  into a device journey, and how completion is decided.
+  What an enrollment session is, its possible statuses, how attempts group
+  into a device journey, how completion is decided, and what happens to stuck
+  sessions.
 ---
 
 # Sessions & Statuses

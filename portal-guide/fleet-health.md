@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, fleet-health, metrics]
 description: >-
-  The fleet-wide health overview — success rates, failure patterns, where
-  enrollment time goes, and how often a device needed more than one attempt.
+  The fleet-wide health overview — success rates, failure reasons and failing
+  models, where enrollment time goes, and how often a device needed a second
+  attempt.
 ---
 
 # Fleet Health

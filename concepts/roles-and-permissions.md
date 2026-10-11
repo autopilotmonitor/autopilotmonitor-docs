@@ -2,8 +2,9 @@
 type: Concept
 tags: [roles, permissions, rbac]
 description: >-
-  Who can see and do what: tenant roles, the Admin Mode safety toggle, and how
-  MSP fleet access fits in.
+  Who can see and do what in the portal: Tenant Admin, Operator and Viewer
+  roles, members without a role, the Admin Mode safety toggle, and MSP fleet
+  access.
 ---
 
 # Roles & Permissions
