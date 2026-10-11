@@ -1,7 +1,10 @@
 ---
 type: FAQ
 tags: [faq, troubleshooting]
-description: Frequently asked questions about setup, the agent, the portal, and data handling.
+description: >-
+  Answers to common questions about Autopilot Monitor: supported scenarios,
+  pricing, data storage, agent deployment and authentication, rules, alerts,
+  reporting.
 ---
 
 # FAQ

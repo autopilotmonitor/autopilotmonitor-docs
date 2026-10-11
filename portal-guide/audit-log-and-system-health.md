@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, audit-log, system-health]
 description: >-
-  The audit trail of configuration and data changes, and the live platform
-  health status page.
+  The audit log records every configuration change and admin action in your
+  tenant; System Health checks live updates, backend services and the MCP
+  server.
 ---
 
 # Audit Log & System Health

@@ -1,7 +1,10 @@
 ---
 type: How-to Guide
 tags: [requirements, permissions, onboarding]
-description: What you need before you start, and how tenant activation works.
+description: >-
+  What you need before you start — Intune with Windows Autopilot, Entra ID
+  accounts, supported Windows devices, outbound HTTPS — and how tenant
+  activation works.
 ---
 
 # Requirements & Access

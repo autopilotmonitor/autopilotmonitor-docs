@@ -1,8 +1,9 @@
 ---
 type: Reference
 description: >-
-  The available plans of Autopilot Monitor — the free Community plan and the
-  Pro plan, how to buy Pro and how to try it first.
+  The plans of Autopilot Monitor: the free Community plan and the Pro plan —
+  what each includes, how to buy Pro, and how to start a free 30-day Pro
+  trial.
 tags:
   - plans
   - licensing

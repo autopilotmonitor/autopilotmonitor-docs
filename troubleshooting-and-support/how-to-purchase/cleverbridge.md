@@ -1,5 +1,8 @@
 ---
-description: Purchase Autopilot Monitor via cleverbridge.
+description: >-
+  Buy Autopilot Monitor Pro through Cleverbridge: checkout by credit card,
+  PayPal or bank transfer, quotes and invoices, currencies, renewal and
+  cancellation.
 ---
 
 # Cleverbridge

@@ -2,8 +2,9 @@
 type: Overview
 tags: [autopilot-monitor, introduction]
 description: >-
-  Real-time monitoring, diagnostics, and automated analysis for Windows
-  Autopilot enrollments.
+  Autopilot Monitor follows Windows Autopilot enrollments live: a temporary
+  agent streams ESP, app and script activity to a portal, and rules explain
+  failures.
 ---
 
 # Welcome

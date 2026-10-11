@@ -1,7 +1,9 @@
 ---
 type: Troubleshooting
 tags: [troubleshooting, errors, enrollment]
-description: Known failure patterns and how to resolve them, from silent agents to proxy trouble.
+description: >-
+  Known problems and fixes: no sessions in the portal, TLS inspection breaking
+  agent authentication, sessions stuck In Progress, or live updates that stop.
 ---
 
 # Common Problems

@@ -2,8 +2,9 @@
 type: Reference
 tags: [rules, analyze, built-in]
 description: >-
-  The complete catalog of built-in analyze rules — what each one detects and
-  when it fires.
+  The complete catalog of built-in analyze rules for apps, ESP, enrollment,
+  network, device, identity and security — what each rule detects and how
+  severe it is.
 ---
 
 # Built-in Rules Reference

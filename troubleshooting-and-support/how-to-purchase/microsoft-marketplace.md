@@ -1,5 +1,8 @@
 ---
-description: Purchase Autopilot Monitor via Microsoft Marketplace.
+description: >-
+  Buy Autopilot Monitor Pro on Microsoft Marketplace: Azure prerequisites,
+  purchase steps, monthly or annual plans, invoicing through Azure, and
+  cancellation.
 ---
 
 # Microsoft Marketplace

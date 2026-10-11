@@ -1,5 +1,8 @@
 ---
-description: for Autopilot Monitor Pro Edition
+description: >-
+  Buy Autopilot Monitor Pro through Microsoft Marketplace or Cleverbridge.
+  Both lead to the same Pro plan on your existing tenant, and your data stays
+  put.
 ---
 
 # How to purchase

@@ -2,8 +2,9 @@
 type: Changelog
 tags: [platform, changelog]
 description: >-
-  Significant platform changes — portal, backend, and data-flow updates,
-  newest first.
+  Significant platform changes to the Autopilot Monitor portal, backend and
+  data flows, newest first. Check here when the UI or monitoring data looks
+  different.
 ---
 
 # Platform Changelog

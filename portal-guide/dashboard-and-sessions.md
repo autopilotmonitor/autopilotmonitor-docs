@@ -2,8 +2,9 @@
 type: Feature Guide
 tags: [portal, dashboard, sessions]
 description: >-
-  The session browser — live stats, powerful filtering and search, and the
-  admin actions on sessions.
+  The dashboard shows every Autopilot enrollment session in a live table:
+  success rate and duration stats, status filters, field search, and admin
+  actions.
 ---
 
 # Dashboard & Sessions
