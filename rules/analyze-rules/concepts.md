@@ -200,6 +200,6 @@ Every matched condition records evidence: the matched event, the field, and its 
 
 ## Custom rules, versions, and IDs
 
-* Custom rules are created on the Analyze Rules page (**Create Custom Rule**), in form mode or raw JSON — advanced constructs like `event_correlation` require JSON mode.
+* Custom rules are created on the Analyze Rules page (**Create Custom Rule**), in form mode or raw JSON — advanced constructs like `event_correlation` require JSON mode. **Test against a session** dry-runs the draft before you save it.
 * The `version` is bumped automatically when you edit a rule in the portal, and `author` is set to the editing user.
 * Built-in and community rules are read-only; **Export** any of them as JSON to use as a starting point for your own rule.

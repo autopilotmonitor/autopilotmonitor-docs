@@ -20,6 +20,8 @@ Four building blocks are exposed through the MCP server:
 * **`test_analyze_rule`** — the key step: **dry-runs a draft analyze rule against a real session from your tenant**. You get a full trace — which conditions matched (with the actual evidence from the session), how many events of each referenced type the session even contains, how the confidence score builds up, and whether the rule would have fired. Nothing is saved; sessions and analysis results are untouched.
 * **`test_log_pattern`** — for log-parsing gather rules: tests a regex against sample lines from your log file **with the exact engine the agent uses on the device** (.NET, case-sensitive, CMTrace or plain-text mode). A pattern that works in an online regex tester can behave differently on the device — this tool removes that guesswork.
 
+The two test tools need the Admin role, so the assistant lists them for admins only. For Operators and Viewers it validates the draft and hands it to an admin.
+
 ## The workflow
 
 1. **Describe the scenario** to your assistant, e.g.:
@@ -36,7 +38,13 @@ Four building blocks are exposed through the MCP server:
 
    The dry-run trace shows exactly why the rule fired or didn't, and previews the explanation text with real values filled in. Iterate until both directions behave as expected.
 
-4. **Create the rule** in the portal (**Settings → Analyze Rules** or **Gather Rules**), pasting the finished JSON — or export/import via the rule pages. Dry-running requires the Admin role (or platform read roles); creating rules requires Admin.
+4. **Create the rule** in the portal (**Rules → Analyze Rules** or **Gather Rules**): **Create Custom Rule** accepts the finished JSON in JSON mode, and the analyze-rule editor's **Test against a session** runs the same dry-run before you save. Dry-running and creating rules require the Admin role.
+
+5. **Share it.** A rule that would help other organizations can go to the community pool from the same page — see [Contribute a Rule](contribute-a-rule.md).
+
+## From an investigation to a rule
+
+The same tools close the loop after a failure that no rule explains yet. The built-in `debug-session` prompt — or **Copy full prompt** on a failed session in the portal ([When no rule explains a failure](../portal-guide/session-details-and-diagnosis.md#when-no-rule-explains-a-failure)) — has the assistant investigate the session down to the diagnostics package and ends by drafting a rule for the cause it found. Test that draft against the failed session and a successful one, and the next occurrence is flagged automatically.
 
 ## Example: from a log file to timeline events
 

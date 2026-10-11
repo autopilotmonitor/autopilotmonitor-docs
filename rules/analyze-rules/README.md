@@ -34,6 +34,7 @@ The **Analyze Rules** page (requires the Admin or Operator role; editing require
 * **Fire statistics** — how often the rule fired and its hit rate over the last 30 days, plus a 30-day sparkline of daily fires, so you can see which rules actually earn their keep in your environment. For a different range, add `?days=` to the page address (up to 90 days on Community, 365 on Pro).
 * **Regression badge** — a red **↑ Regression** badge appears while a rule is firing markedly more often than it used to (see below).
 * **Edit / Export** — custom rules are fully editable in a form or as raw JSON (the **Form ⇄ JSON** toggle); built-ins are read-only but can be exported as JSON to use as a starting point for your own.
+* **Test against a session** — the create and edit forms run the draft, exactly as it would be saved, against a session you name: the verdict, every condition with its evidence and event count, the confidence score and a preview of the explanation. Nothing is saved; test a session where the rule should fire and one where it should stay silent.
 
 ## Regression detection
 

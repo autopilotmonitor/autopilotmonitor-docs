@@ -17,6 +17,8 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## October 2026
 
+* **Investigate failures no rule explains** — A failed session that no analyze rule flagged shows how to dig in with your AI assistant: the built-in debug-session prompt, or Copy full prompt for any MCP client. Session Info says when diagnostics upload isn't set up. See [Session Details](../portal-guide/session-details-and-diagnosis.md#when-no-rule-explains-a-failure).
+* **Test analyze rules against a session** — The analyze-rule editor runs a draft against a session before you save it: verdict, matched conditions with evidence, confidence and the explanation preview. Nothing is saved. See [Analyze Rules](../rules/analyze-rules/README.md#managing-rules-in-the-portal).
 * **Status of each notification channel** — Channels under Settings → Notifications show whether their deliveries go through: operating normally, a failure rate, or an error with its cause. Tenant Admins get a bell notification when a channel stops delivering. See [Notifications](../integrations/notifications.md#channel-status).
 * **Sessions wait for the Windows update at the end of OOBE** — A session no longer fails while Windows installs its quality update during OOBE. Without a sign-in afterwards it ends as Awaiting User or Incomplete. See [Sessions & Statuses](../concepts/sessions-and-statuses.md#windows-quality-update-at-the-end-of-oobe).
 * **Teams Legacy Connector removed** — Microsoft switched it off in May 2026. Teams channels use a Workflow webhook. See [Notifications](../integrations/notifications.md).

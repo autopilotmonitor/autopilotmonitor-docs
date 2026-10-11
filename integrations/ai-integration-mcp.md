@@ -122,10 +122,11 @@ If the connect hangs or fails after the Microsoft sign-in succeeded, it is almos
 | Category | Tools |
 | --- | --- |
 | **Search & Discovery** | `search_sessions` (by status, device properties, serial, model, OS, location…) · `search_sessions_by_event` · `search_sessions_by_cve` · `search_events` (hybrid keyword + semantic — finds "machine restarted unexpectedly" without literal word overlap) · `search_knowledge` (semantic search over the built-in analysis rules, gather rules and IME log patterns; an error code in the query also returns its catalog entry) · `lookup_error_code` (explains one Windows, MSI, Windows Update, AppX or Intune error code by hex, decimal, symbol or IME enforcement state) · `search_docs` (semantic search over this documentation) |
-| **Session Analysis** | `get_session_summary` (the best starting point: overview, observation coverage with a `gaps` list of what the agent could not see, key events, rule analysis, annotations, stats) · `get_session` · `get_session_events` · `get_session_diagnostics` (a short-lived download link for the session's diagnostics package, if one was uploaded; clients with file access such as Claude Code unpack and search it, chat apps hand you the link) |
+| **Session Analysis** | `get_session_summary` (the best starting point: overview, observation coverage with a `gaps` list of what the agent could not see, key events, rule analysis, annotations, stats) · `get_session` · `get_session_events` · `get_session_diagnostics` (a short-lived download link for the session's diagnostics package, if one was uploaded; clients with file access such as Claude Code unpack it and search the IME and agent logs, chat apps hand you the link) |
 | **Metrics & Observability** | `get_metrics` · `get_app_install_metrics` (incl. Delivery Optimization rollup) · `get_time_attribution` (where enrollment time goes — one session or the fleet) · `get_device_history` (a device's enrollment attempts, or the fleet's first-time-right rate) · `get_geographic_metrics` / `get_geographic_sessions` · `get_vulnerability_summary` · `get_rule_stats` (incl. active rule regressions) · `get_ime_version_history` · `get_usage_metrics` |
 | **Inventory & Audit** | `get_software_inventory` · `get_audit_logs` |
 | **Raw Data** | `query_raw_events` · `query_raw_sessions` · `get_resource` (discovery catalogs) |
+| **Rule Authoring** | `validate_rule` (checks a draft gather or analyze rule against the schema and the collection allowlists) · `test_analyze_rule` (dry-runs a draft analyze rule against a real session of your tenant; nothing is saved) · `test_log_pattern` (tests a log-parsing regex with the agent's own engine). The two test tools are listed for the Admin role only; see [AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md) |
 
 Two **discovery resources** help the assistant use the right vocabulary: `event_types` (every event type string, by category) and `device_properties` (dot-notation property keys like `tpm_status.specVersion` or `hardware_spec.ramTotalGB`).
 
@@ -145,6 +146,19 @@ Two **discovery resources** help the assistant use the right vocabulary: `event_
 * *"How do I roll the agent out with Intune?"* (answered from this documentation)
 
 The assistant picks the right tools and chains them — e.g. finding a session by device name first, then pulling its event timeline.
+
+## Built-in prompts
+
+Clients that support MCP prompts list four ready-made workflows. Each takes a session ID, a CVE or a plain-language scenario and walks the assistant through the right tools in the right order:
+
+| Prompt | What it does |
+| --- | --- |
+| `investigate-failed-session` | Root-causes one session from its summary, key events and rule analysis, and reports the outcome, the cause with its evidence, the remediation and a confidence level. |
+| `debug-session` | The deep variant: it also downloads the session's diagnostics package, searches the agent and IME logs, and merges them with the session's events into one timeline. Downloading the package needs a client that works with files, such as Claude Code. |
+| `cve-exposure-audit` | Finds every device a CVE affects and ranks the exposure by severity and exploitation priority. |
+| `author-rule` | Drafts a gather or analyze rule from a scenario, validates it and, for the Admin role, dry-runs it against a session. See [AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md). |
+
+Both investigation prompts end with the same step: when the cause could happen again, the assistant drafts an analyze rule for it, so the next occurrence is detected automatically. How a client offers prompts differs; Claude Code, for example, lists them as slash commands. Without prompt support, a plain-language request reaches the same result, and **Copy full prompt** on a failed session in the portal hands you one ([When no rule explains a failure](../portal-guide/session-details-and-diagnosis.md#when-no-rule-explains-a-failure)).
 
 ## Self-hosted AI clients
 

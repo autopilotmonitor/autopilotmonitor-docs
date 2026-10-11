@@ -13,10 +13,10 @@ description: >-
 
 Opening a session from the dashboard shows everything Autopilot Monitor knows about that enrollment, updating live over SignalR while the enrollment runs. The page is a stack of collapsible sections with a scroll-spy sidebar:
 
-* **Session Info** — status, enrollment duration, enrollment type, ConfigMgr detection, NTP offset.
+* **Session Info** — status, enrollment duration, enrollment type, ConfigMgr detection, NTP offset. On a failed enrollment without a diagnostics package, a note says when diagnostics upload isn't set up for the tenant (see [When no rule explains a failure](#when-no-rule-explains-a-failure)).
 * **Device Details** — a deep telemetry card: OS build/edition, per-adapter network configuration (Wi-Fi SSID and signal, proxy config, active interface), security posture (Secure Boot, TPM, BitLocker with encryption method), agent and IME versions (with an *outdated* badge when applicable), the full **Autopilot profile** including a clickable OOBE-configuration bitmask decoder, and hardware specs down to DIMMs, disks, battery health, and GPUs.
 * **Enrollment Progress** — the phase timeline; click a phase to jump to its events. Pre-provisioning (White Glove) sessions show the technician phase and the user phase separately. While the enrollment runs, a line below the timeline follows the Windows quality update at the end of OOBE: how long it has been running and when it restarts the device, then how long the device has been waiting for its user since the update's restart — or that the update failed or was skipped. When the device has not reported for 15 minutes, the line says when it last did. Below the timeline, finished enrollments carry the [Time attribution](#time-attribution) breakdown.
-* **Analysis** — the [analyze rule](../rules/analyze-rules/README.md) findings as severity-colored cards with a confidence bar and fleet context from your tenant's rule telemetry: *"fires on X % of enrollments"* (30 days) and *"fired in N enrollments in the last 14 days"* — so a finding immediately shows whether it is a one-off or something the fleet is hitting. **View sessions** next to the count opens the dashboard filtered to the enrollments where that rule fired. Expanding a card reveals the explanation, remediation steps, related docs, and an **Evidence** block whose links jump to the exact triggering event in the timeline. **Analyze Now** re-runs all rules on demand (analysis also runs automatically at completion/failure).
+* **Analysis** — the [analyze rule](../rules/analyze-rules/README.md) findings as severity-colored cards with a confidence bar and fleet context from your tenant's rule telemetry: *"fires on X % of enrollments"* (30 days) and *"fired in N enrollments in the last 14 days"* — so a finding immediately shows whether it is a one-off or something the fleet is hitting. **View sessions** next to the count opens the dashboard filtered to the enrollments where that rule fired. Expanding a card reveals the explanation, remediation steps, related docs, and an **Evidence** block whose links jump to the exact triggering event in the timeline. **Analyze Now** re-runs all rules on demand (analysis also runs automatically at completion/failure). When no rule flagged a failed session, the section shows how to investigate it with your AI assistant instead — see [When no rule explains a failure](#when-no-rule-explains-a-failure).
 
 <figure><img src="../.gitbook/assets/session-analysis-finding.png" alt="An expanded analyze-rule finding card with severity, confidence, explanation, remediation steps, and evidence"><figcaption><p>An expanded finding: severity and confidence at the top, the explanation and remediation steps in the middle, and the raw evidence — with a link to the exact triggering event — at the bottom.</p></figcaption></figure>
 
@@ -108,6 +108,17 @@ While an enrollment is running (*In Progress*, *Pending*, or *Stalled*), **Colle
 
 Admins and Operators can trigger a collection once [diagnostics upload](../reference/settings.md#diagnostics-package) is configured. When it is not configured, the button stays visible but disabled — a Tenant Admin clicking it gets a one-step dialog that enables hosted storage with mode *On Failure Only* and collects immediately; the destination and mode can be changed in Settings at any time afterwards.
 
+## When no rule explains a failure
+
+A failed session that no analyze rule flagged still has its evidence: the full timeline and, with [diagnostics upload](../reference/settings.md#diagnostics-package) on, the IME and agent logs. The **Analysis** section and the [Guided diagnosis](#guided-diagnosis) view then show how to dig in with your AI assistant:
+
+* **Clients with MCP prompts** — run the built-in `debug-session` prompt with the session ID shown next to it. It walks the assistant from the session summary to the diagnostics package and the IME logs; downloading the package needs a client that works with files, such as Claude Code.
+* **Any other client** — **Copy full prompt** copies the complete investigation as text. It ends with a draft analyze rule for the cause, so the next occurrence is detected automatically ([AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md#from-an-investigation-to-a-rule)).
+
+Both appear when your account has [AI Integration (MCP)](../integrations/ai-integration-mcp.md) access. Admins and Operators also see a pointer to **Report Session**, which sends a case the product should detect on its own to the maintainers.
+
+On a failed enrollment without a diagnostics package, **Session Info** says when diagnostics upload isn't set up for the tenant. With Upload Mode *On Failure Only*, every later failed enrollment keeps its IME and agent logs; Tenant Admins get a link to the setting.
+
 ## Guided diagnosis
 
 For a failed session, the **Diagnosis** button opens a focused, remediation-first view that answers one question: *why did this fail, and how do I fix it?*
@@ -115,5 +126,6 @@ For a failed session, the **Diagnosis** button opens a focused, remediation-firs
 * The **Primary Suspect** card presents the highest-confidence finding in plain language, with an *Evidence Found* list and a **Quick Fix** box whose remediation steps can be copied with one click.
 * **Other Possibilities** lists lower-ranked findings; **Error Events** and **Warnings** summarize the raw error messages with timestamps.
 * **View Evidence** links back into the full session's timeline, and **Full Details** returns to the complete session page.
+* When no rule flagged the failure, the view offers the same AI investigation as the session page — see [When no rule explains a failure](#when-no-rule-explains-a-failure).
 
 The diagnosis view is deliberately minimal — no device details, no admin controls — making it the right link to share with a colleague who just needs to fix the device.

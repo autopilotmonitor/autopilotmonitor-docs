@@ -1,5 +1,14 @@
 # Log
 
+## 2026-10-12
+
+* **Update**: `integrations/ai-integration-mcp.md` — new section *Built-in prompts* (investigate-failed-session, debug-session, cve-exposure-audit, author-rule); tools table row *Rule Authoring*, the two test tools for the Admin role; `get_session_diagnostics` searches the IME and agent logs.
+* **Update**: `rules/ai-assisted-rule-authoring.md` — portal path Rules → Analyze Rules, Test against a session in the editor, Admin role for the test tools, community pool step; new section *From an investigation to a rule*.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — new section *When no rule explains a failure*; Session Info diagnostics note; Guided diagnosis offers the same investigation.
+* **Update**: `rules/analyze-rules/README.md`, `rules/analyze-rules/concepts.md` — Test against a session in the custom-rule editor.
+* **Update**: `getting-started/portal-setup.md` — Diagnostics Package: On Failure Only keeps the logs of every failed enrollment.
+* **Update**: `changelog/platform-changelog.md` — October 2026: investigate failures no rule explains; test analyze rules against a session.
+
 ## 2026-10-11 (2)
 
 * **Update**: the remaining 29 pages whose description was shorter than 150 characters (getting started, concepts, portal guide, rules, integrations, reference, troubleshooting, agent changelog) — page descriptions (search-result snippets) lengthened to 150–160 characters. Every page now has 150–160.
