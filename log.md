@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-13
+
+* **Update**: `getting-started/portal-setup.md`, `concepts/roles-and-permissions.md`, `reference/settings.md` — the first *member* of the organization to sign in becomes Tenant Admin; a guest account never does.
+* **Update**: `getting-started/requirements-and-access.md` — How it works, step 1: guest accounts and personal Microsoft accounts can't activate a tenant.
+
 ## 2026-10-12 (4)
 
 * **Update**: `integrations/notifications.md` — Triggers table: *Notify on Success* also fires when pre-provisioning finishes; rows for the *Hardware rejection* and *SLA* toggles replace the sentence that called them part of every webhook.

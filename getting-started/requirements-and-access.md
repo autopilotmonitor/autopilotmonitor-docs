@@ -29,7 +29,7 @@ Autopilot Monitor is **publicly available** — the Community plan is free, and 
 
 ### How it works
 
-1. Open the [Autopilot Monitor portal](https://www.autopilotmonitor.com) and sign in with your Microsoft Entra ID account.
+1. Open the [Autopilot Monitor portal](https://www.autopilotmonitor.com) and sign in with your Microsoft Entra ID account. Guest accounts and personal Microsoft accounts can't activate a tenant.
 2. On the first sign-in from a new organization you will see an **activation** screen — your tenant is queued for activation automatically; there is nothing to fill in.
 3. Activation usually completes within a couple of minutes. The activation screen checks automatically and takes you straight into the portal; you can also leave an email address to be notified.
 4. Once activated, continue with [Portal Setup](portal-setup.md). If activation takes longer than expected, reach out via [LinkedIn](https://www.linkedin.com/in/oliver-kieselbach) or a [GitHub issue](https://github.com/okieselbach/Autopilot-Monitor/issues).
