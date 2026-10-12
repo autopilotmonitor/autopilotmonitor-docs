@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-12 (3)
+
+* **Update**: `changelog/agent-changelog.md` — October 2026 split into *Mid October 2026* and *Early October 2026*; Mid October: the agent pauses uploads and keeps running when TLS inspection or a proxy intercepts its connection; an intercepted registration is retried at the next boot, then the agent removes itself.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: intercepted uploads in the session summary.
+
 ## 2026-10-12 (2)
 
 * **Update**: `changelog/platform-changelog.md` — October 2026 split into *Mid October 2026* and *Early October 2026*; Mid October adds rule tests in AI assistants for the Admin role and the fixed Geographic Performance sign-in.

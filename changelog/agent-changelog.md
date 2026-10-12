@@ -17,7 +17,12 @@ The same entries appear in the portal under **Help (?) → What's new** on the A
 
 Per-version release notes: [GitHub Releases](https://github.com/okieselbach/AutopilotMonitor/releases).
 
-## October 2026
+## Mid October 2026
+
+* When TLS inspection or a proxy intercepts its connection, the agent pauses its uploads and keeps running until the enrollment ends
+* If its registration is intercepted at startup, the agent retries at the next boot and removes itself if the connection is still intercepted
+
+## Early October 2026
 
 * The agent stops and cleans up when the backend no longer knows its session, instead of retrying forever
 * The software inventory no longer picks up invisible padding that some installers leave in program names and publishers
