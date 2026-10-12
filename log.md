@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-12 (4)
+
+* **Update**: `integrations/notifications.md` — Triggers table: *Notify on Success* also fires when pre-provisioning finishes; rows for the *Hardware rejection* and *SLA* toggles replace the sentence that called them part of every webhook.
+
 ## 2026-10-12 (3)
 
 * **Update**: `changelog/agent-changelog.md` — October 2026 split into *Mid October 2026* and *Early October 2026*; Mid October: the agent pauses uploads and keeps running when TLS inspection or a proxy intercepts its connection; an intercepted registration is retried at the next boot, then the agent removes itself.

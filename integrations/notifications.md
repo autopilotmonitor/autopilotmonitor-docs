@@ -53,15 +53,17 @@ The trigger URL carries its own shared-access signature, so treat it like a pass
 | Toggle | Fires when |
 | --- | --- |
 | **Notify on Start** | An enrollment session starts |
-| **Notify on Success** | A session completes successfully |
+| **Notify on Success** | A session completes successfully, or pre-provisioning finishes |
 | **Notify on Failure** | A session ends in failure — keep this one on |
+| **Hardware rejection** | The hardware whitelist rejects a device |
+| **SLA** | An SLA target is breached or met again, or enrollments fail in a row |
 | **What's new** | New platform or agent changelog entries go live — a product-update digest, not a session event |
 
 **Send Test Notification** posts a sample message to verify the configuration end to end.
 
 **What's new** is the one trigger that is not about an enrollment: whenever new entries appear in the portal's What's new panel, every channel with the toggle on receives one message listing them, with links into the panel and the documentation. It is off by default.
 
-Beyond the session triggers, the same webhook also carries **SLA breach/resolution alerts** (when [SLA targets](../portal-guide/sla-compliance.md) are configured), **consecutive-failure alerts**, and **hardware-rejection notices**.
+**SLA** alerts need [SLA targets](../portal-guide/sla-compliance.md); the SLA Targets settings decide which breaches are checked.
 
 SLA alerts judge the success rate and the P95 duration over the **last 30 days** and the app install rate over the **current ISO week** — the same periods the [SLA Compliance](../portal-guide/sla-compliance.md#which-period-each-number-covers) page shows in its banner and gauges. A breach is reported when it starts and again only after new enrollments (or app installs) have finished since the last alert — never more often than the repeat interval; a tenant with no new enrollments is not reminded of the same value. A resolution alert follows when the target is met again.
 
