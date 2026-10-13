@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-08-23
+timestamp: 2026-10-13
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 25 September 2026 · Next review: 2 March 2027.**
+**Last reviewed: 13 October 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 

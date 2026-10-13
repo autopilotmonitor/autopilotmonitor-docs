@@ -1,6 +1,6 @@
 ---
 type: Concept
-timestamp: 2026-10-09T00:00:00.000Z
+timestamp: 2026-10-13T00:00:00.000Z
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 9 October 2026 · Next review: 9 February 2027.**
+**Last reviewed: 13 October 2026 · Next review: 13 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -298,13 +298,13 @@ Once upload is configured, an **administrator or operator of your own tenant** c
 
 Yes, through five independent layers:
 
-1. **Code signing:** the agent's executables and libraries carry an **Authenticode signature from glueckkanja AG**, timestamped so it outlives the certificate. Application control policies can allow them by publisher; `Get-AuthenticodeSignature` verifies them on any device (agent versions published from September 2026 onward). The bootstrapper enforces this on every device: it checks the publisher of each Autopilot Monitor binary it unpacks and refuses to start an agent that is not signed by us.
+1. **Code signing:** the agent's own executables and libraries carry an **Authenticode signature from glueckkanja AG**, timestamped so it outlives the certificate, and third-party libraries enter the package only with their vendor's own valid signature. Application control policies can allow them by publisher; `Get-AuthenticodeSignature` verifies them on any device (agent versions published from September 2026 onward). Every package also carries a **catalog signed by glueckkanja AG that lists every file in it**. The bootstrapper, the bootstrap-token script and the agent's self-updater check that catalog on the device and refuse a package whose catalog is not ours or in which a file is missing, changed or added.
 2. **Build provenance:** release packages carry a **Sigstore keyless GitHub artifact attestation**, verifiable with the GitHub CLI against the source repository and workflow that produced them (agent versions published from July 2026 onward).
 3. **Publication integrity:** the SHA-256 computed at build time is published in the release manifest and checked by the bootstrapper and self-updater before anything executes.
 4. **Independent cross-check:** the expected hash is also served over the authenticated agent configuration endpoint — a second, separate trust channel, so compromising the download alone is not sufficient.
 5. **Runtime self-verification:** the running agent hashes itself and raises an emergency alert on mismatch.
 
-The deployment scripts are signed by the same publisher. The loader you assign in Intune verifies that signature on the bootstrapper it downloads, and the bootstrapper in turn verifies the binaries it unpacks, so the chain from the file you upload to the running agent is signed end to end and checked at every hand-off.
+The deployment scripts are signed by the same publisher. The loader you assign in Intune verifies that signature on the bootstrapper it downloads, and the bootstrapper in turn verifies the package against its signed catalog before anything is installed, so the chain from the file you upload to every file the agent runs from is signed end to end and checked at every hand-off.
 
 Build numbers are reserved with an atomic compare-and-swap so two builds can never claim the same version, and the build fails on any executable/manifest/version inconsistency.
 

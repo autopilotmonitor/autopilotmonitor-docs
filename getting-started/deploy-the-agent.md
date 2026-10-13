@@ -41,8 +41,8 @@ Scripts and agent binaries carry an Authenticode signature from **glueckkanja AG
 
 * The loader refuses to run a bootstrapper that is not signed by us — a tampered or substituted download never executes on your devices.
 * You can check any file before you upload it: `Get-AuthenticodeSignature .\Start-AutopilotMonitor.ps1` must report `Valid` and `glueckkanja AG`.
-* The agent's executables and libraries are signed too, so application control policies (WDAC, AppLocker) can allow them by publisher.
-* The bootstrapper checks those signatures on the device and refuses to start an agent that is not signed by us.
+* Every binary in the agent package is signed: our executables and libraries by us, the third-party libraries by their own vendor. Application control policies (WDAC, AppLocker) can allow them by publisher.
+* Every package carries a catalog signed by us that lists every file in it. The bootstrapper checks it on the device and refuses a package whose catalog is not ours or in which a file is missing, changed or added.
 * Leave **Enforce script signature check** in Intune at **No**. With **Yes**, PowerShell trusts only publishers listed in the device's **Trusted Publishers** certificate store. An enrolling device does not have our certificate there, and there is no reliable way to place it before the script runs, so the script would never start. The checks above do not depend on that store.
 
 ## Deployment steps

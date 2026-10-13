@@ -17,7 +17,7 @@ The bootstrapper then:
 
 1. Evaluates the **pre-requisite guards** — registry deployment marker, no real user profiles, no previous interactive logon, device uptime under 12 hours, agent not already present. All must pass, otherwise the script exits silently without changing anything.
 2. **Downloads the agent package** from the distribution endpoint and verifies its **SHA-256 hash** against the published value — a mismatch aborts the installation.
-3. **Verifies the publisher** of every Autopilot Monitor executable and library in the package; anything not validly signed by us aborts the installation.
+3. **Verifies the package against its signed catalog** — every agent package carries a catalog signed by us that lists every file in it. The bootstrapper unpacks into a staging folder and installs only when the catalog carries our signature and every file is present and unchanged, with nothing added; otherwise it deletes the staging folder and aborts.
 4. Installs the agent, creates a **scheduled task running as SYSTEM**, and starts monitoring.
 
 The full guard list with the exact checks is on the [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly) page, together with the read-only **dry-run tester** (`Test-ShouldBootstrapAgent.ps1`) that reports the install decision for any machine without modifying it.
@@ -37,7 +37,7 @@ Normally the agent authenticates with the device's **MDM client certificate**, a
 * **Very early OOBE** — the agent should start before Intune has issued the MDM certificate.
 * **Pre-validation scenarios** — devices that need to register before device validation applies to them (lab devices, special provisioning flows).
 
-Bootstrap Tokens bridge this gap: a token authenticates the session start instead of the certificate, and the agent switches to certificate authentication as soon as the MDM certificate arrives (`--await-enrollment`, default wait up to 8 hours).
+Bootstrap Tokens bridge this gap: a token authenticates the session start instead of the certificate, and the agent switches to certificate authentication as soon as the MDM certificate arrives (`--await-enrollment`, default wait up to 8 hours). The script behind a token URL installs the agent with the same package check as the bootstrapper: signed catalog, every file verified.
 
 ### Managing tokens
 

@@ -11,6 +11,12 @@ description: >-
 
 Documented issues caused by external changes (e.g. Microsoft updates) and platform incidents — each entry describes the impact, what still works, and whether action is needed. Newest first.
 
+## 2026-10-13 — **Change:** Every File of the Agent Package Is Verified Before It Runs
+
+Each agent package now carries a catalog signed by glueckkanja AG that lists every file in it. The bootstrapper, the bootstrap-token script and the agent's self-updater check this catalog on the device and install a package only when the catalog carries our signature and every file is present and unchanged, with nothing added. Until now the bootstrapper verified the signatures of our own binaries only. Third-party libraries enter the package only with their vendor's own signature, so every binary in it is signed. The package is also smaller: a library Windows already provides is no longer included.
+
+If you assign the loader (`Start-AutopilotMonitor.ps1`), there is nothing to do — every device fetches the current bootstrapper. A copy of the bootstrapper (`Install-AutopilotMonitor.ps1`) assigned directly keeps working, but it does not perform the new check; replace it with the loader as described in [Deploy the Agent](../getting-started/deploy-the-agent.md).
+
 ## 2026-07-18 — **Resolved:** Infrastructure Maintenance Completed Successfully
 
 The scheduled infrastructure maintenance was completed successfully on **Saturday, 18 Jul** — well ahead of the announced window. The platform is fully operational again: portal, ingestion API, realtime updates, and the MCP server are all back to normal, and agents have resumed syncing. Enrollment data collected on devices during the window was preserved and uploaded as designed — no data was lost.

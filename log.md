@@ -1,5 +1,14 @@
 # Log
 
+## 2026-10-13 (2)
+
+* **Update**: `trust/security-faq.md` — *Is the agent binary verifiable?*: every package carries a catalog signed by glueckkanja AG that the bootstrapper, the bootstrap-token script and the self-updater check; third-party libraries only with their vendor's signature. Last reviewed 13 October 2026.
+* **Update**: `trust/data-flows.md` — reviewed for the package catalog, no change to the data flows. Last reviewed 13 October 2026.
+* **Update**: `concepts/agent-lifecycle-and-security.md` — *Binary integrity*: steps 1 and 5 for the signed package catalog.
+* **Update**: `reference/bootstrap-script-and-tokens.md` — bootstrapper step 3 verifies the package against its signed catalog; the bootstrap-token script does the same.
+* **Update**: `getting-started/deploy-the-agent.md` — *Everything you deploy is signed*: every binary in the package is signed, ours and the vendors'; the catalog check.
+* **New**: `troubleshooting/service-announcements.md` — 2026-10-13 change: every file of the agent package is verified before it runs.
+
 ## 2026-10-13
 
 * **Update**: `getting-started/portal-setup.md`, `concepts/roles-and-permissions.md`, `reference/settings.md` — the first *member* of the organization to sign in becomes Tenant Admin; a guest account never does.
