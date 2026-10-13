@@ -54,6 +54,7 @@ Every stage between our build and the running process is verified, and the check
 5. **Package verification on the device** — before anything from a package runs, it is checked against its signed catalog: the catalog must carry our signature, and every file must be present and unchanged, with nothing added. The bootstrapper unpacks into a staging folder and installs only a verified package; the bootstrap-token script does the same; the agent's self-updater checks every update before a single file is replaced. A failed check aborts the installation, and an update that fails it is skipped while the running agent stays.
 6. **Backend cross-check** — the expected hash is *also* delivered through the authenticated configuration endpoint, an independent second trust channel. Tampering would require compromising the download server and the backend API simultaneously.
 7. **Runtime self-check** — the running agent hashes its own executable and compares it against the value from the backend; a mismatch raises an emergency alert.
+8. **Protected install folder** — the agent's folder under ProgramData can only be changed by SYSTEM and administrators, so a signed-in user cannot add files that the agent would load.
 
 The signature checks close a gap the hashes cannot: the published hash is served from the same host as the package, while the expected publisher is carried by the signed script itself. The catalog extends that check from our own binaries to every file of the package.
 
