@@ -19,6 +19,11 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## Mid October 2026
 
+* The self-updater installs an update only when every file matches the package's catalog, signed by glueckkanja AG
+* Every binary in the agent package is signed, third-party libraries by their own vendor
+* The agent's install folder can only be changed by SYSTEM and administrators
+* The agent download is less than half its previous size: it no longer includes a PowerShell library that Windows already provides
+* The agent's start event records which bootstrapper and loader version installed it
 * When TLS inspection or a proxy intercepts its connection, the agent pauses its uploads and keeps running until the enrollment ends
 * If its registration is intercepted at startup, the agent retries at the next boot and removes itself if the connection is still intercepted
 

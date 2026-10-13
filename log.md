@@ -8,6 +8,8 @@
 * **Update**: `reference/bootstrap-script-and-tokens.md` — bootstrapper step 3 verifies the package against its signed catalog; the bootstrap-token script does the same.
 * **Update**: `getting-started/deploy-the-agent.md` — *Everything you deploy is signed*: every binary in the package is signed, ours and the vendors'; the catalog check.
 * **New**: `troubleshooting/service-announcements.md` — 2026-10-13 change: every file of the agent package is verified before it runs.
+* **Update**: `changelog/agent-changelog.md` — Mid October 2026: the self-updater checks every update against the signed catalog; every binary signed, third-party libraries by their vendor; protected install folder; less than half the download size; the start event records the bootstrapper and loader version.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: the agent package is verified before it runs (action recommended for a directly assigned bootstrapper); guest accounts can't activate a tenant.
 
 ## 2026-10-13
 

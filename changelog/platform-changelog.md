@@ -17,6 +17,8 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Mid October 2026
 
+* **Agent package verified before it runs (action recommended)** — The bootstrapper and the bootstrap-token script install the agent only when every file in the package matches its signed catalog. Devices that run the loader get this automatically; replace a directly assigned copy of the bootstrapper with the loader. See [Deploy the Agent](../getting-started/deploy-the-agent.md#everything-you-deploy-is-signed).
+* **Guest accounts can't activate a tenant** — The first member of your organization to sign in becomes Tenant Admin; guest and personal Microsoft accounts never do. See [Roles & Permissions](../concepts/roles-and-permissions.md#tenant-roles).
 * **Investigate failures no rule explains** — A failed session that no analyze rule flagged shows how to dig in with your AI assistant: the built-in debug-session prompt, or Copy full prompt for any MCP client. Session Info says when diagnostics upload isn't set up. See [Session Details](../portal-guide/session-details-and-diagnosis.md#when-no-rule-explains-a-failure).
 * **Test analyze rules against a session** — The analyze-rule editor runs a draft against a session before you save it: verdict, matched conditions with evidence, confidence and the explanation preview. Nothing is saved. See [Analyze Rules](../rules/analyze-rules/README.md#managing-rules-in-the-portal).
 * **Rule tests in AI assistants** — `test_analyze_rule` and `test_log_pattern` now appear for the Admin role only, and the built-in investigation prompts end with a draft rule for a cause that can recur. See [AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md#what-the-assistant-can-do).
