@@ -2,6 +2,8 @@
 
 ## 2026-10-14
 
+* **Update**: `portal-guide/usage-metrics.md` — Deployment Types: enrollment type (Autopilot or Device Preparation), join type (Entra or hybrid) and Autopilot deployment mode (user-driven, self-deploying, pre-provisioned).
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Deployment types in Usage Metrics.
 * **Update**: `changelog/platform-changelog.md` — Mid October 2026: Blocked sessions explain themselves.
 * **New**: `concepts/protective-limits.md` — Protective Limits: the upload rate limit, the event limit that pauses a session's uploads or ends monitoring on the device, the agent lifetime; what the session page, the session list, the timeline, the analysis, notifications and the audit log show; what to do.
 * **Update**: `SUMMARY.md`, `index.md` — Protective Limits under Concepts.
