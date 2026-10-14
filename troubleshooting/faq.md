@@ -147,7 +147,7 @@ Yes. Every enrolling device appears on the [dashboard](../portal-guide/dashboard
 
 <summary>Why did an enrollment fail, and how do I find out without the device?</summary>
 
-Open the session: [analyze rules](../rules/analyze-rules/README.md) have already flagged app install error codes, detection-rule failures that break the ESP, blocking-app timeouts, download and proxy failures, TPM attestation and MDM enrollment error codes, hybrid join problems, failed Windows updates, and low disk space or battery (full list: [built-in rules](../rules/analyze-rules/built-in-rules.md)). [Guided diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis) names the primary suspect with a copyable quick fix; [diagnostics collection](diagnostics-and-log-collection.md) brings the agent and IME logs to you.
+Open the session: [analyze rules](../rules/analyze-rules/README.md) have already flagged app install error codes, detection-rule failures that break the ESP, blocking-app timeouts, download and proxy failures, TPM attestation and MDM enrollment error codes, hybrid join problems, failed Windows updates, and low disk space or battery (full list: [built-in rules](../rules/analyze-rules/built-in-rules.md)). [Guided diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis) states what happened — the failed ESP step, the app to blame and the steps to fix it; [diagnostics collection](diagnostics-and-log-collection.md) brings the agent and IME logs to you.
 
 </details>
 

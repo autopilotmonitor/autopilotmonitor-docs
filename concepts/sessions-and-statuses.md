@@ -25,6 +25,10 @@ stateDiagram-v2
     Pending --> InProgress: User signs in,<br/>user phase continues
     InProgress --> Succeeded: Enrollment complete
     InProgress --> Failed: Explicit failure detected
+    InProgress --> Stalled: No progress for 60 min,<br/>or nothing received for 2 h
+    Stalled --> InProgress: New events arrive
+    Stalled --> AwaitingUser: Session timeout,<br/>Device Setup finished
+    Stalled --> Incomplete: Session timeout,<br/>no completion or failure signal
     InProgress --> AwaitingUser: Silent after Device Setup<br/>(session timeout)
     InProgress --> Incomplete: Silent, no completion<br/>or failure signal
     AwaitingUser --> Succeeded: Late completion reconciled
@@ -37,6 +41,7 @@ stateDiagram-v2
 | --- | --- |
 | **In Progress** | Enrollment events are actively being received. The agent is monitoring the enrollment on the device. |
 | **Pending** | The session is registered but waiting for the user enrollment phase. Typical after a **pre-provisioning (White Glove)** enrollment: the device phase is complete and the device waits for a user to sign in and continue. |
+| **Stalled** | Non-terminal. The enrollment stopped making progress: the agent reported no enrollment progress for 60 minutes while no app was installing, or the backend received nothing from the device for 2 hours. Not a failure, and not counted in the success or failure rate. The session **heals to _In Progress_** with the next real event, moves straight to *Succeeded* or *Failed* when a completion or failure arrives, and is otherwise classified like any silent session once the Session Timeout has passed (see [Timeouts](#timeouts-what-happens-to-stuck-sessions)). |
 | **Awaiting User** | Non-terminal. Device Setup finished, but the user / Account Setup phase hasn't completed and the agent has gone silent — most often the user simply hasn't signed in yet (the device is provisioned and legitimately waiting at the login screen). The session parks here and **heals to _Succeeded_** if the enrollment completes later; once the grace window expires it settles to **Succeeded** ("completed (assumed)") when the user provably reached the desktop and no app failed, otherwise to _Incomplete_. |
 | **Succeeded** | The enrollment finished successfully — the device passed through all expected phases (or an admin manually marked it succeeded via Admin Mode). A session that went silent and later produces a genuine completion signal is **reconciled** to Succeeded, even from Failed, Incomplete, or Awaiting User. |
 | **Failed** | The enrollment ended in an **explicit** failure — a failure event from the agent/backend, a firing analyze rule with "mark session as failed" enabled, or a manual Admin Mode mark. A silent session that never sent a failure signal is **no longer** counted here (see [Timeouts](#timeouts-what-happens-to-stuck-sessions) below). |
@@ -103,4 +108,4 @@ If nobody signs in, the agent stops waiting and the session is classified from i
 
 ## Manual overrides (Admin Mode)
 
-Admins can manually mark an *In Progress* or *Pending* session as **Succeeded** or **Failed** from the session detail page — useful when a session will clearly never complete on its own. Marking a session succeeded also signals the agent (if still running) to finish up and clean the device. These actions are gated behind the [Admin Mode](roles-and-permissions.md#admin-mode) safety toggle.
+Admins can manually mark an *In Progress*, *Pending* or *Stalled* session as **Succeeded** or **Failed** from the session detail page — useful when a session will clearly never complete on its own. Marking a session succeeded also signals the agent (if still running) to finish up and clean the device. These actions are gated behind the [Admin Mode](roles-and-permissions.md#admin-mode) safety toggle.

@@ -27,7 +27,7 @@ Yes. Once the agent is [deployed via Intune](getting-started/deploy-the-agent.md
 
 ### Why did this enrollment fail, and how do I find out without the device?
 
-Open the session: [analyze rules](rules/analyze-rules/README.md) have already flagged what went wrong — app install error codes, detection-rule failures that break the ESP, blocking-app timeouts, content download and proxy failures, TPM attestation and MDM enrollment error codes, hybrid join problems, failed Windows updates, low disk space or battery (see the [built-in rules reference](rules/analyze-rules/built-in-rules.md)). [Guided diagnosis](portal-guide/session-details-and-diagnosis.md#guided-diagnosis) names the primary suspect with a copyable quick fix, and [diagnostics collection](troubleshooting/diagnostics-and-log-collection.md) brings the agent and IME logs to you.
+Open the session: [analyze rules](rules/analyze-rules/README.md) have already flagged what went wrong — app install error codes, detection-rule failures that break the ESP, blocking-app timeouts, content download and proxy failures, TPM attestation and MDM enrollment error codes, hybrid join problems, failed Windows updates, low disk space or battery (see the [built-in rules reference](rules/analyze-rules/built-in-rules.md)). [Guided diagnosis](portal-guide/session-details-and-diagnosis.md#guided-diagnosis) states what happened — the failed ESP step, the app to blame and the steps to fix it — and [diagnostics collection](troubleshooting/diagnostics-and-log-collection.md) brings the agent and IME logs to you.
 
 ### Can failed enrollments be analyzed automatically instead of reading IME logs by hand?
 

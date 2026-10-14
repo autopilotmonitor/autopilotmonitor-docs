@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-14
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — *Guided diagnosis* rewritten for the new page: the verdict from the enrollment itself (status, failed ESP step, the app to blame, ESP phases, what a waiting enrollment still needs), *Around the failure* with the app in the tenant's other enrollments of the last 7 days, *What to do*, *Where the time went*, *Findings* grouped by what they mean for the outcome, *Notes from your team*, *Errors and warnings*; the page exists for every session with something to explain. *Analysis*: a value the enrollment did not record is left out. Header actions: Diagnosis for every such session; Succeed/Fail also on a Stalled session.
+* **Update**: `concepts/sessions-and-statuses.md` — the **Stalled** status: table row and diagram edges (no progress for 60 minutes, or nothing received for 2 hours; heals with the next real event; classified like any silent session at the Session Timeout); manual overrides include Stalled.
+* **Update**: `README.md`, `troubleshooting/faq.md` — Guided diagnosis states what happened instead of naming a primary suspect.
+
 ## 2026-10-13 (2)
 
 * **Update**: `trust/security-faq.md` — *Is the agent binary verifiable?*: every package carries a catalog signed by glueckkanja AG that the bootstrapper, the bootstrap-token script and the self-updater check; third-party libraries only with their vendor's signature. Last reviewed 13 October 2026.
