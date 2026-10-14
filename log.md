@@ -8,6 +8,7 @@
 * **Update**: `rules/analyze-rules/cookbook.md` — Recipe 2 carries a presentation block.
 * **Update**: `rules/contribute-a-rule.md` — the review looks at how the finding shows on the diagnosis page.
 * **Update**: `README.md`, `troubleshooting/faq.md` — Guided diagnosis states what happened instead of naming a primary suspect.
+* **Update**: `trust/security-faq.md` — automated decisions: enrollment classification decides the status, analyze rules flag what went wrong and can mark an enrollment as failed. Last reviewed 14 October 2026.
 
 ## 2026-10-13 (2)
 

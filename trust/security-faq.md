@@ -1,6 +1,6 @@
 ---
 type: Concept
-timestamp: 2026-10-13T00:00:00.000Z
+timestamp: 2026-10-14T00:00:00.000Z
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 13 October 2026 · Next review: 13 February 2027.**
+**Last reviewed: 14 October 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -347,7 +347,7 @@ It makes automated decisions about **devices and requests**, not about people, a
 * **Rate limiting** throttles a device, portal user, or MCP client that exceeds its window.
 * **Device blocking** rejects telemetry from a device an administrator has blocked, or one that fails Autopilot validation.
 * **The kill switch** stops agents by version or device when a release turns out to be faulty.
-* **Analyze rules** classify an enrollment as failed, stalled, or successful — a diagnosis of a machine, which an administrator can always overrule by reading the underlying timeline.
+* **Enrollment classification** decides from the device's events whether an enrollment succeeded, failed, stalled or ended incomplete, and **analyze rules** flag what went wrong and can mark an enrollment as failed — a diagnosis of a machine, which an administrator can always overrule by reading the underlying timeline.
 
 #### Are outbound webhooks protected against SSRF?
 
