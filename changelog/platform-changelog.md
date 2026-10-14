@@ -17,6 +17,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Mid October 2026
 
+* **Blocked sessions explain themselves** — When a protective limit pauses or ends a session's monitoring, the session page, the session list and the analysis now say so. See [Protective Limits](../concepts/protective-limits.md).
 * **Diagnosis says what happened** — The Diagnosis page opens with the verdict of the enrollment — its status, the failed ESP step and the app to blame — instead of the finding with the highest score, then the circumstances, the steps to fix it, where the time went and every finding grouped by what it means for the outcome. It is there for failed, stalled, waiting and incomplete sessions and for successful ones with findings. See [Session Details](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).
 * **The failing app in your other enrollments** — The Diagnosis page shows how the app to blame did in your tenant's other enrollments of the last 7 days, failures with their error codes. See [Session Details](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).
 * **No placeholders in findings** — A value an enrollment did not record no longer shows as `{{appName}}` in a finding: the line or step that needs it is left out, as in notifications. See [Analyze Rule Concepts](../rules/analyze-rules/concepts.md#evidence-and-interpolation).

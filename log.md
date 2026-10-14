@@ -2,6 +2,7 @@
 
 ## 2026-10-14
 
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Blocked sessions explain themselves.
 * **New**: `concepts/protective-limits.md` — Protective Limits: the upload rate limit, the event limit that pauses a session's uploads or ends monitoring on the device, the agent lifetime; what the session page, the session list, the timeline, the analysis, notifications and the audit log show; what to do.
 * **Update**: `SUMMARY.md`, `index.md` — Protective Limits under Concepts.
 * **Update**: `concepts/sessions-and-statuses.md` — a paused session goes silent and is classified like any silent session; its status reason names the pause.
