@@ -9,6 +9,7 @@
 * **Update**: `rules/contribute-a-rule.md` — the review looks at how the finding shows on the diagnosis page.
 * **Update**: `README.md`, `troubleshooting/faq.md` — Guided diagnosis states what happened instead of naming a primary suspect.
 * **Update**: `trust/security-faq.md` — automated decisions: enrollment classification decides the status, analyze rules flag what went wrong and can mark an enrollment as failed. Last reviewed 14 October 2026.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Diagnosis says what happened; the failing app in your other enrollments; no placeholders in findings; rules describe their findings.
 
 ## 2026-10-13 (2)
 
