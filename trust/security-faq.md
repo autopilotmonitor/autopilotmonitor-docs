@@ -310,7 +310,7 @@ Build numbers are reserved with an atomic compare-and-swap so two builds can nev
 
 #### Can you stop a misbehaving agent in the field?
 
-Yes. There is a **kill switch** delivered over the configuration channel that stops agents by version or by device, plus device blocking for compromised or unauthorized hardware. Both raise operational events and are auditable.
+Yes. There is a **kill switch** delivered over the configuration channel that stops agents by version or by device, plus device blocking for compromised or unauthorized hardware. Both raise operational events and are auditable. A device whose enrollment sends far more events than an enrollment needs can be paused automatically; see [Protective Limits](../concepts/protective-limits.md).
 
 #### How is the code tested and reviewed?
 
@@ -345,7 +345,7 @@ From there the sequence is: **contain** (kill switch, device block, or disabling
 It makes automated decisions about **devices and requests**, not about people, and none of them produce legal or similarly significant effects on an individual:
 
 * **Rate limiting** throttles a device, portal user, or MCP client that exceeds its window.
-* **Device blocking** rejects telemetry from a device an administrator has blocked, or one that fails Autopilot validation.
+* **Device blocking** rejects telemetry from a device the platform operator has blocked, from an enrollment session above the [event limit](../concepts/protective-limits.md), or from a device that fails Autopilot validation.
 * **The kill switch** stops agents by version or device when a release turns out to be faulty.
 * **Enrollment classification** decides from the device's events whether an enrollment succeeded, failed, stalled or ended incomplete, and **analyze rules** flag what went wrong and can mark an enrollment as failed — a diagnosis of a machine, which an administrator can always overrule by reading the underlying timeline.
 

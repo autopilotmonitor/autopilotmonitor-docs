@@ -21,7 +21,7 @@ If **Autopilot Device Validation** is disabled, a red *action required* banner a
 
 ## The sessions table
 
-Default columns: **Device** (name + serial), **Model**, **Status**, **Events**, **Duration**, **Started**. The **Columns** button adds more — Country, Agent Version, OS name/build/version/edition/language — and remembers your choice. Status badges carry qualifier pills where relevant: **Hybrid** (Hybrid Azure AD Join), **Self-Deploying** (kiosk/shared-device profile), and **Blocked**. Clicking a row opens the [session detail](session-details-and-diagnosis.md).
+Default columns: **Device** (name + serial), **Model**, **Status**, **Events**, **Duration**, **Started**. The **Columns** button adds more — Country, Agent Version, OS name/build/version/edition/language — and remembers your choice. Status badges carry qualifier pills where relevant: **Hybrid** (Hybrid Azure AD Join), **Self-Deploying** (kiosk/shared-device profile), and **Blocked** (the platform paused or ended the session's monitoring — see [Protective Limits](../concepts/protective-limits.md)). Clicking a row opens the [session detail](session-details-and-diagnosis.md).
 
 ### Finding sessions
 

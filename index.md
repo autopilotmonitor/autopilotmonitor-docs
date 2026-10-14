@@ -24,6 +24,7 @@ Contributor-facing technical documentation lives in the main product repository 
 * [Sessions & Statuses](concepts/sessions-and-statuses.md) - What a session is, every status it can take, how attempts group into a device journey, and how completion is decided.
 * [Roles & Permissions](concepts/roles-and-permissions.md) - Portal roles, tenant scoping, and the permission model.
 * [Agent Lifecycle & Security](concepts/agent-lifecycle-and-security.md) - How the agent installs, authenticates, runs, and removes itself.
+* [Protective Limits](concepts/protective-limits.md) - The upload rate and event limits that pause or end a session's monitoring, and what you see when one applies.
 
 # Portal Guide
 

@@ -2,6 +2,14 @@
 
 ## 2026-10-14
 
+* **New**: `concepts/protective-limits.md` — Protective Limits: the upload rate limit, the event limit that pauses a session's uploads or ends monitoring on the device, the agent lifetime; what the session page, the session list, the timeline, the analysis, notifications and the audit log show; what to do.
+* **Update**: `SUMMARY.md`, `index.md` — Protective Limits under Concepts.
+* **Update**: `concepts/sessions-and-statuses.md` — a paused session goes silent and is classified like any silent session; its status reason names the pause.
+* **Update**: `portal-guide/dashboard-and-sessions.md` — the Blocked pill explained.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Session Info: the card for a paused or ended session.
+* **Update**: `troubleshooting/common-problems.md` — Sessions stuck In Progress: the Monitoring paused / Monitoring ended card.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-ENRL-006 Monitoring Paused by a Protective Limit; ANALYZE-ENRL-002 stays silent for a paused session.
+* **Update**: `trust/security-faq.md` — device blocking includes the automatic event limit; the kill-switch answer points to Protective Limits.
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — *Guided diagnosis* rewritten for the new page: the verdict from the enrollment itself (status, failed ESP step, the app to blame, ESP phases, what a waiting enrollment still needs), *Around the failure* with the app in the tenant's other enrollments of the last 7 days, *What to do*, *Where the time went*, *Findings* grouped by what they mean for the outcome, *Notes from your team*, *Errors and warnings*; the page exists for every session with something to explain. *Analysis*: a value the enrollment did not record is left out. Header actions: Diagnosis for every such session; Succeed/Fail also on a Stalled session.
 * **Update**: `concepts/sessions-and-statuses.md` — the **Stalled** status: table row and diagram edges (no progress for 60 minutes, or nothing received for 2 hours; heals with the next real event; classified like any silent session at the Session Timeout); manual overrides include Stalled.
 * **Update**: `rules/analyze-rules/concepts.md` — `presentation` in the rule anatomy; *Evidence and interpolation*: `{{signal.key}}` placeholders, and readers never see a placeholder for an unrecorded value.

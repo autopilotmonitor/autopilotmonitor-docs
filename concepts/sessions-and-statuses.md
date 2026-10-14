@@ -73,6 +73,8 @@ Three separate mechanisms make sure a session never stays *In Progress* forever 
 * **Session timeout (in the backend):** sessions that stop receiving events are reclassified out of *In Progress* after the configured **Session Timeout** (default **5 hours**, configurable 1–12 hours under **Configuration → Maintenance → Data Management**). Crucially, a silent session is **no longer blanket-marked _Failed_** — the backend classifies it from the evidence it already has (see below).
 * **48-hour emergency brake (on the device):** every time the agent starts — which is at every boot — it checks the age of its enrollment phase. If that phase began more than **48 hours** ago, the agent removes itself instead of starting, regardless of session status, connectivity, or error state. A device that is powered off, asleep, or not rebooted is cleaned up at its next start. With pre-provisioning, the technician phase and the user phase each have their own 48 hours; the agent stays installed while the sealed device waits for its user.
 
+A session whose monitoring the platform paused under a [protective limit](protective-limits.md) goes silent the same way and is classified by the same rules; its status reason names the pause.
+
 ### Timeout ≠ failure
 
 For a long time the 5-hour sweep marked *every* silent session **Failed**. That conflated "the agent stopped sending telemetry" with "the enrollment failed" and badly inflated failure rates — in practice the overwhelming majority of these "timeouts" were devices that had **finished Device Setup and were simply sitting at the login screen** waiting for a user, then completed the user phase hours (or a day) later.
