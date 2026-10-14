@@ -55,6 +55,7 @@ An analyze rule is a JSON document evaluated against a session's **entire event 
 | `baseConfidence` / `confidenceFactors` / `confidenceThreshold` | The confidence model (see below). |
 | `explanation` | Markdown shown on the finding. Supports `{{field}}` interpolation with evidence from the matched events. |
 | `remediation` | One or more titled step lists telling the reader what to do. |
+| `presentation` | How the finding shows on the [diagnosis page](../../portal-guide/session-details-and-diagnosis.md#guided-diagnosis) and to AI assistants: its `role` (`outcome` restates the result, `cause` can explain a failure or a hang, `context` is a circumstance such as sleep or a restart, `advisory` is hygiene unrelated to the result), a one-line `summary`, the `subject` it is about (an app, a policy, an account …) and up to six key `facts` (label, value, format). Optional; every built-in rule has one. |
 | `markSessionAsFailedDefault` | If `true`, a firing rule marks the entire session as **Failed** — a knock-out criterion. Tenant admins can override this per rule. |
 
 ## How a rule is evaluated
@@ -196,7 +197,12 @@ The `signal` linkage is exact: an `"exists"` factor whose signal doesn't match a
 
 ## Evidence and `{{interpolation}}`
 
-Every matched condition records evidence: the matched event, the field, and its value. In the `explanation`, `{{fieldName}}` placeholders resolve against the matched evidence by **data field name** — `{{appName}}`, `{{errorCode}}`, `{{reason}}`. A common pattern is adding optional `exists` conditions purely to *harvest* fields for the explanation. A placeholder whose field wasn't recorded stays visible as literal `{{…}}` — built-in rules mention this in their text so readers aren't confused.
+Every matched condition records evidence: the matched event, the field, its value and — depending on the condition source — more keys such as a count, a threshold, a duration or the app it grouped by. Placeholders in the `explanation`, the `remediation` steps and the `presentation` read that evidence in two forms:
+
+* `{{fieldName}}` resolves by **data field name** — `{{appName}}`, `{{errorCode}}`, `{{reason}}`. A common pattern is adding optional `exists` conditions purely to *harvest* fields for the text.
+* `{{signal.key}}` reads one key of one condition's evidence, named by the condition's `signal` — `{{install_retry_loop.count}}`, `{{install_retry_loop.appName}}`. It reaches the counts, thresholds and durations a field name cannot. Which keys a condition records depends on its source; [`validate_rule`](../ai-assisted-rule-authoring.md) checks every placeholder against them.
+
+Readers never see a placeholder: a list item or remediation step that needs a value the session did not record is left out, and such a value in running text reads –. The rule list shows your text with its placeholders; **Test against a session** shows it filled in, including how the finding shows on the diagnosis page.
 
 ## Custom rules, versions, and IDs
 

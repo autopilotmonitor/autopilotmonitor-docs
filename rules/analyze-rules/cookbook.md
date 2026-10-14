@@ -66,6 +66,12 @@ That's it: a custom copy `ANALYZE-ID-001-CUSTOM` now checks every enrollment and
       ]
     }
   ],
+  "presentation": {
+    "role": "cause",
+    "summary": "The VPN client {{vpn_client_failed.appName}} failed to install",
+    "subject": { "kind": "app", "key": "{{vpn_client_failed.appId}}", "name": "{{vpn_client_failed.appName}}" },
+    "facts": [{ "label": "Error", "value": "{{vpn_client_failed.errorCode}}", "format": "errorCode" }]
+  },
   "tags": ["apps", "vpn", "business-critical"]
 }
 ```
@@ -75,6 +81,7 @@ That's it: a custom copy `ANALYZE-ID-001-CUSTOM` now checks every enrollment and
 * `contains` on `appName` survives display-name suffixes like version numbers; use `equals` only if your app names are perfectly stable.
 * `suppressByEvent` keeps the rule quiet when a later retry of the **same app** (joined on `appId`) succeeded — you only hear about failures that *stayed* failures.
 * `{{appName}}` interpolates the actual matched app name into the finding.
+* `presentation` makes the finding a *cause* on the [diagnosis page](../../portal-guide/session-details-and-diagnosis.md#guided-diagnosis): its summary line, the app it is about, and the error as a key fact with its meaning. `{{vpn_client_failed.errorCode}}` reads the error of exactly this condition's event; when the event carried none, the fact is left out.
 * Want a failure of this app to fail the whole session? Add `"markSessionAsFailedDefault": true`.
 
 ## Recipe 3: Thresholds — "this is taking too long"

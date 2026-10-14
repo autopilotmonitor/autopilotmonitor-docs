@@ -48,6 +48,7 @@ Tenant admins also receive an in-app notification when a submission is decided.
 * Does it fire where it should and stay quiet where it should not? Analyze rules are dry-run against real sessions; fire statistics from your tenant are part of the picture.
 * Is it useful beyond one organization? Tenant-specific values are usually turned into a [template rule](analyze-rules/template-rules.md) so other admins can fill in their own.
 * Does it overlap with an existing built-in rule?
+* How does the finding show on the [diagnosis page](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis)? Every built-in analyze rule carries a [`presentation`](analyze-rules/concepts.md#anatomy-of-a-rule) block; a submission without one gets it during review.
 
 Rules that are too specific to one environment, duplicate a built-in rule, or cannot be evaluated safely are declined with a reason.
 
