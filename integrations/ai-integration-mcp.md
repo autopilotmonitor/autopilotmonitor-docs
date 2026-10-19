@@ -203,7 +203,7 @@ A scheduled report, a pipeline or an agent that runs without a person signed in 
 3. **Add it as a member.** Under **Settings → Access Management** switch the add form to **Service principal**, enter the application (client) ID and add it. Service principals always hold the **Viewer** role; the role selector is fixed. To let it read tenants you manage as an MSP, assign it under **Settings → Tenant → Delegated Access** like any other member.
 4. **Obtain a token and call the server.** Request a client-credentials token for `api://886ab5e2-6144-442c-80cc-9b28e0667731/.default` from your tenant's Entra endpoint and send it as `Authorization: Bearer …` to `https://mcp.autopilotmonitor.com/mcp` (Streamable HTTP). There is no OAuth sign-in and no browser step; the token typically lasts about an hour, after which the application requests a new one.
 
-Its calls count against your organization's MCP budget like a person's and appear on the **MCP Usage** page marked **App**; disabling or removing the member blocks it. A service principal can never change configuration, annotate sessions or trigger device actions, whatever its Entra permissions say.
+Its calls count against your organization's MCP budget like a person's and appear on the **MCP Usage** page marked **App**; disabling or removing the member blocks it, including its reads of tenants you manage. After re-enabling it, assign it again under **Delegated Access**. A service principal can never change configuration, annotate sessions or trigger device actions, whatever its Entra permissions say.
 
 ## Rate limits and usage plans
 

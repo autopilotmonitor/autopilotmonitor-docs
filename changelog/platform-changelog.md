@@ -17,6 +17,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Mid October 2026
 
+* **Delegated access ends with membership** — Removing or disabling a member under Access Management now also ends their read access to the tenants you manage; assign them again after re-enabling. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access).
 * **Deployment types in Usage Metrics** — Usage Metrics splits your enrollments by Autopilot or Device Preparation, Entra or hybrid join, and user-driven, self-deploying or pre-provisioned mode; user-driven no longer includes the other modes. See [Usage Metrics](../portal-guide/usage-metrics.md).
 * **Blocked sessions explain themselves** — When a protective limit pauses or ends a session's monitoring, the session page, the session list and the analysis now say so. See [Protective Limits](../concepts/protective-limits.md).
 * **Diagnosis says what happened** — The Diagnosis page opens with the verdict of the enrollment — its status, the failed ESP step and the app to blame — instead of the finding with the highest score, then the circumstances, the steps to fix it, where the time went and every finding grouped by what it means for the outcome. It is there for failed, stalled, waiting and incomplete sessions and for successful ones with findings. See [Session Details](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).

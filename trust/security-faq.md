@@ -1,6 +1,6 @@
 ---
 type: Concept
-timestamp: 2026-10-14T00:00:00.000Z
+timestamp: 2026-10-19T00:00:00.000Z
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 14 October 2026 · Next review: 14 February 2027.**
+**Last reviewed: 19 October 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -189,6 +189,7 @@ The guarantees:
 **Bounded and paced.** A managing organization may manage a limited number of tenants (its plan's allowance); a pending invitation and a tenant removed within the last 24 hours each keep a slot, so access cannot be rotated quickly through many customers. Customers can end a self-service delegation themselves at any time; access stops immediately and the removal is written to both audit logs.
 
 * **Revocation is fast.** Every grant change invalidates the cached scope immediately, and the cache is short-lived by design, so revoking access takes effect within seconds across all service instances — not at the next sign-in.
+* **Ends with membership.** A managing organization can give delegated access only to its own enabled members. Removing or disabling a member under Access Management ends that person's access to every managed tenant and is written to each customer's audit log. Access is also checked against the membership whenever it is evaluated, so a leftover assignment grants nothing.
 * **Removed on offboarding.** Delegated grants pointing at an offboarded tenant are deleted with it, so re-onboarding never silently restores someone's old access.
 
 Certain routes are explicitly excluded from delegated reach even though they are read operations — deletion manifests and the customs archive among them.

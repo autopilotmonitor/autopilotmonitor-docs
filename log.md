@@ -1,5 +1,14 @@
 # Log
 
+## 2026-10-19
+
+* **Update**: `concepts/roles-and-permissions.md` — Assign your team: removing or disabling a member under Access Management ends their delegated access; re-enabling does not restore it.
+* **Update**: `reference/settings.md` — Tenants you manage: the same rule.
+* **Update**: `integrations/ai-integration-mcp.md` — Service principals: disabling or removing the member also ends its reads of managed tenants; assign it again after re-enabling.
+* **Update**: `trust/security-faq.md` — Delegated access: *Ends with membership*; review date.
+* **Update**: `trust/data-flows.md` — reviewed for the delegation change, no statement affected; review date.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Delegated access ends with membership.
+
 ## 2026-10-14
 
 * **Update**: `portal-guide/usage-metrics.md` — Deployment Types: enrollment type (Autopilot or Device Preparation), join type (Entra or hybrid) and Autopilot deployment mode (user-driven, self-deploying, pre-provisioned).

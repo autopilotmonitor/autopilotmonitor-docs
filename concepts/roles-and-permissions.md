@@ -63,7 +63,7 @@ A Pro tenant manages its delegations under **Settings → Tenant → Delegated A
 
 1. **Invite a customer.** Create an invitation link (valid 7 days, works once) and send it to an administrator of the customer tenant. Nothing is granted until they accept.
 2. **The customer accepts.** Their tenant administrator opens the link, sees exactly what is granted (read-only, secrets redacted, AI usage on the manager's own budget) and confirms. The grant appears in their audit log immediately.
-3. **Assign your team.** Pick which members of your own tenant (Access Management) may read the managed tenants — always read-only.
+3. **Assign your team.** Pick which members of your own tenant (Access Management) may read the managed tenants — always read-only. Removing or disabling a member under Access Management ends their access; after re-enabling, assign them again.
 4. **Remove a tenant.** Either side can end the delegation at any time; access stops immediately. The managing tenant's slot stays occupied for 24 hours after a removal, so a small allowance cannot be rotated through many customers.
 
 Every tenant — including Community — sees under **Delegated Access** who can read it and can end a self-service delegation itself. Delegations provisioned by the platform operators are listed there too; contact support to change those.
