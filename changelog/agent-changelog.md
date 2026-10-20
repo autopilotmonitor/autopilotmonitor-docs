@@ -19,6 +19,10 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## Mid October 2026
 
+* Incompatible-TPM reports name the TPM firmware, shown in the Devices with Incompatible TPM panel
+* Emergency reports from a failing agent include the Windows build and the setup phase
+* An incompatible-TPM report is no longer lost when the agent exits right after a failed start
+* The agent's start event also recognizes installations by older bootstrapper versions
 * The self-updater installs an update only when every file matches the package's catalog, signed by glueckkanja AG
 * Every binary in the agent package is signed, third-party libraries by their own vendor
 * The agent's install folder can only be changed by SYSTEM and administrators

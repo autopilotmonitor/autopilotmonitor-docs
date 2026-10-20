@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-20 (2)
+
+* **Update**: `changelog/agent-changelog.md` — Mid October 2026: incompatible-TPM reports name the TPM firmware; emergency reports include the Windows build and the setup phase; an incompatible-TPM report is no longer lost when the agent exits right after a failed start; the start event also recognizes installations by older bootstrapper versions.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Fixed: sign-in passing through the start page.
+
 ## 2026-10-20
 
 * **Update**: `reference/settings.md` (*Devices with Incompatible TPM*) — the agent could not connect from such a device, instead of never; no Windows version named; the Status column shows devices that connected after setup and a restart, the TPM column the reported manufacturer and firmware.

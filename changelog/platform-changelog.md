@@ -34,6 +34,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Rule tests in AI assistants** — `test_analyze_rule` and `test_log_pattern` now appear for the Admin role only, and the built-in investigation prompts end with a draft rule for a cause that can recur. See [AI-Assisted Rule Authoring](../rules/ai-assisted-rule-authoring.md#what-the-assistant-can-do).
 * **Intercepted uploads in the session summary** — For AI assistants, the session summary now says when TLS inspection or a proxy intercepted the agent's uploads and when earlier starts of the session failed to register. See [AI Integration (MCP)](../integrations/ai-integration-mcp.md#available-tools).
 * **Fixed: Geographic Performance stuck on calculating** — Opening the page in a new tab or from a bookmark now asks you to sign in instead of showing a calculating card that never finishes. See [Geographic Performance](../portal-guide/geographic-performance.md).
+* **Fixed: Sign-in passing through the start page** — After signing in you land directly on the page you opened, also when you sign in in two tabs at once.
 
 ## Early October 2026
 
