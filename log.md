@@ -2,6 +2,7 @@
 
 ## 2026-10-20
 
+* **Update**: `trust/security-faq.md` (*Are push notifications encrypted?*), `integrations/push-notifications.md` (*Encrypted end to end*) — the service writes each alert and knows its content; the encryption keeps out everyone in between; once sent, only the paired device can read a push.
 * **Update**: `integrations/push-notifications.md`, `integrations/notifications.md`, `trust/security-faq.md`, `concepts/protective-limits.md`, `getting-started/autopilot-device-preparation.md` — descriptions shortened to GitBook's 200-character subtitle limit; `index.md` states the limit.
 * **New**: `integrations/push-notifications.md` — Push Notifications: how it works, setup (Push channel, pairing a device, test), Notify me when done, what a push contains, the history on the device, security and Conditional Access, supported platforms, limits, troubleshooting.
 * **Update**: `SUMMARY.md`, `index.md` — Push Notifications under Integrations; the Notifications entry names push to paired devices.

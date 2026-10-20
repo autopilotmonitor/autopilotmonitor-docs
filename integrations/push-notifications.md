@@ -109,6 +109,8 @@ The receiver app keeps the pushes it received in a history. The history lives on
 
 Every push is encrypted end to end between Autopilot Monitor and the paired device, with Web Push message encryption (RFC 8291). The browser creates the device's key pair when you pair it and keeps the private key. Autopilot Monitor stores only what it needs to encrypt for that device.
 
+Autopilot Monitor writes each alert from the enrollment data it already processes, so the service knows what a push says — just as the portal shows it. What the encryption keeps out is everyone in between: the push service and every network on the way. Once sent, not even the service can open a push again: each one is encrypted with a one-time key, and only the paired device holds the key to read it.
+
 ### What the push services see
 
 The push service of the device's platform — Apple, Google, Microsoft or Mozilla — relays ciphertext it cannot read. It sees delivery metadata: the device's endpoint, the time, the size, the urgency and an opaque topic. Push requests go only to these four push services, over HTTPS. There is no messenger account and no bot token at a third party.

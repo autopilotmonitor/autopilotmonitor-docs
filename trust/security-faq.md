@@ -237,6 +237,8 @@ Yes, end to end between Autopilot Monitor and the paired device, with Web Push m
 
 The push service of the device's platform — Apple, Google, Microsoft or Mozilla — relays ciphertext it cannot read. It sees delivery metadata: the device's endpoint, the time, the size, the urgency and an opaque topic. No messenger account and no bot token at a third party are involved.
 
+Autopilot Monitor writes each alert from the enrollment data it already processes, so the service knows what a push says — just as the portal shows it. What the encryption keeps out is everyone in between: the push service and every network on the way. Once sent, not even the service can open a push again: each one is encrypted with a one-time key, and only the paired device holds the key to read it.
+
 A push carries only lock-screen details, such as the event and its result, the device name and the serial number masked to its last four characters, plus a portal link with opaque IDs only. Names or UPNs of end users, IP addresses, location, free text from telemetry and secrets are never part of a push. The full list: [What a push contains](../integrations/push-notifications.md#what-a-push-contains).
 
 #### How does the backend authenticate to its own storage?
