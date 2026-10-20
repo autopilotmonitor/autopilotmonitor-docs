@@ -2,6 +2,7 @@
 
 ## 2026-10-20
 
+* **Update**: `integrations/push-notifications.md`, `integrations/notifications.md`, `trust/security-faq.md`, `concepts/protective-limits.md`, `getting-started/autopilot-device-preparation.md` — descriptions shortened to GitBook's 200-character subtitle limit; `index.md` states the limit.
 * **New**: `integrations/push-notifications.md` — Push Notifications: how it works, setup (Push channel, pairing a device, test), Notify me when done, what a push contains, the history on the device, security and Conditional Access, supported platforms, limits, troubleshooting.
 * **Update**: `SUMMARY.md`, `index.md` — Push Notifications under Integrations; the Notifications entry names push to paired devices.
 * **Update**: `integrations/notifications.md` — provider *Push to paired devices*; a Push channel uses the same triggers and shows no status dot; payload reference: in `sla_breach`, `sla_resolved` and `consecutive_failures` the `Tenant` fact carries the tenant's name and the `Tenant ID` fact the ID; the intro says "sends"; description.

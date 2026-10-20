@@ -77,6 +77,7 @@ Contributor-facing technical documentation lives in the main product repository 
 # Conventions for this bundle
 
 * Every content page is a markdown file with YAML frontmatter; `type` is mandatory, `description` and `tags` are carried on all pages. GitBook uses the same frontmatter (`description`) for rendering.
+* Keep `description` at 200 characters or fewer: GitBook shows it as the page subtitle and cuts it off at 200 characters, mid-word.
 * Use standard **relative** markdown links between documents. Do NOT use the spec's `/`-prefixed bundle-absolute form — GitBook and GitHub resolve those differently and navigation breaks.
 * `README.md` + `SUMMARY.md` are GitBook structure files (site entry point and table of contents); `index.md` (this file) and `log.md` are OKF reserved files and are intentionally NOT listed in `SUMMARY.md`, so GitBook does not publish them as pages.
 * Record notable additions and changes in [log.md](log.md).

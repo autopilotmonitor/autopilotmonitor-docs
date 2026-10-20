@@ -1,9 +1,9 @@
 ---
 type: Feature Guide
 description: >-
-  Monitor Windows Autopilot Device Preparation enrollments — why the flow is
-  different, how to deliver the agent early via the MSI line-of-business app,
-  and how to validate devices with device association
+  Monitor Windows Autopilot Device Preparation enrollments: why the flow
+  differs, how to deliver the agent early as an MSI line-of-business app, and
+  how device association validates devices.
 tags:
   - device-preparation
   - autopilot

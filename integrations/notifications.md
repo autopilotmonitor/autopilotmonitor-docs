@@ -2,8 +2,9 @@
 type: Integration Guide
 tags: [notifications, channels, webhooks, push]
 description: >-
-  Enrollment notifications for Teams, Slack, Discord, push notifications on paired phones and browsers, or any
-  system (e.g. Azure Logic Apps) via generic JSON webhook — setup per provider, triggers, and the payload reference.
+  Enrollment notifications for Teams, Slack, Discord, paired phones and browsers
+  (push), or any system via generic JSON webhook — setup per provider, triggers
+  and the payload reference.
 ---
 
 # Notifications

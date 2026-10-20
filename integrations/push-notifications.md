@@ -2,9 +2,8 @@
 type: Integration Guide
 tags: [notifications, push, mobile]
 description: >-
-  Enrollment alerts and Notify me when done as push notifications on a paired
-  phone or browser — encrypted end to end, without an app store app or a
-  messenger account. Setup, what a push contains, security and Conditional
+  Enrollment alerts and Notify me when done on a paired phone or browser,
+  encrypted end to end — setup, what a push contains, security and Conditional
   Access.
 ---
 

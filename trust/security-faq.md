@@ -2,10 +2,9 @@
 type: Concept
 timestamp: 2026-10-20T00:00:00.000Z
 description: >-
-  Security, privacy, and compliance answers for Autopilot Monitor — data
-  residency, tenant isolation, encryption, retention and deletion, delegated
-  (MSP) access, push notifications, external services, and what we
-  deliberately do not do.
+  Security, privacy and compliance answers: data residency, tenant isolation,
+  encryption, retention, MSP access, push notifications, external services, and
+  what we deliberately do not do.
 tags:
   - security
   - privacy

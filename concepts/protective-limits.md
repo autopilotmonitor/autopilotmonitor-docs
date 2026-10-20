@@ -2,9 +2,9 @@
 type: Concept
 tags: [sessions, limits, blocked, agent]
 description: >-
-  The limits that keep one misbehaving device from distorting your fleet data
-  or overloading the platform: the upload rate limit, the event limit that
-  pauses or ends a session's monitoring, and what you see when one applies.
+  The limits that keep one misbehaving device from distorting your fleet data or
+  overloading the platform: the upload rate limit, the session event limit, and
+  what you see when one applies.
 ---
 
 # Protective Limits
