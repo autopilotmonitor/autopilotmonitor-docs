@@ -81,7 +81,7 @@ Yes — check it from time to time. The agent itself always stays current (the s
 
 An outdated copy still fails soft and never breaks an enrollment, but it can **silently skip devices that a current version would monitor**. Example: **Windows Backup for Organizations** restores a user profile during OOBE — older script versions read that profile as "device already in productive use" and skip the install, so the enrollment never shows up in the portal.
 
-To check: compare the current version badge on [Deploy the Agent](../getting-started/deploy-the-agent.md#1-download-the-bootstrapper-script) with your Intune copy (the version is in the script header, and every run logs `Bootstrap script version`). Updates worth acting on are flagged **action recommended** in the [Platform Changelog](../changelog/platform-changelog.md). Updating takes under a minute: upload the new `.ps1` over your existing platform script in Intune.
+To check: compare the current version badge on [Deploy the Agent](../getting-started/deploy-the-agent.md#1-download-the-loader-script) with your Intune copy (the version is in the script header, and every run logs `Bootstrap script version`). Updates worth acting on are flagged **action recommended** in the [Platform Changelog](../changelog/platform-changelog.md). Updating takes under a minute: upload the new `.ps1` over your existing platform script in Intune.
 
 </details>
 
@@ -163,7 +163,15 @@ Yes. Dozens of built-in, community-maintained rules evaluate every session autom
 
 <summary>How do I get alerted when an enrollment fails?</summary>
 
-Configure [notifications](../integrations/notifications.md) for Microsoft Teams, Slack, Discord, or a generic JSON webhook and pick the triggers: start, success, or failure. The same channel carries SLA breach and resolution alerts, consecutive-failure alerts, and hardware rejection notices.
+Configure [notifications](../integrations/notifications.md) for Microsoft Teams, Slack, Discord, a generic JSON webhook, or [push notifications](../integrations/push-notifications.md) to paired phones and browsers, and pick the triggers: start, success, or failure. The same channel carries SLA breach and resolution alerts, consecutive-failure alerts, and hardware rejection notices.
+
+</details>
+
+<details>
+
+<summary>Can I get a notification on my phone when an enrollment finishes?</summary>
+
+Yes. Once a Tenant Admin has added a Push channel, Admins and Operators pair their phone from the portal and click **Notify me when done** on a running session. The phone gets a push when the enrollment finishes or fails — encrypted end to end, without an app store app. See [Push Notifications](../integrations/push-notifications.md).
 
 </details>
 

@@ -1,5 +1,22 @@
 # Log
 
+## 2026-10-20
+
+* **New**: `integrations/push-notifications.md` — Push Notifications: how it works, setup (Push channel, pairing a device, test), Notify me when done, what a push contains, the history on the device, security and Conditional Access, supported platforms, limits, troubleshooting.
+* **Update**: `SUMMARY.md`, `index.md` — Push Notifications under Integrations; the Notifications entry names push to paired devices.
+* **Update**: `integrations/notifications.md` — provider *Push to paired devices*; a Push channel uses the same triggers and shows no status dot; payload reference: in `sla_breach`, `sla_resolved` and `consecutive_failures` the `Tenant` fact carries the tenant's name and the `Tenant ID` fact the ID; the intro says "sends"; description.
+* **Update**: `reference/settings.md` — Notifications describes the channel list: up to 10 named channels, the providers including Push to paired devices, custom headers, the triggers, Push devices. Contact: the company name also names the tenant in its own alerts.
+* **Update**: `concepts/roles-and-permissions.md` — Push notifications: Admins and Operators pair devices and use Notify me when done, also with a role from Entra app roles; not Viewers, members without a role or delegated access; losing the role removes the devices.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — header action Notify me when done.
+* **Update**: `reference/network-endpoints.md` — the push receiver app at `portal.autopilotmonitor.com/push/`; notifications arrive through the push service of the device's platform.
+* **Update**: `troubleshooting/faq.md` — the alerting answer includes push; new question: a notification on my phone when an enrollment finishes.
+* **Update**: `README.md`, `getting-started/how-it-works.md` (alt text), `.gitbook/assets/architecture-overview.svg` — notifications include push.
+* **Update**: `trust/data-flows.md` — group 2: web push services for operator alerting, "None of them carries enrollment telemetry"; group 5: push notifications to paired devices; citation. Last reviewed 20 October 2026.
+* **Update**: `trust/security-faq.md` — new: *Are push notifications encrypted?*, *Does Conditional Access apply to paired devices?*, *What is stored about a paired device?*; portal authentication, rate limits, retention, SSRF and external services cover push; description completed. Last reviewed 20 October 2026.
+* **New**: `troubleshooting/service-announcements.md` — 2026-10-20 change: push notifications to paired devices.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Push notifications to your phone; Alerts name your tenant. Fixed a dead anchor to the ESP section of the built-in rules.
+* **Update**: `troubleshooting/faq.md` — fixed a dead anchor to *1. Download the loader script*.
+
 ## 2026-10-19
 
 * **Update**: `concepts/roles-and-permissions.md` — Assign your team: removing or disabling a member under Access Management ends their delegated access; re-enabling does not restore it.

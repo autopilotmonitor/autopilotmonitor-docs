@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-10-19
+timestamp: 2026-10-20
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 19 October 2026 · Next review: 2 March 2027.**
+**Last reviewed: 20 October 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -28,12 +28,13 @@ That is the whole of it as far as the product is concerned: nothing in the platf
 
 ## 2. Messages the service sends
 
-Used to deliver messages *about* the service. **Neither carries enrollment telemetry.**
+Used to deliver messages *about* the service. **None of them carries enrollment telemetry.**
 
 | Service | When it is used | What it receives |
 | --- | --- | --- |
 | **Mailchimp Transactional (Mandrill)** | Onboarding and offboarding only — the welcome message sent when a tenant is activated, and the farewell message sent after a tenant is offboarded | The recipient administrator's email address and the tenant's domain name. Open and click tracking is disabled |
 | **Telegram** | Operator alerting, so incidents get noticed and acted on quickly | Platform health signals: event type, severity, a short message, and the tenant ID an event relates to. No device data, no enrollment telemetry, no personal data |
+| **Web push services** (Apple, Google, Microsoft, Mozilla) | Operator alerting on devices the platform operators paired themselves | An end-to-end encrypted alert — event type, severity and the tenant it concerns — that only the paired device can read, plus delivery metadata. No device data, no enrollment telemetry, no personal data |
 
 Telegram is **operator-only infrastructure**, not a tenant feature — it cannot be configured or used by customers. It is listed here because it exists in the open-source code and you would find it anyway; it is how the people running the service learn that something is wrong.
 
@@ -62,6 +63,7 @@ These connections exist **only because someone configured them**. They point at 
 | --- | --- | --- |
 | **Your own Azure storage account** | Diagnostics upload with the default `CustomerSas` destination | The diagnostics package — agent logs and state, IME logs, session info, RealmJoin logs when that watcher is enabled, plus the additional log paths your administrators configure. This is the default: the payload never reaches our infrastructure. |
 | **Microsoft Teams, Slack, Discord, or a generic webhook endpoint** | Notification channels you configure | Alert payloads — session, device, and finding details. Webhook targets pass an SSRF guard before any request is made. |
+| **Push notifications to paired devices** — through the push service of each device's platform (Apple, Google, Microsoft, Mozilla) | A Push channel your Tenant Admin adds; devices your Admins and Operators pair | Lock-screen details of an alert — event, result, device name, masked serial, a portal link — encrypted end to end; the push service relays ciphertext and sees only delivery metadata. See [Push Notifications](../integrations/push-notifications.md#security-and-conditional-access). |
 | **Your AI assistant** | If a user connects an AI client through the [MCP integration](../integrations/ai-integration-mcp.md) | Whatever that assistant queries. The platform itself makes no AI calls; this transfer is initiated by your user, to your vendor, under your agreement with them. MCP access is limited to accounts that hold a role in your tenant — people, or a service principal your admin added as a read-only member and consented to in Entra; individual accounts can be blocked, and MCP can be switched off for your whole organization on request. An app of your own that sends its users' tokens is accepted only after your admin has added it as a member, and people connecting through it can only read. |
 | **IP geolocation service** (`ipinfo.io`, fallbacks `ifconfig.co` and Microsoft's Delivery Optimization geo endpoint) | Geolocation, a tenant setting that is **on by default** | The device's outbound connection reaches the service, which returns approximate location. The session stores country, region, city, and approximate coordinates (only the country when the Delivery Optimization fallback answers); the outbound IP is stored separately as a diagnostic event. Disable geolocation to stop this entirely — see the [Security & Privacy FAQ](security-faq.md#is-the-devices-ip-address-stored). |
 
@@ -74,4 +76,5 @@ To eliminate group 5 entirely: leave diagnostics upload off or on `CustomerSas`,
 * [Security & Privacy FAQ](security-faq.md) — data residency, isolation, encryption, retention, and contracting.
 * [Network Endpoints](../reference/network-endpoints.md) — the outbound hosts to allow on firewalls and proxies.
 * [Notifications](../integrations/notifications.md) — configuring notification channels.
+* [Push Notifications](../integrations/push-notifications.md) — pairing devices, what a push contains, and how it is encrypted.
 * [Diagnostics & Log Collection](../troubleshooting/diagnostics-and-log-collection.md) — diagnostics upload modes.

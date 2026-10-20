@@ -44,7 +44,8 @@ Contributor-facing technical documentation lives in the main product repository 
 
 # Integrations
 
-* [Notifications](integrations/notifications.md) - Notification channels (Teams, Slack, Discord, generic webhooks) and rule-driven notifications.
+* [Notifications](integrations/notifications.md) - Notification channels (Teams, Slack, Discord, generic webhooks, push to paired devices) and rule-driven notifications.
+* [Push Notifications](integrations/push-notifications.md) - End-to-end encrypted alerts and Notify me when done on paired phones and browsers: setup, what a push contains, the history on the device, security and Conditional Access.
 * [AI Integration (MCP)](integrations/ai-integration-mcp.md) - Connecting AI clients to the read-only MCP telemetry server.
 
 # Reference

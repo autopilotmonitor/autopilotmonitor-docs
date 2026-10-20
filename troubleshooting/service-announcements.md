@@ -11,6 +11,12 @@ description: >-
 
 Documented issues caused by external changes (e.g. Microsoft updates) and platform incidents — each entry describes the impact, what still works, and whether action is needed. Newest first.
 
+## 2026-10-20 — **Change:** Push Notifications to Paired Devices
+
+Tenant Admins can now add a Push channel under **Settings → Notifications**. Admins and Operators then pair a phone or browser from their signed-in portal session and receive the channel's alerts there — and a ping when an enrollment they watch with **Notify me when done** finishes. Each alert is encrypted end to end for the receiving device; the push service of its platform (Apple, Google, Microsoft or Mozilla) only passes on ciphertext and delivery metadata. The push page on the phone needs no sign-in; pushes carry only lock-screen details, and everything else stays in the portal behind your sign-in. Push stays off until a Tenant Admin adds the channel.
+
+How to set it up and what a push contains: [Push Notifications](../integrations/push-notifications.md). Where the data goes: [Data Flows & External Services](../trust/data-flows.md).
+
 ## 2026-10-13 — **Change:** Every File of the Agent Package Is Verified Before It Runs
 
 Each agent package now carries a catalog signed by glueckkanja AG that lists every file in it. The bootstrapper, the bootstrap-token script and the agent's self-updater check this catalog on the device and install a package only when the catalog carries our signature and every file is present and unchanged, with nothing added. Until now the bootstrapper verified the signatures of our own binaries only. Third-party libraries enter the package only with their vendor's own signature, so every binary in it is signed. The package is also smaller: a library Windows already provides is no longer included.

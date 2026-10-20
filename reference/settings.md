@@ -48,13 +48,18 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 
 ### Notifications
 
+A list of named notification channels — up to 10 per tenant, each with its own provider and triggers.
+
 | Setting | Description |
 | --- | --- |
-| Notification Provider | **Microsoft Teams (Workflow Webhook)** — free, no Power Automate Premium needed · **Slack** (Incoming Webhook) · **Generic JSON webhook** — stable JSON payload for ticketing/automation systems, supports custom HTTP headers (e.g. `Authorization`) · **Discord** (channel webhook, embed format). |
-| Webhook URL | The URL generated during provider setup. |
-| Signing Secret | Generic JSON provider only, optional. When set, requests carry `X-AutopilotMonitor-Signature` (HMAC-SHA256) so the receiving endpoint can [verify authenticity](../integrations/notifications.md#verifying-signed-requests). |
-| Notify on Start / Success / Failure | Which session events trigger a notification. Keep *Failure* on so broken enrollments surface without watching the portal. |
-| Send Test Notification | Fires a sample message to verify the configuration. |
+| Channel name, Enabled | A name for the channel (e.g. *Service Desk*). **Enabled** switches the channel off without deleting it. |
+| Provider | **Microsoft Teams (Workflow Webhook)** — free, no Power Automate Premium needed · **Slack** (Incoming Webhook) · **Discord** (channel webhook, embed format) · **Generic JSON** — stable JSON payload for ticketing/automation systems · **Push to paired devices** — [push notifications](../integrations/push-notifications.md) to the phones and browsers your Admins and Operators pair; one Push channel per tenant. |
+| Webhook URL | The URL generated during provider setup. A Push channel has none. |
+| Custom Headers | Generic JSON only, optional. HTTP headers sent with every request, e.g. `Authorization`. |
+| Signing Secret | Generic JSON only, optional. When set, requests carry `X-AutopilotMonitor-Signature` (HMAC-SHA256) so the receiving endpoint can [verify authenticity](../integrations/notifications.md#verifying-signed-requests). |
+| Send to this channel | The triggers: **Start**, **Success**, **Failure**, **Hardware rejection**, **SLA**, **What's new**. Keep *Failure* on so broken enrollments surface without watching the portal. See [Triggers](../integrations/notifications.md#triggers). |
+| Send Test | Sends a sample message with the channel's last saved configuration. |
+| Push devices | With a Push channel, Admins and Operators pair their phones and browsers here and send a test. Tenant Admins see and can remove every paired device of the tenant. See [Push Notifications](../integrations/push-notifications.md#set-up). |
 
 Setup walkthroughs per provider: [Notifications](../integrations/notifications.md).
 
@@ -67,9 +72,9 @@ Define your enrollment SLA thresholds (e.g. target duration and success rate); t
 | Setting | Description |
 | --- | --- |
 | Contact email address | Where we reach your organization about the service itself — a technical problem affecting your tenant, a security matter, or a change that needs an administrator's attention. Used for nothing else: never for marketing, and never shared. A shared team mailbox is a better choice than a personal address. |
-| Company | The name of your organization as our support engineers should refer to it. Used only alongside the contact address for service and support matters; never shared. |
+| Company | The name of your organization as our support engineers should refer to it, used alongside the contact address for service and support matters. Your own alerts also use it to name your tenant — SLA and failure-streak alerts and push notifications; without it they show your domain. Never shared. |
 
-On the Community plan both fields are optional; leaving them empty only means there is no way to reach you before acting on a problem affecting your tenant. Both are required before starting a Pro trial or moving to Pro — the Plan section tells you what is still missing — so a paying tenant is reachable and identifiable for support. If your organization gave a notification address during sign-up (tenant activation), that address is copied here once as the initial value and is yours to change from then on — it is not kept in sync afterwards.
+On the Community plan both fields are optional; leaving them empty means there is no way to reach you before acting on a problem affecting your tenant. Both are required before starting a Pro trial or moving to Pro — the Plan section tells you what is still missing — so a paying tenant is reachable and identifiable for support. If your organization gave a notification address during sign-up (tenant activation), that address is copied here once as the initial value and is yours to change from then on — it is not kept in sync afterwards.
 
 ### Optional Graph capabilities
 

@@ -54,8 +54,9 @@
   <rect x="820" y="220" width="270" height="92" rx="12" fill="#dbeaf9" stroke="#8fb8e3" stroke-width="1.5"/>
   <rect x="836" y="238" width="48" height="48" rx="8" fill="#ffffff" stroke="#b9d3ee"/>
   <path d="M851 271 h18 l-3 -4 v-8 a6 6 0 0 0 -12 0 v8 z M857 275 a3 3 0 0 0 6 0" fill="none" stroke="#1f6fc9" stroke-width="2" stroke-linejoin="round"/>
-  <text x="898" y="260" font-size="14" font-weight="600" fill="#1e2a3a">Notifications</text>
-  <text x="898" y="280" font-size="12" fill="#5b6b7d">Teams · Slack · Discord · webhook</text>
+  <text x="898" y="258" font-size="14" font-weight="600" fill="#1e2a3a">Notifications</text>
+  <text x="898" y="276" font-size="12" fill="#5b6b7d">Teams · Slack · Discord · webhook</text>
+  <text x="898" y="292" font-size="12" fill="#5b6b7d">push to paired devices</text>
 
   <!-- ===== Customer tenant ===== -->
   <rect x="80" y="418" width="150" height="26" rx="4" fill="#e9eef4"/>

@@ -1,14 +1,14 @@
 ---
 type: Integration Guide
-tags: [notifications, channels, webhooks]
+tags: [notifications, channels, webhooks, push]
 description: >-
-  Enrollment notifications for Teams, Slack, Discord, or any system (e.g. Azure Logic Apps) via generic JSON
-  webhook — setup per provider, triggers, and the payload reference.
+  Enrollment notifications for Teams, Slack, Discord, push notifications on paired phones and browsers, or any
+  system (e.g. Azure Logic Apps) via generic JSON webhook — setup per provider, triggers, and the payload reference.
 ---
 
 # Notifications
 
-Autopilot Monitor pushes enrollment events to your team the moment they happen — no one has to watch the portal. Notification channels are configured under **Settings → Tenant → Notifications**; you can define several named channels per tenant, each with its own provider.
+Autopilot Monitor sends enrollment events to your team the moment they happen — no one has to watch the portal. Notification channels are configured under **Settings → Tenant → Notifications**; you can define several named channels per tenant, each with its own provider.
 
 ## Providers
 
@@ -48,6 +48,10 @@ Leave the trigger's **Schema Validation** setting off, or keep the generated sch
 
 The trigger URL carries its own shared-access signature, so treat it like a password. The optional signing secret adds the HMAC headers described below, but Logic Apps has no built-in expression to verify an HMAC — use it only if a downstream step (e.g. an Azure Function) checks it. In Power Automate this trigger is a Premium connector; in Azure Logic Apps it is billed per execution.
 
+### Push to paired devices
+
+Sends the channel's alerts as push notifications to the phones and browsers your Admins and Operators pair — encrypted end to end, without an app store app or a messenger account. Select the *Push to paired devices* provider; there is no URL, and a tenant has one Push channel. Pairing, **Notify me when done** and what a push contains: [Push Notifications](push-notifications.md).
+
 ## Triggers
 
 | Toggle | Fires when |
@@ -58,6 +62,8 @@ The trigger URL carries its own shared-access signature, so treat it like a pass
 | **Hardware rejection** | The hardware whitelist rejects a device |
 | **SLA** | An SLA target is breached or met again, or enrollments fail in a row |
 | **What's new** | New platform or agent changelog entries go live — a product-update digest, not a session event |
+
+A Push channel uses the same triggers; its alerts reach every paired device of your Admins and Operators.
 
 **Send Test Notification** posts a sample message to verify the configuration end to end.
 
@@ -79,6 +85,8 @@ Each saved channel shows a status dot next to its name, based on its recent deli
 | **No deliveries yet** | Nothing was sent since the channel's destination was last changed. |
 
 Hover the dot to see the last delivery and the last failure. A channel in **Error** keeps receiving notifications, so it recovers by itself once the destination accepts them again. After you fix the destination, **Send Test** updates the status right away. Tenant Admins see the status.
+
+A Push channel has no status dot: each paired device shows its own status under **Push devices**.
 
 ## In-portal alerts
 
@@ -115,6 +123,7 @@ The generic provider sends a stable, versioned payload — `schemaVersion` is on
 * `eventType` values: `enrollment_started`, `enrollment_succeeded`, `enrollment_failed`, `preprovisioning_resumed`, `preprovisioning_completed`, `preprovisioning_failed`, `sla_breach`, `sla_resolved`, `consecutive_failures`, `hardware_rejected`, `test`.
 * `severity` is one of `Info`, `Success`, `Warning`, `Error`.
 * `primaryUrl` is the first link action — a session link for enrollment alerts, a portal link otherwise; inspect `actions[]` (each carries a title) to disambiguate. Fields without a value are omitted rather than sent as `null`.
+* In `sla_breach`, `sla_resolved` and `consecutive_failures`, the `Tenant` fact carries your tenant's name — the **Company** under [Contact](../reference/settings.md#contact), else the domain — and the `Tenant ID` fact carries the ID. Key automations on `Tenant ID`.
 
 {% hint style="info" %}
 **Routing tip:** key your automation on `eventType`, not on `title` — titles are human-facing and may be refined over time; `eventType` and the schema are the contract.

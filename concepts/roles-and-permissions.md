@@ -3,8 +3,8 @@ type: Concept
 tags: [roles, permissions, rbac]
 description: >-
   Who can see and do what in the portal: Tenant Admin, Operator and Viewer
-  roles, members without a role, the Admin Mode safety toggle, and MSP fleet
-  access.
+  roles, members without a role, push notifications, the Admin Mode safety
+  toggle, and MSP fleet access.
 ---
 
 # Roles & Permissions
@@ -23,6 +23,15 @@ Access to the portal is controlled by role-based permissions. Everyone signs in 
 Every member with a role can send feedback to the Autopilot Monitor team from the help menu (**? → Send feedback**).
 
 Team members are added by UPN under **Settings → Access Management**. The list shows one line per member and filters by role; click a member to change the role or to disable or remove the entry. The same page adds a **service principal** (an application in your tenant, by its application ID) for unattended automation over the [MCP integration](../integrations/ai-integration-mcp.md#service-principals-and-automation); a service principal is always a Viewer. The same entry admits an app of your own that signs users in and sends their tokens ([Your own app on behalf of users](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users)). Only an app added this way is accepted. Each person still needs their own role, and through the app they can only read, whatever that role is.
+
+## Push notifications
+
+**Admins and Operators** can pair their own phones and browsers for [push notifications](../integrations/push-notifications.md) and use **Notify me when done** on a running session — whether their role comes from the member list under **Settings → Access Management** or from Entra app roles.
+
+* A **Tenant Admin** adds the Push channel that turns push on, sees every paired device of the tenant under **Push devices**, and can remove any of them. Everyone else sees their own devices.
+* **Viewers** and **members without a role** cannot pair devices.
+* **Delegated (MSP) access** does not include push yet: the button does not appear on sessions of tenants you manage.
+* Removing, disabling or demoting a member below Operator removes their paired devices at once. For a role assigned through Entra app roles, this happens when the member's next sign-in no longer carries the role.
 
 ## Admin Mode
 

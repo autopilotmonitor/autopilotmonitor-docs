@@ -1,10 +1,11 @@
 ---
 type: Concept
-timestamp: 2026-10-19T00:00:00.000Z
+timestamp: 2026-10-20T00:00:00.000Z
 description: >-
   Security, privacy, and compliance answers for Autopilot Monitor — data
   residency, tenant isolation, encryption, retention and deletion, delegated
-  (MSP) access, external services, and what we deliberat
+  (MSP) access, push notifications, external services, and what we
+  deliberately do not do.
 tags:
   - security
   - privacy
@@ -18,7 +19,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 19 October 2026 · Next review: 14 February 2027.**
+**Last reviewed: 20 October 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -124,9 +125,19 @@ Through **Microsoft Entra ID**, with multi-tenant JWT validation performed by th
 * Metadata retrieval is HTTPS-only, and the per-tenant metadata cache is bounded so an attacker cannot exhaust memory by presenting a stream of invented tenant IDs.
 * The application that requested the token is checked as well. Microsoft Entra issues a user token for Autopilot Monitor to any application an organization has consented to. The service accepts only tokens requested by its own portal and MCP sign-in, or by an application a Tenant Admin of the user's organization added as a member. Through such a member application a person can only read, whatever their role.
 
+Devices paired for [push notifications](../integrations/push-notifications.md) do not sign in at all. They are paired from a signed-in portal session, and the device token they receive only manages their own pairing — it reads no portal data. See [Does Conditional Access apply to paired devices?](security-faq.md#does-conditional-access-apply-to-paired-devices)
+
 #### How does an AI assistant authenticate to the MCP server?
 
 The [MCP integration](../integrations/ai-integration-mcp.md) implements the current MCP specification's OAuth 2.1 profile: the assistant signs the user in through Microsoft Entra ID via the server's own authorization endpoints, PKCE is mandatory, and the authorization response carries the issuer identifier so a client can detect a mixed-up authorization server. The access token that results is the user's own; the MCP server stores no credentials and forwards the token to the API, where the normal role and tenant checks apply. Clients identify themselves through a Client ID Metadata Document (an HTTPS URL the server fetches and validates; addresses inside private or internal networks are refused before any request is made, redirects are not followed, and the document is size- and time-capped) or, for older clients, through dynamic client registration — in both cases the callback address must be on a fixed allowlist of AI-vendor callback URLs or a loopback address, so a self-registered client cannot redirect an authorization code elsewhere. A client your organization hosts itself uses a client ID a Tenant Admin registered for its exact callback address: its sign-in runs against your tenant's Microsoft Entra directory, so accounts of other organizations cannot sign in through it, and a token issued for another organization is discarded. That client receives its refresh tokens only encrypted and bound to the registration, so deleting the registration also ends refresh tokens copied out of the client's storage. MCP access itself is limited to accounts that hold a role in the tenant (the roles you assign in the portal); individual accounts can be blocked, and MCP can be switched off for a whole organization on request. Tokens are Microsoft Entra ID tokens with Entra's lifetimes. Blocking an account or removing its role takes effect on the next request within minutes, whatever token it holds, and revoking the user's sessions in Entra also invalidates refresh tokens already issued. A client that signs users in through its own app registration instead of the server's sign-in, for example in on-behalf-of mode, is accepted only after your admin has consented to the app's delegated permission in Entra and a Tenant Admin has added the app as a member; everyone connecting through it can only read. Unattended automation uses a service principal of your own tenant instead of a person's token: it must hold the `access_as_application` permission your admin consents to in Entra, is added as a member like a person, is always read-only, and is announced to the operator the first time it connects.
+
+#### Does Conditional Access apply to paired devices?
+
+No. A device paired for [push notifications](../integrations/push-notifications.md) never signs in, so Conditional Access has nothing to evaluate on it.
+
+The reason is how pairing works. The push page on the device requires no sign-in: you pair it from your signed-in portal session, and from then on it only receives notifications. It cannot read portal data — its device token only manages its own pairing. That is also why push works on phones your policies keep out of the portal, and why a push carries only lock-screen details: a tap leads into the portal, behind your sign-in.
+
+Your organization stays in control. A Tenant Admin decides whether push is used at all by adding the Push channel. Under Push devices, Tenant Admins see every paired device of the tenant and can remove any of them.
 
 #### What roles exist?
 
@@ -151,6 +162,8 @@ Yes, all sliding-window:
 * **Per MCP user and integration**, keyed on the same id but counted separately from the portal. The MCP server enforces its own per-minute limit, the API a second per-user budget, plus daily and monthly quotas tied to the tenant's plan — one per account and one shared by the whole tenant, so adding accounts does not add budget.
 
 Which budget a request falls under is derived from how the client authenticated (a signed token claim), never from a request header a client could set itself.
+
+[Push notifications](../integrations/push-notifications.md) have limits of their own. Attempts to redeem a pairing code are capped per IP address, and the calls a paired device makes with its device token are capped per device. Each device also receives at most a few pushes in a short window; beyond that, it gets a single notice that further alerts are muted for the rest of the window.
 
 ### Tenant Isolation
 
@@ -219,6 +232,14 @@ Some Azure resource names still carry an `…eu` suffix from before the July 202
 * **In transit:** HTTPS only, **TLS 1.2 minimum**, with a hardened cipher floor. Real-time updates use secure WebSockets; the MCP container refuses insecure ingress.
 * **At rest:** Azure Storage encryption with **platform-managed keys**, and a storage-account-level TLS 1.2 floor. Customer-managed keys (CMK/BYOK) are **not** currently offered — see [What we do not do](security-faq.md#what-we-do-not-do-yet).
 
+#### Are push notifications encrypted?
+
+Yes, end to end between Autopilot Monitor and the paired device, with Web Push message encryption (RFC 8291). The browser on the device creates the device's key pair when it is paired and keeps the private key. The service stores only what it needs to encrypt for that device.
+
+The push service of the device's platform — Apple, Google, Microsoft or Mozilla — relays ciphertext it cannot read. It sees delivery metadata: the device's endpoint, the time, the size, the urgency and an opaque topic. No messenger account and no bot token at a third party are involved.
+
+A push carries only lock-screen details, such as the event and its result, the device name and the serial number masked to its last four characters, plus a portal link with opaque IDs only. Names or UPNs of end users, IP addresses, location, free text from telemetry and secrets are never part of a push. The full list: [What a push contains](../integrations/push-notifications.md#what-a-push-contains).
+
 #### How does the backend authenticate to its own storage?
 
 With **managed identity**, not storage account keys. Container registry admin access is disabled and images are pulled with managed identity. Deployment pipelines authenticate to Azure with **OIDC federation** — there are no long-lived cloud credentials stored in the CI system.
@@ -246,10 +267,20 @@ Your retention setting governs enrollment data and the statistics computed from 
 | Aggregated usage statistics                                                                                    | **180 days**                                                            |
 | Distress reports (agent emergency channel)                                                                     | **14 days**                                                             |
 | Configuration and authorization backups                                                                        | Under a storage lifecycle policy, currently **90 days**                 |
+| Pairing codes for push notifications                                                                           | Short-lived, **measured in minutes**, and usable once                   |
+| Devices paired for push notifications                                                                          | Until removed — paused after **about a month** without the owner's portal sign-in, deleted when the owner stays away for **a few months**, and removed when the owner loses the Admin or Operator role |
+| *Notify me when done* watches                                                                                  | Until they fire — **a couple of days** at most, **about a month** on a sealed pre-provisioned session |
+| History of received pushes                                                                                     | **On the paired device only**, for the period set there — never stored by the service |
 
 Everything scoped to your tenant is removed when you offboard, regardless of these periods.
 
 Two categories currently have **no time-based expiry** and are removed only on offboarding: product feedback you submitted, and reports an administrator explicitly submitted to us for support. A support report contains what the submitter chose to include — comment, exports, attached logs and screenshots, and, if the submitter ticked that option, a copy of the session's diagnostics package — and that content follows the report's lifetime, not the session's. Bringing enrollment bootstrap records under the same expiry as the sessions they belong to is in progress.
+
+#### What is stored about a paired device?
+
+For each device paired for [push notifications](../integrations/push-notifications.md), the service stores its name, its platform, the push endpoint and the keys needed to encrypt for it, the receiver app version, and who paired it — plus its status and when it was paired, last received a push and last opened the receiver app. The device's private key never leaves the device, and its device token is kept only as a hash. The history of received pushes stays on the device and is never sent back.
+
+A paired device pauses when its owner has not signed in to the portal for about a month and resumes at the owner's next sign-in. It is deleted when the owner stays away for a few months. It is removed at once when its owner loses the Admin or Operator role — for a role assigned through Entra app roles, at the owner's next sign-in without it. A Tenant Admin can remove any paired device of the tenant at any time.
 
 #### What actually happens when data is deleted?
 
@@ -354,6 +385,8 @@ It makes automated decisions about **devices and requests**, not about people, a
 
 Yes. Notification webhook targets are screened by an SSRF guard before any request is made, so a webhook URL cannot be pointed at internal addresses or cloud metadata endpoints to make the service fetch something on an attacker's behalf.
 
+Push requests go only to the push services of Apple, Google, Microsoft and Mozilla, and only over HTTPS: a paired device's push endpoint is accepted only when it belongs to one of them.
+
 ### GDPR and Contracts
 
 #### Who is the controller and who is the processor?
@@ -387,7 +420,7 @@ The agreement is where the engaged parties and the terms of their engagement are
 
 The **data processing agreement** is the authoritative document here — its [list of sub-processors](../legal/data-privacy-agreement-dpa/list-of-sub-processors.md) names the parties engaged and the terms they are engaged on, and additions to that list are announced in advance under [Service Announcements](../troubleshooting/service-announcements.md).
 
-For the technical picture, [Data Flows & External Services](data-flows.md) maps every outbound connection. In short: Microsoft Azure (Germany West Central) is the only place your data is stored. Everything else is either a public reference-data source the service reads _from_ — nothing about your environment goes out — or a destination **you** configure: notification channels, your own diagnostics storage, your own AI assistant.
+For the technical picture, [Data Flows & External Services](data-flows.md) maps every outbound connection. In short: Microsoft Azure (Germany West Central) is the only place your data is stored. Everything else is either a public reference-data source the service reads _from_ — nothing about your environment goes out — or a destination **you** configure: notification channels, your own diagnostics storage, your own AI assistant. Push notifications belong to the notification channels: they travel through the push service of each paired device's platform — Apple, Google, Microsoft or Mozilla — as ciphertext that service cannot read.
 
 #### How do I exercise data subject rights?
 
@@ -436,4 +469,5 @@ Several of these are on the path to Pro general availability. If one of them blo
 * [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md) — how the agent installs, authenticates, and removes itself.
 * [Roles & Permissions](../concepts/roles-and-permissions.md) — the portal permission model.
 * [Network Endpoints](../reference/network-endpoints.md) — outbound hosts to allow.
+* [Push Notifications](../integrations/push-notifications.md) — pairing devices, what a push contains, and how it is encrypted.
 * [Settings Reference](../reference/settings.md) — retention, geolocation, and diagnostics settings.

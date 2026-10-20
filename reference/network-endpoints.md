@@ -21,7 +21,7 @@ These hosts are operated by Autopilot Monitor and are the ones you may need to a
 | `go.autopilotmonitor.com` | OOBE bootstrap script (`irm https://go.autopilotmonitor.com/CODE \| iex`) | Enrolling devices — only if you use **Bootstrap Sessions** |
 | `autopilotmonitor-api-eu.azurewebsites.net` | Telemetry ingest and portal API | Enrolling devices **and** admin browsers |
 | `www.autopilotmonitor.com` | Portal web app (sign-in and UI) | Admin browsers |
-| `portal.autopilotmonitor.com` | Portal deep links used in notifications and e-mails | Admin browsers |
+| `portal.autopilotmonitor.com` | Portal deep links used in notifications and e-mails; the push receiver app at `/push/` | Admin browsers and paired phones |
 | `mcp.autopilotmonitor.com` | Read-only MCP telemetry server (optional AI integration) | AI/MCP clients |
 
 {% hint style="info" %}
@@ -35,6 +35,8 @@ Note the two audiences usually live on different network segments: **enrolling d
 | Host | Purpose | When needed |
 | --- | --- | --- |
 | `autopilotmonitoreu.blob.core.windows.net` | Diagnostics/log upload from the device via short-lived SAS | Only if you enable **diagnostics collection** for a tenant |
+
+**Push notifications:** paired phones and browsers open `https://portal.autopilotmonitor.com/push/` — the receiver app, *Autopilot Monitor Alerts*. The notifications themselves arrive through the push service of the device's platform: Apple, Google, Microsoft or Mozilla. See [Push Notifications](../integrations/push-notifications.md).
 
 ## Microsoft platform dependencies
 

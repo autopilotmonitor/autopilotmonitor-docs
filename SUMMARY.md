@@ -49,6 +49,7 @@
 ## Integrations
 
 * [Notifications](integrations/notifications.md)
+* [Push Notifications](integrations/push-notifications.md)
 * [AI Integration (MCP)](integrations/ai-integration-mcp.md)
 
 ## Reference
