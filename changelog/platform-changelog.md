@@ -17,6 +17,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Mid October 2026
 
+* **Incompatible-TPM devices that connect later** — The Devices with Incompatible TPM panel shows each device's TPM firmware and whether it connected after setup. See [Settings](../reference/settings.md#hardware-whitelist).
 * **Push notifications to your phone** — Get enrollment alerts and a ping when a watched session finishes on a paired phone or browser, encrypted end to end. See [Push Notifications](../integrations/push-notifications.md).
 * **Alerts name your tenant** — SLA and failure-streak alerts show your tenant's name instead of its ID; webhooks find the ID in the new Tenant ID fact. See [Notifications](../integrations/notifications.md#generic-json-payload-reference).
 * **Delegated access ends with membership** — Removing or disabling a member under Access Management now also ends their read access to the tenants you manage; assign them again after re-enabling. See [Roles and Permissions](../concepts/roles-and-permissions.md#msp-fleet-access).

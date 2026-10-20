@@ -2,6 +2,9 @@
 
 ## 2026-10-20
 
+* **Update**: `reference/settings.md` (*Devices with Incompatible TPM*) — the agent could not connect from such a device, instead of never; no Windows version named; the Status column shows devices that connected after setup and a restart, the TPM column the reported manufacturer and firmware.
+* **Update**: `integrations/notifications.md` — the incompatible-TPM alert: could not connect, may connect after setup and a restart, the Hardware Whitelist panel shows which ones did.
+* **Update**: `changelog/platform-changelog.md` — Mid October 2026: Incompatible-TPM devices that connect later.
 * **Update**: `trust/security-faq.md` (*Are push notifications encrypted?*), `integrations/push-notifications.md` (*Encrypted end to end*) — the service writes each alert and knows its content; the encryption keeps out everyone in between; once sent, only the paired device can read a push.
 * **Update**: `integrations/push-notifications.md`, `integrations/notifications.md`, `trust/security-faq.md`, `concepts/protective-limits.md`, `getting-started/autopilot-device-preparation.md` — descriptions shortened to GitBook's 200-character subtitle limit; `index.md` states the limit.
 * **New**: `integrations/push-notifications.md` — Push Notifications: how it works, setup (Push channel, pairing a device, test), Notify me when done, what a push contains, the history on the device, security and Conditional Access, supported platforms, limits, troubleshooting.
