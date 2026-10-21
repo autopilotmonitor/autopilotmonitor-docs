@@ -19,8 +19,12 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## Mid October 2026
 
+* After a failed start on a device with an incompatible TPM, the agent makes one test connection and reports the TLS version, whether the device certificate was sent and who answered, including an inspecting proxy
+* Emergency reports name the Autopilot setup phase and when the device last started; an incompatible-TPM report records both from before its first connection attempt
+* After failed starts, the agent's start event records whether a restart or a different device certificate came in between
+* Incompatible-TPM reports state whether Windows logged a TLS error, logged none, or could not be read
 * Incompatible-TPM reports name the TPM firmware, shown in the Devices with Incompatible TPM panel
-* Emergency reports from a failing agent include the Windows build and the setup phase
+* Emergency reports from a failing agent include the Windows build and whether Windows setup (OOBE) had finished
 * An incompatible-TPM report is no longer lost when the agent exits right after a failed start
 * The agent's start event also recognizes installations by older bootstrapper versions
 * The self-updater installs an update only when every file matches the package's catalog, signed by glueckkanja AG

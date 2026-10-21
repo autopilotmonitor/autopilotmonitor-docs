@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-21
+
+* **Update**: `changelog/agent-changelog.md` — Mid October 2026: after a failed start on a device with an incompatible TPM the agent makes one test connection and reports TLS version, whether the device certificate was sent and who answered; emergency reports name the Autopilot setup phase and the last device start; the start event records a restart or certificate change after failed starts; incompatible-TPM reports state the Windows TLS log finding. The 2026-10-20 entry names the OOBE flag as whether Windows setup had finished.
+
 ## 2026-10-20 (2)
 
 * **Update**: `changelog/agent-changelog.md` — Mid October 2026: incompatible-TPM reports name the TPM firmware; emergency reports include the Windows build and the setup phase; an incompatible-TPM report is no longer lost when the agent exits right after a failed start; the start event also recognizes installations by older bootstrapper versions.
