@@ -17,6 +17,11 @@ The same entries appear in the portal under **Help (?) → What's new** on the A
 
 Per-version release notes: [GitHub Releases](https://github.com/okieselbach/AutopilotMonitor/releases).
 
+## Late October 2026
+
+* A running agent stops and cleans up when its session is marked Succeeded in the portal
+* Fixed the admin mark appearing many times in the session timeline
+
 ## Mid October 2026
 
 * After a failed start on a device with an incompatible TPM, the agent makes one test connection and reports the TLS version, whether the device certificate was sent and who answered, including an inspecting proxy
