@@ -17,6 +17,8 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Late October 2026
 
+* **Bootstrap MSI installs the agent again** — Installer 2.8 fixes the bootstrap MSI, which since installer 2.7 earlier today stopped before the agent started. A device that ran the MSI in between keeps a stranded agent folder: delete `C:\ProgramData\AutopilotMonitor` as administrator, and the next run installs. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
+* **Loader 1.4 and bootstrap MSI 1.3 (action recommended)** — After a security review the loader keeps the bootstrapper it checked open until the run ends, and the MSI installs its loader under Program Files. Upload them in place of today's loader 1.3 and MSI 1.2. See [Deploy the Agent](../getting-started/deploy-the-agent.md).
 * **Bootstrap MSI 1.0 (action required)** — Replace bootstrap MSI 1.0: it runs the bootstrapper without checking our signature. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
 * **New loader and bootstrap MSI (action recommended)** — The loader runs only a current bootstrapper and works in a protected folder of its own; upload the new loader once and, for Device Preparation, the new MSI. See [Deploy the Agent](../getting-started/deploy-the-agent.md).
 * **Skipped devices keep nothing** — A device the bootstrapper skips no longer keeps a folder, log or script copy of Autopilot Monitor. See [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly).
