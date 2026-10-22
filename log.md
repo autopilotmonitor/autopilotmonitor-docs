@@ -2,7 +2,9 @@
 
 ## 2026-10-23
 
-* **Update**: `trust/security-faq.md` (*What data does the agent collect from an enrolling device?*), `concepts/agent-lifecycle-and-security.md` — device context includes whether the Configuration Manager client is installed (service state, version, site code); Security FAQ reviewed.
+* **Update**: `reference/settings.md` — new agent setting ConfigMgr Watcher (off by default): Session Info shows whether the Configuration Manager client is installed, with service state, version and site code.
+* **Update**: `trust/security-faq.md` (*What data does the agent collect from an enrolling device?*), `concepts/agent-lifecycle-and-security.md` — with the ConfigMgr Watcher enabled, the agent reports whether the Configuration Manager client is installed (service state, version, site code); Security FAQ reviewed.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — the ConfigMgr detection in Session Info needs the ConfigMgr Watcher.
 
 ## 2026-10-22 (3)
 

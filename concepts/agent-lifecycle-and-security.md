@@ -80,8 +80,8 @@ The agent collects **enrollment telemetry**, not user data:
 
 * ESP phases and enrollment progress signals
 * App installations (names, IDs, states, error codes) and script executions as reported by the IME
-* Device information: hardware model, OS version/build, network configuration, security posture (e.g. Secure Boot status), and whether the Configuration Manager client is installed (service state, version, site code)
+* Device information: hardware model, OS version/build, network configuration, security posture (e.g. Secure Boot status)
 * Performance snapshots (CPU, memory, disk) during enrollment
-* Optional, controlled by you: geo location (IP-based, for the Geographic Performance view), local admin account analysis, software inventory with vulnerability correlation, and a diagnostics package — uploaded to the built-in hosted storage or, if you prefer full control, to **your own Azure Blob Storage**
+* Optional, controlled by you: geo location (IP-based, for the Geographic Performance view), local admin account analysis, software inventory with vulnerability correlation, the ConfigMgr Watcher (whether the Configuration Manager client is installed, with service state, version and site code), and a diagnostics package — uploaded to the built-in hosted storage or, if you prefer full control, to **your own Azure Blob Storage**
 
 What the agent collects is itself configurable through Agent Settings, Collectors, Analyzers, and [Gather Rules](../rules/gather-rules.md) — with strict guardrails on what custom collection is allowed to touch.
