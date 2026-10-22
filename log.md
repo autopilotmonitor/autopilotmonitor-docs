@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-23
+
+* **Update**: `trust/security-faq.md` (*What data does the agent collect from an enrolling device?*), `concepts/agent-lifecycle-and-security.md` — device context includes whether the Configuration Manager client is installed (service state, version, site code); Security FAQ reviewed.
+
 ## 2026-10-22 (3)
 
 * **Update**: `changelog/agent-changelog.md` — Late October 2026: the agent folder is owned by Administrators; another owner or a link is refused at install and re-checked at every start.

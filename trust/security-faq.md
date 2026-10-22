@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 22 October 2026 · Next review: 14 February 2027.**
+**Last reviewed: 23 October 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -41,7 +41,7 @@ Technical enrollment telemetry only. Concretely:
 
 * **Device identity:** serial number, device name, manufacturer, model, and the Entra ID tenant ID the device is enrolling into.
 * **Enrollment progress:** phases, ESP stages, application and script install results, policy and CSP activity, reboots, timings, and failure codes.
-* **Device context:** OS build, hardware characteristics, disk and network state, and the data your own [gather rules](../rules/gather-rules.md) request.
+* **Device context:** OS build, hardware characteristics, disk and network state, whether the Configuration Manager client is installed (service state, version, site code), and the data your own [gather rules](../rules/gather-rules.md) request.
 * **Approximate location**, if enabled — see [Is the device's IP address stored?](security-faq.md#is-the-devices-ip-address-stored) below.
 
 #### Does the agent collect the enrolling employee's identity or activity?
