@@ -15,6 +15,13 @@ The same entries appear in the portal under **Help (?) → What's new** and behi
 
 Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the portal or [open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
+## Late October 2026
+
+* **Bootstrap MSI 1.0 (action required)** — Replace bootstrap MSI 1.0: it runs the bootstrapper without checking our signature. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
+* **New loader and bootstrap MSI (action recommended)** — The loader runs only a current bootstrapper and works in a protected folder of its own; upload the new loader once and, for Device Preparation, the new MSI. See [Deploy the Agent](../getting-started/deploy-the-agent.md).
+* **Skipped devices keep nothing** — A device the bootstrapper skips no longer keeps a folder, log or script copy of Autopilot Monitor. See [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly).
+* **Guards also apply in the 32-bit host** — The deployment-marker and last-logon checks now also work when Intune runs the script in its default 32-bit PowerShell. See [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly).
+
 ## Mid October 2026
 
 * **Incompatible-TPM devices that connect later** — The Devices with Incompatible TPM panel shows each device's TPM firmware and whether it connected after setup. See [Settings](../reference/settings.md#hardware-whitelist).
