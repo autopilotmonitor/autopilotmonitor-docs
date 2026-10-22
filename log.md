@@ -3,6 +3,8 @@
 ## 2026-10-22
 
 * **Update**: `changelog/agent-changelog.md` — Late October 2026: a running agent stops and cleans up when its session is marked Succeeded in the portal; fixed the admin mark appearing many times in the session timeline.
+* **Update**: `reference/bootstrap-script-and-tokens.md`, `getting-started/deploy-the-agent.md`, `getting-started/autopilot-device-preparation.md`, `concepts/agent-lifecycle-and-security.md`, `trust/security-faq.md` — the loader checks that the bootstrapper is current and works in a protected folder of its own; a skipped device keeps nothing; guard *No agent present* (program, task or marker); without SYSTEM or administrator rights the scripts report an error and change nothing; loader and MSI stay valid when the bootstrapper changes, the Platform Changelog says when an upload is worth it; Security FAQ reviewed.
+* **New**: `troubleshooting/service-announcements.md` — 2026-10-22: The Bootstrap Leaves Nothing Behind (new loader recommended, bootstrap MSI 1.0 to replace).
 
 ## 2026-10-21
 

@@ -11,6 +11,12 @@ description: >-
 
 Documented issues caused by external changes (e.g. Microsoft updates) and platform incidents — each entry describes the impact, what still works, and whether action is needed. Newest first.
 
+## 2026-10-22 — **Change:** The Bootstrap Leaves Nothing Behind
+
+A device the bootstrapper skips now keeps nothing of Autopilot Monitor, and the loader downloads and checks the bootstrapper in a folder only SYSTEM and administrators can change. The loader also runs only a current bootstrapper, and the deployment-marker and last-logon guards now work in Intune's default 32-bit PowerShell host as well.
+
+If you assign the loader (`Start-AutopilotMonitor.ps1`), upload the new version once (recommended); older loaders keep working. For Device Preparation, replace bootstrap MSI 1.0, which runs the bootstrapper without checking our signature (action required); replace 1.1 like the loader (recommended). A copy of the bootstrapper (`Install-AutopilotMonitor.ps1`) assigned directly gets the cleanup with version 2.7. See [Deploy the Agent](../getting-started/deploy-the-agent.md) and [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md).
+
 ## 2026-10-20 — **Change:** Push Notifications to Paired Devices
 
 Tenant Admins can now add a Push channel under **Settings → Notifications**. Admins and Operators then pair a phone or browser from their signed-in portal session and receive the channel's alerts there — and a ping when an enrollment they watch with **Notify me when done** finishes. Each alert is encrypted end to end for the receiving device; the push service of its platform (Apple, Google, Microsoft or Mozilla) only passes on ciphertext and delivery metadata. The push page on the phone needs no sign-in; pushes carry only lock-screen details, and everything else stays in the portal behind your sign-in. Push stays off until a Tenant Admin adds the channel.

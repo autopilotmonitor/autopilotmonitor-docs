@@ -11,19 +11,19 @@ description: >-
 
 ## The bootstrap script
 
-Deployment is two files, and you only ever handle the first one. `Start-AutopilotMonitor.ps1` is the loader you assign as an Intune platform script (see [Deploy the Agent](../getting-started/deploy-the-agent.md)); on each device it downloads `Install-AutopilotMonitor.ps1`, verifies that it carries our Authenticode signature, and runs it. Under [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md) a thin MSI line-of-business app delivers the same loader over the MDM channel. Assigning the bootstrapper directly instead of the loader remains supported.
+Deployment is two files, and you only ever handle the first one. `Start-AutopilotMonitor.ps1` is the loader you assign as an Intune platform script (see [Deploy the Agent](../getting-started/deploy-the-agent.md)); on each device it downloads `Install-AutopilotMonitor.ps1` into a folder only SYSTEM and administrators can change, checks that it carries our Authenticode signature and is a current bootstrapper, and runs it. After a successful run the folder is removed; after a failure it keeps the log for diagnosis. Under [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md) a thin MSI line-of-business app delivers the same loader over the MDM channel. Assigning the bootstrapper directly instead of the loader remains supported.
 
 The bootstrapper then:
 
-1. Evaluates the **pre-requisite guards** — registry deployment marker, no real user profiles, no previous interactive logon, device uptime under 12 hours, agent not already present. All must pass, otherwise the script exits silently without changing anything.
+1. Evaluates the **pre-requisite guards** — registry deployment marker, no real user profiles, no previous interactive logon, device uptime under 12 hours, no agent present. All must pass, otherwise nothing is installed: a device without an agent keeps nothing of the bootstrap, and an agent that is already there is left as it is.
 2. **Downloads the agent package** from the distribution endpoint and verifies its **SHA-256 hash** against the published value — a mismatch aborts the installation.
-3. **Verifies the package against its signed catalog** — every agent package carries a catalog signed by us that lists every file in it. The bootstrapper unpacks into a staging folder and installs only when the catalog carries our signature and every file is present and unchanged, with nothing added; otherwise it deletes the staging folder and aborts.
+3. **Verifies the package against its signed catalog** — every agent package carries a catalog signed by us that lists every file in it. The bootstrapper unpacks into a protected folder of its own and installs only when the catalog carries our signature and every file is present and unchanged, with nothing added; otherwise it deletes that folder and aborts.
 4. Installs the agent, creates a **scheduled task running as SYSTEM**, and starts monitoring.
 
 The full guard list with the exact checks is on the [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly) page, together with the read-only **dry-run tester** (`Test-ShouldBootstrapAgent.ps1`) that reports the install decision for any machine without modifying it.
 
 {% hint style="info" %}
-The script is **fail-soft by design**: any error path exits without breaking the enrollment. Monitoring is an observer — a bootstrap problem must never cost you a device rollout.
+The script is **fail-soft by design**: any error path exits without breaking the enrollment. Monitoring is an observer — a bootstrap problem must never cost you a device rollout. Without SYSTEM or administrator rights the scripts change nothing and report an error.
 {% endhint %}
 
 The sources are public: [`scripts/Bootstrap/` on GitHub](https://github.com/okieselbach/AutopilotMonitor/tree/main/scripts/Bootstrap). The signed copies you deploy come from the download host.

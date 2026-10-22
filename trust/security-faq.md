@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 20 October 2026 · Next review: 14 February 2027.**
+**Last reviewed: 22 October 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -337,7 +337,7 @@ Yes, through five independent layers:
 4. **Independent cross-check:** the expected hash is also served over the authenticated agent configuration endpoint — a second, separate trust channel, so compromising the download alone is not sufficient.
 5. **Runtime self-verification:** the running agent hashes itself and raises an emergency alert on mismatch.
 
-The deployment scripts are signed by the same publisher. The loader you assign in Intune verifies that signature on the bootstrapper it downloads, and the bootstrapper in turn verifies the package against its signed catalog before anything is installed, so the chain from the file you upload to every file the agent runs from is signed end to end and checked at every hand-off.
+The deployment scripts are signed by the same publisher. The loader you assign in Intune verifies that signature on the bootstrapper it downloads and that it is a current bootstrapper, in a folder only SYSTEM and administrators can change, and the bootstrapper in turn verifies the package against its signed catalog before anything is installed, so the chain from the file you upload to every file the agent runs from is signed end to end and checked at every hand-off.
 
 Build numbers are reserved with an atomic compare-and-swap so two builds can never claim the same version, and the build fails on any executable/manifest/version inconsistency.
 

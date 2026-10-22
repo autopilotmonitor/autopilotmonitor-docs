@@ -13,7 +13,7 @@ The agent is deployed with a small PowerShell loader script distributed as an In
 
 ## Safe to assign broadly
 
-Before installing anything, the bootstrapper runs a series of pre-requisite guards. The agent is only installed when **all** of them pass — devices that don't meet the criteria are skipped silently. That makes it safe to assign the script to *All devices*: already-enrolled machines in daily use are never touched.
+Before installing anything, the bootstrapper runs a series of pre-requisite guards. The agent is only installed when **all** of them pass — devices that don't meet the criteria are skipped, and a skipped device keeps nothing of Autopilot Monitor, earlier leftovers included. That makes it safe to assign the script to *All devices*: already-enrolled machines in daily use never get the agent.
 
 | Guard | What it checks |
 | --- | --- |
@@ -21,7 +21,7 @@ Before installing anything, the bootstrapper runs a series of pre-requisite guar
 | **No real user profiles** | Combines WMI (`Win32_UserProfile`) and filesystem checks under `C:\Users` (system profiles like `defaultuser*`, `Public`, `Default` are excluded). Real user profiles mean the device is already in productive use. |
 | **No previous user logon** | Checks `LastLoggedOnUser` in the LogonUI registry — during the device phase of ESP, no real user has signed in yet. |
 | **Within bootstrap window** | Device uptime must be under 12 hours. Prevents installation on devices that have been powered on for a long time without enrolling. Sleep/standby does not reset this timer. |
-| **Agent not already installed** | If the agent binary is already present, installation is skipped. |
+| **No agent present** | If the agent's program, its scheduled task or the deployment marker is there, nothing is installed and the agent's folder is left as it is. |
 
 One deliberate exemption, with two triggers: a single freshly created user profile does not block the install when the device is verifiably mid-enrollment rather than in productive use. That is the case during a **Windows Backup for Organizations** restore (the device positively reports OOBE as in progress) and on a **Windows 365 Cloud PC** at the assigned user's first connect (the device positively identifies as a Cloud PC via local Windows 365 markers; the uptime guard is also waived there, since Cloud PCs run headless for days before the first sign-in — see [Windows 365 Cloud PCs](windows-365-cloud-pcs.md)). Any other combination keeps the original skip behavior.
 
@@ -57,7 +57,7 @@ Or fetch it from a PowerShell prompt:
 irm 'https://download.autopilotmonitor.com/agent/Start-AutopilotMonitor.ps1' -OutFile .\Start-AutopilotMonitor.ps1
 ```
 
-This is the only file you upload to Intune. On each device it fetches the current bootstrapper, checks that we signed it, and runs it. The loader carries none of the logic that changes over time, so the copy in Intune stays valid — an older loader keeps working.
+This is the only file you upload to Intune. On each device it fetches the current bootstrapper, checks that we signed it and that it is current, and runs it. The loader carries none of the logic that changes over time, so the copy in Intune stays valid — an older loader keeps working, and the [Platform Changelog](../changelog/platform-changelog.md) says when a new loader is worth uploading.
 
 The agent (current version ![Latest agent version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdownload.autopilotmonitor.com%2Fagent%2Fversion.json&query=%24.version&label=Agent&prefix=v&color=2563eb) — see the [Agent Changelog](../changelog/agent-changelog.md)) is downloaded and hash-verified along the way; you never handle the agent binary yourself.
 
@@ -75,7 +75,7 @@ In the **Microsoft Intune admin center**, go to **Devices → Scripts and remedi
 | --- | --- |
 | Name | `Start Autopilot Monitor` |
 | Script | Upload the downloaded `.ps1` file |
-| Run this script using the logged on credentials | **No** (runs as SYSTEM) |
+| Run this script using the logged on credentials | **No** (runs as SYSTEM) — with **Yes** the script reports an error and changes nothing |
 | Enforce script signature check | **No** — **Yes** would block the script: it needs our certificate in the device's Trusted Publishers store first ([details](#everything-you-deploy-is-signed)) |
 | Run script in 64 bit PowerShell Host | **Yes** |
 
