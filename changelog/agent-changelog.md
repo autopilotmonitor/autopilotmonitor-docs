@@ -19,6 +19,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## Late October 2026
 
+* The agent folder is owned by Administrators: a folder owned by another account, or a link, is refused at install, and every start re-checks it
 * A running agent stops and cleans up when its session is marked Succeeded in the portal
 * Fixed the admin mark appearing many times in the session timeline
 

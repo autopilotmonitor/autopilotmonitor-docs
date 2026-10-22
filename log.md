@@ -2,6 +2,7 @@
 
 ## 2026-10-22 (3)
 
+* **Update**: `changelog/agent-changelog.md` — Late October 2026: the agent folder is owned by Administrators; another owner or a link is refused at install and re-checked at every start.
 * **Update**: `changelog/platform-changelog.md` — Late October 2026: bootstrap MSI installs the agent again (installer 2.8; a stranded agent folder is deleted by hand); loader 1.4 and bootstrap MSI 1.3 (action recommended) after a security review.
 * **Update**: `troubleshooting/service-announcements.md` — 2026-10-22, update later the same day: installer 2.8 fixes the MSI channel, loader 1.4 and MSI 1.3 replace today's 1.3 / 1.2.
 
