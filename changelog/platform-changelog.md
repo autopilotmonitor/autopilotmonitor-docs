@@ -17,6 +17,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Late October 2026
 
+* **ConfigMgr Watcher** — A new agent setting, off by default: when the agent finds the Configuration Manager client, Session Info shows its service state, version and site code. See [Settings](../reference/settings.md#agent-collectors).
 * **Bootstrap MSI 1.4 (action recommended)** — The MSI keeps its loader copy under ProgramData again, runs it only after checking our signature, and the bootstrapper removes the copy. Upload it in place of 1.3; the update also removes the file 1.3 left under Program Files. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
 * **Bootstrap MSI installs the agent again** — Installer 2.8 fixes the bootstrap MSI, which since installer 2.7 earlier today stopped before the agent started. A device that ran the MSI in between got no agent and keeps an unused agent folder: delete `C:\ProgramData\AutopilotMonitor` as administrator; a reset device enrolls with the agent again. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
 * **Loader 1.4 and bootstrap MSI 1.3 (action recommended)** — After a security review the loader keeps the bootstrapper it checked open until the run ends, and the MSI installs its loader under Program Files. Upload them in place of today's loader 1.3 and MSI 1.2. See [Deploy the Agent](../getting-started/deploy-the-agent.md).
@@ -24,6 +25,9 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **New loader and bootstrap MSI (action recommended)** — The loader runs only a current bootstrapper and works in a protected folder of its own; upload the new loader once and, for Device Preparation, the new MSI. See [Deploy the Agent](../getting-started/deploy-the-agent.md).
 * **Skipped devices keep nothing** — A device the bootstrapper skips no longer keeps a folder, log or script copy of Autopilot Monitor. See [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly).
 * **Guards also apply in the 32-bit host** — The deployment-marker and last-logon checks now also work when Intune runs the script in its default 32-bit PowerShell. See [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly).
+* **Fixed: Diagnosis names the right policy provider** — On a failed enrollment, a stalled policy provider is named as the cause only when the ESP failed in the step that waits for it. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).
+* **Fixed: Admin role right after activation** — The admin who signs up a new tenant now gets the Admin role as soon as the tenant is activated.
+* **Security hardening** — Tenant activation, live updates in the portal and the log pattern test were hardened after a security review.
 
 ## Mid October 2026
 

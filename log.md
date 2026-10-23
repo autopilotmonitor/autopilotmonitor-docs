@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-23 (3)
+
+* **Update**: `changelog/agent-changelog.md` — Late October 2026: with the ConfigMgr Watcher setting the agent detects the Configuration Manager client and reports its service state, version and site code; fewer false policy-provider stall warnings.
+* **Update**: `changelog/platform-changelog.md` — Late October 2026: ConfigMgr Watcher; Fixed: Diagnosis names the right policy provider; Fixed: Admin role right after activation; security hardening.
+
 ## 2026-10-23 (2)
 
 * **Update**: `changelog/platform-changelog.md` — Late October 2026: bootstrap MSI 1.4 (action recommended) keeps its loader copy under ProgramData and runs it only after checking our signature; the bootstrapper removes the copy and the file MSI 1.3 left under Program Files.
