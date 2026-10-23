@@ -19,6 +19,8 @@ If you assign the loader (`Start-AutopilotMonitor.ps1`), upload the new version 
 
 **Update, later the same day.** Installer 2.8 fixes the bootstrap MSI channel: since installer 2.7 the agent did not start on devices bootstrapped by the MSI. Devices that ran the MSI today got no agent and keep an unused agent folder: delete `C:\ProgramData\AutopilotMonitor` as administrator to remove it; a reset device enrolls with the agent again. Devices with the platform script were not affected. After a security review, loader 1.4 and bootstrap MSI 1.3 replace today's loader 1.3 and MSI 1.2; upload those instead.
 
+**Update 2026-10-23.** Bootstrap MSI 1.3 left its loader file under `C:\Program Files\AutopilotMonitor` on every device it ran on. MSI 1.4 keeps the copy under ProgramData and the bootstrapper removes it; upload 1.4 in place of 1.3. A device that receives the update loses the file; on a device that keeps 1.3, delete the folder as administrator.
+
 ## 2026-10-20 — **Change:** Push Notifications to Paired Devices
 
 Tenant Admins can now add a Push channel under **Settings → Notifications**. Admins and Operators then pair a phone or browser from their signed-in portal session and receive the channel's alerts there — and a ping when an enrollment they watch with **Notify me when done** finishes. Each alert is encrypted end to end for the receiving device; the push service of its platform (Apple, Google, Microsoft or Mozilla) only passes on ciphertext and delivery metadata. The push page on the phone needs no sign-in; pushes carry only lock-screen details, and everything else stays in the portal behind your sign-in. Push stays off until a Tenant Admin adds the channel.

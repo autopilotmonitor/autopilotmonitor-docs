@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-23 (2)
+
+* **Update**: `changelog/platform-changelog.md` — Late October 2026: bootstrap MSI 1.4 (action recommended) keeps its loader copy under ProgramData and runs it only after checking our signature; the bootstrapper removes the copy and the file MSI 1.3 left under Program Files.
+* **Update**: `getting-started/autopilot-device-preparation.md`, `troubleshooting/service-announcements.md` — where the MSI puts its loader copy and that the device keeps nothing of it; the 2026-10-22 announcement updated for MSI 1.4.
+
 ## 2026-10-23
 
 * **Update**: `reference/settings.md` — new agent setting ConfigMgr Watcher (off by default): Session Info shows whether the Configuration Manager client is installed, with service state, version and site code.
