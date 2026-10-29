@@ -1,5 +1,12 @@
 # Log
 
+## 2026-10-29 (5)
+
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — the app page warns about installs that failed because Intune did not detect the app after its installer finished (0x87D1041C), with separate advice for Store apps.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — the app tile shows *Not detected after install* for that failure.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-APP-001 now reports apps Intune did not detect after the install (0x87D1041C); ANALYZE-APP-010 retired, APP-001 covers it.
+* **Update**: `troubleshooting/common-problems.md` — detection rule mismatch described as Intune's check after the installer.
+
 ## 2026-10-29 (4)
 
 * **Update**: `changelog/platform-changelog.md` — Late October 2026: the security hardening bullet adds request size limits and report uploads.

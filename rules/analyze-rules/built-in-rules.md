@@ -19,7 +19,7 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 
 | Rule | Severity | What it detects |
 | --- | --- | --- |
-| **ANALYZE-APP-001** · Win32 App Detection Script Failure | warning | An app installed but its Intune detection rule reported *NotDetected*, so it counts as "not installed" despite the successful install. Suppressed if a later install of the same app succeeded. |
+| **ANALYZE-APP-001** · App Not Detected After Install (0x87D1041C) | warning | The installer finished, but Intune's detection check right afterwards did not find the app, so Intune reports the install as failed with 0x87D1041C. Fires in successful and failed enrollments; names the usual detection-rule mistakes and notes that Store (WinGet) apps have no rule to edit. |
 | **ANALYZE-APP-002** · App Installation Error | high | An install failed with a recognizable error code — common MSI exit codes (1603, 1618, 1619, 1625, …) or HRESULTs — and explains what the specific code means. |
 | **ANALYZE-APP-003** · App Dependency Chain Failure | high | An app failed because a dependency in its chain failed first. |
 | **ANALYZE-APP-004** · Insufficient Disk Space | critical | Free disk space dropped below 5 GB during enrollment. Confidence rises when apps actually failed while space was low. |
@@ -27,7 +27,6 @@ Built-in rules are updated with the product — fixes and improvements arrive au
 | **ANALYZE-APP-006** · App Install Retry Loop | high | The same app was started 3+ times — an unhonored reboot request, repeated failures, or a detection mismatch causing retries. |
 | **ANALYZE-APP-007** · Multiple App Installation Failures | high | Two or more different apps failed in one session — a systemic problem (network, disk, policy) rather than a single bad app. |
 | **ANALYZE-APP-008** · Slow App Installation | warning | A single app took longer than 10 minutes to install. |
-| **ANALYZE-APP-010** · App Reverted to Error After Successful Install | warning | An app completed successfully but later reported failed for the same app — the post-install re-evaluation flipped it back (e.g. 0x87D13B9C). |
 | **ANALYZE-APP-012** · Enforcement Error Resolved by Successful Detection | warning | An "unmapped exit code" failure that a subsequent detection pass resolved — the app is fine, but the Intune return-code mapping should be fixed. |
 | **ANALYZE-APP-013** · App Detection Failure During ESP (0x87D1041C) | critical | The classic ESP killer: an app installed fine, but its detection rule didn't match, failing the whole ESP with HRESULT 0x87D1041C. Includes deep remediation (detection-rule bitness, WOW6432Node, testing as SYSTEM). |
 | **ANALYZE-APP-014** · MSIX/Store App Failure During ESP (AppX Deployment) | warning | The ESP failed on the Apps subcategory and the AppX deployment log scan identified a suspected MSIX/Store package. Store apps install outside the Win32 pipeline, so regular per-app tracking sees nothing — this correlation names the likely culprit. |

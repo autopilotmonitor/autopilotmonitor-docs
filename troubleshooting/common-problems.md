@@ -39,7 +39,7 @@ If it happens *consistently*, check whether something on the device kills connec
 
 Two classic Intune patterns the built-in rules recognize:
 
-* **Detection rule mismatch** — the app installs, but its detection rule doesn't match, so Intune reports failure (HRESULT `0x87D1041C` when it kills the ESP). See the findings of [ANALYZE-APP-001/APP-013](../rules/analyze-rules/built-in-rules.md#apps) for concrete remediation.
+* **Detection rule mismatch** — the installer finishes, but Intune's check right afterwards doesn't find the app, so Intune reports the install as failed with `0x87D1041C` (and the ESP fails when the app blocks it). See the findings of [ANALYZE-APP-001/APP-013](../rules/analyze-rules/built-in-rules.md#apps) for concrete remediation.
 * **Unmapped exit code** — the installer returns an exit code that isn't mapped in the app's return-code table; a later detection pass often flips it to success ([ANALYZE-APP-012](../rules/analyze-rules/built-in-rules.md#apps)). Fix the return-code mapping in Intune.
 
 ## Timeline gaps after adding gather rules (ingestion rate limit)
