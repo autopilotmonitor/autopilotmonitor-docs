@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-29 (4)
+
+* **Update**: `changelog/platform-changelog.md` — Late October 2026: the security hardening bullet adds request size limits and report uploads.
+
 ## 2026-10-29 (3)
 
 * **Update**: `changelog/platform-changelog.md` — Late October 2026: the Usage Metrics hardware lists show the devices behind their sessions; Fleet Health counts enrollments.

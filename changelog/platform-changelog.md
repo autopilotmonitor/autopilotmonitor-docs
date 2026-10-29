@@ -28,7 +28,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Hardware lists show devices** — Top Manufacturers and Top Models in Usage Metrics show the devices behind each row's sessions; a device enrolled again stays one device. Fleet Health labels its per-model count as enrollments, not devices. See [Usage Metrics](../portal-guide/usage-metrics.md#what-you-see).
 * **Fixed: Diagnosis names the right policy provider** — On a failed enrollment, a stalled policy provider is named as the cause only when the ESP failed in the step that waits for it. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).
 * **Fixed: Admin role right after activation** — The admin who signs up a new tenant now gets the Admin role as soon as the tenant is activated.
-* **Security hardening** — Tenant activation, live updates in the portal and the log pattern test were hardened after a security review.
+* **Security hardening** — Tenant activation, live updates in the portal, the log pattern test, request size limits and report uploads were hardened after a security review.
 
 ## Mid October 2026
 
