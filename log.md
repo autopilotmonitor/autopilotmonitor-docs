@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-29 (6)
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Install Progress and the timeline show Intune's detection check right after the installer (after the restart when one was requested) and the check before the install; the diagnosis tile shows that check.
+
 ## 2026-10-29 (5)
 
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — the app page warns about installs that failed because Intune did not detect the app after its installer finished (0x87D1041C), with separate advice for Store apps.
