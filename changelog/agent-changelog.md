@@ -19,6 +19,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## Late October 2026
 
+* The agent reports Intune's detection check right after each app install, or after the restart the installer asked for, as its own timeline entry
+* Failed app installs carry Intune's own error code, such as 0x87D1041C when the app was not detected after its installer finished
 * With the new ConfigMgr Watcher setting, the agent detects the Configuration Manager client and reports its service state, version and site code
 * Fewer false policy-provider stall warnings: a device-preparation provider counts only while device preparation is still running
 * The agent folder is owned by Administrators: a folder owned by another account, or a link, is refused at install, and every start re-checks it

@@ -17,6 +17,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## Late October 2026
 
+* **Detection after install** — Install Progress, the event timeline and Diagnosis show the result of Intune's detection check right after each app's installer, and failed installs show Intune's error code with its meaning. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **ConfigMgr Watcher** — A new agent setting, off by default: when the agent finds the Configuration Manager client, Session Info shows its service state, version and site code. See [Settings](../reference/settings.md#agent-collectors).
 * **Bootstrap MSI 1.4 (action recommended)** — The MSI keeps its loader copy under ProgramData again, runs it only after checking our signature, and the bootstrapper removes the copy. Upload it in place of 1.3; the update also removes the file 1.3 left under Program Files. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
 * **Bootstrap MSI installs the agent again** — Installer 2.8 fixes the bootstrap MSI, which since installer 2.7 earlier today stopped before the agent started. A device that ran the MSI in between got no agent and keeps an unused agent folder: delete `C:\ProgramData\AutopilotMonitor` as administrator; a reset device enrolls with the agent again. See [Autopilot Device Preparation](../getting-started/autopilot-device-preparation.md#deploy-the-agent-as-an-msi-line-of-business-app).
@@ -28,6 +29,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Hardware lists show devices** — Top Manufacturers and Top Models in Usage Metrics show the devices behind each row's sessions; a device enrolled again stays one device. Fleet Health labels its per-model count as enrollments, not devices. See [Usage Metrics](../portal-guide/usage-metrics.md#what-you-see).
 * **Fixed: Diagnosis names the right policy provider** — On a failed enrollment, a stalled policy provider is named as the cause only when the ESP failed in the step that waits for it. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).
 * **Fixed: Admin role right after activation** — The admin who signs up a new tenant now gets the Admin role as soon as the tenant is activated.
+* **Fixed: App detection warning** — The app page warns only about installs Intune reported as failed because its detection check did not find the app (0x87D1041C), with separate advice for Store apps; the matching analysis finding follows the same rule. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive).
 * **Security hardening** — Tenant activation, live updates in the portal, the log pattern test, request size limits and report uploads were hardened after a security review.
 
 ## Mid October 2026

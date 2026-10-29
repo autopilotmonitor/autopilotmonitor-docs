@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-29 (7)
+
+* **Update**: `changelog/agent-changelog.md` — Late October 2026: the agent reports Intune's detection check after each app install; failed installs carry Intune's error code.
+* **Update**: `changelog/platform-changelog.md` — Late October 2026: detection after install in Install Progress, the timeline and Diagnosis; Fixed: app detection warning.
+
 ## 2026-10-29 (6)
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — Install Progress and the timeline show Intune's detection check right after the installer (after the restart when one was requested) and the check before the install; the diagnosis tile shows that check.
