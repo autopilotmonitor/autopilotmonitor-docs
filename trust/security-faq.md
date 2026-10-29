@@ -1,6 +1,6 @@
 ---
 type: Concept
-timestamp: 2026-10-20T00:00:00.000Z
+timestamp: 2026-10-29T00:00:00.000Z
 description: >-
   Security, privacy and compliance answers: data residency, tenant isolation,
   encryption, retention, MSP access, push notifications, external services, and
@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 23 October 2026 · Next review: 14 February 2027.**
+**Last reviewed: 29 October 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -95,7 +95,7 @@ What _does_ happen: if you connect your own AI assistant through MCP, the data t
 * **Request telemetry** in Application Insights carrying tenant ID, the acting user's UPN, role, correlation ID, and the API route. This is operational telemetry for running and supporting the service.
 * **Operational events** for platform-level conditions (device blocked, kill signal delivered, certificate expiry approaching, capacity thresholds).
 
-Portal front-end telemetry is **cookie-free** and carries tenant ID and UI preferences, but **not** user identity.
+Portal front-end telemetry is **cookie-free** and carries tenant ID, UI preferences and the type of browser and device, but **not** user identity.
 
 ### Identity and Access
 

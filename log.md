@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-29
+
+* **Update**: `trust/security-faq.md` — portal front-end telemetry also carries the type of browser and device; reviewed 29 October 2026.
+* **Update**: `reference/network-endpoints.md` — the portal web app and its sign-in run on `portal.`, so administrators need `portal.` rather than `www.`; portal telemetry needs only `*.in.applicationinsights.azure.com`.
+
 ## 2026-10-23 (3)
 
 * **Update**: `changelog/agent-changelog.md` — Late October 2026: with the ConfigMgr Watcher setting the agent detects the Configuration Manager client and reports its service state, version and site code; fewer false policy-provider stall warnings.

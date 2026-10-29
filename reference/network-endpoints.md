@@ -20,15 +20,15 @@ These hosts are operated by Autopilot Monitor and are the ones you may need to a
 | `autopilotmonitor.blob.core.windows.net` | Legacy agent download host — still used by bootstrap scripts deployed to Intune before the `download.` host existed | Enrolling devices — only if your Intune tenant still runs an older bootstrap script |
 | `go.autopilotmonitor.com` | OOBE bootstrap script (`irm https://go.autopilotmonitor.com/CODE \| iex`) | Enrolling devices — only if you use **Bootstrap Sessions** |
 | `autopilotmonitor-api-eu.azurewebsites.net` | Telemetry ingest and portal API | Enrolling devices **and** admin browsers |
-| `www.autopilotmonitor.com` | Portal web app (sign-in and UI) | Admin browsers |
-| `portal.autopilotmonitor.com` | Portal deep links used in notifications and e-mails; the push receiver app at `/push/` | Admin browsers and paired phones |
+| `www.autopilotmonitor.com` | Public website: product, plans and legal pages | Browsers |
+| `portal.autopilotmonitor.com` | Portal web app (sign-in and UI), its deep links in notifications and e-mails, and the push receiver app at `/push/` | Admin browsers and paired phones |
 | `mcp.autopilotmonitor.com` | Read-only MCP telemetry server (optional AI integration) | AI/MCP clients |
 
 {% hint style="info" %}
 `autopilotmonitor.com` redirects to `www.autopilotmonitor.com`, and this documentation is served from `docs.autopilotmonitor.com` — allowing the `autopilotmonitor.com` parent domain and its subdomains covers all of them.
 {% endhint %}
 
-Note the two audiences usually live on different network segments: **enrolling devices** (agent) need `download.`, the API host, and — if you use Bootstrap Sessions — `go.`; **administrators** (portal, AI clients) need `www.`, the API host, and — for AI integration — `mcp.`.
+Note the two audiences usually live on different network segments: **enrolling devices** (agent) need `download.`, the API host, and — if you use Bootstrap Sessions — `go.`; **administrators** (portal, AI clients) need `portal.`, the API host, and — for AI integration — `mcp.`.
 
 ## Feature-dependent endpoint
 
@@ -44,7 +44,7 @@ The portal (in the browser) and Entra ID sign-in also rely on standard Microsoft
 
 * `login.microsoftonline.com` — Microsoft Entra ID sign-in for the portal
 * `*.service.signalr.net` (HTTPS **and** WebSocket / `wss`) — real-time portal updates
-* `*.in.applicationinsights.azure.com`, `js.monitor.azure.com` — portal telemetry
+* `*.in.applicationinsights.azure.com` — portal telemetry
 
 The on-device agent does **not** use Entra ID — it authenticates with the device's MDM client certificate — so the agent network only needs the Autopilot Monitor hosts above.
 
