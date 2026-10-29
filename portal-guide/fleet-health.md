@@ -19,7 +19,7 @@ Fleet Health zooms out from individual sessions to the whole fleet: is enrollmen
   * **Top Failure Reasons** — what actually kills your enrollments, with proportional bars.
   * **Slowest Models** and **Top Failing Models** — hardware lines that drag down or break enrollments.
   * **Slowest Apps** (average and max install time) and **Top Failing Apps** — including the top failure exit codes per app, e.g. `1603 (12x)`.
-* **Health by Device Model** — every model with its success rate, device count, and a color-coded bar.
+* **Health by Device Model** — every model with its success rate, number of enrollments, and a color-coded bar. A device enrolled twice counts twice.
 
 App install times measure the **final install attempt**. The Intune Management Extension processes the app list in several passes — an early evaluation pass can touch an app long before its actual install runs later in the queue — and only the attempt that produced the app's final outcome counts: neither the idle time between passes nor the time an app spent queued behind other apps is billed to it. Times are additionally computed over **measured installs** only. An app that Intune reported as *skipped* (e.g. a WinGet update policy that didn't apply to the device) is not an install attempt: it is excluded from the average, the maximum, and the slowest ranking, and the skipped count is shown next to the app instead. This is why the *Slowest Apps* list carries a *measured installs* caption.
 

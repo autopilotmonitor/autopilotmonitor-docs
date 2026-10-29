@@ -1,5 +1,10 @@
 # Log
 
+## 2026-10-29 (2)
+
+* **Update**: `portal-guide/usage-metrics.md` — the hardware lists rank by enrollment sessions and show the distinct devices behind them; a device reset and enrolled again stays one device.
+* **Fix**: `portal-guide/fleet-health.md` — *Health by Device Model* shows the number of enrollments, not a device count.
+
 ## 2026-10-29
 
 * **Update**: `trust/security-faq.md` — portal front-end telemetry also carries the type of browser and device; reviewed 29 October 2026.
