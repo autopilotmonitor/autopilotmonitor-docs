@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-29 (3)
+
+* **Update**: `changelog/platform-changelog.md` — Late October 2026: the Usage Metrics hardware lists show the devices behind their sessions; Fleet Health counts enrollments.
+
 ## 2026-10-29 (2)
 
 * **Update**: `portal-guide/usage-metrics.md` — the hardware lists rank by enrollment sessions and show the distinct devices behind them; a device reset and enrolled again stays one device.
