@@ -99,9 +99,9 @@ Opt-in, per-tenant Microsoft Graph permission grants that unlock optional featur
 | Set Timezone Automatically | Disabled | Sets the device timezone from the geolocation result (`tzutil /s`). Requires Geo-Location Detection. |
 | Set Delivery Optimization Group ID | Disabled | Sets the `DOGroupId` policy to a GUID fingerprinted from the local network (default gateway IP + MAC), so devices behind the same gateway form one Delivery Optimization peering group. Only takes effect when your Intune configuration sets DO Download Mode to Group (2). An existing `DOGroupId` or `DOGroupIdSource` policy is never overwritten. |
 | Keep Awake During User-ESP | Disabled | Holds the device awake (system and display) during the User-ESP / Account Setup phase so idle standby or sleep cannot stall app installs and account provisioning. Reboots are unaffected; the hold is released when the User-ESP page closes, or after a safety cap derived from the ESP timeout. |
-| IME Pattern Match Log | Disabled | Writes matched IME log lines to `%ProgramData%\AutopilotMonitor\Logs\ime_pattern_matches.log` — the debugging tool for [IME Log Patterns](../rules/ime-log-patterns.md). |
+| IME Pattern Match Log | Disabled | Writes matched IME log lines to `%ProgramData%\AutopilotMonitor\Logs\ime-pattern-matches.log` — the debugging tool for [IME Log Patterns](../rules/ime-log-patterns.md). |
 | Show Script Output (stdout) | Enabled | Shows PowerShell script stdout in the timeline. Disable if scripts may print sensitive data; stderr is always shown. |
-| Log Level | Info | Agent's own log verbosity: Info · Debug · Verbose · Trace. Raise only while diagnosing an agent issue. |
+| Log Level | Info | Agent log verbosity: Info shows the enrollment flow, Debug adds detail, Verbose adds every detail, Trace adds each internal step. Raise only while diagnosing an agent issue. |
 | Show Enrollment Summary | Disabled | Shows the end user a visual summary dialog after enrollment (success and failure). Requires the SummaryDialog companion. Sub-settings: **Auto-Close Timeout** (default 60 s; 0 = manual close), **Launch Retry Timeout** (default 120 s — retries while credential UI like Windows Hello locks the desktop), **Branding Image URL** (HTTPS URL to a 540 × 80 px banner). |
 
 ### Agent Collectors

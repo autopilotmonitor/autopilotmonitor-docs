@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-30
+
+* **Update**: `changelog/agent-changelog.md` — Late October 2026: the agent log is easier to read at every level; internal faults are logged and the tenant ID diagnostics appear once.
+* **Update**: `changelog/platform-changelog.md` — Late October 2026: failure codes for more failed installs; log levels explained.
+* **Update**: `reference/settings.md` — the Log Level setting says what each level adds; the IME pattern match log is named `ime-pattern-matches.log`.
+
 ## 2026-10-29 (7)
 
 * **Update**: `changelog/agent-changelog.md` — Late October 2026: the agent reports Intune's detection check after each app install; failed installs carry Intune's error code.

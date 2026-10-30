@@ -19,6 +19,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## Late October 2026
 
+* The agent log is easier to read at every level: Info follows the enrollment, Debug adds detail, Verbose every detail, and Trace the internal steps
+* The agent log now records internal faults that went unlogged before, and the tenant ID diagnostics at start appear only once
 * The agent reports Intune's detection check right after each app install, or after the restart the installer asked for, as its own timeline entry
 * Failed app installs carry Intune's own error code, such as 0x87D1041C when the app was not detected after its installer finished
 * With the new ConfigMgr Watcher setting, the agent detects the Configuration Manager client and reports its service state, version and site code
