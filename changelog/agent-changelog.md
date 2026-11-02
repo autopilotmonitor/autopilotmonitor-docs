@@ -19,6 +19,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* The agent log shows the proxy settings and the route to the backend at the start, after every change and on each failed upload
+* The agent recognizes automatic proxy detection and reports proxy changes as timeline events
 * A rolled-over Intune Management Extension log is no longer read a second time, so app rows keep their state and start time
 * A failed upload names its cause and the endpoint it tried in the agent log
 

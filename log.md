@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-02 (4)
+
+* **Update**: `changelog/agent-changelog.md` — November 2026: proxy settings and route in the agent log; automatic proxy detection and proxy changes reported.
+* **Update**: `changelog/platform-changelog.md` — November 2026: proxy settings in Device Details, session page on phones.
+
 ## 2026-11-02 (3)
 
 * **Update**: `troubleshooting/common-problems.md` — new section **Events stop during an app installation**: a package that changes the proxy settings of the SYSTEM account, how to check it, and how to fix it.

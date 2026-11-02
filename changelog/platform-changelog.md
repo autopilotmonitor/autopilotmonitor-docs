@@ -18,6 +18,8 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 ## November 2026
 
 * **App and script rows without data** — While a session has not ended and nothing has arrived from the agent for 20 minutes, its running app and script rows read *No data* and stop counting. They pick up again as soon as new data arrives. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#session-detail).
+* **Proxy settings in Device Details** — Device Details show automatic proxy detection and the WinHTTP proxy, and a proxy change appears in the event timeline. See [Common Problems](../troubleshooting/common-problems.md#events-stop-during-an-app-installation).
+* **Session page on phones** — The session page fits a phone without sideways scrolling.
 
 ## Late October 2026
 
