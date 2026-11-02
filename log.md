@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-02 (3)
+
+* **Update**: `troubleshooting/common-problems.md` — new section **Events stop during an app installation**: a package that changes the proxy settings of the SYSTEM account, how to check it, and how to fix it.
+
 ## 2026-11-02 (2)
 
 * **Update**: `changelog/agent-changelog.md` — November 2026: a rolled-over IME log is no longer read a second time; a failed upload names its cause and endpoint.

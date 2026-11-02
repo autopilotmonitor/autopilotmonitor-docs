@@ -25,6 +25,14 @@ The agent authenticates with the device's **MDM client certificate** (mutual TLS
 
 **Fix:** exclude the Autopilot Monitor backend endpoints from TLS inspection. The same applies to proxies that require user authentication during the device phase of OOBE (no user exists yet to authenticate).
 
+## Events stop during an app installation
+
+The session stops receiving events while an app installs, but the enrollment finishes on the device. An install package may have changed the proxy settings of the SYSTEM account. The agent runs as SYSTEM and follows them at once.
+
+**Check:** look for `ProxyObserver` in the agent log under `%ProgramData%\AutopilotMonitor\Logs`. It shows the settings at the start and every change with its time.
+
+**Fix:** have the package put the setting back when it is done.
+
 ## Sessions stuck "In Progress"
 
 Usually the completion signal was missed (device powered off or rebooted at the wrong moment, connectivity lost). This self-heals: after the [session timeout](../reference/settings.md#data-management) (default 5 hours) the backend reclassifies the silent session from its evidence — **Awaiting User** if Device Setup finished, or **Incomplete** if it went quiet without a completion or failure (neither counts as a failure) — and if a real completion later arrives it is reconciled to **Succeeded**. On the device, the agent's own 6-hour lifetime plus the unconditional 48-hour emergency brake guarantee cleanup. If you already know the outcome, mark the session succeeded/failed manually via [Admin Mode](../concepts/roles-and-permissions.md#admin-mode). See [Sessions & Statuses → Timeouts](../concepts/sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions).
