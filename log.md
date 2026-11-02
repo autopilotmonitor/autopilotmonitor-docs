@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-02 (2)
+
+* **Update**: `changelog/agent-changelog.md` — November 2026: a rolled-over IME log is no longer read a second time; a failed upload names its cause and endpoint.
+* **Update**: `changelog/platform-changelog.md` — November 2026: *No data* on app and script rows. Late October 2026: one Save per settings card, Install Progress on phones.
+
 ## 2026-11-02
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md`, `troubleshooting/microsoft-365-apps-shown-twice.md` — an app or script row reads **No data** while the session has not ended and nothing has arrived from the agent for 20 minutes.

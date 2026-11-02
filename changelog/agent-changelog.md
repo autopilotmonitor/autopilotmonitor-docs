@@ -17,6 +17,11 @@ The same entries appear in the portal under **Help (?) → What's new** on the A
 
 Per-version release notes: [GitHub Releases](https://github.com/okieselbach/AutopilotMonitor/releases).
 
+## November 2026
+
+* A rolled-over Intune Management Extension log is no longer read a second time, so app rows keep their state and start time
+* A failed upload names its cause and the endpoint it tried in the agent log
+
 ## Late October 2026
 
 * The agent log is easier to read at every level: Info follows the enrollment, Debug adds detail, Verbose every detail, and Trace the internal steps

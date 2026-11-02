@@ -15,6 +15,10 @@ The same entries appear in the portal under **Help (?) → What's new** and behi
 
 Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the portal or [open a GitHub Issue](https://github.com/okieselbach/Autopilot-Monitor/issues) — it helps more than you might think.
 
+## November 2026
+
+* **App and script rows without data** — While a session has not ended and nothing has arrived from the agent for 20 minutes, its running app and script rows read *No data* and stop counting. They pick up again as soon as new data arrives. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#session-detail).
+
 ## Late October 2026
 
 * **Detection after install** — Install Progress, the event timeline and Diagnosis show the result of Intune's detection check right after each app's installer, and failed installs show Intune's error code with its meaning. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#session-detail).
@@ -29,6 +33,8 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Guards also apply in the 32-bit host** — The deployment-marker and last-logon checks now also work when Intune runs the script in its default 32-bit PowerShell. See [Deploy the Agent](../getting-started/deploy-the-agent.md#safe-to-assign-broadly).
 * **Hardware lists show devices** — Top Manufacturers and Top Models in Usage Metrics show the devices behind each row's sessions; a device enrolled again stays one device. Fleet Health labels its per-model count as enrollments, not devices. See [Usage Metrics](../portal-guide/usage-metrics.md#what-you-see).
 * **Log levels explained** — The agent's Log Level setting says what each level adds to the agent log. See [Settings](../reference/settings.md#agent-parameters).
+* **One Save per settings card** — Every settings card has its own Save, and the result shows at the button, with the reason when a save fails. Settings cards no longer have a Reset button.
+* **Install Progress on phones** — The detection result no longer squeezes the app name: *Detected after install* moves into Details, and the other results use a shorter label.
 * **Fixed: Diagnosis names the right policy provider** — On a failed enrollment, a stalled policy provider is named as the cause only when the ESP failed in the step that waits for it. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#guided-diagnosis).
 * **Fixed: Admin role right after activation** — The admin who signs up a new tenant now gets the Admin role as soon as the tenant is activated.
 * **Fixed: App detection warning** — The app page warns only about installs Intune reported as failed because its detection check did not find the app (0x87D1041C), with separate advice for Store apps; the matching analysis finding follows the same rule. See [Software Inventory & Vulnerabilities](../portal-guide/software-inventory-and-vulnerabilities.md#per-app-deep-dive).
