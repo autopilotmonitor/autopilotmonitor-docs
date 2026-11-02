@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-02 (5)
+
+* **Update**: `trust/data-flows.md` — operator alerting paths current; e-mail wording corrected.
+
 ## 2026-11-02 (4)
 
 * **Update**: `changelog/agent-changelog.md` — November 2026: proxy settings and route in the agent log; automatic proxy detection and proxy changes reported.

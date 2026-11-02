@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-10-20
+timestamp: 2026-11-02
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 20 October 2026 · Next review: 2 March 2027.**
+**Last reviewed: 2 November 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -32,13 +32,10 @@ Used to deliver messages *about* the service. **None of them carries enrollment 
 
 | Service | When it is used | What it receives |
 | --- | --- | --- |
-| **Mailchimp Transactional (Mandrill)** | Onboarding and offboarding only — the welcome message sent when a tenant is activated, and the farewell message sent after a tenant is offboarded | The recipient administrator's email address and the tenant's domain name. Open and click tracking is disabled |
-| **Telegram** | Operator alerting, so incidents get noticed and acted on quickly | Platform health signals: event type, severity, a short message, and the tenant ID an event relates to. No device data, no enrollment telemetry, no personal data |
+| **Mailchimp Transactional (Mandrill)** | The welcome message sent when a tenant is activated, the farewell message sent after a tenant is offboarded, and operator alerts sent to the platform operators' own mailbox | The recipient administrator's email address and the tenant's domain name; for an operator alert, the operator's address, the event type, severity, a short message and, where one applies, the tenant. Open and click tracking is disabled |
 | **Web push services** (Apple, Google, Microsoft, Mozilla) | Operator alerting on devices the platform operators paired themselves | An end-to-end encrypted alert — event type, severity and the tenant it concerns — that only the paired device can read, plus delivery metadata. No device data, no enrollment telemetry, no personal data |
 
-Telegram is **operator-only infrastructure**, not a tenant feature — it cannot be configured or used by customers. It is listed here because it exists in the open-source code and you would find it anyway; it is how the people running the service learn that something is wrong.
-
-Autopilot Monitor does **not** route notification alerts through an email provider. There is no other mail service in the product.
+E-mail alerts are reserved for the platform operators: tenant administrators cannot set up an e-mail channel. There is no other mail service in the product.
 
 ## 3. Data the service reads in — nothing goes out
 
