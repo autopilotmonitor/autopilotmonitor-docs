@@ -50,6 +50,7 @@ Once Office is installed, the `office_install_completed` event in the timeline a
 | ✓ Installed | ✗ Failed | The package reported success, but Office did not finish installing. The analyze rule **ANALYZE-OFFICE-001** flags this on the session. See [Office failed although the package succeeded](#office-failed-although-the-package-succeeded). |
 | ✗ Failed | ✓ Installed | Office is on the device, but your package reported a failure. This almost always points at the package: its **detection rule** or the **exit code** of a wrapper script, not at Office. |
 | any | **Incomplete** | The session ended before Office finished, so the agent stopped watching. This is neither a success nor a failure; the time shown is how long it was observed. |
+| any | **No data** | The session has not ended, but nothing has arrived from the agent for 20 minutes, so the current state is unknown. Office may well have finished on the device. The row picks up again as soon as new data arrives. |
 | — (no package row) | any | You use the built-in app type, so the Click-to-Run row is the whole story. |
 
 The Click-to-Run row is **observation only**. It never changes the enrollment result by itself. The Enrollment Status Page waits for the app as Intune reports it, and a Click-to-Run failure surfaces as an analyze-rule finding (warning), not as a failed enrollment.

@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-02
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md`, `troubleshooting/microsoft-365-apps-shown-twice.md` — an app or script row reads **No data** while the session has not ended and nothing has arrived from the agent for 20 minutes.
+
 ## 2026-10-30
 
 * **Update**: `changelog/agent-changelog.md` — Late October 2026: the agent log is easier to read at every level; internal faults are logged and the tenant ID diagnostics appear once.
