@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-02 (6)
+
+* **Add**: `troubleshooting/enrollment-monitoring-interrupted.md` — what the red notice means when Microsoft Entra rejects Autopilot Monitor's access, when it appears, how to restore access per error code, what to check afterwards, how long the notice stays.
+* **Update**: `reference/settings.md`, `troubleshooting/app-registration-migration.md` — point to the new article.
+
 ## 2026-11-02 (5)
 
 * **Update**: `trust/data-flows.md` — operator alerting paths current; e-mail wording corrected.

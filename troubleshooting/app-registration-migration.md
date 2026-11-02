@@ -97,7 +97,7 @@ Once your tenant is migrated, the previous application serves no purpose in your
 Deleting the enterprise application removes the consent your tenant granted to the previous app, including any add-on permissions still assigned to it.
 
 {% hint style="warning" %}
-Delete only the application with Application ID `1a400946-62c1-4ab4-aa37-f730ac89704d`, and only **after** your tenant has migrated. Deleting it while your tenant still runs on it breaks portal sign-in and device validation — agent uploads are rejected until you complete the migration to the new app.
+Delete only the application with Application ID `1a400946-62c1-4ab4-aa37-f730ac89704d`, and only **after** your tenant has migrated. Deleting it while your tenant still runs on it breaks portal sign-in and device validation — agent uploads are rejected until you complete the migration to the new app. If that already happened, see [Enrollment Monitoring Is Interrupted](enrollment-monitoring-interrupted.md).
 {% endhint %}
 
 ## Frequently asked questions

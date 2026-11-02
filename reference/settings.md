@@ -37,6 +37,8 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 **At least one validation method must be enabled** — with all of them off, the backend rejects all agent requests. This is the consent gate described in [Portal Setup](../getting-started/portal-setup.md).
 {% endhint %}
 
+If Microsoft Entra keeps refusing Autopilot Monitor's access to your tenant, this section shows a red notice and the status reads **Access rejected**. See [Enrollment Monitoring Is Interrupted](../troubleshooting/enrollment-monitoring-interrupted.md).
+
 ### Hardware Whitelist
 
 | Setting | Default | Description |
