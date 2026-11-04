@@ -79,7 +79,7 @@ If you register no devices up front, validate them by their Intune enrollment in
 1. **Grant the add-on permission:** under **Settings → Tenant → Optional Graph capabilities**, grant the `IntuneDeviceBinding` feature. It adds the read-only permission `DeviceManagementManagedDevices.Read.All`. See [Optional Graph Permissions](../reference/optional-graph-permissions.md).
 2. **Turn on the validation:** in **Settings → Enrollment Device Validation**, enable **Intune Enrollment Validation**.
 
-The device is identified by the Intune device id in its MDM certificate, and it must be enrolled in your tenant's Intune. Nothing is pre-registered and no serial number is involved. Until the permission is granted, no device is accepted this way.
+The device is identified by the Intune device id in its MDM certificate, and it must be enrolled in your tenant's Intune. Nothing is pre-registered and no serial number is involved. Until the permission is granted, no device is accepted this way, and Settings shows **Permission missing** below the switch. See [Device Validation: Permission Missing](../troubleshooting/device-validation-permission-missing.md).
 
 {% hint style="warning" %}
 This method accepts every device your Intune tenant lets enroll. If your enrollment restrictions allow personal Windows devices, those are monitored too. For corporate devices only, block personal enrollment in Intune, or use device association or Corporate Identifiers.

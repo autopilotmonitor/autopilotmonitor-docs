@@ -1,5 +1,11 @@
 # Log
 
+## 2026-11-04
+
+* **Add**: `troubleshooting/device-validation-permission-missing.md` — what the "Permission missing" notice means when Cloud PC or Intune Enrollment Validation is on without its optional Graph permission, when the Dashboard notice appears, how to grant the permission or turn the validation off, how long the notice stays.
+* **Update**: `reference/settings.md`, `reference/optional-graph-permissions.md`, `getting-started/autopilot-device-preparation.md`, `getting-started/windows-365-cloud-pcs.md`, `troubleshooting/enrollment-monitoring-interrupted.md` — point to the new article. `troubleshooting/common-problems.md` — the first checks name every validation method, not only Autopilot.
+* **Update**: `changelog/platform-changelog.md` — November 2026: missing validation permission shown; notice when Microsoft Entra rejects access.
+
 ## 2026-11-02 (6)
 
 * **Add**: `troubleshooting/enrollment-monitoring-interrupted.md` — what the red notice means when Microsoft Entra rejects Autopilot Monitor's access, when it appears, how to restore access per error code, what to check afterwards, how long the notice stays.

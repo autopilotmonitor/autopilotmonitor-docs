@@ -27,6 +27,8 @@ Two steps, both one-time:
 1. **Grant the optional Graph permission.** Cloud PC validation needs the read-only permission `CloudPC.Read.All`, which is not part of the default consent. Grant it as the feature `W365CloudPcValidation` using the add-on grant script — see [Optional Graph Permissions](../reference/optional-graph-permissions.md).
 2. **Turn on the validation.** In **Settings → Enrollment Device Validation**, enable **Windows 365 Cloud PC Validation**.
 
+If you turn the validation on first, Cloud PCs are rejected until the permission is granted, and Settings shows **Permission missing** below the switch. See [Device Validation: Permission Missing](../troubleshooting/device-validation-permission-missing.md).
+
 The new method acts as a fallback after the Autopilot and Corporate Identifier lookups: the backend takes the Intune device id from the device's Intune-issued MDM certificate and requires a matching Cloud PC object in your tenant's Cloud PC inventory (Graph `virtualEndpoint/cloudPCs`). Only machines actually provisioned by the Windows 365 service have such an object, so enabling this does not open registration to any other device type.
 
 ## Include Cloud PCs in the agent deployment

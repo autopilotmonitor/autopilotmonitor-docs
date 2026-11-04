@@ -73,6 +73,7 @@
 * [Microsoft 365 Apps Shown Twice](troubleshooting/microsoft-365-apps-shown-twice.md)
 * [App Registration Migration](troubleshooting/app-registration-migration.md)
 * [Enrollment Monitoring Is Interrupted](troubleshooting/enrollment-monitoring-interrupted.md)
+* [Device Validation: Permission Missing](troubleshooting/device-validation-permission-missing.md)
 * [Hybrid Join: Late Device Registration](troubleshooting/hybrid-join-late-device-registration.md)
 * [Hybrid Join: Stuck in Account Setup](troubleshooting/hybrid-join-stuck-in-account-setup.md)
 * [Diagnostics & Log Collection](troubleshooting/diagnostics-and-log-collection.md)

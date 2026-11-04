@@ -39,6 +39,8 @@ Two groups are tied to your [plan](../plans.md): **Bootstrap Sessions** and **Un
 
 If Microsoft Entra keeps refusing Autopilot Monitor's access to your tenant, this section shows a red notice and the status reads **Access rejected**. See [Enrollment Monitoring Is Interrupted](../troubleshooting/enrollment-monitoring-interrupted.md).
 
+If Cloud PC or Intune Enrollment Validation is on but its optional permission is not granted, a **Permission missing** notice appears below its switch and the status reads **Permission missing**. See [Device Validation: Permission Missing](../troubleshooting/device-validation-permission-missing.md).
+
 ### Hardware Whitelist
 
 | Setting | Default | Description |

@@ -68,6 +68,7 @@ Contributor-facing technical documentation lives in the main product repository 
 * [Signed in, but only the Progress Portal](troubleshooting/progress-portal-only.md) - No portal role yet: how to get one, and what to do when nobody looks after Autopilot Monitor anymore.
 * [App Registration Migration](troubleshooting/app-registration-migration.md) - Moving a tenant from the previous Entra app registration to the new one, and when the previous app can be deleted.
 * [Enrollment Monitoring Is Interrupted](troubleshooting/enrollment-monitoring-interrupted.md) - Microsoft Entra rejects Autopilot Monitor's access to your tenant: what it means, how to restore access, and what to check afterwards.
+* [Device Validation: Permission Missing](troubleshooting/device-validation-permission-missing.md) - Cloud PC or Intune Enrollment Validation is on without its optional Graph permission: what it means, and how to grant it or turn the validation off.
 * [Diagnostics & Log Collection](troubleshooting/diagnostics-and-log-collection.md) - Collecting agent/device diagnostics for support.
 * [Service Announcements](troubleshooting/service-announcements.md) - How service announcements reach the portal.
 

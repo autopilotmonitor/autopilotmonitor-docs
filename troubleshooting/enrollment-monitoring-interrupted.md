@@ -46,7 +46,7 @@ A fresh consent can take a minute to propagate on Microsoft's side. The portal r
 ## After access is back
 
 * **Monitoring resumes on its own.** Agents that are still running send what they collected, and new enrollments are monitored again. An enrollment that ended during the interruption stays missing or incomplete in the portal.
-* **Grant optional add-on permissions again.** If the enterprise application was deleted, the [optional Graph permissions](../reference/optional-graph-permissions.md) granted on it are gone too, for example `CloudPC.Read.All` or `DeviceManagementManagedDevices.Read.All`. The consent does not bring them back. Until you grant them again, devices that only pass through such a validation are not accepted.
+* **Grant optional add-on permissions again.** If the enterprise application was deleted, the [optional Graph permissions](../reference/optional-graph-permissions.md) granted on it are gone too, for example `CloudPC.Read.All` or `DeviceManagementManagedDevices.Read.All`. The consent does not bring them back. Until you grant them again, devices that only pass through such a validation are not accepted, and Settings shows **Permission missing** below that validation's switch. See [Device Validation: Permission Missing](device-validation-permission-missing.md).
 * **Check settings you made on the enterprise application.** A deleted application also loses its **Assignment required** setting and its app role assignments. See [settings on the enterprise application](app-registration-migration.md#before-you-migrate-settings-on-the-enterprise-application).
 
 ## How long the notice stays after the repair
