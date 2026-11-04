@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-04 (3)
+
+* **Fix**: `portal-guide/fleet-health.md` — the paragraph on app install times is back under *What you see*; *Hiding a group tag* follows it.
+
 ## 2026-11-04 (2)
 
 * **Update**: `portal-guide/fleet-health.md` — Health by Group Tag; hiding a group tag from the view, what it changes and what it leaves alone.
