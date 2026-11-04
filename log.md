@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-04 (4)
+
+* **Update**: `changelog/platform-changelog.md` — Autopilot group tag in Fleet Health and on the session; Collect Logs survives a restart.
+
 ## 2026-11-04 (3)
 
 * **Fix**: `portal-guide/fleet-health.md` — the paragraph on app install times is back under *What you see*; *Hiding a group tag* follows it.

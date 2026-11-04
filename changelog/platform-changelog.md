@@ -17,11 +17,14 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## November 2026
 
+* **Group tag in Fleet Health** — Fleet Health shows the success rate per Autopilot group tag and can hide a tag from its figures, for example your test devices. See [Fleet Health](../portal-guide/fleet-health.md#hiding-a-group-tag).
+* **Autopilot registration on the session** — New sessions admitted by the Autopilot validation show the device's group tag, purchase order and Autopilot device name. The Dashboard has a Group Tag column and `grouptag=` search, and MCP filters by group tag too. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **Missing validation permission shown** — Settings shows when Cloud PC or Intune Enrollment Validation is on without its optional Graph permission, with *Grant permission* and *Turn off*. The Dashboard warns once devices are not monitored because of it. See [Device Validation: Permission Missing](../troubleshooting/device-validation-permission-missing.md).
 * **Notice when Microsoft Entra rejects access** — If Microsoft Entra keeps rejecting Autopilot Monitor's access to your tenant, the Dashboard and Settings say so and offer *Restore access*. See [Enrollment Monitoring Is Interrupted](../troubleshooting/enrollment-monitoring-interrupted.md).
 * **App and script rows without data** — While a session has not ended and nothing has arrived from the agent for 20 minutes, its running app and script rows read *No data* and stop counting. They pick up again as soon as new data arrives. See [Session Details & Diagnosis](../portal-guide/session-details-and-diagnosis.md#session-detail).
 * **Proxy settings in Device Details** — Device Details show automatic proxy detection and the WinHTTP proxy, and a proxy change appears in the event timeline. See [Common Problems](../troubleshooting/common-problems.md#events-stop-during-an-app-installation).
 * **Session page on phones** — The session page fits a phone without sideways scrolling.
+* **Fixed: Collect Logs survives a restart** — A *Collect Logs* request is no longer lost when the device restarts before the agent picks it up.
 
 ## Late October 2026
 
