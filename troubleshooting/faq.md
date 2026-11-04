@@ -105,7 +105,7 @@ Enrollment telemetry only: ESP phases, app and script installations, IME log ent
 
 <summary>How does the agent authenticate?</summary>
 
-With the device's **MDM client certificate** issued by Intune, over TLS. The backend additionally validates each device against your Intune tenant (Autopilot registration, device association, corporate identifiers, or Cloud PC inventory) before accepting any data — only devices under your management can send telemetry. See [Authentication](../concepts/agent-lifecycle-and-security.md#authentication).
+With the device's **MDM client certificate** issued by Intune, over TLS. The backend additionally validates each device against your Intune tenant (Autopilot registration, device association, corporate identifiers, Cloud PC inventory, or Intune enrollment) before accepting any data — only devices under your management can send telemetry. See [Authentication](../concepts/agent-lifecycle-and-security.md#authentication).
 
 </details>
 
@@ -180,6 +180,22 @@ Yes. Once a Tenant Admin has added a Push channel, Admins and Operators pair the
 <summary>Is there reporting on success rate, enrollment duration, and failing apps?</summary>
 
 Yes. [Fleet Health](../portal-guide/fleet-health.md) shows the success rate, average enrollment time, a daily timeline, top failure reasons, the slowest and most-failing models and apps, and a first-time-right rate. [SLA Compliance](../portal-guide/sla-compliance.md) reports against your own targets; [Geographic Performance](../portal-guide/geographic-performance.md) compares sites.
+
+</details>
+
+<details>
+
+<summary>Does Autopilot Monitor show the Autopilot group tag?</summary>
+
+Yes, for sessions the Autopilot validation admitted. The session detail shows the group tag, purchase order and Autopilot device name from Intune. The dashboard has a Group Tag column and searches `grouptag=`, and [Fleet Health](../portal-guide/fleet-health.md#hiding-a-group-tag) shows the success rate per group tag.
+
+</details>
+
+<details>
+
+<summary>Can I keep test devices out of the success rate?</summary>
+
+Yes, in the Fleet Health view. Give your test devices their own group tag in Intune, for example `TEST`, and hide that tag on [Fleet Health](../portal-guide/fleet-health.md#hiding-a-group-tag). The headline figures then leave those sessions out and say how many. Nothing is deleted, and alerts still count every session.
 
 </details>
 

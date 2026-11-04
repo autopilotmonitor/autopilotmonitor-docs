@@ -9,7 +9,7 @@ description: >-
 
 # Optional Graph Permissions
 
-Autopilot Monitor's default Microsoft Graph permissions are intentionally minimal — they cover the core Autopilot device + corporate identifier validation use cases and nothing more (see [Portal Setup](../getting-started/portal-setup.md) and the [Settings Reference](settings.md)). Some optional features need additional permissions on the Autopilot Monitor service principal **in your tenant**. Examples:
+Autopilot Monitor's default Microsoft Graph permissions are intentionally minimal — they cover Autopilot device, corporate identifier and device association validation, including the Autopilot registration details a session keeps, and nothing more (see [Portal Setup](../getting-started/portal-setup.md) and the [Settings Reference](settings.md)). Some optional features need additional permissions on the Autopilot Monitor service principal **in your tenant**. Examples:
 
 | Feature | Description | Required Graph permission |
 | --- | --- | --- |

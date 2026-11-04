@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-11-02
+timestamp: 2026-11-04
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 2 November 2026 · Next review: 2 March 2027.**
+**Last reviewed: 4 November 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -50,7 +50,7 @@ Public reference data is pulled *from* these sources to enrich your view. **Noth
 
 ## 4. Lookups inside your own tenant
 
-The service queries **Microsoft Graph in your tenant**, using the permissions granted at onboarding, to verify that a device reporting telemetry really is a registered Autopilot device of yours, and to resolve friendly names for scripts and applications. This reads your own directory; it discloses nothing to anyone else. See [Optional Graph Permissions](../reference/optional-graph-permissions.md) for what is required and what is optional.
+The service queries **Microsoft Graph in your tenant** to verify that a device reporting telemetry really is one of yours, through the validation methods you enable (Autopilot registration, corporate identifiers, device association, and with an add-on permission the Windows 365 Cloud PC inventory or the device's Intune enrollment), and to resolve friendly names for scripts and applications. When the Autopilot registration admits a device, the session keeps what Intune records for it: group tag, purchase order identifier, Autopilot device name, object ID, and whether a user is assigned, never the user's name. This reads your own directory; it discloses nothing to anyone else. See [Optional Graph Permissions](../reference/optional-graph-permissions.md) for what is required and what is optional.
 
 ## 5. Destinations you choose
 

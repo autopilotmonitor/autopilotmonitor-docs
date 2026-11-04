@@ -1,5 +1,12 @@
 # Log
 
+## 2026-11-04 (2)
+
+* **Update**: `portal-guide/fleet-health.md` — Health by Group Tag; hiding a group tag from the view, what it changes and what it leaves alone.
+* **Update**: `portal-guide/session-details-and-diagnosis.md`, `portal-guide/dashboard-and-sessions.md`, `integrations/ai-integration-mcp.md` — the Autopilot registration on the session, the Group Tag column, `grouptag=` in the search, the `search_sessions` filter.
+* **Update**: `trust/data-flows.md`, `trust/security-faq.md`, `reference/settings.md`, `reference/optional-graph-permissions.md` — what the Autopilot validation keeps with a session; data flows name every validation method.
+* **Update**: `troubleshooting/faq.md` — group tag and test devices; the authentication answer names Intune enrollment.
+
 ## 2026-11-04
 
 * **Add**: `troubleshooting/device-validation-permission-missing.md` — what the "Permission missing" notice means when Cloud PC or Intune Enrollment Validation is on without its optional Graph permission, when the Dashboard notice appears, how to grant the permission or turn the validation off, how long the notice stays.
