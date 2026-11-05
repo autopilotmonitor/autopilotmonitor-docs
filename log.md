@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-05
+
+* **Update**: `rules/analyze-rules/concepts.md` — a regex match over 1 second stops the rule for that session; an invalid regex is rejected on save and test.
+
 ## 2026-11-04 (4)
 
 * **Update**: `changelog/platform-changelog.md` — Autopilot group tag in Fleet Health and on the session; Collect Logs survives a restart.

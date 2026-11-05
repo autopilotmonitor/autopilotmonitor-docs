@@ -130,7 +130,7 @@ All comparisons are case-insensitive.
 | --- | --- |
 | `equals` / `not_equals` | Exact match |
 | `contains` / `not_contains` | Substring |
-| `regex` / `not_regex` | Regular expression (.NET syntax, 1-second evaluation timeout; an invalid regex simply never matches) |
+| `regex` / `not_regex` | Regular expression (.NET syntax). A match that runs longer than 1 second stops the rule for that session. An invalid regex is rejected when you save or test the rule. |
 | `gt` / `lt` / `gte` / `lte` | Numeric comparison |
 | `exists` / `not_exists` | Field present and non-empty / absent or empty |
 | `in` / `not_in` | Membership in a comma-separated list |
