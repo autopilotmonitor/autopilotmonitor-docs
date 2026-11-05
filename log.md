@@ -2,7 +2,7 @@
 
 ## 2026-11-05
 
-* **Update**: `rules/analyze-rules/concepts.md` — a regex match over 1 second stops the rule for that session; an invalid regex is rejected on save and test.
+* **Update**: `rules/analyze-rules/concepts.md` — a regex match over 2 seconds stops the rule for that session; an invalid regex is rejected on save and test.
 
 ## 2026-11-04 (4)
 
