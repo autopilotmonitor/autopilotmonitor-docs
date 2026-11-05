@@ -19,6 +19,9 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* With the RealmJoin Watcher on, Keep Awake During User-ESP lasts until RealmJoin starts its deployment, at most 30 minutes after the User-ESP page closes
+* Keep Awake During User-ESP no longer switches on again after an agent restart once the User-ESP page has closed
+* After an agent restart, the RealmJoin Watcher reports the deployment phase RealmJoin is in, so a deployment already under way is tracked correctly
 * The agent log shows the proxy settings and the route to the backend at the start, after every change and on each failed upload
 * The agent recognizes automatic proxy detection and reports proxy changes as timeline events
 * A rolled-over Intune Management Extension log is no longer read a second time, so app rows keep their state and start time

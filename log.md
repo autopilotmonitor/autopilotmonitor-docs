@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-05 (3)
+
+* **Update**: `changelog/agent-changelog.md` — Keep Awake During User-ESP lasts until RealmJoin starts its deployment and no longer switches on again after a restart; the RealmJoin Watcher reports the current deployment phase after a restart.
+* **Update**: `changelog/platform-changelog.md` — regex time limit for custom analyze rules.
+
 ## 2026-11-05 (2)
 
 * **Update**: `reference/settings.md` — with the RealmJoin Watcher on, Keep Awake During User-ESP lasts until RealmJoin starts its deployment, at most 30 minutes after the User-ESP page closes.
