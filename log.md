@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-05 (2)
+
+* **Update**: `reference/settings.md` — with the RealmJoin Watcher on, Keep Awake During User-ESP lasts until RealmJoin starts its deployment, at most 30 minutes after the User-ESP page closes.
+
 ## 2026-11-05
 
 * **Update**: `rules/analyze-rules/concepts.md` — a regex match over 2 seconds stops the rule for that session; an invalid regex is rejected on save and test.
