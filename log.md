@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-09 (4)
+
+* **Fix**: `getting-started/portal-setup.md` — section headings without numbers, so the anchor `#the-setup-guide` that `portal-guide/dashboard-and-sessions.md` links to exists.
+
 ## 2026-11-09 (3)
 
 * **Update**: `getting-started/portal-setup.md` — the setup guide: the **Get started** checklist on the dashboard, its four steps (recommended settings, hardware, device validation with plan B for admins without consent rights, agent deployment with the list of turned-away devices), hiding and restoring it; the same steps without the guide under *Setting up without the guide*; device validation now under **Settings → Autopilot Validation**.

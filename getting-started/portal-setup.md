@@ -10,7 +10,7 @@ description: >-
 
 Before the agent can send any data to the portal, a few one-time steps are required in the portal itself. The **setup guide** walks you through them in about ten minutes, Intune included. You can also do each step on your own; see [Setting up without the guide](#setting-up-without-the-guide).
 
-## 1. Sign in — the first user becomes Tenant Admin
+## Sign in: the first user becomes Tenant Admin
 
 Open the portal and sign in with your Microsoft Entra ID account. The very first member of your organization to sign in is automatically granted **Tenant Admin** rights for your tenant; a guest account never is.
 
@@ -18,7 +18,7 @@ Open the portal and sign in with your Microsoft Entra ID account. The very first
 The Tenant Admin can later promote other users via **Settings → Access Management**. Users without a role only see the **Progress Portal** — a simplified view for tracking a specific device by serial number — and have no access to session details, diagnostics, or configuration. See [Roles & Permissions](../concepts/roles-and-permissions.md) and, for colleagues who sign in later, [Signed in, but only the Progress Portal](../troubleshooting/progress-portal-only.md).
 {% endhint %}
 
-## 2. The setup guide
+## The setup guide
 
 As long as your tenant has no enrollment session, the dashboard shows a **Get started** checklist with four steps, and Tenant Admins find a **Setup guide** entry in the sidebar under the dashboard. Click **Start guided setup** (or **Continue setup**) to open the guide at the first open step. Tenant Admins can open it any time from the help menu (**?** → **Setup guide**).
 
