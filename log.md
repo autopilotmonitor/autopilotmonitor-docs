@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-09 (2)
+
+* **Update**: `changelog/platform-changelog.md` — November 2026: unsaved changes in Settings are marked on the card and in the sidebar, Save stays in view, and leaving Settings asks first.
+
 ## 2026-11-09
 
 * **Update**: `integrations/push-notifications.md` — rename a device in the confirm dialog or later under **Push devices**; on a computer the browser may ask only through an address-bar icon.
