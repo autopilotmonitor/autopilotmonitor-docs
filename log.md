@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-09
+
+* **Update**: `integrations/push-notifications.md` — rename a device in the confirm dialog or later under **Push devices**; on a computer the browser may ask only through an address-bar icon.
+* **Update**: `concepts/roles-and-permissions.md` — Tenant Admins rename any paired device, everyone else their own.
+
 ## 2026-11-05 (3)
 
 * **Update**: `changelog/agent-changelog.md` — Keep Awake During User-ESP lasts until RealmJoin starts its deployment and no longer switches on again after a restart; the RealmJoin Watcher reports the current deployment phase after a restart.

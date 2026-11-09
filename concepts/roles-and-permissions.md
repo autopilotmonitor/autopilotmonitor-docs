@@ -28,7 +28,7 @@ Team members are added by UPN under **Settings → Access Management**. The list
 
 **Admins and Operators** can pair their own phones and browsers for [push notifications](../integrations/push-notifications.md) and use **Notify me when done** on a running session — whether their role comes from the member list under **Settings → Access Management** or from Entra app roles.
 
-* A **Tenant Admin** adds the Push channel that turns push on, sees every paired device of the tenant under **Push devices**, and can remove any of them. Everyone else sees their own devices.
+* A **Tenant Admin** adds the Push channel that turns push on, sees every paired device of the tenant under **Push devices**, and can rename or remove any of them. Everyone else sees, renames and removes their own devices.
 * **Viewers** and **members without a role** cannot pair devices.
 * **Delegated (MSP) access** does not include push yet: the button does not appear on sessions of tenants you manage.
 * Removing, disabling or demoting a member below Operator removes their paired devices at once. For a role assigned through Entra app roles, this happens when the member's next sign-in no longer carries the role.

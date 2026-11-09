@@ -55,9 +55,11 @@ Admins and Operators open **Push devices** under **Settings → Notifications** 
 On the device you want to pair, scan the QR code or open the link. Then:
 
 * **iPhone and iPad:** in Safari, tap **Share** → **Add to Home Screen**, then open **AM Alerts** from the Home Screen. The code from the link is kept for 10 minutes, so pairing continues in the app; otherwise type the code. Tap **Enable notifications** and allow notifications.
-* **Android, Windows and macOS:** open the link in the browser, enter the code if needed, click **Enable notifications** and allow notifications when the browser asks. On Android, adding the page to the Home screen is recommended: Android keeps the notification permission for installed apps.
+* **Android, Windows and macOS:** open the link in the browser, enter the code if needed, click **Enable notifications** and allow notifications when the browser asks. On Android, adding the page to the Home screen is recommended: Android keeps the notification permission for installed apps. On a computer, the browser may show only a small icon in the address bar instead of asking; click it and choose **Allow**.
 
-Back on your computer, the dialog shows the device's name and platform: *"‹name› (‹platform›) wants to pair. Confirm only if this is your device."* Click **Confirm**. The device shows **Paired** and receives a **Device paired** notification.
+Back on your computer, the dialog shows the device's name and platform: *"‹name› (‹platform›) wants to pair. Confirm only if this is your device."* Change the name under **Device name** if you like, for example *iPhone Otto*. Click **Confirm**. The device shows **Paired** and receives a **Device paired** notification.
+
+To change a name later, click **Rename** next to the device under **Push devices**.
 {% endstep %}
 
 {% step %}
@@ -123,7 +125,7 @@ Because the device never signs in, Conditional Access has nothing to evaluate on
 
 ### Your Tenant Admins decide
 
-A Tenant Admin decides whether push is used, by adding the Push channel. Under **Push devices**, Tenant Admins see every paired device of the tenant and can remove any of them. Everyone else sees their own devices.
+A Tenant Admin decides whether push is used, by adding the Push channel. Under **Push devices**, Tenant Admins see every paired device of the tenant and can rename or remove any of them. Everyone else sees, renames and removes their own devices.
 
 ### When a device stops receiving
 
@@ -153,6 +155,7 @@ For security reviewers: [Security & Privacy FAQ](../trust/security-faq.md#are-pu
 | Problem | What to do |
 | --- | --- |
 | Nothing arrives on an iPhone or iPad | Open **AM Alerts** from the Home Screen — notifications reach only the Home Screen app. iOS or iPadOS 16.4 or later is required. |
+| No permission prompt on a computer | The browser may show only a small icon in the address bar. Click it and choose **Allow**. |
 | Notifications are blocked | Allow notifications for the app or the site in the system or browser settings, then try again. |
 | Notifications are held back | A Focus mode (or Do Not Disturb) can hold them back. Allow **AM Alerts** or your browser in that Focus. |
 | Nothing arrives in a managed browser | Your organization's browser policies may block notifications for websites. Ask your admin to allow them for `https://portal.autopilotmonitor.com`. |
