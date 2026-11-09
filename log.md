@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-09 (5)
+
+* **Update**: `reference/settings.md` — Local Admin Analyzer: each allowed account is **Admin allowed** or **Standard user only**, and which built-in Windows accounts are allowed in which role (`WsiAccount` and `kioskUser0` only as standard users).
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-ID-002 also covers an account allowed only as a standard user in the Administrators group.
+
 ## 2026-11-09 (4)
 
 * **Fix**: `getting-started/portal-setup.md` — section headings without numbers, so the anchor `#the-setup-guide` that `portal-guide/dashboard-and-sessions.md` links to exists.
