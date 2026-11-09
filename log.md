@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-09 (6)
+
+* **Update**: `changelog/agent-changelog.md` — November 2026: local admin analysis allows `WsiAccount` as a standard user and reports built-in accounts and *Standard user only* accounts once they are members of the Administrators group.
+* **Update**: `changelog/platform-changelog.md` — November 2026: setup guide for new tenants, allowed local accounts with a role, rename push devices, fix for devices refused by the hardware whitelist.
+
 ## 2026-11-09 (5)
 
 * **Update**: `reference/settings.md` — Local Admin Analyzer: each allowed account is **Admin allowed** or **Standard user only**, and which built-in Windows accounts are allowed in which role (`WsiAccount` and `kioskUser0` only as standard users).

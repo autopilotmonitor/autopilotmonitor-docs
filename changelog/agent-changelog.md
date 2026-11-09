@@ -19,6 +19,9 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* Local admin analysis no longer flags the Web sign-in account `WsiAccount` as long as it is a standard user
+* Local admin analysis reports built-in accounts such as Guest, `kioskUser0` or `WsiAccount` as soon as they are members of the Administrators group
+* Allowed local accounts marked *Standard user only* are reported as soon as they are members of the Administrators group
 * With the RealmJoin Watcher on, Keep Awake During User-ESP lasts until RealmJoin starts its deployment, at most 30 minutes after the User-ESP page closes
 * Keep Awake During User-ESP no longer switches on again after an agent restart once the User-ESP page has closed
 * After an agent restart, the RealmJoin Watcher reports the deployment phase RealmJoin is in, so a deployment already under way is tracked correctly
