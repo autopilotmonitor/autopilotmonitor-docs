@@ -35,7 +35,7 @@ Ask your IT department first. If no one looks after it anymore, write to **suppo
 * If your organization never monitored a device, we add you as its admin and let the current admin know.
 * If it did, access stays with its current admins.
 
-To start monitoring after that, someone with the **Global Administrator** or **Privileged Role Administrator** role grants the admin consent. See [Portal Setup](../getting-started/portal-setup.md#2-enable-autopilot-device-validation).
+To start monitoring after that, someone with the **Global Administrator** or **Privileged Role Administrator** role grants the admin consent. See [Portal Setup](../getting-started/portal-setup.md#step-3-turn-on-device-validation).
 
 ## You have a role, but still see only the Progress Portal
 

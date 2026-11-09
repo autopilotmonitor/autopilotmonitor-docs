@@ -1,6 +1,6 @@
 ---
 type: Concept
-timestamp: 2026-11-04T00:00:00.000Z
+timestamp: 2026-11-09T00:00:00.000Z
 description: >-
   Security, privacy and compliance answers: data residency, tenant isolation,
   encryption, retention, MSP access, push notifications, external services, and
@@ -18,7 +18,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 4 November 2026 · Next review: 14 February 2027.**
+**Last reviewed: 9 November 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -310,7 +310,7 @@ Honestly and specifically:
 
 By default, **no.** Diagnostics upload is **off by default**, and when enabled, the default destination is **your own Azure storage account** via a SAS URL you provide — the package never touches our infrastructure. The one exception is explicit: if an administrator submits a session report to us and ticks the option to include the uploaded diagnostics archive, a copy of that package is stored with the report so it remains available for the investigation.
 
-Hosted upload exists as an alternative but is **opt-in only** and requires an explicit administrator action — in the settings UI, or in the one-step dialog a tenant administrator is offered on a session — always behind a clearly marked _"data leaves your tenant"_ disclosure. It is never enabled silently, and no other role can turn it on.
+Hosted upload exists as an alternative. Turning it on takes an explicit administrator action, and in the portal that action always comes with a clearly marked _"data leaves your tenant"_ disclosure. It is never enabled silently, and no other tenant role can turn it on.
 
 When hosted upload is used, the SAS we issue is **blob-scoped, create-only, pinned to the requesting session's exact path within your tenant's area** — it cannot be redirected at another tenant's data, and it cannot overwrite a package that already exists — and is short-lived, measured in minutes rather than hours. On the device the SAS is fetched immediately before upload and never written to disk or configuration; log records keep only a truncated prefix, never the signature.
 

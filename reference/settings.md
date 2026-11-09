@@ -48,6 +48,8 @@ If Cloud PC or Intune Enrollment Validation is on but its optional permission is
 | Allowed Manufacturers | `Dell*, HP*, Lenovo*, Microsoft Corporation` | Comma-separated manufacturer names permitted to register sessions; wildcards supported. `*` allows all. |
 | Allowed Models | `*` | Same mechanics for device models, e.g. `Latitude*,EliteBook*`. |
 
+Virtual machines report their own manufacturer (for example `VMware, Inc.` or `QEMU`); Hyper-V reports `Microsoft Corporation` and is covered by the default. The [setup guide](../getting-started/portal-setup.md#step-2-check-your-hardware) adds common virtual machines and manufacturers with one click. Devices the whitelist refused are listed under the table with an add button for their manufacturer or model; a reported name that contains a wildcard character (`*`, `?`) is never offered there.
+
 **Devices with Incompatible TPM** — this section additionally shows devices from the last 14 days whose TPM cannot sign with RSA-PSS. On such a device Windows can withhold the Intune certificate, so the agent could not connect and the enrollment was not monitored live. Some devices connect after setup and a restart: the **Status** column shows which ones did, and the **TPM** column shows the TPM manufacturer and firmware version the device reported. Remediation is a TPM firmware update from the vendor, or replacing the device. The panel only appears when a device is affected, and the reported values are self-reported by the device before authentication — hence the *Unverified* label.
 
 ### Notifications

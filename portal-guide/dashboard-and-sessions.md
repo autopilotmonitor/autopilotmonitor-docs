@@ -15,8 +15,10 @@ The Dashboard is the landing page for admins and operators: every enrollment ses
 
 Five server-aggregated stat cards headline the page — **Active Sessions** (enrolling right now), **Success Rate** (last 7 days), **Median Duration** (last 7 days, succeeded enrollments, with the P90 underneath — see [Averages, Medians & Percentiles](../concepts/averages-medians-and-percentiles.md)), **Total Today**, and **Failed Today**. A rotating *Tip of the Day* appears below them.
 
+Until the first enrollment arrives, the dashboard shows the **Get started** checklist of the [setup guide](../getting-started/portal-setup.md#2-the-setup-guide) instead of an empty table: recommended settings, hardware, device validation and agent deployment. While it waits for the first device, it lists devices the backend turned away. Tenant Admins can hide it.
+
 {% hint style="warning" %}
-If **Autopilot Device Validation** is disabled, a red *action required* banner appears — agent ingestion is blocked until you enable it (see [Portal Setup](../getting-started/portal-setup.md)).
+If no device validation method is enabled, agent ingestion is blocked until you enable one. On a tenant that already had enrollments, or after the checklist was hidden, a red *action required* banner says so (see [Portal Setup](../getting-started/portal-setup.md#enable-device-validation)).
 {% endhint %}
 
 ## The sessions table

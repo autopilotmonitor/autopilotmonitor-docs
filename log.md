@@ -1,5 +1,14 @@
 # Log
 
+## 2026-11-09 (3)
+
+* **Update**: `getting-started/portal-setup.md` — the setup guide: the **Get started** checklist on the dashboard, its four steps (recommended settings, hardware, device validation with plan B for admins without consent rights, agent deployment with the list of turned-away devices), hiding and restoring it; the same steps without the guide under *Setting up without the guide*; device validation now under **Settings → Autopilot Validation**.
+* **Update**: `portal-guide/dashboard-and-sessions.md` — the checklist replaces the empty dashboard until the first enrollment; the red validation banner shows only without it.
+* **Update**: `troubleshooting/common-problems.md` — *No sessions appear*: the checklist shows open validation and turned-away devices.
+* **Update**: `reference/settings.md` — Hardware Whitelist: virtual machines, the guide's one-click additions, and that a reported name with a wildcard is never offered as an addition.
+* **Update**: `trust/security-faq.md` — hosted diagnostics upload: an explicit administrator action, in the portal always with the disclosure, wording no longer lists the places. Review date advanced to 9 November 2026.
+* **Update**: `troubleshooting/progress-portal-only.md` — link to the device-validation step of the new setup page.
+
 ## 2026-11-09 (2)
 
 * **Update**: `changelog/platform-changelog.md` — November 2026: unsaved changes in Settings are marked on the card and in the sidebar, Save stays in view, and leaving Settings asks first.
