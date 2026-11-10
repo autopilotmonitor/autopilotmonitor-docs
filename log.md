@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-10 (2)
+
+* **Update**: `getting-started/portal-setup.md` — the setup guide's one-click manufacturers: Samsung instead of Getac.
+
 ## 2026-11-10
 
 * **Update**: `getting-started/portal-setup.md` — the setup guide takes a few minutes, Intune included.

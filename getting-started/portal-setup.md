@@ -45,7 +45,7 @@ Three settings that get more out of every enrollment. All are checked; uncheck w
 
 ### Step 2: Check your hardware
 
-Monitoring data is only accepted from manufacturers on the [Hardware Whitelist](../reference/settings.md#hardware-whitelist). The default list is `Dell*`, `HP*`, `Lenovo*` and `Microsoft Corporation`. Virtual machines report their own manufacturer, so add them if you test with them. The guide adds VMware, QEMU, Proxmox and Parallels with one click each, and the same for ASUS, Getac, Acer, Fujitsu and Panasonic. Hyper-V virtual machines report `Microsoft Corporation` and are already covered. **Accept every manufacturer (\*)** turns the check off. Models and the full list stay under **Settings → Hardware Whitelist**.
+Monitoring data is only accepted from manufacturers on the [Hardware Whitelist](../reference/settings.md#hardware-whitelist). The default list is `Dell*`, `HP*`, `Lenovo*` and `Microsoft Corporation`. Virtual machines report their own manufacturer, so add them if you test with them. The guide adds VMware, QEMU, Proxmox and Parallels with one click each, and the same for ASUS, Samsung, Acer, Fujitsu and Panasonic. Hyper-V virtual machines report `Microsoft Corporation` and are already covered. **Accept every manufacturer (\*)** turns the check off. Models and the full list stay under **Settings → Hardware Whitelist**.
 
 ### Step 3: Turn on device validation
 
