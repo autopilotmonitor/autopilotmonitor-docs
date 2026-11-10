@@ -15,9 +15,11 @@ Autopilot Monitor sends enrollment events to your team the moment they happen �
 
 ### Microsoft Teams — Workflow Webhook
 
-1. In Teams, open the target channel → **Manage channel** → **Workflows**.
-2. Add the template *"Post to a channel when a webhook request is received"* and copy the generated URL.
+1. In Teams, select **More options (…)** next to the target channel → **Workflows**.
+2. Pick the template *"Send webhook alerts from anyone to Teams"* (Microsoft's documentation calls it *"Send webhook alerts to a channel"*), confirm team and channel, save, and copy the generated URL.
 3. Paste it as the Webhook URL in Autopilot Monitor and select the *Teams (Workflow Webhook)* provider.
+
+Don't use the variants *"from specific people"* or *"from people in an org"*: they accept only requests signed in with a Microsoft Entra account, and Autopilot Monitor posts without one, so Teams rejects its notifications.
 
 Workflow webhooks are free and don't require a Power Automate Premium license.
 

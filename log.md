@@ -4,6 +4,7 @@
 
 * **Update**: `getting-started/portal-setup.md` — the setup guide takes a few minutes, Intune included.
 * **Fix**: `troubleshooting/faq.md` — *Is Autopilot Monitor free?*: the Pro plan is available, no longer announced.
+* **Fix**: `integrations/notifications.md` — Teams Workflow webhook: the current path is **More options (…)** next to the channel → **Workflows** → *Send webhook alerts from anyone to Teams*; the variants for specific people or an org reject the alerts.
 
 ## 2026-11-09 (6)
 
