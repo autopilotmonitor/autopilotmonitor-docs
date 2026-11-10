@@ -8,7 +8,7 @@ description: >-
 
 # Portal Setup
 
-Before the agent can send any data to the portal, a few one-time steps are required in the portal itself. The **setup guide** walks you through them in about ten minutes, Intune included. You can also do each step on your own; see [Setting up without the guide](#setting-up-without-the-guide).
+Before the agent can send any data to the portal, a few one-time steps are required in the portal itself. The **setup guide** walks you through them in a few minutes, Intune included. You can also do each step on your own; see [Setting up without the guide](#setting-up-without-the-guide).
 
 ## Sign in: the first user becomes Tenant Admin
 

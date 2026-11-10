@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-10
+
+* **Update**: `getting-started/portal-setup.md` — the setup guide takes a few minutes, Intune included.
+* **Fix**: `troubleshooting/faq.md` — *Is Autopilot Monitor free?*: the Pro plan is available, no longer announced.
+
 ## 2026-11-09 (6)
 
 * **Update**: `changelog/agent-changelog.md` — November 2026: local admin analysis allows `WsiAccount` as a standard user and reports built-in accounts and *Standard user only* accounts once they are members of the Administrators group.
