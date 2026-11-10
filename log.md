@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-10 (3)
+
+* **Update**: `changelog/agent-changelog.md` — November 2026: fix for rare cases in which the agent stayed on the device until the next restart; a collector that hangs while the agent stops no longer blocks the diagnostics upload and the cleanup.
+* **Update**: `changelog/platform-changelog.md` — November 2026: fix for the Teams workflow hint in the channel editor.
+
 ## 2026-11-10 (2)
 
 * **Update**: `getting-started/portal-setup.md` — the setup guide's one-click manufacturers: Samsung instead of Getac.

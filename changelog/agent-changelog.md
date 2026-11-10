@@ -19,6 +19,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* Fixed rare cases in which the agent stayed on the device until the next restart after the enrollment had finished
+* A collector that hangs while the agent stops can no longer block the diagnostics upload and the cleanup
 * Local admin analysis no longer flags the Web sign-in account `WsiAccount` as long as it is a standard user
 * Local admin analysis reports built-in accounts such as Guest, `kioskUser0` or `WsiAccount` as soon as they are members of the Administrators group
 * Allowed local accounts marked *Standard user only* are reported as soon as they are members of the Administrators group

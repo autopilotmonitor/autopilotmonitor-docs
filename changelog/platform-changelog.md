@@ -31,6 +31,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 * **Session page on phones** — The session page fits a phone without sideways scrolling.
 * **Fixed: Collect Logs survives a restart** — A *Collect Logs* request is no longer lost when the device restarts before the agent picks it up.
 * **Fixed: devices refused by the hardware whitelist** — A device outside your hardware whitelist was recorded as not registered. It now shows as refused hardware in the notification bell, in the *Hardware rejection* alert and under *Settings → Hardware Whitelist*, where you can add it. See [Settings](../reference/settings.md#hardware-whitelist).
+* **Fixed: Teams workflow hint** — The hint in the channel editor names the current path in Teams: *More options (…)* next to the channel → *Workflows* → *Send webhook alerts from anyone to Teams*. See [Notifications](../integrations/notifications.md).
 
 ## Late October 2026
 
