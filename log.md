@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-11 (2)
+
+* **Update**: `reference/optional-graph-permissions.md` — troubleshooting: script names are cached for about a week, so a renamed script can show its old name that long.
+
 ## 2026-11-11
 
 * **Update**: `getting-started/portal-setup.md` — once the setup is complete, **Go through the steps again** in the setup guide starts it at step 1 with the tenant's current settings.
