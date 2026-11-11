@@ -9,7 +9,7 @@ description: >-
 
 # Template Rules
 
-Some detections only make sense with knowledge of *your* environment: which certificate subject to expect, which kiosk accounts may use AutoLogon, which provisioning packages are yours. **Template rules** package that logic as blueprints with clearly marked blanks.
+Some detections only make sense with knowledge of *your* environment: which certificate subject to expect, which provisioning packages are yours. **Template rules** package that logic as blueprints with clearly marked blanks.
 
 ## How templates work
 
@@ -32,12 +32,6 @@ The rule checks the machine certificate store inventory (collected by the commun
 {% hint style="info" %}
 This template depends on the **GATHER-ID-002** gather rule being enabled — that's what produces the `gather_machine_cert_store` event the analyze rule inspects. It's a working example of the [gather + analyze pattern](cookbook.md#recipe-7-collect-your-own-data-and-grade-it-end-to-end).
 {% endhint %}
-
-### ANALYZE-SEC-004: AutoLogon enabled for an unexpected user
-
-**You provide:** a comma-separated list of approved kiosk / shared-device account names (case-insensitive exact match against the Winlogon `DefaultUserName`).
-
-AutoLogon is legitimate for kiosks — and a normal Autopilot enrollment even uses Windows' own temporary ESP auto-logon, which is registry-indistinguishable from a kiosk setup. That's why "AutoLogon enabled" alone is deliberately not graded by default (only a plaintext password is, via ANALYZE-SEC-003). This template lets you go further: once you declare which accounts *may* use AutoLogon, any other account raises a warning.
 
 ### ANALYZE-SEC-006: Unexpected Provisioning Package (Custom Allow-List)
 

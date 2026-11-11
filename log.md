@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-11 (6)
+
+* **Update**: `rules/analyze-rules/template-rules.md`, `rules/analyze-rules/built-in-rules.md` — the AutoLogon allow-list template ANALYZE-SEC-004 is removed.
+
 ## 2026-11-11 (5)
 
 * **Update**: `changelog/agent-changelog.md` — November 2026: command prompts started by scripts are counted and reported as one script activity line per minute; script activity names the programs that started them; console warnings no longer show the command line of an unrelated program; a command prompt already open at agent start is reported with its owner.
