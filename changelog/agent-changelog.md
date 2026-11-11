@@ -19,6 +19,10 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* The agent counts command prompts that scripts start and reports one script activity line per minute instead of one console warning each
+* Script activity names the programs that started the command prompts
+* Fixed console warnings that showed the command line of an unrelated program
+* A command prompt already open at agent start is reported with its owner
 * The agent removes itself at its next start when its session has been deleted
 * A pre-provisioned device starts a new session for its user phase when its earlier session was deleted or removed by the retention period
 * Fixed rare cases in which the agent stayed on the device until the next restart after the enrollment had finished

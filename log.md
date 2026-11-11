@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-11 (5)
+
+* **Update**: `changelog/agent-changelog.md` — November 2026: command prompts started by scripts are counted and reported as one script activity line per minute; script activity names the programs that started them; console warnings no longer show the command line of an unrelated program; a command prompt already open at agent start is reported with its owner.
+* **Update**: `changelog/platform-changelog.md` — November 2026: fewer false Shift+F10 warnings.
+
 ## 2026-11-11 (4)
 
 * **Update**: `changelog/agent-changelog.md` — November 2026: the agent removes itself at its next start when its session has been deleted; a pre-provisioned device starts a new session for its user phase.
