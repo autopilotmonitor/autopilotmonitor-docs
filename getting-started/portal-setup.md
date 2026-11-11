@@ -65,7 +65,7 @@ After **Done, wait for my device**, the checklist waits for your first enrollmen
 
 **No device after an hour?** The checklist lists what to check; [No sessions appear in the portal](../troubleshooting/common-problems.md#no-sessions-appear-in-the-portal) has the details.
 
-When the first enrollment arrives, the checklist gives way to **Your first enrollment is here** with a link to the session. The setup guide stays in the help menu.
+When the first enrollment arrives, the checklist gives way to **Your first enrollment is here** with a link to the session. The setup guide stays in the help menu. Once every step is done it shows **Setup is complete**; **Go through the steps again** starts it at step 1 with the settings your tenant has now.
 
 ### Hiding the checklist
 
