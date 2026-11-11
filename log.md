@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-11 (4)
+
+* **Update**: `changelog/agent-changelog.md` — November 2026: the agent removes itself at its next start when its session has been deleted; a pre-provisioned device starts a new session for its user phase.
+
 ## 2026-11-11 (3)
 
 * **Update**: `concepts/agent-lifecycle-and-security.md` — the agent also removes itself when its session no longer exists (deleted, or removed by the retention period); a pre-provisioned device starting its user phase is monitored as a new session instead.
