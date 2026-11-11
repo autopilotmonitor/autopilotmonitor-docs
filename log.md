@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-11 (3)
+
+* **Update**: `concepts/agent-lifecycle-and-security.md` — the agent also removes itself when its session no longer exists (deleted, or removed by the retention period); a pre-provisioned device starting its user phase is monitored as a new session instead.
+* **Update**: `concepts/sessions-and-statuses.md` — *Pending*: a session deleted before the user signs in means the user phase is monitored as a new session.
+
 ## 2026-11-11 (2)
 
 * **Update**: `reference/optional-graph-permissions.md` — troubleshooting: script names are cached for about a week, so a renamed script can show its old name that long.
