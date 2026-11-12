@@ -13,7 +13,9 @@ The Dashboard is the landing page for admins and operators: every enrollment ses
 
 ## Stats at the top
 
-Five server-aggregated stat cards headline the page — **Active Sessions** (enrolling right now), **Success Rate** (last 7 days), **Median Duration** (last 7 days, succeeded enrollments, with the P90 underneath — see [Averages, Medians & Percentiles](../concepts/averages-medians-and-percentiles.md)), **Total Today**, and **Failed Today**. A rotating *Tip of the Day* appears below them.
+Stat cards headline the page — **Active Sessions** (enrolling right now), **Success Rate** (last 7 days), **Median Duration** (last 7 days, succeeded enrollments, with the P90 underneath — see [Averages, Medians & Percentiles](../concepts/averages-medians-and-percentiles.md)), **Total Today**, and **Failed Today**. A rotating *Tip of the Day* appears below them.
+
+While the dashboard shows your own tenant, a sixth card, **Vulnerabilities**, counts the **known exploited** CVEs (CISA KEV) found on your devices in the last 30 days — red when there are any, with the number of affected devices — and opens [Software › Vulnerabilities](software-inventory-and-vulnerabilities.md#vulnerabilities). With none known exploited, it shows how many high-risk CVEs or how many CVEs in all were detected, or that none were. With the [Software Inventory & Vulnerability Analyzer](../reference/settings.md#agent-analyzers) off, the card reads **Off**: Tenant Admins can turn it on from there, everyone else sees that a Tenant Admin can.
 
 Until the first enrollment arrives, the dashboard shows the **Get started** checklist of the [setup guide](../getting-started/portal-setup.md#the-setup-guide) instead of an empty table: recommended settings, hardware, device validation and agent deployment. While it waits for the first device, it lists devices the backend turned away. Tenant Admins can hide it.
 

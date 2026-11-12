@@ -9,7 +9,7 @@ description: >-
 
 # Software Inventory & Vulnerabilities
 
-The **Software** area is a three-tab hub with a shared 7/30/90-day time range. For a different range, add `?days=` to the page address (up to 90 days on Community, 365 on Pro). App details open with the same range.
+The **Software** area is a three-tab hub with a shared 7/30/90-day time range. For a different range, add `?days=` to the page address (up to 90 days on Community, 365 on Pro). App details open with the same range. A red count on the **Vulnerabilities** tab shows how many known exploited CVEs (CISA KEV) were detected in the selected range.
 
 ## Installs
 
@@ -33,11 +33,13 @@ Clicking an app opens its detail page — the place to answer *"is this app hurt
 
 The normalized software inventory collected by the **Software Inventory & Vulnerability Analyzer** ([opt-in setting](../reference/settings.md#agent-analyzers)): every discovered title with version, publisher, session count, last-seen date, and whether it is CPE-mapped (the prerequisite for vulnerability matching).
 
+With the analyzer off, the Inventory and Vulnerabilities tabs say so instead of showing an empty list. Tenant Admins get a link that opens the setting with its switch highlighted; turn it on and save, and enrollments are scanned from then on. Everyone else sees that a Tenant Admin can turn it on.
+
 On a session, the **Vulnerability Report** shows the same items with an **Identification Confidence** badge: *high* — publisher and version were read cleanly from the registry; *medium* — only one of the two; *low* — neither. It rates how reliably the entry could be identified, not whether it is vulnerable: a *low* item is not unsafe, it just could not be matched with certainty. The **CVE Mapping** column next to it carries the result — *vulnerable*, *clean* (checked, nothing known for this version) or *unmapped* (no CPE mapping, so not checked).
 
 ## Vulnerabilities
 
-The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**:
+The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**. The dashboard's **Vulnerabilities** card, the **Fleet-wide exposure** link in a session's Vulnerability Report and the **Vulnerability exposure** link on an app's detail page lead here; the panel always covers the whole tenant, not a single app.
 
 * **KPI tiles** — affected devices, distinct CVEs, **known exploited** CVEs (CISA KEV) with the number of devices that carry one, and **exposed software**, the products with at least one known CVE.
 * **Exposure by severity** — a donut of the distinct CVEs by CVSS band (Critical/High/Medium/Low), with the **remediation priority** (Act/Attend/Track) below it. Select a band or a priority to filter the list; select it again to clear. These counts cover every CVE in the window.
@@ -53,5 +55,5 @@ The **priority** combines them into a remediation order: **Act** — listed in C
 Critical findings also surface directly on the affected sessions via the built-in rule [ANALYZE-ID-003](../rules/analyze-rules/built-in-rules.md#identity-and-security).
 
 {% hint style="warning" %}
-An empty vulnerability list means **no detected CVEs** — not a verified-safe fleet. Scanning must be enabled per tenant, and results are a lower bound if a scan hit its collection cap.
+An empty vulnerability list means **no detected CVEs** — not a verified-safe fleet. Results are a lower bound if a scan hit its collection cap. When scanning is off for the tenant, the tab says so instead of showing an empty list.
 {% endhint %}

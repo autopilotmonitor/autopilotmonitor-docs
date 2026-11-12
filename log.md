@@ -1,5 +1,11 @@
 # Log
 
+## 2026-11-12 (2)
+
+* **Update**: `portal-guide/dashboard-and-sessions.md` — a sixth stat card, **Vulnerabilities**: known exploited CVEs of the last 30 days, links to Software › Vulnerabilities, reads **Off** while the analyzer is off.
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — the count on the Vulnerabilities tab; with the analyzer off both tabs say so and Tenant Admins can turn it on from there; the links from a session's Vulnerability Report and an app's detail page.
+* **Update**: `reference/settings.md` — the analyzer also feeds the dashboard's Vulnerabilities card.
+
 ## 2026-11-12
 
 * **Update**: `portal-guide/session-details-and-diagnosis.md` — **/** jumps to the event timeline search from anywhere on the session page, **Esc** clears it.
