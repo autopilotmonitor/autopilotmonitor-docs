@@ -1,5 +1,12 @@
 # Log
 
+## 2026-11-12 (3)
+
+* **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — the report's headline counts software that has to be updated by hand; self-updating software is listed in a group of its own and left out of the Vulnerabilities tab by default (**Show** counts it in); shortened CVE lists per entry (*10 of 42*); **Not evaluated** with its reasons; what the tab's counts cover.
+* **Update**: `portal-guide/dashboard-and-sessions.md` — the Vulnerabilities card counts software that has to be updated by hand and says when only self-updating software was found.
+* **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-ID-003 fires on critical CVEs in software that has to be updated by hand; self-updating software does not trigger it.
+* **Update**: `trust/data-flows.md` — program names are matched against a downloaded copy of the NVD product dictionary; the NVD and EPSS lookups carry public identifiers only; reviewed 12 November 2026.
+
 ## 2026-11-12 (2)
 
 * **Update**: `portal-guide/dashboard-and-sessions.md` — a sixth stat card, **Vulnerabilities**: known exploited CVEs of the last 30 days, links to Software › Vulnerabilities, reads **Off** while the analyzer is off.

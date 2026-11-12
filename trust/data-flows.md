@@ -1,7 +1,7 @@
 ---
 type: Reference
 tags: [security, privacy, data-flows, architecture, trust]
-timestamp: 2026-11-04
+timestamp: 2026-11-12
 description: >-
   Where data actually travels when you use Autopilot Monitor — what the service
   stores, what it only reads from, and which connections exist because you
@@ -10,7 +10,7 @@ description: >-
 
 # Data Flows and External Services
 
-**Last reviewed: 4 November 2026 · Next review: 2 March 2027.**
+**Last reviewed: 12 November 2026 · Next review: 2 March 2027.**
 
 A technical map of every outbound connection Autopilot Monitor makes, grouped by what actually happens to your data. Read the groups carefully — they are not equivalent, and most of them carry no customer data at all.
 
@@ -39,14 +39,14 @@ E-mail alerts are reserved for the platform operators: tenant administrators can
 
 ## 3. Data the service reads in — nothing goes out
 
-Public reference data is pulled *from* these sources to enrich your view. **Nothing about your environment is sent to them.** Your software inventory is never uploaded for lookup; matching happens inside the backend against a cached copy of the public data.
+Public reference data is pulled *from* these sources to enrich your view. **Nothing about your environment is sent to them.** Your software inventory is never uploaded for lookup; program names are matched inside the backend against a downloaded copy of the public data. Two lookups carry a query, and both carry public identifiers only.
 
 | Source | Purpose |
 | --- | --- |
-| **National Vulnerability Database (NVD)**, NIST | CVE and CPE records for vulnerability correlation. This product uses the NVD API but is not endorsed or certified by the NVD. |
+| **National Vulnerability Database (NVD)**, NIST | CVE records and the CPE product dictionary for vulnerability correlation. The dictionary is downloaded as a whole; a CVE lookup names a public product identifier (for example `cpe:2.3:a:mozilla:firefox`) — never a device, a tenant, or an inventory entry. This product uses the NVD API but is not endorsed or certified by the NVD. |
 | **CISA Known Exploited Vulnerabilities (KEV) Catalog** | Which vulnerabilities are actively exploited in the wild. |
 | **Microsoft Security Response Center (MSRC)** | Microsoft-specific vulnerability details. |
-| **Exploit Prediction Scoring System (EPSS)**, FIRST.org | The likelihood that a known vulnerability is exploited in the wild. This lookup is the one that carries a query: the public CVE identifiers held in the shared, tenant-agnostic reference cache — never a device, a tenant, or an inventory. |
+| **Exploit Prediction Scoring System (EPSS)**, FIRST.org | The likelihood that a known vulnerability is exploited in the wild. The lookup sends public CVE identifiers held in the shared, tenant-agnostic reference cache — never a device, a tenant, or an inventory. |
 
 ## 4. Lookups inside your own tenant
 

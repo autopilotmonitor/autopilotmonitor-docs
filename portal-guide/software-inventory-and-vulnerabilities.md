@@ -37,12 +37,16 @@ With the analyzer off, the Inventory and Vulnerabilities tabs say so instead of 
 
 On a session, the **Vulnerability Report** shows the same items with an **Identification Confidence** badge: *high* — publisher and version were read cleanly from the registry; *medium* — only one of the two; *low* — neither. It rates how reliably the entry could be identified, not whether it is vulnerable: a *low* item is not unsafe, it just could not be matched with certainty. The **CVE Mapping** column next to it carries the result — *vulnerable*, *clean* (checked, nothing known for this version) or *unmapped* (no CPE mapping, so not checked).
 
+The report's headline counts the CVEs in software that has to be updated by hand. **Self-updating software**, such as browsers, is expected to bring itself up to date after enrollment: its findings are listed in a group of their own at the end, and their number stands next to the headline instead of in it. Each software entry lists every known exploited CVE and the most urgent others and says how many it has in all (*10 of 42*). Programs that could not be judged are listed under **Not evaluated** with the reason: the CVE data for the product was not loaded yet (it is fetched in the background and included by the next scan), the app still reports a placeholder version, the program reports no version number, or NVD counts the product's versions differently.
+
 ## Vulnerabilities
 
 The exposure panel correlates the inventory against **NVD CVEs**, the **CISA KEV** catalog, **MSRC**, and **FIRST EPSS**. The dashboard's **Vulnerabilities** card, the **Fleet-wide exposure** link in a session's Vulnerability Report and the **Vulnerability exposure** link on an app's detail page lead here; the panel always covers the whole tenant, not a single app.
 
+Software that updates itself is left out of these numbers and lists by default. A line above the list says how many products on how many devices that is; **Show** counts them in, and their rows carry a *Self-updating* mark.
+
 * **KPI tiles** — affected devices, distinct CVEs, **known exploited** CVEs (CISA KEV) with the number of devices that carry one, and **exposed software**, the products with at least one known CVE.
-* **Exposure by severity** — a donut of the distinct CVEs by CVSS band (Critical/High/Medium/Low), with the **remediation priority** (Act/Attend/Track) below it. Select a band or a priority to filter the list; select it again to clear. These counts cover every CVE in the window.
+* **Exposure by severity** — a donut of the distinct CVEs by CVSS band (Critical/High/Medium/Low), with the **remediation priority** (Act/Attend/Track) below it. Select a band or a priority to filter the list; select it again to clear. These counts cover, per product and device, every known exploited CVE and the five most urgent others; a session's own report counts all of them.
 * **Most exposed** — switch between **Software** and **CVEs**, sorted with known-exploited entries first or by affected devices. A product row folds every title and version the product was detected under, shows its most severe CVE and its device count, and expands to its most urgent CVEs. Each CVE links to its NVD entry with CVSS score, a KEV badge for actively exploited vulnerabilities, and its EPSS score. The lists show the entries on the most devices, and known-exploited entries even when they affect fewer devices. Selecting a band also lists that band's own entries on the most devices, so a band with CVEs never shows an empty list. Under a filter, a product counts with its most severe CVE and its highest priority.
 
 Two signals answer different questions, and the portal shows both:
@@ -55,5 +59,5 @@ The **priority** combines them into a remediation order: **Act** — listed in C
 Critical findings also surface directly on the affected sessions via the built-in rule [ANALYZE-ID-003](../rules/analyze-rules/built-in-rules.md#identity-and-security).
 
 {% hint style="warning" %}
-An empty vulnerability list means **no detected CVEs** — not a verified-safe fleet. Results are a lower bound if a scan hit its collection cap. When scanning is off for the tenant, the tab says so instead of showing an empty list.
+An empty vulnerability list means **no detected CVEs** — not a verified-safe fleet. Results are a lower bound if a scan hit its collection cap. When scanning is off for the tenant, the tab says so instead of showing an empty list. With self-updating software left out, the line above the list says so.
 {% endhint %}
