@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-12
+
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — **/** jumps to the event timeline search from anywhere on the session page, **Esc** clears it.
+* **Update**: `changelog/platform-changelog.md` — November 2026: timeline search from the keyboard.
+
 ## 2026-11-11 (6)
 
 * **Update**: `rules/analyze-rules/template-rules.md`, `rules/analyze-rules/built-in-rules.md` — the AutoLogon allow-list template ANALYZE-SEC-004 is removed.
