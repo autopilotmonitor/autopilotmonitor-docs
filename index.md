@@ -58,7 +58,7 @@ Contributor-facing technical documentation lives in the main product repository 
 
 # Trust & Security
 
-* [Security & Privacy FAQ](trust/security-faq.md) - Data residency, tenant isolation, encryption, retention and deletion, delegated (MSP) access, GDPR and contracts, and what the service deliberately does not do.
+* [Security & Privacy FAQ](trust/security-faq.md) - Required and optional permissions at a glance, data residency, tenant isolation, encryption, retention and deletion, delegated (MSP) access, GDPR and contracts, and what the service deliberately does not do.
 * [Data Flows & External Services](trust/data-flows.md) - Every outbound connection the service makes, grouped by what actually happens to customer data; the DPA remains authoritative for the contractual side.
 
 # Troubleshooting & Support

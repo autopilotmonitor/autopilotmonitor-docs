@@ -18,6 +18,7 @@ Autopilot Monitor plugs into an existing Windows Autopilot environment. You need
 * **Windows 10 or Windows 11 (x64), or Windows 11 on ARM64** client devices (one agent package for both architectures) enrolling through Intune — user-driven, pre-provisioning (White Glove), self-deploying, and Device Preparation flows, with Entra join or Hybrid join. See the [supported enrollment scenarios](how-it-works.md#supported-enrollment-scenarios).
 * **Outbound HTTPS (TLS 1.2+)** from enrolling devices to the Autopilot Monitor backend and the agent download endpoint. No inbound connectivity is required — the agent uses standard HTTPS on port 443. For the exact hosts to allow on a firewall, proxy, or gateway, see [Network Endpoints](../reference/network-endpoints.md).
 * Permission to create a **platform script** in the Microsoft Intune admin center (for agent deployment).
+* A **Global Administrator** or **Privileged Role Administrator** to approve one read-only Microsoft Graph permission for device validation. Which permissions are required and which are optional: [Which permissions does Autopilot Monitor need in my tenant?](../trust/security-faq.md#which-permissions-does-autopilot-monitor-need-in-my-tenant)
 
 {% hint style="info" %}
 The agent authenticates with the device's **MDM client certificate** (issued by Intune during enrollment). If your network uses TLS inspection, exclude the Autopilot Monitor backend endpoints from break-and-inspect — client-certificate authentication does not survive TLS interception.

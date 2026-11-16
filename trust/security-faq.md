@@ -1,12 +1,13 @@
 ---
 type: Concept
-timestamp: 2026-11-09T00:00:00.000Z
+timestamp: 2026-11-16T00:00:00.000Z
 description: >-
-  Security, privacy and compliance answers: data residency, tenant isolation,
-  encryption, retention, MSP access, push notifications, external services, and
-  what we deliberately do not do.
+  Security, privacy and compliance answers: required and optional permissions,
+  data residency, tenant isolation, encryption, retention, MSP access, push
+  notifications, external services, and what we deliberately do not do.
 tags:
   - security
+  - permissions
   - privacy
   - gdpr
   - compliance
@@ -18,7 +19,7 @@ tags:
 
 ## Security & Privacy FAQ
 
-**Last reviewed: 9 November 2026 · Next review: 14 February 2027.**
+**Last reviewed: 16 November 2026 · Next review: 14 February 2027.**
 
 This page answers the questions a security or data protection reviewer asks before Autopilot Monitor is approved for a production fleet. It is written to be forwarded as-is.
 
@@ -34,6 +35,26 @@ Something not answered here? Ask via a [GitHub issue](https://github.com/okiesel
 {% endhint %}
 
 ### Data Processing and Permissions
+
+#### Which permissions does Autopilot Monitor need in my tenant?
+
+Two are required: the sign-in, and one read-only permission for device validation. Everything else is optional and granted only for the feature that needs it. All of them are Microsoft Graph permissions, and all of them are read-only.
+
+| Permission | Type | Required? | Used for | Granted by |
+| --- | --- | --- | --- | --- |
+| `User.Read` | Delegated | **Required** | Portal sign-in. Reads only the signed-in user's own profile, for the name and photo shown in the portal. | Each user at the first sign-in, or an admin once for the whole organization |
+| `DeviceManagementServiceConfig.Read.All` | Application | **Required** for device validation | **Autopilot Device Validation**, the method almost every tenant uses: a device is accepted only if it is registered as an Autopilot device in your tenant. With Autopilot device preparation, the same permission backs **Corporate Identifier** and **Device Association Validation**. | Admin consent from **Settings → Autopilot Validation** |
+| `CloudPC.Read.All` | Application | Optional | **Windows 365 Cloud PC Validation**: Cloud PCs are never Autopilot-registered, so they are checked against your Cloud PC inventory. | Add-on grant |
+| `DeviceManagementManagedDevices.Read.All` | Application | Optional | **Intune Enrollment Validation**: accepts devices enrolled in your Intune without any pre-registration. | Add-on grant |
+| `DeviceManagementScripts.Read.All` | Application | Optional | Names of platform and remediation scripts in the session timeline. | Add-on grant |
+
+* **Device validation is not optional.** Until at least one validation method is on, the backend rejects all agent data. The two optional validations extend it to devices that are not Autopilot-registered.
+* **Admin consent and add-on grants need Global Administrator or Privileged Role Administrator** in Microsoft Entra. A Tenant Admin in the portal without that role can have someone who has it approve the consent, then use **Detect existing access**.
+* **Add-on grants are not part of the app manifest**, so neither the first sign-in nor the admin consent asks for them. They are granted per tenant with a script whose command **Settings → Optional Graph capabilities** builds, and can be revoked at any time. See [Optional Graph Permissions](../reference/optional-graph-permissions.md).
+* **Where to check them:** Microsoft Entra admin center → **Enterprise applications** → **Autopilot Monitor** (application ID `886ab5e2-6144-442c-80cc-9b28e0667731`) → **Permissions**. A tenant still on the previous registration finds it under its old ID; see [App Registration Migration](../troubleshooting/app-registration-migration.md).
+* **Nothing beyond this table.** Next to `User.Read`, the sign-in requests only the standard OpenID Connect scopes and access to Autopilot Monitor's own API, through which the portal reaches its backend. No permission can change anything in your tenant, and none reads mail, files, or your directory's users and groups.
+* **The agent needs no permission at all.** It authenticates with the device's Intune MDM certificate; see [How does a device prove it is allowed to send data?](security-faq.md#how-does-a-device-prove-it-is-allowed-to-send-data)
+* **Only if you connect an app of your own to the MCP server:** your admin consents to an Autopilot Monitor permission for that app, `access_as_user` (delegated) for an app that signs people in, `access_as_application` (application) for unattended automation. That permission is held by your app, not by Autopilot Monitor; see [AI Integration (MCP)](../integrations/ai-integration-mcp.md#your-own-app-on-behalf-of-users).
 
 #### What data does the agent collect from an enrolling device?
 
@@ -111,7 +132,7 @@ The Function App runs with `clientCertMode = Required`. Validation is intentiona
 * If no trust anchors load, validation **fails closed** — the service rejects everything rather than accepting anything.
 * Rejections are recorded with structured reasons, so an enrollment that fails authentication is diagnosable without guesswork.
 
-On top of the certificate, the device is checked against **Microsoft Graph** with the validation methods you enable: Autopilot registration, corporate identifiers, device association, the Windows 365 Cloud PC inventory, or the Intune enrollment of the certificate's device. Only devices your tenant knows are accepted. Optionally, a hardware allow-list you maintain applies on top. When the Autopilot registration admits a device, the session keeps what Intune records for it: group tag, purchase order identifier, Autopilot device name, object ID, and whether a user is assigned. The assigned user's name is not stored.
+On top of the certificate, the device is checked against **Microsoft Graph** with the validation methods you enable: Autopilot registration, corporate identifiers, device association, the Windows 365 Cloud PC inventory, or the Intune enrollment of the certificate's device (the permission each one needs: [Which permissions does Autopilot Monitor need in my tenant?](security-faq.md#which-permissions-does-autopilot-monitor-need-in-my-tenant)). Only devices your tenant knows are accepted. Optionally, a hardware allow-list you maintain applies on top. When the Autopilot registration admits a device, the session keeps what Intune records for it: group tag, purchase order identifier, Autopilot device name, object ID, and whether a user is assigned. The assigned user's name is not stored.
 
 Passing these checks makes a device a member of your tenant, not the owner of every enrollment in it. Each enrollment session is **bound to the device that started it**: to its Intune certificate identity, or, for a device started with a [bootstrap code](../reference/bootstrap-script-and-tokens.md), to that code and the device's serial number until the certificate takes over. No other device can write into the session, not even a device of your own tenant. A device that is re-enrolled without a wipe and receives a new Intune identity therefore starts a new session instead of continuing its old one.
 

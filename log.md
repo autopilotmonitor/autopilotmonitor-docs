@@ -1,5 +1,11 @@
 # Log
 
+## 2026-11-16
+
+* **Update**: `trust/security-faq.md` — new question *Which permissions does Autopilot Monitor need in my tenant?*: one table with every permission, its type, whether it is required or optional, what it is used for and who grants it (`User.Read` for sign-in and `DeviceManagementServiceConfig.Read.All` for device validation required, `CloudPC.Read.All`, `DeviceManagementManagedDevices.Read.All` and `DeviceManagementScripts.Read.All` optional add-on grants), where to check them in Entra, that the agent needs none, and the MCP permissions an app of your own holds; the device-validation answer links to it; reviewed 16 November 2026.
+* **Update**: `getting-started/requirements-and-access.md` — requirements name the Entra role that approves the device-validation permission and link to the permissions table.
+* **Update**: `index.md` — the Security & Privacy FAQ entry names the permissions table.
+
 ## 2026-11-12 (3)
 
 * **Update**: `portal-guide/software-inventory-and-vulnerabilities.md` — the report's headline counts software that has to be updated by hand; self-updating software is listed in a group of its own and left out of the Vulnerabilities tab by default (**Show** counts it in); shortened CVE lists per entry (*10 of 42*); **Not evaluated** with its reasons; what the tab's counts cover.
