@@ -1,5 +1,13 @@
 # Log
 
+## 2026-11-18
+
+* **Update**: `concepts/protective-limits.md` — new row *Download progress*: every few seconds in almost every enrollment; once a session's downloads have run for a long time the agent reports their progress less often, so long downloads stay below the event limit; each download's first minute stays live, and the Download Progress panel and the event timeline say since when. The introduction no longer names a download as an example of a device that reaches the limit.
+* **Update**: `portal-guide/session-details-and-diagnosis.md` — Downloads / Install Progress: the note in the Download Progress panel when progress is reported less often.
+* **Update**: `index.md` — the Protective Limits entry names long downloads.
+* **Update**: `changelog/agent-changelog.md` — November 2026: long downloads no longer pause monitoring; each download's first minute of progress stays live.
+* **Update**: `changelog/platform-changelog.md` — November 2026: steadier download speed and a note when progress updates were reduced.
+
 ## 2026-11-16
 
 * **Update**: `trust/security-faq.md` — new question *Which permissions does Autopilot Monitor need in my tenant?*: one table with every permission, its type, whether it is required or optional, what it is used for and who grants it (`User.Read` for sign-in and `DeviceManagementServiceConfig.Read.All` for device validation required, `CloudPC.Read.All`, `DeviceManagementManagedDevices.Read.All` and `DeviceManagementScripts.Read.All` optional add-on grants), where to check them in Entra, that the agent needs none, and the MCP permissions an app of your own holds; the device-validation answer links to it; reviewed 16 November 2026.

@@ -9,7 +9,7 @@ description: >-
 
 # Protective Limits
 
-Autopilot Monitor watches thousands of enrollments at once. A single device that sends far more data than an enrollment needs — a network connection that drops and reconnects every few minutes, a download that reports progress without pause — would distort your fleet statistics and take capacity away from every other enrollment. A few protective limits contain such a device by deciding how much of its telemetry Autopilot Monitor accepts.
+Autopilot Monitor watches thousands of enrollments at once. A single device that sends far more data than an enrollment needs — for example a network connection that drops and reconnects every few minutes — would distort your fleet statistics and take capacity away from every other enrollment. A few protective limits contain such a device by deciding how much of its telemetry Autopilot Monitor accepts.
 
 ## Which limits exist
 
@@ -17,6 +17,7 @@ Autopilot Monitor watches thousands of enrollments at once. A single device that
 | --- | --- | --- |
 | **Upload rate** | How many uploads a device may send per minute | Uploads above the limit are rejected until the window clears; the agent sends them again. See [Timeline gaps after adding gather rules](../troubleshooting/common-problems.md#timeline-gaps-after-adding-gather-rules-ingestion-rate-limit). |
 | **Event limit** | How many events one enrollment session may send in total | The platform **pauses** the session's uploads for a limited time, or **ends monitoring** on the device. |
+| **Download progress** | How often a download reports its progress | Every few seconds in almost every enrollment. Once a session's downloads have run for a long time, the agent reports their progress less often, so long downloads stay below the event limit. Each download still reports its first minute live, and the Download Progress panel and the event timeline say since when. |
 | **Agent lifetime** | How long the agent stays on the device | The agent stops after 6 hours of active time, and removes itself at its next start once its enrollment phase is older than 48 hours. See [Sessions & Statuses → Timeouts](sessions-and-statuses.md#timeouts-what-happens-to-stuck-sessions). |
 
 The event limit sits far above what an enrollment normally produces — a typical session sends a few hundred events. It is set by the platform and applies to every tenant.

@@ -19,6 +19,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* Long downloads no longer pause monitoring: the agent reports each download once and slows progress updates only in very long download phases
+* Each download still reports its first minute of progress live
 * The agent counts command prompts that scripts start and reports one script activity line per minute instead of one console warning each
 * Script activity names the programs that started the command prompts
 * Fixed console warnings that showed the command line of an unrelated program
