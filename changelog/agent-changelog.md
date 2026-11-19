@@ -19,6 +19,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* When Microsoft Entra keeps refusing Autopilot Monitor's access to your tenant, the agent ends monitoring at its first contact instead of retrying
 * Long downloads no longer pause monitoring: the agent reports each download once and slows progress updates only in very long download phases
 * Each download still reports its first minute of progress live
 * The agent counts command prompts that scripts start and reports one script activity line per minute instead of one console warning each

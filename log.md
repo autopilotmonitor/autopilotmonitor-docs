@@ -1,5 +1,12 @@
 # Log
 
+## 2026-11-19
+
+* **Update**: `troubleshooting/enrollment-monitoring-interrupted.md` — once the notice is shown, an agent ends monitoring at its next contact instead of retrying; an enrollment that ran during the interruption stays missing or incomplete; after a repair in the Entra admin center the notice goes away with **Detect existing access** or the next automatic check (up to about 2 hours), no longer with the next device; an agent installed after removing the app on purpose stops right after its first contact.
+* **Update**: `concepts/agent-lifecycle-and-security.md` — the agent also ends monitoring when Microsoft Entra keeps refusing access to the tenant; cleanup follows the self-destruct setting.
+* **Update**: `changelog/agent-changelog.md` — November 2026: the agent ends monitoring at its first contact while Entra refuses access to the tenant.
+* **Update**: `changelog/platform-changelog.md` — November 2026: devices are turned away at once while access is interrupted and no longer listed as not registered.
+
 ## 2026-11-18
 
 * **Update**: `concepts/protective-limits.md` — new row *Download progress*: every few seconds in almost every enrollment; once a session's downloads have run for a long time the agent reports their progress less often, so long downloads stay below the event limit; each download's first minute stays live, and the Download Progress panel and the event timeline say since when. The introduction no longer names a download as an example of a device that reaches the limit.
