@@ -25,7 +25,7 @@ These hosts are operated by Autopilot Monitor and are the ones you may need to a
 | `mcp.autopilotmonitor.com` | Read-only MCP telemetry server (optional AI integration) | AI/MCP clients |
 
 {% hint style="info" %}
-`autopilotmonitor.com` redirects to `www.autopilotmonitor.com`, and this documentation is served from `docs.autopilotmonitor.com` — allowing the `autopilotmonitor.com` parent domain and its subdomains covers all of them.
+`autopilotmonitor.com` redirects to `www.autopilotmonitor.com`, and this documentation is served from `docs.autopilotmonitor.com`. Allowing the `autopilotmonitor.com` parent domain and its subdomains covers the `*.autopilotmonitor.com` hosts. **It does not cover the API host `autopilotmonitor-api-eu.azurewebsites.net`: add it by name.**
 {% endhint %}
 
 Note the two audiences usually live on different network segments: **enrolling devices** (agent) need `download.`, the API host, and — if you use Bootstrap Sessions — `go.`; **administrators** (portal, AI clients) need `portal.`, the API host, and — for AI integration — `mcp.`.
@@ -51,5 +51,5 @@ The on-device agent does **not** use Entra ID — it authenticates with the devi
 ## TLS inspection
 
 {% hint style="warning" %}
-If your network uses TLS inspection (break-and-inspect), **exclude `autopilotmonitor-api-eu.azurewebsites.net` and `download.autopilotmonitor.com` from interception on the enrolling-device path.** The agent authenticates with the device's **MDM client certificate**, and client-certificate authentication does not survive TLS interception. See [Requirements & Access](../getting-started/requirements-and-access.md) and [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md).
+If your network uses TLS inspection (break-and-inspect), **exclude `autopilotmonitor-api-eu.azurewebsites.net` and `download.autopilotmonitor.com` from interception on the enrolling-device path.** The API host is an `azurewebsites.net` name, so a bypass rule for `*.autopilotmonitor.com` does not match it. Trusting your inspection CA on the device is not enough: the agent authenticates with the device's **MDM client certificate**, and client-certificate authentication does not survive TLS interception. See [Requirements & Access](../getting-started/requirements-and-access.md), [Agent Lifecycle & Security](../concepts/agent-lifecycle-and-security.md) and [Common Problems](../troubleshooting/common-problems.md#tls-inspection-breaks-agent-authentication).
 {% endhint %}

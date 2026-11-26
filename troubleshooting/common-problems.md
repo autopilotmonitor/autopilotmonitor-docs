@@ -23,7 +23,9 @@ The agent is deployed but the dashboard stays empty. Check in this order:
 
 The agent authenticates with the device's **MDM client certificate** (mutual TLS). A proxy or firewall doing break-and-inspect terminates the TLS session and drops the client certificate — the backend then rejects the connection.
 
-**Fix:** exclude the Autopilot Monitor backend endpoints from TLS inspection. The same applies to proxies that require user authentication during the device phase of OOBE (no user exists yet to authenticate).
+**How it looks:** no session appears in the portal. If the device does not trust the inspecting certificate, the agent log under `%ProgramData%\AutopilotMonitor\Logs` shows `WebException.Status = TrustFailure` for every call to the API host. The agent then tries again at every boot, up to its [48-hour limit](../concepts/agent-lifecycle-and-security.md).
+
+**Fix:** exclude `autopilotmonitor-api-eu.azurewebsites.net` and `download.autopilotmonitor.com` from TLS inspection, then restart the device. The API host is not under `autopilotmonitor.com`, so a rule for `*.autopilotmonitor.com` does not cover it ([Network Endpoints](../reference/network-endpoints.md#tls-inspection)). The same applies to proxies that require user authentication during the device phase of OOBE (no user exists yet to authenticate).
 
 ## Events stop during an app installation
 

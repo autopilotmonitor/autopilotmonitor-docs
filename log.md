@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-27
+
+* **Update**: `reference/network-endpoints.md` — the parent-domain hint says it does not cover the API host; the TLS inspection warning says why a `*.autopilotmonitor.com` rule and a trusted inspection CA are not enough.
+* **Update**: `troubleshooting/common-problems.md` — *TLS inspection breaks agent authentication*: how it looks in the agent log, and the two hosts to exclude by name.
+
 ## 2026-11-19
 
 * **Update**: `troubleshooting/enrollment-monitoring-interrupted.md` — once the notice is shown, an agent ends monitoring at its next contact instead of retrying; an enrollment that ran during the interruption stays missing or incomplete; after a repair in the Entra admin center the notice goes away with **Detect existing access** or the next automatic check (up to about 2 hours), no longer with the next device; an agent installed after removing the app on purpose stops right after its first contact.
