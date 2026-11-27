@@ -4,6 +4,8 @@
 
 * **Update**: `reference/settings.md` — Local Admin Analyzer: the account the device's Windows LAPS policy manages (automatic account management or **Administrator Account Name**) is allowed as an administrator without an entry once Windows LAPS has set its password; an account a script creates for Windows LAPS is reported until then; `WLapsDefuncted…` and `WLapsPending…` accounts are still reported.
 * **Update**: `rules/analyze-rules/built-in-rules.md` — ANALYZE-ID-002: the Windows LAPS account counts as allowed once Windows LAPS has set its password.
+* **Update**: `changelog/agent-changelog.md` — November 2026: the account the Windows LAPS policy manages is no longer reported as an unexpected local administrator once Windows LAPS has set its password.
+* **Update**: `changelog/platform-changelog.md` — November 2026: Settings → Agent Analyzers and the unexpected-local-admin finding explain the Windows LAPS account.
 
 ## 2026-11-27
 

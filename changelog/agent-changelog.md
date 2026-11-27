@@ -19,6 +19,7 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* The account your Windows LAPS policy manages (by default `WLapsAdmin`) is no longer reported as an unexpected local administrator once Windows LAPS has set its password
 * When TLS inspection presents a certificate the device does not trust, the agent log names its issuer and the host to exclude from inspection
 * The agent log names the cause of a failed update check and says when an error report could not be delivered
 * When Microsoft Entra keeps refusing Autopilot Monitor's access to your tenant, the agent ends monitoring at its first contact instead of retrying

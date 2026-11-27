@@ -17,6 +17,7 @@ Found a bug or want to give feedback? Use **Help (?) → Send feedback** in the 
 
 ## November 2026
 
+* **Windows LAPS account needs no entry** — *Settings → Agent Analyzers* notes that the account your Windows LAPS policy manages is allowed without an entry, and the *Unexpected Local Admin Accounts* finding explains accounts Windows LAPS renamed aside or left behind. See [Settings](../reference/settings.md#agent-analyzers).
 * **Devices turned away at once while access is interrupted** — While Microsoft Entra refuses Autopilot Monitor's access to your tenant, devices are turned away right away and no longer listed as not registered. See [Enrollment Monitoring Is Interrupted](../troubleshooting/enrollment-monitoring-interrupted.md#what-the-notice-means).
 * **Setup guide for new tenants** — Until the first enrollment arrives, the dashboard shows a *Get started* checklist: recommended settings, your hardware, device validation and the agent deployment. It also lists devices the backend turned away. See [Portal Setup](../getting-started/portal-setup.md#the-setup-guide).
 * **Group tag in Fleet Health** — Fleet Health shows the success rate per Autopilot group tag and can hide a tag from its figures, for example your test devices. See [Fleet Health](../portal-guide/fleet-health.md#hiding-a-group-tag).
