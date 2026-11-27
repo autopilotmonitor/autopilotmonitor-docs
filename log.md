@@ -4,6 +4,7 @@
 
 * **Update**: `reference/network-endpoints.md` — the parent-domain hint says it does not cover the API host; the TLS inspection warning says why a `*.autopilotmonitor.com` rule and a trusted inspection CA are not enough.
 * **Update**: `troubleshooting/common-problems.md` — *TLS inspection breaks agent authentication*: how it looks in the agent log, and the two hosts to exclude by name.
+* **Update**: `changelog/agent-changelog.md` — November 2026: the agent log names the certificate issuer when TLS inspection blocks its connection, the cause of a failed update check and an undelivered error report.
 
 ## 2026-11-19
 

@@ -19,6 +19,8 @@ Per-version release notes: [GitHub Releases](https://github.com/okieselbach/Auto
 
 ## November 2026
 
+* When TLS inspection presents a certificate the device does not trust, the agent log names its issuer and the host to exclude from inspection
+* The agent log names the cause of a failed update check and says when an error report could not be delivered
 * When Microsoft Entra keeps refusing Autopilot Monitor's access to your tenant, the agent ends monitoring at its first contact instead of retrying
 * Long downloads no longer pause monitoring: the agent reports each download once and slows progress updates only in very long download phases
 * Each download still reports its first minute of progress live
